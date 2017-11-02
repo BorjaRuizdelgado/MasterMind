@@ -175,7 +175,7 @@ public class Partida {
      * @return Codigo secreto del tablero
      */
     public Codigo getCodigoSecreto() {
-        return tablero.getCodigoSecreto().codigo;
+        return tablero.getCodigoSecreto();
     }
 
     /**
