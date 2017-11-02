@@ -100,14 +100,14 @@ public class Main {
                 // A partir de aquí jugamos como codeMaker
                 Console.println("Introduce el código:");
                 List<Integer> codigo = new ArrayList<>();
-                Cerebro cerebro = new Cerebro(6, 4);
+                //Cerebro cerebro = new Cerebro(6, 4);
                 for (int i = 0; i < 4; i++) {
                     codigo.add(in.nextInt());
                 }
                 boolean juegoFinalizado = false;
-                while(!juegoFinalizado){
+                /*while(!juegoFinalizado){
 
-                }
+                }*/
             }
             else {
                 Codigo codigo = new Codigo(4);
