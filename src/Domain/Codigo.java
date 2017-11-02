@@ -7,11 +7,20 @@ public class Codigo {
     public List<Integer> codigo;
     public int size = 0;
 
+    /**
+     * Creadora
+     * @param size
+     */
     public Codigo(int size){
         codigo = new ArrayList<Integer>(size);
         this.size = size;
     }
 
+    /**
+     * dado Codigo se compara con el mismo y devuelve la respuesta
+     * @param codigoACorregir
+     * @return respuesta
+     */
     public Respuesta corregir(Codigo codigoACorregir){
         int negras = 0;
         int blancas = 0;
