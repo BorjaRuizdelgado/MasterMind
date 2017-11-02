@@ -69,7 +69,7 @@ public class Main {
                 System.out.print("Creamos una nueva partida:\n");
                 Partida p = new Partida(rol,dif);
                 p.generaCodigoAleatorio();
-                //System.out.println(java.util.Arrays.toString(p.getCodigoSecreto()));
+                System.out.println(p.getCodigoSecreto().codigo);
             }
 
             else if(num == 4){
@@ -108,6 +108,11 @@ public class Main {
                 /*while(!juegoFinalizado){
 
                 }*/
+
+            }
+            else if(num == 5){
+                Cerebro c = new Cerebro(4,4);
+
             }
             else {
                 Codigo codigo = new Codigo(4);

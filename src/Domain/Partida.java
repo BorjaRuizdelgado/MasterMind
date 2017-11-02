@@ -193,7 +193,7 @@ public class Partida {
         Codigo codigoSecreto = new Codigo(numColumnas);
         Random rn = new Random();
         for(int i = 0; i < numColumnas; i++)
-            codigoSecreto.codigo.set(i, rn.nextInt(numColores) + 1);
+            codigoSecreto.codigo.add(rn.nextInt(numColores) + 1);
         setCodigoSecreto(codigoSecreto);
     }
 

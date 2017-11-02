@@ -17,12 +17,7 @@ public class Cerebro {
     private boolean firstGuess = true;
 
 
-    private void generaIntentoInicial(){
-        for (int i = 0; i < numeroColores; i++) {
-            if(i < numeroColores / 2) intentoActual.codigo.add(1);
-            else intentoActual.codigo.add(2);
-        }
-    }
+
     /**
      * Creadora
      * @param colores numero de colores que tiene el juego
@@ -35,6 +30,18 @@ public class Cerebro {
         // Hacemos una copia de lo que hemos generado
         combinacionesTotales = new ArrayList<>(solucionesPotenciales);
         generaIntentoInicial();
+        imprimePotenciales();
+    }
+
+    /**
+     * Genera el primer intento
+     */
+    private void generaIntentoInicial(){
+        for (int i = 0; i < numeroColores; i++) {
+            if(i < numeroColores / 2) intentoActual.codigo.add(1);
+            else intentoActual.codigo.add(2);
+        }
+
     }
 
     /**
