@@ -35,7 +35,7 @@ public class Main {
                 int itera = num;
                 for(int i = 0; i < itera; i++){
                     num = in.nextInt();
-                    filaFilita.codigo.set(i,num);
+                    filaFilita.codigo.add(num);
                     System.out.println(i);
                 }
 
@@ -61,10 +61,6 @@ public class Main {
 
             }
             else if(num == 3){
-                Cerebro prueba = new Cerebro(4,4);
-            }
-
-            else if(num == 4){
                 System.out.print("Aqui pruebamos la Partida\n");
                 System.out.print("Introduce NumeroPartida Rol(1True/0False) Dificultad (0..2)\n");
                 boolean rol = false;
@@ -76,7 +72,7 @@ public class Main {
                 //System.out.println(java.util.Arrays.toString(p.getCodigoSecreto()));
             }
 
-            else{
+            else if(num == 4){
                 Console.println("Bienvenido a Mastermind", "blue");
                 Console.println("[1] Crear usuario");
                 Console.println("[2] Carga usuario");
@@ -112,6 +108,22 @@ public class Main {
                 while(!juegoFinalizado){
 
                 }
+            }
+            else {
+                Codigo codigo = new Codigo(4);
+                codigo.codigo.add(5);
+                codigo.codigo.add(3);
+                codigo.codigo.add(1);
+                codigo.codigo.add(2);
+
+                Codigo codigo2 = new Codigo(4);
+                codigo2.codigo.add(1);
+                codigo2.codigo.add(1);
+                codigo2.codigo.add(1);
+                codigo2.codigo.add(3);
+
+                Respuesta respuesta = codigo.getRespuesta(codigo2);
+                System.out.println(respuesta.respuesta);
             }
         }
     }

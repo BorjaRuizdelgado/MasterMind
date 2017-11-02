@@ -21,7 +21,7 @@ public class Codigo implements Cloneable{
      * @param codigoACorregir
      * @return respuesta
      */
-    public Respuesta corregir(Codigo codigoACorregir){
+    public Respuesta getRespuesta(Codigo codigoACorregir){
         int negras = 0;
         int blancas = 0;
         for(int i = 0; i < size; ++i){
@@ -44,14 +44,14 @@ public class Codigo implements Cloneable{
         Respuesta res = new Respuesta(size);
         for(int i = 0; i < size;++i){
             if(negras != 0){
-                res.respuesta.set(i,8);
+                res.respuesta.add(8);
                 negras--;
             }
             else if(blancas != 0){
-                res.respuesta.set(i,7);
+                res.respuesta.add(7);
                 blancas--;
             }
-            res.respuesta.set(i,0);
+            res.respuesta.add(0);
         }
         return res;
     }
