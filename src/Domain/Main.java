@@ -3,9 +3,7 @@ package Domain;
 import Util.Console;
 import java.util.List;
 import java.util.Scanner;
-import Util.Cerebro;
 import java.util.ArrayList;
-import java.util.Arrays;
 /**
  *
  * @author borja | ISA | Omar
