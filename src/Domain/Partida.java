@@ -98,8 +98,8 @@ public class Partida {
      * Coloca si el jugador es CodeMaker o Breaker
      * @param isRolMaker
      */
-    public void setIsRolMaker(boolean isRolMaker) {
-        this.isRolMaker = isRolMaker;
+    public void setRolMaker(boolean RolMaker) {
+        this.isRolMaker = RolMaker;
     }
 
     /**
