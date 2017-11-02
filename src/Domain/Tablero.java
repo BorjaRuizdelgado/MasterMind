@@ -48,7 +48,7 @@ public class Tablero {
      */
     private void iniciaTablero(){
         for(int i = 0; i < numeroFilas; ++i)
-            tablero.set(i,new Fila(numeroColumnas));
+            tablero.add(new Fila(numeroColumnas));
     }
 
     /**

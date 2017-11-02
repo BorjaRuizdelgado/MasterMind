@@ -35,7 +35,7 @@ public class Main {
                 int itera = num;
                 for(int i = 0; i < itera; i++){
                     num = in.nextInt();
-                    filaFilita.codigo.set(i,num);
+                    filaFilita.codigo.add(num);
                     System.out.println(i);
                 }
 
