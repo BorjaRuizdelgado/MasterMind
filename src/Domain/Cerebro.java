@@ -9,9 +9,9 @@ import java.util.ArrayList;
  */
 public class Cerebro {
 
-    private List<Integer> intentoActual;
-    private List<List<Integer>> combinacionesTotales;
-    private List<List<Integer>> solucionesPotenciales = new ArrayList<List<Integer>>();
+    private Codigo intentoActual;
+    private List<Codigo> combinacionesTotales;
+    private List<Codigo> solucionesPotenciales;
     private int numeroColores;
     private int numeroColumnas;
     private boolean firstGuess = true;
@@ -19,8 +19,8 @@ public class Cerebro {
 
     private void generaIntentoInicial(){
         for (int i = 0; i < numeroColores; i++) {
-            if(i < numeroColores / 2) intentoActual.add(1);
-            else intentoActual.add(2);
+            if(i < numeroColores / 2) intentoActual.codigo.add(1);
+            else intentoActual.codigo.add(2);
         }
     }
     /**
@@ -41,25 +41,28 @@ public class Cerebro {
      * Genera la combinacion de posibles potenciales.
      */
     private void generaPotenciales(){
-        List<Integer> actual = new ArrayList<>(numeroColumnas);
-
+        Codigo actual = new Codigo(numeroColumnas);
         generadorRecursivo(0, actual);
     }
 
     /**
-     * Recursivamente genera todos los potenciales necesarios.
-     *
+     * Recursivamente genera todos los potenciales necesarios
      * @param posicion
      * @param actual
      */
-    private void generadorRecursivo(int posicion, List<Integer> actual){
+    private void generadorRecursivo(int posicion, Codigo actual){
         if(posicion == numeroColumnas){
             solucionesPotenciales.add(actual);
             return;
         }
         for(int i = 1; i <= numeroColores; i++){
-            actual.set(posicion, i);
-            List<Integer> copia = new ArrayList<>(actual);
+            actual.codigo.set(posicion, i);
+            Codigo copia = new Codigo(actual.size);
+            try {
+                copia = (Codigo) actual.clone();
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
             generadorRecursivo(posicion + 1, copia);
         }
     }
@@ -73,36 +76,19 @@ public class Cerebro {
         }
     }
 
-
-    // HACE FALTA EDITARLA
-    private List<Integer> getRespuesta(List<Integer> intento, List<Integer> codigo) {
-        return intento;
-    }
-
-    private boolean sonIguales(List<Integer> array1, List<Integer> array2) {
-        /*Arrays.sort(array1);
-        Arrays.sort(array2);
-        return array1.equals(array2);
-        */
-        return false;
-    }
-
-
     private void actualizaPotenciales(Fila ultimoIntento) {
-        /*List<Integer> ultimaRespuesta = ultimoIntento.getRespuestas();
+        Respuesta ultimaRespuesta = ultimoIntento.getRespuestas();
         for (int i = 0; i < solucionesPotenciales.size(); i++) {
-            List<Integer> respuestaPosible = getRespuesta(ultimoIntento.getColores(),solucionesPotenciales.get(i));
-            if(!sonIguales(respuestaPosible, ultimaRespuesta)) solucionesPotenciales.remove(i);
+            Respuesta respuestaPosible = ultimoIntento.getColores().getRespuesta(solucionesPotenciales.get(i));
+            if(!respuestaPosible.equals(ultimaRespuesta)) solucionesPotenciales.remove(i);
         }
-        */
     }
     
     
-    /*
-    public List<Integer> getSiguienteIntento(Fila ultimoIntento) {
+/*
+    public Codigo getSiguienteIntento(Fila ultimoIntento) {
         actualizaPotenciales(ultimoIntento);
-        //findNext();
+        //find Next ()
     }
 */
-
 }
