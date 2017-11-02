@@ -20,6 +20,6 @@ public class Respuesta {
      * @return cierto o falso dependiendo de si son iguales
      */
     public Boolean equals(Respuesta respuestaComprobada){
-        return true;
+       return this.respuesta.contains(respuestaComprobada.respuesta);
     }
 }
