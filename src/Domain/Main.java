@@ -29,13 +29,13 @@ public class Main {
                 Tablero tablero = new Tablero(num);
                 System.out.print(tablero);
                 System.out.print("Dame una fila para que rellene todo el tablero\n");
+                Codigo filaFilita = new Codigo(num);
 
-                int[] filaFilita = new int[num];
                 System.out.print("Dame una fila para que rellene todo el tablero\n");
                 int itera = num;
                 for(int i = 0; i < itera; i++){
                     num = in.nextInt();
-                    filaFilita[i] = num;
+                    filaFilita.codigo.set(i,num);
                     System.out.println(i);
                 }
 
@@ -43,7 +43,7 @@ public class Main {
                     tablero.setUltimoColores(filaFilita);
                     Fila aux = tablero.getUltimoIntento();
                     System.out.println("aquitamos\n");
-                    System.out.println(java.util.Arrays.toString(aux.getColores()));
+                    System.out.println(aux.getColores().codigo);
                     tablero.incrementaFilaActual();
                 }
             }
@@ -73,7 +73,7 @@ public class Main {
                 System.out.print("Creamos una nueva partida:\n");
                 Partida p = new Partida(rol,dif);
                 p.generaCodigoAleatorio();
-                System.out.println(java.util.Arrays.toString(p.getCodigoSecreto()));
+                //System.out.println(java.util.Arrays.toString(p.getCodigoSecreto()));
             }
 
             else{
