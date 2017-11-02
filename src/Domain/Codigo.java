@@ -3,7 +3,7 @@ package Domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Codigo {
+public class Codigo implements Cloneable{
     public List<Integer> codigo;
     public int size = 0;
 
@@ -54,6 +54,11 @@ public class Codigo {
             res.respuesta.set(i,0);
         }
         return res;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
 }

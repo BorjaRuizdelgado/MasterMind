@@ -28,7 +28,7 @@ public class Tablero {
     private int numeroFilaActual = 0;
 
 
-    private Fila[] tablero = new Fila[numeroFilas];
+    private List<Fila> tablero = new ArrayList<Fila>(numeroFilas);
     private Codigo codigoSecreto;
 
     /**
@@ -48,7 +48,7 @@ public class Tablero {
      */
     private void iniciaTablero(){
         for(int i = 0; i < numeroFilas; ++i)
-            tablero[i] = new Fila(numeroColumnas);
+            tablero.set(i,new Fila(numeroColumnas));
     }
 
     /**
@@ -63,8 +63,12 @@ public class Tablero {
      *
      * @param codigoSecreto copiado en la variable codigoSecreto del tablero.
      */
-    public void setCodigoSecreto(CodigocodigoSecreto){
-        System.arraycopy(codigoSecreto, 0, this.codigoSecreto, 0, codigoSecreto.length);
+    public void setCodigoSecreto(Codigo codigoSecreto){
+        try {
+            this.codigoSecreto = (Codigo) codigoSecreto.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -72,7 +76,7 @@ public class Tablero {
      * @return La fila que utilizan los jugadores en ese momento.
      */
     public Fila getUltimoIntento(){
-        return tablero[numeroFilaActual];
+        return tablero.get(numeroFilaActual);
     }
 
     /**
@@ -80,7 +84,7 @@ public class Tablero {
      * @param guess se establece como el intnto de adivinar el jugador.
      */
     public void setUltimoColores(Codigo guess){
-        tablero[numeroFilaActual].setColores(guess);
+        tablero.get(numeroFilaActual).setColores(guess);
     }
 
     /**
@@ -88,7 +92,7 @@ public class Tablero {
      * @param answer se establece como la correccion que ha hecho el jugador.
      */
     public void setUltimoRespuestas(Respuesta answer){
-        tablero[numeroFilaActual].setRespuestas(answer);
+        tablero.get(numeroFilaActual).setRespuestas(answer);
     }
 
     /**
@@ -102,7 +106,7 @@ public class Tablero {
      *
      * @return El El rablero sobre el que se juega.
      */
-    public Fila[] getTablero(){
+    public List<Fila> getTablero(){
         return tablero;
     }
 
@@ -123,38 +127,11 @@ public class Tablero {
     }
 
     public void generaRespuesta(){
-        setUltimoRespuestas(gimmeAnswer(getUltimoColores()));
+        setUltimoRespuestas(getUltimoColores().corregir(codigoSecreto));
     }
 
-    public Respuesta gimmeAnswer(Codigo codigo){
-        Codigo codigoAComprobar = new Codigo(numeroColumnas);
-        System.arraycopy(codigo,0,codigoAComprobar,0,codigo.length);
-        Respuesta answer = new Respuesta(numeroColumnas);
-        int ultimaInsertada = 0;
-        for(int i = 0; i < numeroColumnas;++i){
-            if(codigoSecreto.codigo.get(i) == codigoAComprobar.codigo.get(i)){
-                answer.respuesta.set(ultimaInsertada, 8);
-                ultimaInsertada++;
-                codigoAComprobar.codigo.set(i, -1);
 
-            }
-        }
-        for(int i = 0; i < numeroColumnas; ++i){
-            if(codigoAComprobar.codigo.get(i) > 0){
 
-                answer.respuesta.set(ultimaInsertada, 7);
-                ultimaInsertada++;
-            }
-        }
 
-        return answer;
-    }
-
-    private boolean codigoSecretoContiene(int color){
-        for(int i = 0; i < numeroColumnas; ++i){
-            if(codigoSecreto.codigo.get(i) == color) return true;
-        }
-        return false;
-    }
 }
 
