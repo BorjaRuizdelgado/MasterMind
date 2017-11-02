@@ -127,7 +127,7 @@ public class Tablero {
     }
 
     public void generaRespuesta(){
-        setUltimoRespuestas(getUltimoColores().corregir(codigoSecreto));
+        setUltimoRespuestas(getUltimoColores().getRespuesta(codigoSecreto));
     }
 
 
