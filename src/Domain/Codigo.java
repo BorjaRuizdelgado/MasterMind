@@ -51,7 +51,7 @@ public class Codigo implements Cloneable{
                 res.respuesta.add(7);
                 blancas--;
             }
-            res.respuesta.add(0);
+            else res.respuesta.add(0);
         }
         return res;
     }
