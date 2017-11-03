@@ -1,7 +1,9 @@
 package Domain;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  *
@@ -96,12 +98,82 @@ public class Cerebro {
             if(!respuestaPosible.equals(ultimaRespuesta)) solucionesPotenciales.remove(i);
         }
     }
-    
-    
-/*
+
+
     public Codigo getSiguienteIntento(Fila ultimoIntento) {
         actualizaPotenciales(ultimoIntento);
-        //find Next ()
+
+        List<Codigo> posiblesCandidatos = minmax();
+        return seleccionaCandidato(posiblesCandidatos);
     }
-*/
+
+    private List<Codigo> minmax(){
+        int max, min;
+        Map<String, Integer> contadorPuntuaciones = new HashMap<>();
+        Map<Codigo, Integer> puntuacion = new HashMap<>();
+        List<Codigo> posiblesCandidatos = new ArrayList<>();
+
+        for (int i = 0; i < combinacionesTotales.size(); i++) {
+            for (int j = 0; j < solucionesPotenciales.size(); j++) {
+                Respuesta respuesta = combinacionesTotales.get(i).getRespuesta(solucionesPotenciales.get(j));
+                String result = respuesta.toString();
+                if(contadorPuntuaciones.containsKey(result)){
+                    contadorPuntuaciones.put(result, contadorPuntuaciones.get(result) + 1);
+                }
+                else{
+                    contadorPuntuaciones.put(result, 1);
+                }
+            }
+            max = getMaximaPuntuacion(contadorPuntuaciones);
+            puntuacion.put(combinacionesTotales.get(i), max);
+            contadorPuntuaciones.clear();
+        }
+        min = getMinimaPuntuacion(puntuacion);
+        for (int i = 0; i < puntuacion.size(); i++) {
+            if(puntuacion.get(i) == min){
+                posiblesCandidatos.add((Codigo) puntuacion.keySet().toArray()[i]);
+            }
+        }
+        return posiblesCandidatos;
+    }
+
+    private Codigo seleccionaCandidato(List<Codigo> candidatos){
+        int idCandidato = -1;
+
+        for (int i = 0; i < candidatos.size(); i++) {
+            if(solucionesPotenciales.contains(candidatos.get(i))){
+                idCandidato = i;
+                break;
+            }
+        }
+        
+        if(idCandidato == -1){
+            for (int i = 0; i < candidatos.size(); i++) {
+                if(combinacionesTotales.contains(candidatos.get(i))){
+                    idCandidato = i;
+                    break;
+                }
+            }
+        }
+
+        return candidatos.get(idCandidato);
+    }
+
+    private int getMaximaPuntuacion(Map<String, Integer> contadorPuntuaciones){
+        int max = 0;
+        for (int i = 0; i < contadorPuntuaciones.size(); i++) {
+            int aux = contadorPuntuaciones.get(i);
+            if (aux > max) max = aux;
+        }
+        return max;
+    }
+
+    private int getMinimaPuntuacion(Map<Codigo, Integer> puntuacion){
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < puntuacion.size(); i++) {
+            int aux = puntuacion.get(i);
+            if(aux < min) min = aux;
+        }
+        return min;
+    }
 }
