@@ -1,6 +1,7 @@
 package Domain;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,6 +14,10 @@ public class Respuesta {
         this.size = size;
     }
     public Boolean equals(Respuesta respuestaComprobada){
-        return Collections.sort(this.respuesta).equals(Collections.sort(respuestaComprobada.respuesta));
+        List<Integer> auxiliar1 = new ArrayList<Integer>(this.respuesta);
+        Collections.sort(auxiliar1);
+        List<Integer> auxiliar2 = new ArrayList<Integer>(respuestaComprobada.respuesta);
+        Collections.sort(auxiliar2);
+        return auxiliar1.equals(auxiliar2);
     }
 }
