@@ -96,7 +96,7 @@ public class Partida {
 
     /**
      * Coloca si el jugador es CodeMaker o Breaker
-     * @param isRolMaker
+     * @param RolMaker
      */
     public void setRolMaker(boolean RolMaker) {
         this.isRolMaker = RolMaker;
@@ -195,6 +195,14 @@ public class Partida {
         for(int i = 0; i < numColumnas; i++)
             codigoSecreto.codigo.add(rn.nextInt(numColores) + 1);
         setCodigoSecreto(codigoSecreto);
+    }
+
+    /**
+     * Genera la puntuación en base al tiempo y la dificultad
+     * @return puntuación de la partida
+     */
+    private int generaPuntuación() {
+        return 0;
     }
 
 
