@@ -26,10 +26,15 @@ public class Cerebro {
     public Cerebro(int colores, int columnas){
         numeroColores = colores;
         numeroColumnas = columnas;
+        intentoActual = new Codigo(numeroColumnas);
+        solucionesPotenciales = new ArrayList<Codigo>();
+        generaIntentoInicial();
         generaPotenciales();
         // Hacemos una copia de lo que hemos generado
         combinacionesTotales = new ArrayList<>(solucionesPotenciales);
-        generaIntentoInicial();
+
+
+
         imprimePotenciales();
     }
 
@@ -37,8 +42,8 @@ public class Cerebro {
      * Genera el primer intento
      */
     private void generaIntentoInicial(){
-        for (int i = 0; i < numeroColores; i++) {
-            if(i < numeroColores / 2) intentoActual.codigo.add(1);
+        for (int i = 0; i < numeroColumnas; i++) {
+            if(i < numeroColumnas / 2) intentoActual.codigo.add(1);
             else intentoActual.codigo.add(2);
         }
 
@@ -49,6 +54,9 @@ public class Cerebro {
      */
     private void generaPotenciales(){
         Codigo actual = new Codigo(numeroColumnas);
+        for(int i = 0; i < numeroColumnas; i++){
+            actual.codigo.add(0);
+        }
         generadorRecursivo(0, actual);
     }
 
@@ -65,11 +73,9 @@ public class Cerebro {
         for(int i = 1; i <= numeroColores; i++){
             actual.codigo.set(posicion, i);
             Codigo copia = new Codigo(actual.size);
-            try {
-                copia = (Codigo) actual.clone();
-            } catch (CloneNotSupportedException e) {
-                e.printStackTrace();
-            }
+
+                copia.codigo = new ArrayList<Integer>(actual.codigo);
+
             generadorRecursivo(posicion + 1, copia);
         }
     }
@@ -79,7 +85,7 @@ public class Cerebro {
      */
     private void imprimePotenciales(){
         for(int i = 0; i < solucionesPotenciales.size(); i++){
-            System.out.println(solucionesPotenciales.get(i));
+            System.out.println(solucionesPotenciales.get(i).codigo);
         }
     }
 
