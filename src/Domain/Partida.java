@@ -37,6 +37,7 @@ public class Partida {
         this.idPartida = fecha;
         this.tiempo = 0;
         this.isRolMaker = isRolMaker;
+        this.dificultad = dificultad;
         switch (dificultad) {
             case "Facil":
                 numColores = 4;

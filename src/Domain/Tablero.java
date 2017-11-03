@@ -29,12 +29,12 @@ public class Tablero {
     private int numeroFilaActual = 0;
 
 
-    private List<Fila> tablero = new ArrayList<Fila>(numeroFilas);
+    private List<Fila> tablero = new ArrayList<>(numeroFilas);
     private Codigo codigoSecreto;
 
     /**
      * Se crea un tablero nuevo con columnas numero de columnas.
-     * @param columnas
+     * @param columnas numero de columnas del tablero
      */
     public Tablero(int columnas){
         numeroColumnas = columnas;
@@ -61,8 +61,7 @@ public class Tablero {
      * @param codigoSecreto copiado en la variable codigoSecreto del tablero.
      */
     public void setCodigoSecreto(Codigo codigoSecreto){
-
-            this.codigoSecreto.codigo = new ArrayList<Integer>(codigoSecreto.codigo);
+            this.codigoSecreto.codigo = new ArrayList<>(codigoSecreto.codigo);
     }
 
     /**
@@ -102,7 +101,7 @@ public class Tablero {
 
     /**
      * Devuelve el numero de fila actual
-     * @return
+     * @return numero de fila actual
      */
     public int getNumeroFilaActual() {
         return numeroFilaActual;
