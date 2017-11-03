@@ -11,16 +11,17 @@ import java.util.List;
 public class Tablero {
 
 
-
-    private static final int VACIO = 0;
-    private static final int ROJO = 1;
-    private static final int VERDE = 2;
-    private static final int AZUL = 3;
-    private static final int AMARILLO = 4;
-    private static final int NARANJA = 5;
-    private static final int MORADO = 6;
-    private static final int BLANCO = 7;
-    private static final int NEGRO = 8;
+/*
+    VACIO = 0;
+    ROJO = 1;
+    VERDE = 2;
+    AZUL = 3;
+    AMARILLO = 4;
+    NARANJA = 5;
+    MORADO = 6;
+    BLANCO = 7;
+    NEGRO = 8;
+    */
 
 
     private final int numeroColumnas;
@@ -36,8 +37,6 @@ public class Tablero {
      * @param columnas
      */
     public Tablero(int columnas){
-        //el tablero deberia ir a la BD y coger la clave de la ultima partida
-        //que se guradó para asi poder sumarle uno y saber el identificador del tablero.
         numeroColumnas = columnas;
         codigoSecreto = new Codigo(numeroColumnas);
         iniciaTablero();
@@ -52,7 +51,6 @@ public class Tablero {
     }
 
     /**
-     *
      * @return Array de codigo secreto.
      */
     public Codigo getCodigoSecreto(){
@@ -60,19 +58,14 @@ public class Tablero {
     }
 
     /**
-     *
      * @param codigoSecreto copiado en la variable codigoSecreto del tablero.
      */
     public void setCodigoSecreto(Codigo codigoSecreto){
-        try {
-            this.codigoSecreto = (Codigo) codigoSecreto.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
+
+            this.codigoSecreto.codigo = new ArrayList<Integer>(codigoSecreto.codigo);
     }
 
     /**
-     *
      * @return La fila que utilizan los jugadores en ese momento.
      */
     public Fila getUltimoIntento(){
@@ -80,7 +73,6 @@ public class Tablero {
     }
 
     /**
-     *
      * @param guess se establece como el intnto de adivinar el jugador.
      */
     public void setUltimoColores(Codigo guess){
@@ -88,7 +80,6 @@ public class Tablero {
     }
 
     /**
-     *
      * @param answer se establece como la correccion que ha hecho el jugador.
      */
     public void setUltimoRespuestas(Respuesta answer){
@@ -103,7 +94,6 @@ public class Tablero {
     }
 
     /**
-     *
      * @return El El rablero sobre el que se juega.
      */
     public List<Fila> getTablero(){
@@ -119,13 +109,15 @@ public class Tablero {
     }
 
     /**
-     *
      * @return La ultima solución del tablero.
      */
     public Codigo getUltimoColores(){
         return getUltimoIntento().getColores();
     }
 
+    /**
+     * En el momento en el que se llama a esta función el sistema corrige el ultimo guess que se le ha hecho al tablero
+     */
     public void generaRespuesta(){
         setUltimoRespuestas(getUltimoColores().getRespuesta(codigoSecreto));
     }
