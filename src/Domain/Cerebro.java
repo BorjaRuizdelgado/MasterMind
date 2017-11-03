@@ -30,12 +30,8 @@ public class Cerebro {
         solucionesPotenciales = new ArrayList<Codigo>();
         generaIntentoInicial();
         generaPotenciales();
-        // Hacemos una copia de lo que hemos generado
+
         combinacionesTotales = new ArrayList<>(solucionesPotenciales);
-
-
-
-        imprimePotenciales();
     }
 
     /**
@@ -89,6 +85,10 @@ public class Cerebro {
         }
     }
 
+    /**
+     * Hace la criba de los potenciales descartados dada una fila
+     * @param ultimoIntento
+     */
     private void actualizaPotenciales(Fila ultimoIntento) {
         Respuesta ultimaRespuesta = ultimoIntento.getRespuestas();
         for (int i = 0; i < solucionesPotenciales.size(); i++) {
