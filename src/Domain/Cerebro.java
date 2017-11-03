@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class Cerebro {
 
-    private Codigo intentoActual;
+
     private List<Codigo> combinacionesTotales;
     private List<Codigo> solucionesPotenciales;
     private int numeroColores;
@@ -28,7 +28,6 @@ public class Cerebro {
     public Cerebro(int colores, int columnas){
         numeroColores = colores;
         numeroColumnas = columnas;
-        intentoActual = new Codigo(numeroColumnas);
         solucionesPotenciales = new ArrayList<Codigo>();
         generaIntentoInicial();
         generaPotenciales();
@@ -39,12 +38,13 @@ public class Cerebro {
     /**
      * Genera el primer intento
      */
-    private void generaIntentoInicial(){
+    private Codigo generaIntentoInicial(){
+        Codigo intentoActual = new Codigo(numeroColumnas);
         for (int i = 0; i < numeroColumnas; i++) {
             if(i < numeroColumnas / 2) intentoActual.codigo.add(1);
             else intentoActual.codigo.add(2);
         }
-
+        return intentoActual;
     }
 
     /**
