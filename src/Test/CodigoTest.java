@@ -35,19 +35,21 @@ public class CodigoTest {
                     "Por favor, introduce el tamaño del código deseado: 4 o 6\n");
             Scanner in = new Scanner(System.in);
             int num = in.nextInt();
-            if (num == 4 || num == 6) {
-                Codigo test = new Codigo(num);
-                iniciaCodigo(test, num);
-                imprimeInfoCodigo(test);
-                System.out.print("Ahora probaremos de comparar dos códigos.\n" +
-                        "Crearemos un nuevo código que funcionará como código secreto\n");
-                Codigo testSecreto = new Codigo(num);
-                iniciaCodigo(testSecreto, num);
-                imprimeInfoCodigo(testSecreto);
-                System.out.print("Obtendríamos esta respuesta: "+test.getRespuesta(testSecreto).respuesta+"\n" +
-                        "Los 8 son fichas negras y los 7 fichas blancas. Los 0 fichas vacías.\n");
-                System.out.print("Prueba acabada\n");
-            } else System.out.print("Tamaño no válido\n");
+            while (num != 4 && num != 6) {
+                System.out.print("Tamaño no válido\n");
+                num = in.nextInt();
+            }
+            Codigo test = new Codigo(num);
+            iniciaCodigo(test, num);
+            imprimeInfoCodigo(test);
+            System.out.print("Ahora probaremos de comparar dos códigos.\n" +
+                    "Crearemos un nuevo código que funcionará como código secreto\n");
+            Codigo testSecreto = new Codigo(num);
+            iniciaCodigo(testSecreto, num);
+            imprimeInfoCodigo(testSecreto);
+            System.out.print("Obtendríamos esta respuesta: "+test.getRespuesta(testSecreto).respuesta+"\n" +
+                    "Los 8 son fichas negras y los 7 fichas blancas. Los 0 fichas vacías.\n");
+            System.out.print("Prueba acabada\n");
         }
     }
 }
