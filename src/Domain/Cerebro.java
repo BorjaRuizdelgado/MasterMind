@@ -16,7 +16,7 @@ public class Cerebro {
     private List<Codigo> solucionesPotenciales;
     private int numeroColores;
     private int numeroColumnas;
-    private boolean firstGuess = true;
+    //private boolean firstGuess = true;
 
 
 
@@ -29,17 +29,15 @@ public class Cerebro {
         numeroColores = colores;
         numeroColumnas = columnas;
         intentoActual = new Codigo(numeroColumnas);
-        solucionesPotenciales = new ArrayList<Codigo>();
-        generaIntentoInicial();
+        solucionesPotenciales = new ArrayList<>();
         generaPotenciales();
-
         combinacionesTotales = new ArrayList<>(solucionesPotenciales);
     }
 
     /**
      * Genera el primer intento
      */
-    private void generaIntentoInicial(){
+    public void generaIntentoInicial(){
         for (int i = 0; i < numeroColumnas; i++) {
             if(i < numeroColumnas / 2) intentoActual.codigo.add(1);
             else intentoActual.codigo.add(2);
@@ -60,8 +58,8 @@ public class Cerebro {
 
     /**
      * Recursivamente genera todos los potenciales necesarios
-     * @param posicion
-     * @param actual
+     * @param posicion posición para
+     * @param actual codigo a duplicar
      */
     private void generadorRecursivo(int posicion, Codigo actual){
         if(posicion == numeroColumnas){
@@ -72,7 +70,7 @@ public class Cerebro {
             actual.codigo.set(posicion, i);
             Codigo copia = new Codigo(actual.size);
 
-                copia.codigo = new ArrayList<Integer>(actual.codigo);
+                copia.codigo = new ArrayList<>(actual.codigo);
 
             generadorRecursivo(posicion + 1, copia);
         }
@@ -82,14 +80,15 @@ public class Cerebro {
      * Imprime por pantalla los potenciales actuales que tiene el objeto
      */
     private void imprimePotenciales(){
-        for(int i = 0; i < solucionesPotenciales.size(); i++){
-            System.out.println(solucionesPotenciales.get(i).codigo);
+        for (Codigo candidata : solucionesPotenciales) {
+            System.out.println(candidata.codigo);
         }
     }
 
     /**
      * Hace la criba de los potenciales descartados dada una fila
-     * @param ultimoIntento
+     * @param ultimoIntento fila que contiene el codigo de colores
+     *                      del ultimo intento y la respuesta
      */
     private void actualizaPotenciales(Fila ultimoIntento) {
         Respuesta ultimaRespuesta = ultimoIntento.getRespuestas();
