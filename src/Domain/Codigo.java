@@ -12,7 +12,7 @@ public class Codigo implements Cloneable{
      * @param size
      */
     public Codigo(int size){
-        codigo = new ArrayList<Integer>(size);
+        codigo = new ArrayList<>(size);
         this.size = size;
     }
 
@@ -30,7 +30,7 @@ public class Codigo implements Cloneable{
             }
         }
 
-        ArrayList<Integer> yaProcesados = new ArrayList<Integer>();
+        ArrayList<Integer> yaProcesados = new ArrayList<>();
         for(int color : this.codigo){
             for(int i = 0; i < size; ++i){
                 if(color == codigoACorregir.codigo.get(i) && !yaProcesados.contains(i)){
