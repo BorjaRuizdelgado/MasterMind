@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class FilaTest {
     public static Fila fila;
+
     public static void main(String[] args) {
         System.out.print("Aquí probamos la Clase Fila\n");
         while (true) {
@@ -31,13 +32,24 @@ public class FilaTest {
         }
     }
 
+    /**
+     * Imprime los colores de una fila determinada
+     */
     private static void imprimeColores(){
         System.out.println(fila.getColores().codigo);
     }
+
+    /**
+     * Imprime las respuestas de una fila determinada
+     */
     private static void imprimeRespuestas(){
         System.out.println(fila.getRespuestas().respuesta);
     }
 
+    /**
+     * Permite insertar los colores en una fila determinada
+     * @param num sirve para agilizar el proceso de insercion ya que se dispone de el en el main
+     */
     private static void insertarColores(int num){
         System.out.println("Intorduce una serie de colores en forma de numeros\n");
         Codigo code = new Codigo(num);
@@ -45,11 +57,14 @@ public class FilaTest {
         for(int i = 0; i < num; i++) {
             int numeroAInsertar = s.nextInt();
             code.codigo.add(numeroAInsertar);
-            System.out.println(i);
         }
         fila.setColores(code);
     }
 
+    /**
+     * Permite insertar las respuestas en una fila determinada
+     * @param num sirve para agilizar el proceso de insercion ya que se dispone del el en el main
+     */
     private static void insertarRespuesta(int num){
         System.out.println("Intorduce una serie de colores en forma de numeros\n");
         Respuesta code = new Respuesta(num);
@@ -57,7 +72,6 @@ public class FilaTest {
         for(int i = 0; i < num; i++) {
             int numeroAInsertar = s.nextInt();
             code.respuesta.add(numeroAInsertar);
-            System.out.println(i);
         }
         fila.setRespuestas(code);
     }
