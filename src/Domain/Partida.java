@@ -33,10 +33,10 @@ public class Partida {
     public Partida(boolean isRolMaker, String dificultad) {
         DateFormat formato = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         Date hoy = Calendar.getInstance().getTime();
-        String fecha = formato.format(hoy);
-        this.idPartida = fecha;
+        this.idPartida = formato.format(hoy);
         this.tiempo = 0;
         this.isRolMaker = isRolMaker;
+        this.dificultad = dificultad;
         switch (dificultad) {
             case "Facil":
                 numColores = 4;
@@ -64,7 +64,7 @@ public class Partida {
 
     /**
      * Coloca el identificador de partida
-     * @param idPartida
+     * @param idPartida nombre a asignar de la partida
      */
     public void setIdPartida(String idPartida) {
         this.idPartida = idPartida;
