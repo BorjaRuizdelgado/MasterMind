@@ -10,7 +10,7 @@ public class TableroTest {
     private static Tablero tablero;
 
     public static void main(String[] args) {
-        System.out.print("Aquí probamos la Clase Fila\n");
+        System.out.print("Aquí probamos la Clase Tablero\n");
         System.out.println("Puedes crear un tablero de 4 o 6 columnas introduce 4 o 6 para continuar.\n");
         Scanner es = new Scanner(System.in);
         int tamTablero = es.nextInt();
@@ -55,8 +55,12 @@ public class TableroTest {
         }
     }
 
-
+    /**
+     * Prueba la iserción de un codigo secreto en el tablero
+     * @param tam Se utiliza para agilizar el proceso de lectura por pantalla
+     */
     private static void insertarCodigoSecreto(int tam){
+        System.out.print("Introduce un codigo secreto para el tablero tablero\n");
         Scanner sca = new Scanner(System.in);
         Codigo secreto = new Codigo(tam);
         for(int i = 0; i< tam; ++i){
@@ -65,15 +69,25 @@ public class TableroTest {
         tablero.setCodigoSecreto(secreto);
     }
 
+    /**
+     * Imprime el codigo secreto
+     */
     private static void imprimeCodigoSecreto(){
         System.out.println(tablero.getCodigoSecreto().codigo);
     }
 
+    /**
+     * Imprime el ultimo intento
+     */
     private static void imprimeUltimoIntento(){
         System.out.println(tablero.getUltimoIntento().getColores().codigo);
         System.out.println(tablero.getUltimoIntento().getRespuestas().respuesta);
     }
 
+    /**
+     * Prueba el poner un Guess en el tablero en la posición adecuada
+     * @param tam Utilizado para agilizar el proceso de lectura de atributos
+     */
     private static void setGuess(int tam){
         Scanner sca = new Scanner(System.in);
         Codigo secreto = new Codigo(tam);
@@ -86,6 +100,10 @@ public class TableroTest {
 
     }
 
+    /**
+     * Prueba poner una respuesta en el tablero
+     * @param tam Utilizado para agilizar el proceso de lectura
+     */
     private static void setRespuesta(int tam){
         Scanner sca = new Scanner(System.in);
         Respuesta secreto = new Respuesta(tam);
@@ -101,14 +119,23 @@ public class TableroTest {
 
     }
 
+    /**
+     * Imprime el ultimo guess introducido en el tablero
+     */
     private static void imprimeUltimoGuess(){
         System.out.println(tablero.getUltimoColores().codigo);
     }
 
+    /**
+     * Imprime el turno actual.
+     */
     private static void imprimeTurno(){
         System.out.println(tablero.getNumeroFilaActual());
     }
 
+    /**
+     * Genera una respuesta y la pone en el tablero a partir del ulrimo guess que hay en el tablero
+     */
     private static void generaRespuesta(){
         tablero.generaRespuesta();
     }
