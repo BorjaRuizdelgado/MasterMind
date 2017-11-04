@@ -152,7 +152,12 @@ public class Partida {
 
 
 
-
+    private String rolToString () {
+        String rol;
+        if (rolMaker) rol = "CodeMaker";
+        else rol = "CodeBreaker";
+        return rol;
+    }
 
     /**
      * Añade el tiempo de un turno al total
@@ -206,11 +211,17 @@ public class Partida {
     }
 
     public void imprimeInfo() {
-        String rol;
-        if (rolMaker) rol = "CodeMaker";
-        else rol = "CodeBreaker";
         System.out.println("ID: "+id+". Dificultad: "+dificultad+
-                ". Rol: "+rol+".");
+                ". Rol: "+rolToString()+".");
+    }
+    public void imprimeAllInfo() {
+        System.out.println("- ID: "+id+"\n" +
+                "- Tiempo: " +tiempo+"\n" +
+                "- Dificultad: " +dificultad+"\n" +
+                "- Rol: " +rolToString()+"\n" +
+                "- Numero Colores: " +numColores+"\n" +
+                "- Numero Columnas: "+ numColumnas);
+
     }
 
 
