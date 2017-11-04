@@ -18,7 +18,7 @@ public class PartidaTest {
         int num = in.nextInt();
         switch (num) {
             case 1:
-                print("ID: "+p.getIdPartida());
+                print("ID: "+p.getId());
                 break;
             case 2:
                 print("Tiempo: "+p.getTiempo());
@@ -51,7 +51,7 @@ public class PartidaTest {
         switch (num) {
             case 1:
                 print("¿Qué id quieres poner?");
-                p.setIdPartida(in.next());
+                p.setId(in.next());
                 break;
             case 2:
                 print("¿Qué tiempo quieres poner?");
@@ -112,6 +112,7 @@ public class PartidaTest {
     private static void probarOperaciones (Partida p) {
         print("Qué quieres hacer?");
         print("1: Sumar tiempo. 2: ");
+        print("Opción no implementada");
     }
 
     public static void main (String[] args) {
