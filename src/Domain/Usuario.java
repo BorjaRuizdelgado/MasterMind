@@ -1,5 +1,6 @@
 package Domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,9 +12,9 @@ public class Usuario {
      * Atributos
      */
     private String nombre;
-    private int partidasTotales;
+    private int numPartidasFinalizadas;
     private List <Partida> partidasGuardadas;
-    private List <Partida> partidaActual;
+    private Partida partidaActual;
 
     /**
      * Creadora que coje un nombre como parámetro
@@ -21,6 +22,8 @@ public class Usuario {
      */
     public Usuario(String nombre) {
         this.nombre = nombre;
+        numPartidasFinalizadas = 0;
+        partidasGuardadas = new ArrayList<>();
     }
 
     /**
@@ -32,17 +35,69 @@ public class Usuario {
     }
 
     /**
-     * Devolvemos el número de partidas totales del jugador
-     * @return partidasTotales
+     * Actualizamos el nombre del usario
+     * @param nuevoNombre Nuevo nombre del usuario.
      */
-    public int getPartidasTotales() {
-        return partidasTotales;
+    public void setNombre(String nuevoNombre) {
+        this.nombre = nuevoNombre;
+    }
+
+    /**
+     * Devolvemos el número de partidas totales del jugador
+     * @return numPartidasFinalizadas
+     */
+    public int getNumPartidasFinalizadas() {
+        return numPartidasFinalizadas;
+    }
+
+    /**
+     * Asignamos la partida pasada por parámetro como partida actual
+     * @param p partida actual
+     */
+    public void setPartidaActual(Partida p) {
+        this.partidaActual = p;
+    }
+
+    /**
+     * Añade la partida actual a la lista de partidas guardadas
+     */
+    public void guardaPartidaActual() throws NullPointerException {
+        partidasGuardadas.add(partidaActual);
+        partidaActual = null;
     }
 
     /**
      * Incrementamos el número de partidas totales
      */
     public void incrementaPartidasTotales(){
-        partidasTotales++;
+        numPartidasFinalizadas++;
     }
+
+    /**
+     * Devuelve el Id de la Partida Actual
+     * @return id partida actual
+     */
+    public String getIdPartidaActual() {
+        return partidaActual.getId();
+    }
+
+    /**
+     * Imprime por pantalla la información de todas las partidas guardadas
+     */
+    public void imprimeInfoPartidasGuardadas() {
+        if (partidasGuardadas.size() == 0)
+            System.out.println("No hay partidas guardadas");
+        for (Partida pG : partidasGuardadas) {
+            pG.imprimeInfo();
+        }
+    }
+
+    /**
+     * Finaliza la partida actual y aumenta el número de partidas finalizadas
+     */
+    public void finalizarPartidaActual() {
+        partidaActual = null;
+        numPartidasFinalizadas++;
+    }
+
 }

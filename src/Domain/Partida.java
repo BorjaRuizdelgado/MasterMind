@@ -12,9 +12,9 @@ import java.util.Random;
  */
 public class Partida {
 
-    private String idPartida;
+    private String id;
     private float tiempo;
-    private boolean isRolMaker;
+    private boolean rolMaker;
     private String dificultad;
     private int numColores;
     private int numColumnas;
@@ -26,16 +26,16 @@ public class Partida {
     /**
      * Crea un nuevo objeto partida.
      * Inicia el tiempo a 0. Y el id es la fecha+hora
-     * @param isRolMaker indica si el jugador juega como
+     * @param rolMaker indica si el jugador juega como
      *                 codemaker(true) o codebreaker(false)
      * @param dificultad nivel de dificultad
      */
-    public Partida(boolean isRolMaker, String dificultad) {
+    public Partida(boolean rolMaker, String dificultad) {
         DateFormat formato = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         Date hoy = Calendar.getInstance().getTime();
-        this.idPartida = formato.format(hoy);
+        this.id = formato.format(hoy);
         this.tiempo = 0;
-        this.isRolMaker = isRolMaker;
+        this.rolMaker = rolMaker;
         this.dificultad = dificultad;
         switch (dificultad) {
             case "Facil":
@@ -56,18 +56,18 @@ public class Partida {
 
     /**
      * Devuelve el identificador de la partida
-     * @return idPartida
+     * @return id
      */
-    public String getIdPartida() {
-        return idPartida;
+    public String getId() {
+        return id;
     }
 
     /**
      * Coloca el identificador de partida
-     * @param idPartida nombre a asignar de la partida
+     * @param id nombre a asignar de la partida
      */
-    public void setIdPartida(String idPartida) {
-        this.idPartida = idPartida;
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**
@@ -88,10 +88,10 @@ public class Partida {
 
     /**
      * Devuelve si el jugador está jugando como CodeMaker o Breaker
-     * @return isRolMaker
+     * @return rolMaker
      */
     public boolean isRolMaker() {
-        return isRolMaker;
+        return rolMaker;
     }
 
     /**
@@ -99,7 +99,7 @@ public class Partida {
      * @param RolMaker asignar el rol a partida
      */
     public void setRolMaker(boolean RolMaker) {
-        this.isRolMaker = RolMaker;
+        this.rolMaker = RolMaker;
     }
 
     /**
@@ -158,7 +158,7 @@ public class Partida {
      * Añade el tiempo de un turno al total
      * @param tiempo es lo que ha tardado en un turno
      */
-    private void sumaTiempo(float tiempo) {
+    public void sumaTiempo(float tiempo) {
         this.tiempo += tiempo;
     }
 
@@ -203,6 +203,14 @@ public class Partida {
      */
     private int generaPuntuación() {
         return 0;
+    }
+
+    public void imprimeInfo() {
+        String rol;
+        if (rolMaker) rol = "CodeMaker";
+        else rol = "CodeBreaker";
+        System.out.println("ID: "+id+". Dificultad: "+dificultad+
+                ". Rol: "+rol+".");
     }
 
 
