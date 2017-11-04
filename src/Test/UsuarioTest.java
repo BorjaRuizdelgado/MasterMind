@@ -30,7 +30,7 @@ public class UsuarioTest {
 
     public static void main (String[] args) {
         print("Aquí probamos la clase Usuario");
-        print("Introduce tu nombre de usuario:");
+        print("Introduce tu nombre de usuario sin espacios:");
         Scanner in = new Scanner(System.in);
         String name = in.next();
         Usuario test = new Usuario(name);
@@ -41,9 +41,9 @@ public class UsuarioTest {
         Boolean p = false;
         while(!fin) {
             print("¿Qué desea hacer?");
-            print("1: Ver atributos. 2: Cambiar nombre. 3: Crear una partida\n" +
-                    "4: Guardar la partida actual. 5: Obtener info de las partidas guardadas.\n" +
-                    "6: Finalizar partida actual. 7: Acabar la prueba.");
+            print("1: Ver mi información.\n2: Cambiar nombre.\n3: Crear una partida\n" +
+                    "4: Guardar la partida actual.\n5: Obtener info de las partidas guardadas.\n" +
+                    "6: Finalizar partida actual. \n7: Acabar la prueba.");
             n = in.nextInt();
             switch (n) {
                 case 1:
@@ -51,7 +51,7 @@ public class UsuarioTest {
                     print("- Partidas Finalizadas: "+test.getNumPartidasFinalizadas());
                     break;
                 case 2:
-                    print("Introduce el nuevo nombre de usuario:");
+                    print("Introduce el nuevo nombre de usuario sin espacios:");
                     name = in.next();
                     test.setNombre(name);
                     break;
