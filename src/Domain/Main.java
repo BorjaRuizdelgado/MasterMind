@@ -68,7 +68,7 @@ public class Main {
                 String dif = in.next();
                 System.out.print("Creamos una nueva partida:\n");
                 Partida p = new Partida(rol,dif);
-                p.generaCodigoAleatorio();
+                p.generaCodigoSecretoAleatorio();
                 System.out.println(p.getCodigoSecreto().codigo);
             }
 

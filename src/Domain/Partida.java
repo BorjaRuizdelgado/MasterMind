@@ -189,7 +189,7 @@ public class Partida {
     /**
      * Genera un codigo aleatorio para el tablero y se lo asigna.
      */
-    public void generaCodigoAleatorio(){
+    public void generaCodigoSecretoAleatorio(){
         Codigo codigoSecreto = new Codigo(numColumnas);
         Random rn = new Random();
         for(int i = 0; i < numColumnas; i++)
