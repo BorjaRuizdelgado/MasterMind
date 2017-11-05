@@ -48,10 +48,10 @@ public class Respuesta {
         String Return = "";
         for (int i = 0; i < respuesta.size(); i++) {
             if (respuesta.get(i) == 7){
-                Return += "B";
+                Return += "W";
             }
             else if(respuesta.get(i) == 8){
-                Return += "W";
+                Return += "B";
             }
         }
         return Return;

@@ -7,12 +7,15 @@ import java.util.Scanner;
 
 /**
  * @author ISA
- */
-/**
  * Implementa un Main para poder probar de manera interactiva la clase.
  */
 public class UsuarioTest {
 
+    /**
+     * Crea una partida actual para el usuario pasado por parámetro y la devuelve
+     * @param test usuario al que se le asigna la nueva partida
+     * @return nueva partida actual creada para el usuario
+     */
     private static Partida creaPartida (Usuario test) {
         Scanner in = new Scanner(System.in);
         print("Introduce el ROL: 1 (CodeMaker) ó 0 (CodeBreaker)");

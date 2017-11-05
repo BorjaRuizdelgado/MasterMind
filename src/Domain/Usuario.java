@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author Omar
- */
-
-/**
  * Implementacón de un Usuario para poder guardar sus partidas.
  */
 public class Usuario {
