@@ -2,11 +2,13 @@ package Test;
 
 
 import Domain.Codigo;
-import Domain.Respuesta;
 
 import java.util.Scanner;
 
-
+/**
+ * @author ISA
+ * Implementa un Main para poder probar de manera interactiva la clase.
+ */
 public class CodigoTest {
 
     private static void iniciaCodigo (Codigo codigo, int num) {
@@ -28,28 +30,42 @@ public class CodigoTest {
                 "Y tiene este tamaño: "+codigo.size+"\n");
     }
 
+    private static void print (String message) {
+        System.out.print(message+"\n");
+    }
+
     public static void main(String[] args) {
-        System.out.print("Aquí probamos la Clase Código\n");
-        while (true) {
-            System.out.print("Probaremos un nuevo código.\n" +
-                    "Por favor, introduce el tamaño del código deseado: 4 o 6\n");
-            Scanner in = new Scanner(System.in);
-            int num = in.nextInt();
-            while (num != 4 && num != 6) {
-                System.out.print("Tamaño no válido\n");
-                num = in.nextInt();
+        print("Aquí probamos la Clase Código");
+        print("Probaremos un nuevo código.");
+        print("Por favor, introduce el tamaño del código deseado: 4 o 6");
+        Scanner in = new Scanner(System.in);
+        int num = in.nextInt();
+        while (num != 4 && num != 6) {
+            print("Tamaño no válido");
+            num = in.nextInt();
+        }
+        Boolean fin = false;
+        Codigo test = new Codigo(num);
+        iniciaCodigo(test, num);
+        imprimeInfoCodigo(test);
+        int n;
+        while (!fin) {
+            print("¿Qué desea hacer?");
+            print("1: Comparar dos códigos y obtener la respuesta." +
+                    "2: Finalizar la prueba.");
+            n = in.nextInt();
+            switch (n) {
+                case 1:
+                    Codigo testSecreto = new Codigo(num);
+                    iniciaCodigo(testSecreto, num);
+                    imprimeInfoCodigo(testSecreto);
+                    print("Obtendríamos esta respuesta: " + test.getRespuesta(testSecreto).toString());
+                    break;
+                case 2:
+                    fin = true;
+                    print("Prueba acabada");
+                    break;
             }
-            Codigo test = new Codigo(num);
-            iniciaCodigo(test, num);
-            imprimeInfoCodigo(test);
-            System.out.print("Ahora probaremos de comparar dos códigos.\n" +
-                    "Crearemos un nuevo código que funcionará como código secreto\n");
-            Codigo testSecreto = new Codigo(num);
-            iniciaCodigo(testSecreto, num);
-            imprimeInfoCodigo(testSecreto);
-            System.out.print("Obtendríamos esta respuesta: "+test.getRespuesta(testSecreto).respuesta+"\n" +
-                    "Los 8 son fichas negras y los 7 fichas blancas. Los 0 fichas vacías.\n");
-            System.out.print("Prueba acabada\n");
         }
     }
 }

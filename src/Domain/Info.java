@@ -6,7 +6,7 @@ package Domain;
  */
 
 /**
- * Usamos esta clase como estructura para acceder a los datos de las listas
+ * Estructura de datos para los Rankings
  */
 public class Info {
     private String usuario;

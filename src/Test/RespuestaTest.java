@@ -4,6 +4,12 @@ import Domain.Respuesta;
 
 import java.util.Scanner;
 
+/**
+ * @author ISA
+ */
+/**
+ * Implementa un Main para poder probar de manera interactiva la clase.
+ */
 public class RespuestaTest {
 
     public static void main(String[] args) {

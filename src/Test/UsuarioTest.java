@@ -5,9 +5,18 @@ import Domain.Usuario;
 
 import java.util.Scanner;
 
+/**
+ * @author ISA
+ * Implementa un Main para poder probar de manera interactiva la clase.
+ */
 public class UsuarioTest {
 
-    private static Partida creaPartida () {
+    /**
+     * Crea una partida actual para el usuario pasado por parámetro y la devuelve
+     * @param test usuario al que se le asigna la nueva partida
+     * @return nueva partida actual creada para el usuario
+     */
+    private static Partida creaPartida (Usuario test) {
         Scanner in = new Scanner(System.in);
         print("Introduce el ROL: 1 (CodeMaker) ó 0 (CodeBreaker)");
         int rol = in.nextInt();
@@ -21,7 +30,8 @@ public class UsuarioTest {
             print("Dificultad no válida");
             dif = in.next();
         }
-        return new Partida(rol == 1, dif);
+        test.creaPartidaActual(rol==1, dif);
+        return test.getPartidaActual();
     }
 
     private static void print (String message) {
@@ -57,7 +67,7 @@ public class UsuarioTest {
                     break;
                 case 3:
                     if(!p) {
-                        test.setPartidaActual(creaPartida());
+                        creaPartida(test);
                         print("Partida creada con ID: " + test.getIdPartidaActual());
                         p = true;
                     }

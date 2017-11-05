@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/Domain/Cerebro.java" line="182" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5f44715-e429-43a1-8219-aa7d559f01a9" name="Default" comment="" />
+    <list default="true" id="c5f44715-e429-43a1-8219-aa7d559f01a9" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Controllers/TrHumanoCodeBreaker.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Controllers/TrHumanoCodeMaker.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Controllers/Transaccion.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitIgnore" afterPath="$PROJECT_DIR$/.gitIgnore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Domain/Cerebro.java" afterPath="$PROJECT_DIR$/src/Domain/Cerebro.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Domain/Codigo.java" afterPath="$PROJECT_DIR$/src/Domain/Codigo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Domain/Fila.java" afterPath="$PROJECT_DIR$/src/Domain/Fila.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Domain/Info.java" afterPath="$PROJECT_DIR$/src/Domain/Info.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Domain/Partida.java" afterPath="$PROJECT_DIR$/src/Domain/Partida.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Domain/Respuesta.java" afterPath="$PROJECT_DIR$/src/Domain/Respuesta.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Domain/Tablero.java" afterPath="$PROJECT_DIR$/src/Domain/Tablero.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Domain/Usuario.java" afterPath="$PROJECT_DIR$/src/Domain/Usuario.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/CerebroTest.java" afterPath="$PROJECT_DIR$/src/Test/CerebroTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/CodigoTest.java" afterPath="$PROJECT_DIR$/src/Test/CodigoTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/FilaTest.java" afterPath="$PROJECT_DIR$/src/Test/FilaTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/InfoTest.java" afterPath="$PROJECT_DIR$/src/Test/InfoTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/PartidaTest.java" afterPath="$PROJECT_DIR$/src/Test/PartidaTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/RespuestaTest.java" afterPath="$PROJECT_DIR$/src/Test/RespuestaTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/SistemaRankingTest.java" afterPath="$PROJECT_DIR$/src/Test/SistemaRankingTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/TableroTest.java" afterPath="$PROJECT_DIR$/src/Test/TableroTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/UsuarioTest.java" afterPath="$PROJECT_DIR$/src/Test/UsuarioTest.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -11,80 +37,156 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Cerebro.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/Domain/Cerebro.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="234">
-                  <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PartidaTest.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Test/PartidaTest.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="125">
-                  <caret line="111" column="51" lean-forward="false" selection-start-line="111" selection-start-column="51" selection-end-line="111" selection-end-column="51" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="method#verAtributos#0;class#PartidaTest#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Partida.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/Domain/Partida.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="179">
-                  <caret line="195" column="55" lean-forward="true" selection-start-line="195" selection-start-column="55" selection-end-line="195" selection-end-column="55" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="docComment;method#Partida#0;class#Partida#0" expanded="false" />
-                    <element signature="docComment;method#getIdPartida#0;class#Partida#0" expanded="false" />
-                    <element signature="docComment;method#getTiempo#0;class#Partida#0" expanded="false" />
-                    <element signature="docComment;method#isRolMaker#0;class#Partida#0" expanded="false" />
-                    <element signature="docComment;method#getDificultad#0;class#Partida#0" expanded="false" />
-                    <element signature="docComment;method#getNumColores#0;class#Partida#0" expanded="false" />
-                    <element signature="docComment;method#getNumColumnas#0;class#Partida#0" expanded="false" />
-                    <element signature="docComment;method#sumaTiempo#0;class#Partida#0" expanded="false" />
-                    <element signature="e#3737#3738#0" expanded="true" />
-                    <element signature="e#3774#3775#0" expanded="true" />
-                    <element signature="docComment;method#setCodigoSecreto#0;class#Partida#0" expanded="false" />
-                    <element signature="e#3940#3941#0" expanded="true" />
-                    <element signature="e#3995#3996#0" expanded="true" />
-                    <element signature="docComment;method#getCodigoSecreto#0;class#Partida#0" expanded="false" />
-                    <element signature="docComment;method#getNumeroFilaActual#0;class#Partida#0" expanded="false" />
-                    <element signature="docComment;method#generaCodigoAleatorio#0;class#Partida#0" expanded="false" />
-                    <element signature="docComment;method#generaPuntuación#0;class#Partida#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CodigoTest.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Test/CodigoTest.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="835">
-                  <caret line="48" column="20" lean-forward="false" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Cerebro.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Domain/Cerebro.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1931">
+              <caret line="117" column="24" lean-forward="false" selection-start-line="117" selection-start-column="24" selection-end-line="117" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tablero.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Domain/Tablero.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1528">
+              <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+              <folding>
+                <marker date="1509915675194" expanded="false" signature="1097:1107" ph=" { " />
+                <marker date="1509915675194" expanded="false" signature="1128:1134" ph=" }" />
+                <marker date="1509915675194" expanded="false" signature="1488:1498" ph=" { " />
+                <marker date="1509915675194" expanded="false" signature="1535:1541" ph=" }" />
+                <marker date="1509915675194" expanded="false" signature="1677:1687" ph=" { " />
+                <marker date="1509915675194" expanded="false" signature="1735:1741" ph=" }" />
+                <marker date="1509915675194" expanded="false" signature="1890:1900" ph=" { " />
+                <marker date="1509915675194" expanded="false" signature="1952:1958" ph=" }" />
+                <marker date="1509915675194" expanded="false" signature="2061:2071" ph=" { " />
+                <marker date="1509915675194" expanded="false" signature="2090:2096" ph=" }" />
+                <marker date="1509915675194" expanded="false" signature="2200:2210" ph=" { " />
+                <marker date="1509915675194" expanded="false" signature="2225:2231" ph=" }" />
+                <marker date="1509915675194" expanded="false" signature="2363:2374" ph=" { " />
+                <marker date="1509915675194" expanded="false" signature="2398:2404" ph=" }" />
+                <marker date="1509915675194" expanded="false" signature="2505:2515" ph=" { " />
+                <marker date="1509915675194" expanded="false" signature="2554:2560" ph=" }" />
+                <marker date="1509915675194" expanded="false" signature="2809:2815" ph=" }" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Codigo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Domain/Codigo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="66" column="64" lean-forward="false" selection-start-line="66" selection-start-column="64" selection-end-line="66" selection-end-column="64" />
+              <folding>
+                <element signature="e#1702#1703#0" expanded="true" />
+                <element signature="e#1750#1751#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CerebroTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Test/CerebroTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="34" column="51" lean-forward="false" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Respuesta.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Domain/Respuesta.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="421">
+              <caret line="53" column="28" lean-forward="false" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
+              <folding>
+                <element signature="e#772#781#0" expanded="true" />
+                <element signature="e#883#892#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsuarioTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Test/UsuarioTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+              <folding>
+                <marker date="1509915675194" expanded="true" signature="2520:3714" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FilaTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Test/FilaTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="532">
+              <caret line="39" column="5" lean-forward="false" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+              <folding>
+                <marker date="1509915675194" expanded="true" signature="314:1284" ph="{...}" />
+                <marker date="1509915675194" expanded="true" signature="1290:1352" ph="/**...*/" />
+                <marker date="1509915675194" expanded="false" signature="1393:1403" ph=" { " />
+                <marker date="1509915675194" expanded="false" signature="1448:1454" ph=" }" />
+                <marker date="1509915675194" expanded="true" signature="1460:1525" ph="/**...*/" />
+                <marker date="1509915675194" expanded="false" signature="1569:1579" ph=" { " />
+                <marker date="1509915675194" expanded="false" signature="1630:1636" ph=" }" />
+                <marker date="1509915675194" expanded="true" signature="1642:1810" ph="/**...*/" />
+                <marker date="1509915675194" expanded="true" signature="1859:2206" ph="{...}" />
+                <marker date="1509915675194" expanded="true" signature="2212:2384" ph="/**...*/" />
+                <marker date="1509915675194" expanded="true" signature="2435:2794" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RespuestaTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Test/RespuestaTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="24" column="44" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
+              <folding>
+                <marker date="1509915675194" expanded="true" signature="244:1776" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InfoTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Test/InfoTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="38">
+              <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PartidaTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Test/PartidaTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1197">
+              <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <marker date="1509915675194" expanded="true" signature="241:908" ph="{...}" />
+                <marker date="1509915675194" expanded="false" signature="956:967" ph=" { " />
+                <marker date="1509915675194" expanded="false" signature="998:1004" ph=" }" />
+                <marker date="1509915675194" expanded="true" signature="1050:2132" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -97,9 +199,15 @@
     <findStrings>
       <find>int[]</find>
       <find>p</find>
+      <find>itr2</find>
+      <find>codigo</find>
+      <find>generaIntentoInicial</find>
     </findStrings>
     <replaceStrings>
       <replace>List&lt;Integer&gt;</replace>
+      <replace>iterator</replace>
+      <replace>intento</replace>
+      <replace>getIntentoInicial</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -118,12 +226,12 @@
         <option value="$PROJECT_DIR$/src/Util/Console.java" />
         <option value="$PROJECT_DIR$/src/Domain/Info.java" />
         <option value="$PROJECT_DIR$/src/Domain/Tablero.java" />
-        <option value="$PROJECT_DIR$/src/Domain/Codigo.java" />
         <option value="$PROJECT_DIR$/src/Test/SistemaRankingTest.java" />
         <option value="$PROJECT_DIR$/src/Domain/Main.java" />
+        <option value="$PROJECT_DIR$/src/Domain/Codigo.java" />
+        <option value="$PROJECT_DIR$/src/Domain/Cerebro.java" />
         <option value="$PROJECT_DIR$/src/Domain/Respuesta.java" />
         <option value="$PROJECT_DIR$/src/Test/CerebroTest.java" />
-        <option value="$PROJECT_DIR$/src/Domain/Cerebro.java" />
       </list>
     </option>
   </component>
@@ -157,6 +265,9 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -172,18 +283,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="MasterMindV" type="b2602c69:ProjectViewProjectNode" />
               <item name="MasterMindV" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MasterMindV" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MasterMindV" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MasterMindV" type="b2602c69:ProjectViewProjectNode" />
@@ -212,9 +318,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -225,6 +331,7 @@
     <property name="settings.editor.splitter.proportion" value="0.25868726" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -238,7 +345,21 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TableroTest">
+  <component name="RunManager" selected="Application.CerebroTest">
+    <configuration name="CerebroTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="Test.CerebroTest" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="MasterMindV" />
+      <envs />
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -358,14 +479,16 @@
       <properties />
       <listeners />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Application.Main" />
       <item index="1" class="java.lang.String" itemvalue="Application.TableroTest" />
+      <item index="2" class="java.lang.String" itemvalue="Application.CerebroTest" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.TableroTest" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Main" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Application.CerebroTest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.TableroTest" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -373,6 +496,9 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="7" BundledDictionary0="android.dic" BundledDictionary1="css.dic" BundledDictionary2="struts2.dic" BundledDictionary3="less.dic" BundledDictionary4="/resources/dictionaries/spring.dic" BundledDictionary5="jetbrains.dic" BundledDictionary6="english.dic" Folders="0" Dictionaries="0" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="c5f44715-e429-43a1-8219-aa7d559f01a9" name="Default" comment="" />
@@ -382,6 +508,8 @@
       <updated>1509618813768</updated>
       <workItem from="1509714519804" duration="2930000" />
       <workItem from="1509723631131" duration="6565000" />
+      <workItem from="1509827884206" duration="6370000" />
+      <workItem from="1509912923831" duration="2885000" />
     </task>
     <task id="LOCAL-00001" summary="Asd">
       <created>1509619663343</created>
@@ -446,63 +574,57 @@
       <option name="project" value="LOCAL" />
       <updated>1509728438447</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="CerebroTest 'funciona'">
+      <created>1509835128003</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1509835128003</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Actualizaciones varias.">
+      <created>1509915668326</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1509915668326</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15883000" />
+    <option name="totallyTimeSpent" value="25138000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="964" y="0" width="1863" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08565154" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.49791667" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.50416666" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41271552" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23814656" sideWeight="0.49791667" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16317767" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.49791667" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978448" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23783784" sideWeight="0.49791667" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16354166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -544,51 +666,17 @@
     <MESSAGE value="Asd" />
     <MESSAGE value="Asd2" />
     <MESSAGE value="Message" />
-    <option name="LAST_COMMIT_MESSAGE" value="Message" />
+    <MESSAGE value="CerebroTest 'funciona'" />
+    <MESSAGE value="Actualizaciones varias." />
+    <option name="LAST_COMMIT_MESSAGE" value="Actualizaciones varias." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Domain/SistemaRanking.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-          <folding>
-            <element signature="e#1495#1496#0" expanded="false" />
-            <element signature="e#1530#1531#0" expanded="false" />
-            <element signature="e#1655#1656#0" expanded="false" />
-            <element signature="e#1691#1692#0" expanded="false" />
-            <element signature="e#1819#1820#0" expanded="false" />
-            <element signature="e#1856#1857#0" expanded="false" />
-            <element signature="e#2107#2108#0" expanded="false" />
-            <element signature="e#2173#2174#0" expanded="false" />
-            <element signature="e#2426#2427#0" expanded="false" />
-            <element signature="e#2493#2494#0" expanded="false" />
-            <element signature="e#2748#2749#0" expanded="false" />
-            <element signature="e#2816#2817#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/Info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="9" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-          <folding>
-            <element signature="e#692#693#0" expanded="false" />
-            <element signature="e#722#723#0" expanded="false" />
-            <element signature="e#844#845#0" expanded="false" />
-            <element signature="e#877#878#0" expanded="false" />
-            <element signature="e#973#974#0" expanded="false" />
-            <element signature="e#1001#1002#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Util/Console.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1653">
@@ -623,8 +711,8 @@
         <state relative-caret-position="933">
           <caret line="59" column="60" lean-forward="true" selection-start-line="59" selection-start-column="60" selection-end-line="59" selection-end-column="60" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#getRespuesta#0;class#Codigo#0" expanded="false" />
+            <element signature="e#1702#1703#0" expanded="true" />
+            <element signature="e#1750#1751#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -634,17 +722,8 @@
         <state relative-caret-position="360">
           <caret line="23" column="12" lean-forward="false" selection-start-line="23" selection-start-column="12" selection-end-line="24" selection-end-column="35" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/FilaTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="32" column="5" lean-forward="false" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-          <folding>
-            <marker date="1509717500485" expanded="true" signature="2636:2688" ph="{...}" />
+            <element signature="docComment;class#Main#0" expanded="false" />
+            <element signature="docComment;method#main#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -663,17 +742,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="341">
           <caret line="103" column="36" lean-forward="true" selection-start-line="103" selection-start-column="36" selection-end-line="103" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/PartidaTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="111" column="51" lean-forward="false" selection-start-line="111" selection-start-column="51" selection-end-line="111" selection-end-column="51" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#verAtributos#0;class#PartidaTest#0" expanded="false" />
+            <marker date="1509915675194" expanded="false" signature="1097:1107" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1128:1134" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="1488:1498" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1535:1541" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="1677:1687" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1735:1741" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="1890:1900" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1952:1958" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2061:2071" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="2090:2096" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2200:2210" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="2225:2231" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2363:2374" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="2398:2404" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2505:2515" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="2554:2560" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2809:2815" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -692,23 +778,6 @@
           <caret line="193" column="3" lean-forward="true" selection-start-line="193" selection-start-column="3" selection-end-line="193" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="docComment;method#Partida#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getIdPartida#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getTiempo#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#isRolMaker#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getDificultad#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getNumColores#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getNumColumnas#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#sumaTiempo#0;class#Partida#0" expanded="false" />
-            <element signature="e#3737#3738#0" expanded="true" />
-            <element signature="e#3774#3775#0" expanded="true" />
-            <element signature="docComment;method#setCodigoSecreto#0;class#Partida#0" expanded="false" />
-            <element signature="e#3940#3941#0" expanded="true" />
-            <element signature="e#3995#3996#0" expanded="true" />
-            <element signature="docComment;method#getCodigoSecreto#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getNumeroFilaActual#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#generaCodigoAleatorio#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#generaPuntuación#0;class#Partida#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -745,23 +814,6 @@
           <caret line="153" column="0" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="docComment;method#Partida#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getIdPartida#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getTiempo#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#isRolMaker#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getDificultad#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getNumColores#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getNumColumnas#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#sumaTiempo#0;class#Partida#0" expanded="false" />
-            <element signature="e#3737#3738#0" expanded="true" />
-            <element signature="e#3774#3775#0" expanded="true" />
-            <element signature="docComment;method#setCodigoSecreto#0;class#Partida#0" expanded="false" />
-            <element signature="e#3940#3941#0" expanded="true" />
-            <element signature="e#3995#3996#0" expanded="true" />
-            <element signature="docComment;method#getCodigoSecreto#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getNumeroFilaActual#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#generaCodigoAleatorio#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#generaPuntuación#0;class#Partida#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -780,7 +832,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1862">
           <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1509915675194" expanded="false" signature="1097:1107" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1128:1134" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="1488:1498" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1535:1541" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="1677:1687" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1735:1741" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="1890:1900" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1952:1958" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2061:2071" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="2090:2096" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2200:2210" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="2225:2231" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2363:2374" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="2398:2404" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2505:2515" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="2554:2560" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2809:2815" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -828,7 +898,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1862">
           <caret line="111" column="0" lean-forward="true" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1509915675194" expanded="false" signature="1097:1107" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1128:1134" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="1488:1498" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1535:1541" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="1677:1687" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1735:1741" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="1890:1900" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1952:1958" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2061:2071" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="2090:2096" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2200:2210" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="2225:2231" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2363:2374" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="2398:2404" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2505:2515" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="2554:2560" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2809:2815" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -838,23 +926,6 @@
           <caret line="153" column="0" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="docComment;method#Partida#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getIdPartida#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getTiempo#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#isRolMaker#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getDificultad#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getNumColores#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getNumColumnas#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#sumaTiempo#0;class#Partida#0" expanded="false" />
-            <element signature="e#3737#3738#0" expanded="true" />
-            <element signature="e#3774#3775#0" expanded="true" />
-            <element signature="docComment;method#setCodigoSecreto#0;class#Partida#0" expanded="false" />
-            <element signature="e#3940#3941#0" expanded="true" />
-            <element signature="e#3995#3996#0" expanded="true" />
-            <element signature="docComment;method#getCodigoSecreto#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getNumeroFilaActual#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#generaCodigoAleatorio#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#generaPuntuación#0;class#Partida#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -892,16 +963,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-          <folding>
-            <element signature="e#417#418#0" expanded="false" />
-            <element signature="e#453#454#0" expanded="false" />
-            <element signature="e#565#566#0" expanded="false" />
-            <element signature="e#594#595#0" expanded="false" />
-            <element signature="e#740#741#0" expanded="false" />
-            <element signature="e#778#779#0" expanded="false" />
-            <element signature="e#891#892#0" expanded="false" />
-            <element signature="e#924#925#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -932,16 +994,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-          <folding>
-            <element signature="e#417#418#0" expanded="false" />
-            <element signature="e#453#454#0" expanded="false" />
-            <element signature="e#565#566#0" expanded="false" />
-            <element signature="e#594#595#0" expanded="false" />
-            <element signature="e#740#741#0" expanded="false" />
-            <element signature="e#778#779#0" expanded="false" />
-            <element signature="e#891#892#0" expanded="false" />
-            <element signature="e#924#925#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -959,20 +1012,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/Codigo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-33">
-          <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/RespuestaTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Util/Console.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
@@ -980,44 +1019,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/Tablero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/function/BiConsumer.class" />
-    <entry file="file://$PROJECT_DIR$/src/Domain/Respuesta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="13" column="25" lean-forward="false" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="113" column="45" lean-forward="false" selection-start-line="113" selection-start-column="45" selection-end-line="113" selection-end-column="45" />
-          <folding>
-            <element signature="docComment;class#Main#0" expanded="false" />
-            <element signature="docComment;method#main#0;class#Main#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/CodigoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="835">
-          <caret line="48" column="20" lean-forward="false" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Domain/Fila.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-36">
@@ -1025,39 +1027,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/CerebroTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Domain/Partida.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
-          <caret line="195" column="55" lean-forward="true" selection-start-line="195" selection-start-column="55" selection-end-line="195" selection-end-column="55" />
+          <caret line="195" column="7" lean-forward="true" selection-start-line="195" selection-start-column="7" selection-end-line="195" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="docComment;method#Partida#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getIdPartida#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getTiempo#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#isRolMaker#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getDificultad#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getNumColores#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getNumColumnas#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#sumaTiempo#0;class#Partida#0" expanded="false" />
-            <element signature="e#3737#3738#0" expanded="true" />
-            <element signature="e#3774#3775#0" expanded="true" />
-            <element signature="docComment;method#setCodigoSecreto#0;class#Partida#0" expanded="false" />
-            <element signature="e#3940#3941#0" expanded="true" />
-            <element signature="e#3995#3996#0" expanded="true" />
-            <element signature="docComment;method#getCodigoSecreto#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#getNumeroFilaActual#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#generaCodigoAleatorio#0;class#Partida#0" expanded="false" />
-            <element signature="docComment;method#generaPuntuación#0;class#Partida#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1070,11 +1045,152 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domain/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1995">
+          <caret line="113" column="45" lean-forward="false" selection-start-line="113" selection-start-column="45" selection-end-line="113" selection-end-column="45" />
+          <folding>
+            <element signature="docComment;class#Main#0" expanded="false" />
+            <element signature="docComment;method#main#0;class#Main#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/FilaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="39" column="5" lean-forward="false" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+          <folding>
+            <marker date="1509915675194" expanded="true" signature="314:1284" ph="{...}" />
+            <marker date="1509915675194" expanded="true" signature="1290:1352" ph="/**...*/" />
+            <marker date="1509915675194" expanded="false" signature="1393:1403" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1448:1454" ph=" }" />
+            <marker date="1509915675194" expanded="true" signature="1460:1525" ph="/**...*/" />
+            <marker date="1509915675194" expanded="false" signature="1569:1579" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1630:1636" ph=" }" />
+            <marker date="1509915675194" expanded="true" signature="1642:1810" ph="/**...*/" />
+            <marker date="1509915675194" expanded="true" signature="1859:2206" ph="{...}" />
+            <marker date="1509915675194" expanded="true" signature="2212:2384" ph="/**...*/" />
+            <marker date="1509915675194" expanded="true" signature="2435:2794" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/RespuestaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="24" column="44" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
+          <folding>
+            <marker date="1509915675194" expanded="true" signature="244:1776" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/InfoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/PartidaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1197">
+          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1509915675194" expanded="true" signature="241:908" ph="{...}" />
+            <marker date="1509915675194" expanded="false" signature="956:967" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="998:1004" ph=" }" />
+            <marker date="1509915675194" expanded="true" signature="1050:2132" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/UsuarioTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <marker date="1509915675194" expanded="true" signature="2520:3714" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/CodigoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domain/Respuesta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="53" column="28" lean-forward="false" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
+          <folding>
+            <element signature="e#772#781#0" expanded="true" />
+            <element signature="e#883#892#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Domain/Cerebro.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+        <state relative-caret-position="1931">
+          <caret line="117" column="24" lean-forward="false" selection-start-line="117" selection-start-column="24" selection-end-line="117" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domain/Codigo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="66" column="64" lean-forward="false" selection-start-line="66" selection-start-column="64" selection-end-line="66" selection-end-column="64" />
+          <folding>
+            <element signature="e#1702#1703#0" expanded="true" />
+            <element signature="e#1750#1751#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domain/Tablero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1528">
+          <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+          <folding>
+            <marker date="1509915675194" expanded="false" signature="1097:1107" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1128:1134" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="1488:1498" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1535:1541" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="1677:1687" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1735:1741" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="1890:1900" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="1952:1958" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2061:2071" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="2090:2096" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2200:2210" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="2225:2231" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2363:2374" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="2398:2404" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2505:2515" ph=" { " />
+            <marker date="1509915675194" expanded="false" signature="2554:2560" ph=" }" />
+            <marker date="1509915675194" expanded="false" signature="2809:2815" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/CerebroTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="34" column="51" lean-forward="false" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

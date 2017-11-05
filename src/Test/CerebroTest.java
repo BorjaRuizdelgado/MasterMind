@@ -6,8 +6,16 @@ import Domain.Fila;
 import Domain.Respuesta;
 import Util.Console;
 
+
 import java.util.Scanner;
 
+/**
+ * @author Omar
+ */
+
+/**
+ * Implementa un Main para poder probar de manera interactiva la clase.
+ */
 public class CerebroTest {
 
     public static void main(String[] args){
@@ -24,19 +32,18 @@ public class CerebroTest {
         }
 
         Cerebro cerebro = new Cerebro(colours, columns);
-        Codigo intento = cerebro.getIntentoInicial();
-        System.out.print(intento.codigo);
+        Codigo codigo = cerebro.generaIntentoInicial();
+        System.out.println(codigo.codigo);
 
-        while(!code.equals(intento)){
-            Respuesta respuesta = intento.getRespuesta(code);
-            System.out.println(respuesta);
+        while(!code.codigo.equals(codigo.codigo)){
+            Respuesta respuesta = codigo.getRespuesta(code);
 
             Fila fila = new Fila(columns);
-            fila.setColores(intento);
+            fila.setColores(codigo);
             fila.setRespuestas(respuesta);
 
-            intento = cerebro.getSiguienteIntento(fila);
-            System.out.println(intento.codigo);
+            codigo = cerebro.getSiguienteIntento(fila);
+            System.out.println(codigo.codigo);
         }
 
     }

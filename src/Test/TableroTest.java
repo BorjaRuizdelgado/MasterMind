@@ -6,6 +6,12 @@ import Domain.Tablero;
 
 import java.util.Scanner;
 
+/**
+ * @author borja
+ */
+/**
+ * Implementa un Main para poder probar de manera interactiva la clase.
+ */
 public class TableroTest {
     private static Tablero tablero;
 

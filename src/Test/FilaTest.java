@@ -1,12 +1,19 @@
 package Test;
 
 
+
 import Domain.Codigo;
 import Domain.Fila;
 import Domain.Respuesta;
 
 import java.util.Scanner;
 
+/**
+ * @author borja
+ */
+/**
+ * Implementa un Main para poder probar de manera interactiva la clase.
+ */
 public class FilaTest {
     public static Fila fila;
 

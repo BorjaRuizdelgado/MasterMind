@@ -4,6 +4,13 @@ import Domain.Partida;
 
 import java.util.Scanner;
 
+/**
+ * @author ISA
+ *
+ */
+/**
+ * Implementa un Main para poder probar de manera interactiva la clase.
+ */
 public class PartidaTest {
 
     private static Partida creaPartida() {

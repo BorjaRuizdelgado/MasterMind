@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author Omar
+ * Implementacón de un Usuario para poder guardar sus partidas.
  */
 public class Usuario {
     /**
@@ -51,11 +51,20 @@ public class Usuario {
     }
 
     /**
-     * Asignamos la partida pasada por parámetro como partida actual
-     * @param p partida actual
+     * Creamos una nueva partida y la asignamos como partida actual
+     * @param rolMaker rol de la partida
+     * @param dif dificultad de la partida
      */
-    public void setPartidaActual(Partida p) {
-        this.partidaActual = p;
+    public void creaPartidaActual(Boolean rolMaker, String dif) {
+        this.partidaActual = new Partida(rolMaker, dif);
+    }
+
+    /**
+     * Devuelve la partida actual
+     * @return partidaActual
+     */
+    public Partida getPartidaActual() {
+        return this.partidaActual;
     }
 
     /**
