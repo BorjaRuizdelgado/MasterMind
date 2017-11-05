@@ -1,9 +1,6 @@
 package Domain;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.*;
 
 /**
  *
@@ -127,10 +124,12 @@ public class Cerebro {
             contadorPuntuaciones.clear();
         }
         min = getMinimaPuntuacion(puntuacion);
-        for (int i = 0; i < puntuacion.size(); i++) {
-            if(puntuacion.get(i) == min){
-                posiblesCandidatos.add((Codigo) puntuacion.keySet().toArray()[i]);
-            }
+
+        Iterator<Codigo> iterator = puntuacion.keySet().iterator();
+        while (iterator.hasNext()) {
+            Codigo key = iterator.next();
+            int aux = puntuacion.get(key);
+            if (aux == min) posiblesCandidatos.add(key);
         }
         return posiblesCandidatos;
     }
@@ -159,18 +158,25 @@ public class Cerebro {
 
     private int getMaximaPuntuacion(Map<String, Integer> contadorPuntuaciones){
         int max = 0;
-        for (int i = 0; i < contadorPuntuaciones.size(); i++) {
-            int aux = contadorPuntuaciones.get(i);
+
+        Iterator<String> iterator = contadorPuntuaciones.keySet().iterator();
+        while (iterator.hasNext()) {
+            String key = iterator.next();
+            int aux = contadorPuntuaciones.get(key);
             if (aux > max) max = aux;
         }
+
         return max;
     }
 
     private int getMinimaPuntuacion(Map<Codigo, Integer> puntuacion){
         int min = Integer.MAX_VALUE;
-        for (int i = 0; i < puntuacion.size(); i++) {
-            int aux = puntuacion.get(i);
-            if(aux < min) min = aux;
+
+        Iterator<Codigo> iterator = puntuacion.keySet().iterator();
+        while (iterator.hasNext()) {
+            Codigo key = iterator.next();
+            int aux = puntuacion.get(key);
+            if (aux < min) min = aux;
         }
         return min;
     }
