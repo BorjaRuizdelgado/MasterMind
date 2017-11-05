@@ -32,19 +32,23 @@ public class CerebroTest {
         }
 
         Cerebro cerebro = new Cerebro(colours, columns);
-        Codigo codigo = cerebro.generaIntentoInicial();
-        System.out.println(codigo.codigo);
+        Codigo intento = cerebro.getIntentoInicial();
+        System.out.print(intento.codigo);
 
-        while(!code.codigo.equals(codigo.codigo)){
-            Respuesta respuesta = codigo.getRespuesta(code);
+        while(true){
+            Respuesta respuesta = intento.getRespuesta(code);
+            System.out.println(" -> " +  "{" + respuesta + "}");
+            /*Console.println("********", "red");
+            cerebro.imprimePotenciales();
+            Console.println("********", "red");*/
+            if(code.equals(intento)) break; // Finalizamos si ya hemos encontrado el código
 
             Fila fila = new Fila(columns);
-            fila.setColores(codigo);
+            fila.setColores(intento);
             fila.setRespuestas(respuesta);
 
-            codigo = cerebro.getSiguienteIntento(fila);
-            System.out.println(codigo.codigo);
+            intento = cerebro.getSiguienteIntento(fila);
+            System.out.print(intento.codigo);
         }
-
     }
 }

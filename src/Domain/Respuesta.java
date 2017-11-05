@@ -37,6 +37,7 @@ public class Respuesta {
         List<Integer> auxiliar2 = new ArrayList<Integer>(respuestaComprobada.respuesta);
         Collections.sort(auxiliar2);
         return auxiliar1.equals(auxiliar2);
+        //return respuesta.equals(respuestaComprobada.respuesta); <- Yo pondría esto (Omar)
     }
 
     /**
