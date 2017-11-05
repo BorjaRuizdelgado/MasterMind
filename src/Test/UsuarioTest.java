@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class UsuarioTest {
 
-    private static Partida creaPartida () {
+    private static Partida creaPartida (Usuario test) {
         Scanner in = new Scanner(System.in);
         print("Introduce el ROL: 1 (CodeMaker) ó 0 (CodeBreaker)");
         int rol = in.nextInt();
@@ -27,7 +27,8 @@ public class UsuarioTest {
             print("Dificultad no válida");
             dif = in.next();
         }
-        return new Partida(rol == 1, dif);
+        test.creaPartidaActual(rol==1, dif);
+        return test.getPartidaActual();
     }
 
     private static void print (String message) {
@@ -63,7 +64,7 @@ public class UsuarioTest {
                     break;
                 case 3:
                     if(!p) {
-                        test.setPartidaActual(creaPartida());
+                        creaPartida(test);
                         print("Partida creada con ID: " + test.getIdPartidaActual());
                         p = true;
                     }

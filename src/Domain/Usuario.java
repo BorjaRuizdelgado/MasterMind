@@ -51,12 +51,18 @@ public class Usuario {
     }
 
     /**
-     * Asignamos la partida pasada por parámetro como partida actual
-     * @param p partida actual
+     * Creamos una nueva partida y la asignamos como partida actual
+     * @param rolMaker rol de la partida
+     * @param dif dificultad de la partida
      */
-    public void setPartidaActual(Partida p) {
-        this.partidaActual = p;
+    public void creaPartidaActual(Boolean rolMaker, String dif) {
+        this.partidaActual = new Partida(rolMaker, dif);
     }
+
+    public Partida getPartidaActual() {
+        return this.partidaActual;
+    }
+
 
     /**
      * Añade la partida actual a la lista de partidas guardadas
