@@ -61,4 +61,8 @@ public class Codigo implements Cloneable{
         return super.clone();
     }
 
+    // Lo necesito para comparar código intento con el de verdad
+    public boolean equals(Codigo obj) {
+        return codigo.equals(obj.codigo);
+    }
 }

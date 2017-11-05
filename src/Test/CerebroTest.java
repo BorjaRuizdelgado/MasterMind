@@ -5,7 +5,6 @@ import Domain.Codigo;
 import Domain.Fila;
 import Domain.Respuesta;
 import Util.Console;
-import jdk.internal.util.xml.impl.Input;
 
 import java.util.Scanner;
 
@@ -25,18 +24,19 @@ public class CerebroTest {
         }
 
         Cerebro cerebro = new Cerebro(colours, columns);
-        Codigo codigo = cerebro.generaIntentoInicial();
-        System.out.println(codigo.codigo);
+        Codigo intento = cerebro.getIntentoInicial();
+        System.out.print(intento.codigo);
 
-        while(!code.codigo.equals(codigo.codigo)){
-            Respuesta respuesta = codigo.getRespuesta(code);
+        while(!code.equals(intento)){
+            Respuesta respuesta = intento.getRespuesta(code);
+            System.out.println(respuesta);
 
             Fila fila = new Fila(columns);
-            fila.setColores(codigo);
+            fila.setColores(intento);
             fila.setRespuestas(respuesta);
 
-            codigo = cerebro.getSiguienteIntento(fila);
-            System.out.println(codigo.codigo);
+            intento = cerebro.getSiguienteIntento(fila);
+            System.out.println(intento.codigo);
         }
 
     }

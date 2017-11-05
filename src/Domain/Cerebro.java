@@ -29,15 +29,21 @@ public class Cerebro {
         combinacionesTotales = new ArrayList<>(solucionesPotenciales);
     }
 
+    private void borraIntento(Codigo intento){
+        combinacionesTotales.remove(intento);
+        solucionesPotenciales.remove(intento);
+    }
+
     /**
      * Genera el primer intento
      */
-    public Codigo generaIntentoInicial(){
+    public Codigo getIntentoInicial(){
         Codigo intentoActual = new Codigo(numeroColumnas);
         for (int i = 0; i < numeroColumnas; i++) {
             if(i < numeroColumnas / 2) intentoActual.codigo.add(1);
             else intentoActual.codigo.add(2);
         }
+        borraIntento(intentoActual);
         return intentoActual;
     }
 
@@ -99,7 +105,9 @@ public class Cerebro {
         actualizaPotenciales(ultimoIntento);
 
         List<Codigo> posiblesCandidatos = minmax();
-        return seleccionaCandidato(posiblesCandidatos);
+        Codigo candidato = seleccionaCandidato(posiblesCandidatos);
+        borraIntento(candidato);
+        return candidato;
     }
 
     private List<Codigo> minmax(){
