@@ -59,10 +59,13 @@ public class Usuario {
         this.partidaActual = new Partida(rolMaker, dif);
     }
 
+    /**
+     * Devuelve la partida actual
+     * @return partidaActual
+     */
     public Partida getPartidaActual() {
         return this.partidaActual;
     }
-
 
     /**
      * Añade la partida actual a la lista de partidas guardadas
