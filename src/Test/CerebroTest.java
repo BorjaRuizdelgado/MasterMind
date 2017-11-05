@@ -5,10 +5,17 @@ import Domain.Codigo;
 import Domain.Fila;
 import Domain.Respuesta;
 import Util.Console;
-import jdk.internal.util.xml.impl.Input;
+
 
 import java.util.Scanner;
 
+/**
+ * @author Omar
+ */
+
+/**
+ * Implementa un Main para poder probar de manera interactiva la clase.
+ */
 public class CerebroTest {
 
     public static void main(String[] args){

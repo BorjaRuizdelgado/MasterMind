@@ -5,6 +5,12 @@ import Domain.Usuario;
 
 import java.util.Scanner;
 
+/**
+ * @author ISA
+ */
+/**
+ * Implementa un Main para poder probar de manera interactiva la clase.
+ */
 public class UsuarioTest {
 
     private static Partida creaPartida () {

@@ -10,6 +10,10 @@ import java.util.Random;
  *
  * @author ISA
  */
+
+/**
+ * Clase de tipo Partida que contiene el tablero y otros atriburos relevantes para jugar y puntuar al usuario.
+ */
 public class Partida {
 
     private String id;
@@ -24,7 +28,7 @@ public class Partida {
 
 
     /**
-     * Crea un nuevo objeto partida.
+     * Creadora Partida.
      * Inicia el tiempo a 0. Y el id es la fecha+hora
      * @param rolMaker indica si el jugador juega como
      *                 codemaker(true) o codebreaker(false)
@@ -206,7 +210,7 @@ public class Partida {
      * Genera la puntuación en base al tiempo y la dificultad
      * @return puntuación de la partida
      */
-    private int generaPuntuación() {
+    private int generaPuntuacion() {
         return 0;
     }
 

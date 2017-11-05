@@ -6,6 +6,10 @@ import java.util.*;
  *
  * @author borja | ISA | Omar
  */
+
+/**
+ * Implementa la IA de Mastermind.
+ */
 public class Cerebro {
 
     private List<Codigo> combinacionesTotales;
@@ -16,7 +20,7 @@ public class Cerebro {
 
 
     /**
-     * Creadora
+     * Creadora.
      * @param colores numero de colores que tiene el juego
      * @param columnas numero de columnas que tiene el tablero
      */
@@ -30,7 +34,7 @@ public class Cerebro {
     }
 
     /**
-     * Genera el primer intento
+     * Genera el primer intento.
      */
     public Codigo generaIntentoInicial(){
         Codigo intentoActual = new Codigo(numeroColumnas);
@@ -53,7 +57,7 @@ public class Cerebro {
     }
 
     /**
-     * Recursivamente genera todos los potenciales necesarios
+     * Recursivamente genera todos los potenciales necesarios.
      * @param posicion posición para
      * @param actual codigo a duplicar
      */
@@ -73,7 +77,7 @@ public class Cerebro {
     }
 
     /**
-     * Imprime por pantalla los potenciales actuales que tiene el objeto
+     * Imprime por pantalla los potenciales actuales que tiene el objeto.
      */
     private void imprimePotenciales(){
         for (Codigo candidata : solucionesPotenciales) {
@@ -94,7 +98,11 @@ public class Cerebro {
         }
     }
 
-
+    /**
+     * Genera el Codigo del siguiente intento
+     * @param ultimoIntento El último intento que se ha hecho en el tablero
+     * @return El siguiente intento en forma de Codigo
+     */
     public Codigo getSiguienteIntento(Fila ultimoIntento) {
         actualizaPotenciales(ultimoIntento);
 
@@ -102,6 +110,10 @@ public class Cerebro {
         return seleccionaCandidato(posiblesCandidatos);
     }
 
+    /**
+     *
+     * @return
+     */
     private List<Codigo> minmax(){
         int max, min;
         Map<String, Integer> contadorPuntuaciones = new HashMap<>();
@@ -134,6 +146,11 @@ public class Cerebro {
         return posiblesCandidatos;
     }
 
+    /**
+     *
+     * @param candidatos
+     * @return
+     */
     private Codigo seleccionaCandidato(List<Codigo> candidatos){
         int idCandidato = -1;
 
@@ -156,6 +173,11 @@ public class Cerebro {
         return candidatos.get(idCandidato);
     }
 
+    /**
+     *
+     * @param contadorPuntuaciones
+     * @return
+     */
     private int getMaximaPuntuacion(Map<String, Integer> contadorPuntuaciones){
         int max = 0;
 
@@ -169,6 +191,11 @@ public class Cerebro {
         return max;
     }
 
+    /**
+     *
+     * @param puntuacion
+     * @return
+     */
     private int getMinimaPuntuacion(Map<Codigo, Integer> puntuacion){
         int min = Integer.MAX_VALUE;
 

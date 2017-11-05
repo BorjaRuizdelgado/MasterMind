@@ -2,12 +2,22 @@ package Domain;
 
 import java.util.ArrayList;
 
+/**
+ * @author borja
+ */
+
+/**
+ * Estructura de datos para las Filas del tablero de Mastermind.
+ */
 public class Fila {
 
     private Codigo colores;
     private Respuesta respuestas;
 
-
+    /**
+     * Creadora.
+     * @param sizeColumnas
+     */
     public Fila(int sizeColumnas){
         colores = new Codigo(sizeColumnas);
         respuestas = new Respuesta(sizeColumnas);

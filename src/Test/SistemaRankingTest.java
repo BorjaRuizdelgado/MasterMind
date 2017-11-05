@@ -6,6 +6,13 @@ import Domain.Respuesta;
 
 import java.util.Scanner;
 
+/**
+ * @author Omar
+ */
+
+/**
+ * Implementa un Main para poder probar de manera interactiva la clase.
+ */
 
 public class SistemaRankingTest {
 

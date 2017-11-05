@@ -8,8 +8,10 @@ package Domain;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementa el tablero sobre el que Mastermind juega.
+ */
 public class Tablero {
-
 
 /*
     VACIO = 0;
@@ -33,7 +35,7 @@ public class Tablero {
     private Codigo codigoSecreto;
 
     /**
-     * Se crea un tablero nuevo con columnas numero de columnas.
+     * Creadora.
      * @param columnas numero de columnas del tablero
      */
     public Tablero(int columnas){

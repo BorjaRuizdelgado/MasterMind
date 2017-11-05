@@ -3,12 +3,19 @@ package Domain;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author borja
+ */
+
+/**
+ * Estructura de datos para los intentos de Mastermind
+ */
 public class Codigo implements Cloneable{
     public List<Integer> codigo;
     public int size = 0;
 
     /**
-     * Creadora
+     * Creadora.
      * @param size
      */
     public Codigo(int size){
@@ -17,7 +24,7 @@ public class Codigo implements Cloneable{
     }
 
     /**
-     * dado Codigo se compara con el mismo y devuelve la respuesta
+     * Dado Codigo se compara con el mismo y devuelve la respuesta.
      * @param codigoACorregir
      * @return respuesta
      */
@@ -56,9 +63,5 @@ public class Codigo implements Cloneable{
         return res;
     }
 
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 
 }

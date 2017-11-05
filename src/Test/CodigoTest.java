@@ -6,7 +6,9 @@ import Domain.Respuesta;
 
 import java.util.Scanner;
 
-
+/**
+ * Implementa un Main para poder probar de manera interactiva la clase.
+ */
 public class CodigoTest {
 
     private static void iniciaCodigo (Codigo codigo, int num) {
