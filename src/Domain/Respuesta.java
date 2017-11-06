@@ -42,7 +42,7 @@ public class Respuesta {
 
     /**
      * Convierte los numeros de la respuesta en B y W para poder hacer el MINMAX en la IA
-     * @return
+     * @return la respuesta en letras
      */
     @Override
     public String toString() {
