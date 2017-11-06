@@ -101,4 +101,29 @@ public class SistemaRanking {
     public List<Info> getRankingDificil(String nombre){
         return getInterseccionNombre(rankingDificil, nombre);
     }
+
+
+    /**
+     * Actualizamos listaRankingFacil
+     * @param ranking Nuevo ranking fácil
+     */
+    public void setRankingFacil(List<Info> ranking){
+        rankingFacil = new ArrayList<>(ranking);
+    }
+
+    /**
+     * Actualizamos listaRankingNormal
+     * @param ranking Nuevo ranking normal
+     */
+    public void setRankingNormal(List<Info> ranking){
+        rankingNormal = new ArrayList<>(ranking);
+    }
+
+    /**
+     * Actualizamos listaRankingDificil
+     * @param ranking Nuevo ranking díficil
+     */
+    public void setRankingDificil(List<Info> ranking){
+        rankingDificil = new ArrayList<>(ranking);
+    }
 }

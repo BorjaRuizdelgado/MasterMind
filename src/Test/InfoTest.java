@@ -1,4 +1,4 @@
-package Test.ClaseInfo;
+package Test;
 
 /**
  * @author Omar

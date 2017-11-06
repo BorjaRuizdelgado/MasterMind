@@ -48,4 +48,17 @@ public class Info {
     public String getFecha() {
         return fecha;
     }
+
+    /**
+     * Override de 'toString'
+     * @return Devolvemos un string con el formato adecuado
+     */
+    @Override
+    public String toString() {
+        return "{" +
+                "usuario='" + usuario + '\'' +
+                ", puntuacion=" + puntuacion +
+                ", fecha='" + fecha + '\'' +
+                '}';
+    }
 }
