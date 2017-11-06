@@ -32,10 +32,10 @@ public class Respuesta {
      * @return Cierto si lo son, Falso si no.
      */
     public Boolean equals(Respuesta respuestaComprobada){
-        List<Integer> auxiliar1 = new ArrayList<Integer>(this.respuesta);
-        Collections.sort(auxiliar1);
-        List<Integer> auxiliar2 = new ArrayList<Integer>(respuestaComprobada.respuesta);
-        Collections.sort(auxiliar2);
+        List<Integer> auxiliar1 = new ArrayList<>(this.respuesta);
+        Collections.sort(auxiliar1, Collections.reverseOrder());
+        List<Integer> auxiliar2 = new ArrayList<>(respuestaComprobada.respuesta);
+        Collections.sort(auxiliar2, Collections.reverseOrder());
         return auxiliar1.equals(auxiliar2);
         //return respuesta.equals(respuestaComprobada.respuesta); <- Yo pondría esto (Omar)
     }

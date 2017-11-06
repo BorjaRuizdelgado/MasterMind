@@ -55,7 +55,7 @@ public class Fila {
      */
     public void setRespuestas(Respuesta answers) {
         respuestas.respuesta = new ArrayList<>(answers.respuesta);
-        //Collections.sort(respuestas.respuesta);
+        Collections.sort(respuestas.respuesta, Collections.reverseOrder());
     }
 
 }
