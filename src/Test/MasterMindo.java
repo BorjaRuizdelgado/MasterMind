@@ -13,18 +13,16 @@ public class MasterMindo {
     public static void main(String[] args) {
 
             Scanner scan = new Scanner(System.in);
-            System.out.println("Bienvenid@ a MasterMindo una juego completamente nuevo y, \n" +
+            print("Bienvenid@ a MasterMindo un juego completamente nuevo y, \n" +
                     "que no infringe ningun tipo de derechos de autor");
 
-            System.out.println("Ahora selecciona tu nombre de usuario, introduce tu nombre aqui y presiona Enter:\n");
+            print("Ahora selecciona tu nombre de usuario, introduce tu nombre aqui y presiona Enter:");
             String nombreUsuario = scan.next();
             usr = new Usuario(nombreUsuario);
-            System.out.println("¡Se ha creado tu usuario!\n" +
-                    "\nPresiona 1 para JUGAR como CODEMAKER o 2 para JUGAR com CODEBREAKER\n");
+            print("¡Se ha creado tu usuario!\n" +
+                    "\nPresiona 1 para JUGAR como CODEMAKER o 2 para JUGAR com CODEBREAKER");
             int rol = scan.nextInt();
-            if(rol == 1) {
-                juegaCodeMaker();
-            }
+            if(rol == 1) juegaCodeMaker();
             else if(rol == 2) juegaCodeBreaker();
     }
 
@@ -33,20 +31,27 @@ public class MasterMindo {
     }
 
     private static void juegaCodeMaker(){
-        System.out.println("Dame un nivel de dificultad siendo: Facil, Medio y Dificil\n");
+        print("Dame un nivel de dificultad: Facil, Medio y Dificil");
         Scanner scan = new Scanner(System.in);
         String diff = scan.next();
         usr.creaPartidaActual(true,diff);
         pary = usr.getPartidaActual();
         setCodigoSecreto();
-        while(pary.getNumeroFilaActual() != 15){
+        while(pary.getNumeroFilaActual() != 15 && !pary.isGanado()){
             corrige();
+        }
+
+        if (!pary.isGanado()) {
+            print("Has perdido!");
+        }
+        else {
+            print("Has ganado con "+pary.getNumeroFilaActual()+" intentos.");
         }
     }
 
     private static void setCodigoSecreto(){
-        System.out.println("Dame el codigo secreto de tamaño " + pary.getNumColumnas() +" separado por espacios\n" +
-                "Formado por numeros del 1 al "+ pary.getNumColores()+"\n");
+        print("Dame el codigo secreto de tamaño " + pary.getNumColumnas() +" separado por espacios\n" +
+                "Formado por numeros del 1 al "+ pary.getNumColores());
         Codigo code = new Codigo(pary.getNumColumnas());
         Scanner scan = new Scanner(System.in);
         for(int i = 0; i < pary.getNumColumnas();++i){
@@ -55,25 +60,34 @@ public class MasterMindo {
 
         pary.setCodigoSecreto(code);
 
-        System.out.println("EL JUEGO EMPIEZA\n");
+        print("EL JUEGO EMPIEZA\n");
     }
 
     private static void corrige(){
         Respuesta respuestaUsr = new Respuesta(pary.getNumColumnas());
         Codigo intento = pary.getSiguienteIntento();
-        System.out.println("Corrige el intento de la maquina\n" +
-                +" poniendo 8 como Negro, 7 como Blanco y 0 como vacio.\n CODIGO A CORREGIR:\n");
-        System.out.println(intento.codigo + "\n");
-        Respuesta resUsr = new Respuesta(pary.getNumColumnas());
+        print("Corrige el intento de la maquina\n" +
+                "Pon 8 como Negro, 7 como Blanco y 0 como vacio.\nCODIGO A CORREGIR:\n");
+        System.out.println(intento.codigo);
         Scanner scan = new Scanner(System.in);
-        while(! intento.getRespuesta(pary.getCodigoSecreto()).equals(respuestaUsr)){
+        Boolean First = true;
+        while(!intento.getRespuesta(pary.getCodigoSecreto()).equals(respuestaUsr)){
+            if (!First) {
+                print("Respuesta no válida. Introduce tu respuesta de nuevo.");
+            }
             respuestaUsr = new Respuesta(pary.getNumColumnas());
-            for(int i = 0; i < pary.getNumColumnas();++i) respuestaUsr.respuesta.
-
+            for(int i = 0; i < pary.getNumColumnas();i++) respuestaUsr.respuesta.add(scan.nextInt());
+            First = false;
 
         }
+        pary.setRespuesta(respuestaUsr);
+    }
 
 
+
+
+    private static void print (String message) {
+        System.out.print(message+"\n");
     }
 }
 

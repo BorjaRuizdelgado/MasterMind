@@ -159,6 +159,9 @@ public class Partida {
         this.numColumnas = numColumnas;
     }
 
+    public boolean isGanado() {
+        return ganado;
+    }
 
     private String rolToString () {
         String rol;
