@@ -24,7 +24,7 @@ public class Partida {
     private int numColumnas;
 
     private final Tablero tablero;
-    //private final Cerebro ia;
+    private Cerebro ia;
 
 
     /**
@@ -56,6 +56,10 @@ public class Partida {
                 break;
         }
         tablero = new Tablero(numColumnas);
+
+        if (rolMaker) {
+            ia = new Cerebro(numColores, numColumnas);
+        }
     }
 
     /**
@@ -155,7 +159,6 @@ public class Partida {
     }
 
 
-
     private String rolToString () {
         String rol;
         if (rolMaker) rol = "CodeMaker";
@@ -204,6 +207,17 @@ public class Partida {
         for(int i = 0; i < numColumnas; i++)
             codigoSecreto.codigo.add(rn.nextInt(numColores) + 1);
         setCodigoSecreto(codigoSecreto);
+    }
+
+    public Codigo getSiguienteIntento() {
+        if (tablero.getNumeroFilaActual() == 0) {
+            Codigo newGuess = ia.getIntentoInicial();
+            tablero.setUltimoColores(newGuess);
+            return newGuess;
+        }
+        Codigo newGuess = ia.getSiguienteIntento(tablero.getUltimoIntento());
+        tablero.setUltimoColores(newGuess);
+        return newGuess;
     }
 
     /**
