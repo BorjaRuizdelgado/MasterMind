@@ -67,7 +67,7 @@ public class MasterMindo {
         Respuesta respuestaUsr = new Respuesta(pary.getNumColumnas());
         Codigo intento = pary.getSiguienteIntento();
         print("Corrige el intento de la maquina\n" +
-                "Pon 8 como Negro, 7 como Blanco y 0 como vacio.\nCODIGO A CORREGIR:\n");
+                "Pon 8 como Negro, 7 como Blanco y 0 como vacio.\nCODIGO A CORREGIR:");
         System.out.println(intento.codigo);
         Scanner scan = new Scanner(System.in);
         Boolean First = true;

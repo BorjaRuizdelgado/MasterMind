@@ -83,15 +83,6 @@ public class Cerebro {
     }
 
     /**
-     * Imprime por pantalla los potenciales actuales que tiene el objeto.
-     */
-    private void imprimePotenciales(){
-        for (Codigo candidata : solucionesPotenciales) {
-            System.out.println(candidata.codigo);
-        }
-    }
-
-    /**
      * Hace la criba de los potenciales descartados dada una fila
      * @param ultimoIntento fila que contiene el codigo de colores
      *                      del ultimo intento y la respuesta
@@ -214,5 +205,14 @@ public class Cerebro {
             if (aux < min) min = aux;
         }
         return min;
+    }
+
+    /**
+     * Imprime por pantalla los potenciales actuales que tiene el objeto.
+     */
+    private void imprimePotenciales(){
+        for (Codigo candidata : solucionesPotenciales) {
+            System.out.println(candidata.codigo);
+        }
     }
 }
