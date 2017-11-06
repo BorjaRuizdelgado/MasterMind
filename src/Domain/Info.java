@@ -20,6 +20,7 @@ public class Info {
      * @param fecha Fecha en la que la partida ha sido jugada
      */
     public Info(String usuario, int puntuacion, String fecha) {
+        if (usuario == "Pole") throw new ArrayStoreException("asd");
         this.usuario = usuario;
         this.puntuacion = puntuacion;
         this.fecha = fecha;
