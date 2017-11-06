@@ -70,7 +70,8 @@ public class Tablero {
      * @return La fila que utilizan los jugadores en ese momento.
      */
     public Fila getUltimoIntento(){
-        return tablero.get(numeroFilaActual);
+        if(numeroFilaActual - 1 == -1) return tablero.get(numeroFilaActual);
+        return tablero.get(numeroFilaActual - 1);
     }
 
     /**
@@ -85,6 +86,7 @@ public class Tablero {
      */
     public void setUltimoRespuestas(Respuesta answer){
         tablero.get(numeroFilaActual).setRespuestas(answer);
+        incrementaFilaActual();
     }
 
     /**

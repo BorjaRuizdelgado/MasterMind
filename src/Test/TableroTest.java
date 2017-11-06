@@ -128,6 +128,7 @@ public class TableroTest {
     /**
      * Imprime el ultimo guess introducido en el tablero
      */
+    //no puedes imprimir un guess si no has puesto una respuesta antes
     private static void imprimeUltimoGuess(){
         System.out.println(tablero.getUltimoColores().codigo);
     }
