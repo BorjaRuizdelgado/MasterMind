@@ -82,6 +82,7 @@ public class Tablero {
     }
 
     /**
+     * Se añade la respuesta a la fila actual y se incrementa la fila.
      * @param answer se establece como la correccion que ha hecho el jugador.
      */
     public void setUltimoRespuestas(Respuesta answer){

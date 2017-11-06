@@ -73,7 +73,7 @@ public class FilaTest {
      * @param num sirve para agilizar el proceso de insercion ya que se dispone del el en el main
      */
     private static void insertarRespuesta(int num){
-        System.out.println("Intorduce una serie de colores en forma de numeros\n");
+        System.out.println("Intorduce una serie de 8s (negro) y 7s (blanco)\n");
         Respuesta code = new Respuesta(num);
         Scanner s = new Scanner(System.in);
         for(int i = 0; i < num; i++) {
