@@ -37,6 +37,10 @@ public class RespuestaTest {
                 }
                 if(test.equals(test2)) System.out.println("son iguales\n");
                 else System.out.println("Són diferentes\n");
+                System.out.println("Ahora miramos si la respuesta es de tipo ganadora y la traducimos a strings\n");
+                if(test.esGanadora()) System.out.println("Ganadora\n");
+                else System.out.println("No ganadora\n");
+                System.out.println(test.toString());
             }
             else System.out.print("Tamaño no válido\n");
         }

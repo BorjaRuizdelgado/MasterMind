@@ -40,6 +40,14 @@ public class Respuesta {
         //return respuesta.equals(respuestaComprobada.respuesta); <- Yo pondría esto (Omar)
     }
 
+    public boolean esGanadora(){
+        boolean ganadora = true;
+        for(int i = 0; i< size; ++i){
+            if(respuesta.get(i) !=  8) ganadora = false;
+        }
+        return ganadora;
+    }
+
     /**
      * Convierte los numeros de la respuesta en B y W para poder hacer el MINMAX en la IA
      * @return la respuesta en letras

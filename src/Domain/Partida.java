@@ -22,6 +22,7 @@ public class Partida {
     private String dificultad;
     private int numColores;
     private int numColumnas;
+    private boolean ganado = false;
 
     private final Tablero tablero;
     private Cerebro ia;
@@ -240,6 +241,15 @@ public class Partida {
                 "- Numero Colores: " +numColores+"\n" +
                 "- Numero Columnas: "+ numColumnas);
 
+    }
+
+    public void setIntento(Codigo code){
+        tablero.setUltimoColores(code);
+    }
+
+    public void setRespuesta(Respuesta respuesta){
+        tablero.setUltimoRespuestas(respuesta);
+        if(respuesta.esGanadora())ganado = true;
     }
 
 
