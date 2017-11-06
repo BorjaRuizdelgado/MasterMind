@@ -40,6 +40,10 @@ public class Respuesta {
         //return respuesta.equals(respuestaComprobada.respuesta); <- Yo pondría esto (Omar)
     }
 
+    /**
+     * Devuelve si la respuesta es de tipo ganadora, es decir negro
+     * @return Devulve Cierto o Falso en fuención de si es ganadora o no.
+     */
     public boolean esGanadora(){
         boolean ganadora = true;
         for(int i = 0; i< size; ++i){
