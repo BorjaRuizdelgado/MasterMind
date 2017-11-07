@@ -1,5 +1,7 @@
 package Domain;
 
+import Util.Console;
+
 import java.util.*;
 
 /**
@@ -34,8 +36,12 @@ public class Cerebro {
     }
 
     private void borraIntento(Codigo intento){
-        combinacionesTotales.remove(intento);
-        solucionesPotenciales.remove(intento);
+        for (int i = 0; i < solucionesPotenciales.size(); i++) {
+            if(solucionesPotenciales.get(i).codigo.equals(intento.codigo)) solucionesPotenciales.remove(i);
+        }
+        for (int i = 0; i < combinacionesTotales.size(); i++) {
+            if(combinacionesTotales.get(i).codigo.equals(intento.codigo)) combinacionesTotales.remove(i);
+        }
     }
 
     /**
@@ -76,7 +82,7 @@ public class Cerebro {
             actual.codigo.set(posicion, i);
             Codigo copia = new Codigo(actual.size);
 
-                copia.codigo = new ArrayList<>(actual.codigo);
+            copia.codigo = new ArrayList<>(actual.codigo);
 
             generadorRecursivo(posicion + 1, copia);
         }
@@ -88,10 +94,22 @@ public class Cerebro {
      *                      del ultimo intento y la respuesta
      */
     private void actualizaPotenciales(Fila ultimoIntento) {
-        Respuesta ultimaRespuesta = ultimoIntento.getRespuestas();
+        /*Respuesta ultimaRespuesta = ultimoIntento.getRespuestas();
         for (int i = 0; i < solucionesPotenciales.size(); i++) {
             Respuesta respuestaPosible = ultimoIntento.getColores().getRespuesta(solucionesPotenciales.get(i));
-            if(!respuestaPosible.equals(ultimaRespuesta)) solucionesPotenciales.remove(i);
+            if(!respuestaPosible.respuesta.equals(ultimaRespuesta.respuesta)) solucionesPotenciales.remove(i);
+        }*/
+        List<Codigo> aux = new ArrayList<>();
+        Respuesta ultimaRespuesta = ultimoIntento.getRespuestas();
+        for (int i = 0; i < solucionesPotenciales.size(); i++) {
+            Respuesta respuestaPosible = solucionesPotenciales.get(i).getRespuesta(ultimoIntento.getColores());
+            if(!respuestaPosible.equals(ultimaRespuesta)) {
+                aux.add(solucionesPotenciales.get(i));
+            }
+        }
+
+        for (int i = 0; i < aux.size(); i++) {
+            solucionesPotenciales.remove(aux.get(i));
         }
     }
 
@@ -210,7 +228,7 @@ public class Cerebro {
     /**
      * Imprime por pantalla los potenciales actuales que tiene el objeto.
      */
-    private void imprimePotenciales(){
+    public void imprimePotenciales(){
         for (Codigo candidata : solucionesPotenciales) {
             System.out.println(candidata.codigo);
         }
