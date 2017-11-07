@@ -55,10 +55,10 @@ public class Info {
      */
     @Override
     public String toString() {
-        return "{" +
-                "usuario='" + usuario + '\'' +
-                ", puntuacion=" + puntuacion +
-                ", fecha='" + fecha + '\'' +
-                '}';
+        return
+                "usuario='" + usuario + '\'' + '\n' +
+                "puntuacion=" + puntuacion + '\n' +
+                "fecha='" + fecha + '\'';
+
     }
 }
