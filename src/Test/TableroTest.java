@@ -30,7 +30,8 @@ public class TableroTest {
                     "* 5 para insertar una respuesta en el tablero\n" +
                     "* 6 para pedir el ultimo Guess introducido en el tablro\n" +
                     "* 7 para pedir el numero de turno en el que estamos\n" +
-                    "* 8 para que el tablero genere la respuesta automatica segun el ultimo Guess\n");
+                    "* 8 para que el tablero genere la respuesta automatica segun el ultimo Guess\n" +
+                    "* 9 para pedir la fila actual que se está tratando\n");
             switch (es.nextInt()){
                 case 1:
                     insertarCodigoSecreto(tamTablero);
@@ -103,7 +104,7 @@ public class TableroTest {
         for(int i = 0; i< tam; ++i){
             secreto.codigo.add(sca.nextInt());
         }
-        if(tablero.getNumeroFilaActual() != 0) tablero.incrementaFilaActual();
+        //if(tablero.getNumeroFilaActual() != 0) tablero.incrementaFilaActual();
         tablero.setUltimoColores(secreto);
 
     }
