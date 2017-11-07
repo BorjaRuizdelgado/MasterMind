@@ -56,6 +56,8 @@ public class TableroTest {
                 case 8:
                     generaRespuesta();
                     break;
+                case 9:
+                    imprimeIntentoActual();
 
             }
         }
@@ -119,7 +121,9 @@ public class TableroTest {
                 secreto.respuesta.add(sca.nextInt());
             }
 
-            if(secreto.respuesta.equals(tablero.getCodigoSecreto().getRespuesta(tablero.getUltimoColores()).respuesta)) break;
+            if(secreto.respuesta.equals(tablero.getCodigoSecreto().getRespuesta(tablero.getIntentoActual()))){
+                break;
+            }
         }
         tablero.setUltimoRespuestas(secreto);
 
@@ -145,5 +149,12 @@ public class TableroTest {
      */
     private static void generaRespuesta(){
         tablero.generaRespuesta();
+    }
+
+    /**
+     * Imprime el intento actual.
+     */
+    private static void imprimeIntentoActual(){
+        System.out.println(tablero.getIntentoActual().codigo);
     }
 }
