@@ -75,6 +75,14 @@ public class Tablero {
     }
 
     /**
+     *
+     * @return Retrona el intento actual.
+     */
+    public Codigo getIntentoActual(){
+        return tablero.get(numeroFilaActual).getColores();
+    }
+
+    /**
      * @param guess se establece como el intnto de adivinar el jugador.
      */
     public void setUltimoColores(Codigo guess){
@@ -123,7 +131,7 @@ public class Tablero {
      * En el momento en el que se llama a esta función el sistema corrige el ultimo guess que se le ha hecho al tablero
      */
     public void generaRespuesta(){
-        setUltimoRespuestas(getUltimoColores().getRespuesta(codigoSecreto));
+        setUltimoRespuestas(getIntentoActual().getRespuesta(codigoSecreto));
     }
 
 
