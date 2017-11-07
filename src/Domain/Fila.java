@@ -17,7 +17,7 @@ public class Fila {
 
     /**
      * Creadora.
-     * @param sizeColumnas
+     * @param sizeColumnas tamaño
      */
     public Fila(int sizeColumnas){
         colores = new Codigo(sizeColumnas);

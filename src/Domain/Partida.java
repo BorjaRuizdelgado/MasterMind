@@ -163,6 +163,7 @@ public class Partida {
         return ganado;
     }
 
+
     private String rolToString () {
         String rol;
         if (rolMaker) rol = "CodeMaker";
@@ -246,6 +247,10 @@ public class Partida {
 
     }
 
+    public void generaRespuesta () {
+        tablero.generaRespuesta();
+    }
+
     public void setIntento(Codigo code){
         tablero.setUltimoColores(code);
     }
@@ -253,6 +258,10 @@ public class Partida {
     public void setRespuesta(Respuesta respuesta){
         tablero.setUltimoRespuestas(respuesta);
         if(respuesta.esGanadora())ganado = true;
+    }
+
+    public Respuesta getUltimaRespuesta () {
+        return tablero.getUltimoIntento().getRespuestas();
     }
 
 

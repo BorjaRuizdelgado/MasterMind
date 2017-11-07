@@ -98,7 +98,7 @@ public class Tablero {
     }
 
     /**
-     * @return El El rablero sobre el que se juega.
+     * @return El El tablero sobre el que se juega.
      */
     public List<Fila> getTablero(){
         return tablero;

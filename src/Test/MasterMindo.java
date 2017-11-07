@@ -16,7 +16,7 @@ public class MasterMindo {
             print("Bienvenid@ a MasterMindo un juego completamente nuevo y, \n" +
                     "que no infringe ningun tipo de derechos de autor");
 
-            print("Ahora selecciona tu nombre de usuario, introduce tu nombre aqui y presiona Enter:");
+            print("Ahora introduce tu nombre de usuario y presiona Enter:");
             String nombreUsuario = scan.next();
             usr = new Usuario(nombreUsuario);
             print("¡Se ha creado tu usuario!\n" +
@@ -27,6 +27,33 @@ public class MasterMindo {
     }
 
     private static void juegaCodeBreaker() {
+        print("Dame un nivel de dificultad: Facil, Medio y Dificil");
+        Scanner scan = new Scanner(System.in);
+        String diff = scan.next();
+        usr.creaPartidaActual(false,diff);
+        pary = usr.getPartidaActual();
+        pary.generaCodigoSecretoAleatorio();
+        print("Intenta adivinar el código secreto.");
+        while(pary.getNumeroFilaActual() != 15 && !pary.isGanado()){
+            print("Introduce un código de tamaño " + pary.getNumColumnas() +" separado por espacios\n" +
+                    "Formado por numeros del 1 al "+ pary.getNumColores());
+            Codigo code = new Codigo(pary.getNumColumnas());
+            for(int i = 0; i < pary.getNumColumnas();++i){
+                code.codigo.add(scan.nextInt());
+            }
+            System.out.println(code.codigo);
+            pary.setIntento(code);
+            pary.generaRespuesta();
+            print("Has obtenido esta respuesta: " + pary.getUltimaRespuesta().toString());
+            System.out.println(pary.getCodigoSecreto().codigo); //delete
+        }
+        if (!pary.isGanado()) {
+            print("Has perdido! Este era el código secreto:");
+            System.out.println(pary.getCodigoSecreto().codigo);
+        }
+        else {
+            print("Has ganado con "+pary.getNumeroFilaActual()+" intentos.");
+        }
 
     }
 
