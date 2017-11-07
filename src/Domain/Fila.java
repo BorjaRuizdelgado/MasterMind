@@ -5,9 +5,6 @@ import java.util.Collections;
 
 /**
  * @author borja
- */
-
-/**
  * Estructura de datos para las Filas del tablero de Mastermind.
  */
 public class Fila {
@@ -25,7 +22,6 @@ public class Fila {
     }
 
     /**
-     *
      * @return retorna la variable colores.
      */
     public Codigo getColores(){
@@ -33,7 +29,6 @@ public class Fila {
     }
 
     /**
-     *
      * @param colours es el array que se copiara en la variable colores.
      */
     public void setColores(Codigo colours){
@@ -42,7 +37,6 @@ public class Fila {
     }
 
     /**
-     *
      * @return retorna la variable respuestas.
      */
     public Respuesta getRespuestas(){
@@ -50,7 +44,6 @@ public class Fila {
     }
 
     /**
-     *
      * @param answers es el array que se copiara en la variable respuestas.
      */
     public void setRespuestas(Respuesta answers) {

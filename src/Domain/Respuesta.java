@@ -7,13 +7,11 @@ import java.util.List;
 
 /**
  * @author borja
- */
-
-/**
  * Estructura de datos para las Respuestas de mastermind
  */
 
 public class Respuesta {
+
     public List<Integer> respuesta;
     public int size = 4;
 
