@@ -249,6 +249,8 @@ public class Partida {
 
     public void generaRespuesta () {
         tablero.generaRespuesta();
+        if (tablero.getUltimoIntento().getRespuestas().esGanadora())
+            ganado = true;
     }
 
     public void setIntento(Codigo code){
