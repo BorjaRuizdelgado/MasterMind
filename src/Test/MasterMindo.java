@@ -42,7 +42,7 @@ public class MasterMindo {
             computarIntentoUsuario();
 
             long endTime = System.currentTimeMillis();
-            totalTime = totalTime + (endTime - startTime);
+            pary.sumaTiempo(endTime - startTime);
 
             print("Has obtenido esta respuesta: " + pary.getUltimaRespuesta().toString());
         }
@@ -55,9 +55,7 @@ public class MasterMindo {
             print("Has ganado con "+pary.getNumeroFilaActual()+" intentos.");
         }
 
-        System.out.println(usr.getNombre() + " tu puntuación total es de: " + computarRanking(totalTime,pary.getDificultad(),pary.getNumeroFilaActual())  +
-                " una puntuación percecta es de 100, cuanto más te pases de ese numero,\n" +
-                "peor puntuacón.");
+        System.out.println(usr.getNombre() + " tu puntuación total es de: " + pary.generaPuntuacion());
 
     }
 

@@ -2,9 +2,7 @@ package Domain;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
+import java.util.*;
 
 /**
  *
@@ -26,6 +24,11 @@ public class Partida {
 
     private final Tablero tablero;
     private Cerebro ia;
+
+
+    private boolean pista1 = false;
+    private boolean pista2 = false;
+    private boolean pista3 = false;
 
 
     /**
@@ -159,6 +162,10 @@ public class Partida {
         this.numColumnas = numColumnas;
     }
 
+    /**
+     *
+     * @return Retrona si la partida ya se ha ganado.
+     */
     public boolean isGanado() {
         return ganado;
     }
@@ -229,8 +236,19 @@ public class Partida {
      * Genera la puntuación en base al tiempo y la dificultad
      * @return puntuación de la partida
      */
-    private int generaPuntuacion() {
-        return 0;
+    public int generaPuntuacion() {
+        float resultado = 0;
+
+        resultado += (15 - tablero.getNumeroFilaActual())*777;
+        resultado += 1000000/(tiempo/1000);
+        switch(dificultad){
+            case "Medio":
+                resultado *= 1.10;
+                break;
+            case "Dificil":
+                resultado *= 1.20;
+        }
+        return (int)resultado;
     }
 
     public void imprimeInfo() {
@@ -265,6 +283,64 @@ public class Partida {
     public Respuesta getUltimaRespuesta () {
         return tablero.getUltimoIntento().getRespuestas();
     }
+
+    /**
+     * Elimina un color.
+     * @return -1 si la lista esta vacía, si no devuelve un color sobrante.
+     */
+    public int getPista1(){
+        pista1 = true;
+        ArrayList<Integer> auxiliar = getColoresNoSecretos();
+        if(auxiliar.size() == 0) return -1;
+        else return auxiliar.get(0);
+
+    }
+
+    /**
+     *
+     * @return Devuelve una lista de colores que no estan en el codigo secreto.
+     */
+    private ArrayList<Integer> getColoresNoSecretos(){
+        ArrayList<Integer> auxiliar = new ArrayList<>();
+        for(int i = 0; i < numColores;++i){
+            auxiliar.add(i);
+        }
+
+        for(int i = 0; i < numColumnas;++i){
+            if(auxiliar.contains(tablero.getCodigoSecreto().codigo.get(i))){
+                auxiliar.remove(tablero.getCodigoSecreto().codigo.get(i));
+            }
+        }
+        return auxiliar;
+    }
+
+    /**
+     *
+     * @return Devuelve los colores que no estan en el codgigo secreto.
+     */
+    public ArrayList<Integer> getPsta2(){
+        pista2 = true;
+        return getColoresNoSecretos();
+    }
+
+    /**
+     * Da un color en una posición.
+     * @return Un codigo con una unica posición no vacia que indica el color y la posición de uno de los colores del
+     * codigo secreto
+     */
+    public Codigo getPista3(){
+        pista3 = true;
+        Random rn = new Random();
+        Codigo auxilair = new Codigo(numColumnas);
+        int posicion = rn.nextInt(numColumnas);
+        for(int i = 0; i < numColumnas;++i){
+            if(i == posicion) auxilair.codigo.add(tablero.getCodigoSecreto().codigo.get(posicion));
+            else auxilair.codigo.add(0);
+        }
+
+        return auxilair;
+    }
+
 
 
 
