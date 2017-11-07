@@ -51,9 +51,9 @@ public class CodigoTest {
         int n;
         while (!fin) {
             print("¿Qué desea hacer?");
-            print("1: Comparar dos códigos y obtener la respuesta." +
-                    "2: Finalizar la prueba." +
-                    "3: verificar si los codigosson iguales.");
+            print("1: Comparar dos códigos y obtener la respuesta. " +
+                    "2: Finalizar la prueba. " +
+                    "3: verificar si los codigosson iguales. ");
             n = in.nextInt();
             switch (n) {
                 case 1:
