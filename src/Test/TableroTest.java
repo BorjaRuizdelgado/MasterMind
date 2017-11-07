@@ -114,14 +114,15 @@ public class TableroTest {
      */
     private static void setRespuesta(int tam){
         Scanner sca = new Scanner(System.in);
-        Respuesta secreto = new Respuesta(tam);
+        Respuesta secreto;
         while(true) {
+            secreto = new Respuesta(tam);
             System.out.print("Introduce una RESPUESTA valida al codigo del tablero\n");
             for (int i = 0; i < tam; ++i) {
                 secreto.respuesta.add(sca.nextInt());
             }
 
-            if(secreto.respuesta.equals(tablero.getCodigoSecreto().getRespuesta(tablero.getIntentoActual()))){
+            if(secreto.equals(tablero.getCodigoSecreto().getRespuesta(tablero.getIntentoActual()))){
                 break;
             }
         }
