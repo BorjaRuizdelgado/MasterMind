@@ -17,8 +17,6 @@ public class Cerebro {
     private int numeroColores;
     private int numeroColumnas;
 
-
-
     /**
      * Creadora.
      * @param colores numero de colores que tiene el juego
@@ -31,11 +29,6 @@ public class Cerebro {
         solucionesPotenciales = new ArrayList<>();
         generaPotenciales();
         combinacionesTotales = new ArrayList<>(solucionesPotenciales);
-    }
-
-    private void borraIntento(Codigo intento){
-        combinacionesTotales.remove(intento);
-        solucionesPotenciales.remove(intento);
     }
 
     /**
@@ -110,7 +103,6 @@ public class Cerebro {
     }
 
     /**
-     *
      * @return
      */
     private List<Codigo> minmax(){
@@ -146,7 +138,6 @@ public class Cerebro {
     }
 
     /**
-     *
      * @param candidatos
      * @return
      */
@@ -173,7 +164,6 @@ public class Cerebro {
     }
 
     /**
-     *
      * @param contadorPuntuaciones
      * @return
      */
@@ -191,7 +181,6 @@ public class Cerebro {
     }
 
     /**
-     *
      * @param puntuacion
      * @return
      */
@@ -214,5 +203,14 @@ public class Cerebro {
         for (Codigo candidata : solucionesPotenciales) {
             System.out.println(candidata.codigo);
         }
+    }
+
+    /**
+     * Borra un intento de las combinaciones totales y potenciales.
+     * @param intento el intento que se quiere borrar.
+     */
+    private void borraIntento(Codigo intento){
+        combinacionesTotales.remove(intento);
+        solucionesPotenciales.remove(intento);
     }
 }
