@@ -54,12 +54,13 @@ public class InfoTest {
 
             int option = 0;
             while(option != 4){
-                Console.println("Escoge entre estas opciones:");
-                Console.println("[1] Obtén el usuario.");
-                Console.println("[2] Obtén la puntuación.");
-                Console.println("[3] Obtén la fecha.");
-                Console.println("[4] Crear otro usuario.");
-                Console.println("[5] Salir.");
+                String menu = "Escoge entre estas opciones: \n" +
+                        "[1] Obtén el usuario. \n" +
+                        "[2] Obtén la puntuación. \n" +
+                        "[3] Obtén la fecha. \n" +
+                        "[4] Crear otro usuario. \n" +
+                        "[5] Salir.";
+                Console.println(menu);
                 do {
                     option = in.nextInt();
                 }while (option > 5 || option < 1);

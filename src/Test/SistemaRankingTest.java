@@ -1,12 +1,10 @@
 package Test;
 
-
-import Domain.Codigo;
 import Domain.Info;
-import Domain.Respuesta;
 import Domain.SistemaRanking;
 import Util.Console;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -24,16 +22,16 @@ public class SistemaRankingTest {
 
     private static SistemaRanking sistemaRanking;
     private static String []names = new String[]{
-            "Carl",
+            "Yasuo",
             "Camden",
-            "Tucker",
+            "Janna",
             "Galvin",
-            "Holmes",
-            "Aquila",
+            "Vayne",
+            "Marta",
             "Colt",
-            "Russell",
+            "Crosak",
             "Silas",
-            "Yasir",
+            "Zed",
             };
 
 
@@ -104,15 +102,15 @@ public class SistemaRankingTest {
 
             int option = 0;
             while (option != 7) {
-                Console.println("Menú: Selecciona una de estas opciones:");
-                Console.println("[1] Mostrar ranking fácil");
-                Console.println("[2] Mostrar ranking normal");
-                Console.println("[3] Mostrar ranking dificil");
-                Console.println("[4] Filtrar ranking fácil por nombre");
-                Console.println("[5] Filtrar ranking normal por nombre");
-                Console.println("[6] Filtrar ranking díficil por nombre");
-                Console.println("[7] Salir");
-
+                String menu = "Menú: Selecciona una de estas opciones: \n" +
+                        "[1] Mostrar ranking fácil \n" +
+                        "[2] Mostrar ranking normal \n" +
+                        "[3] Mostrar ranking dificil \n" +
+                        "[4] Filtrar ranking fácil por nombre \n" +
+                        "[5] Filtrar ranking normal por nombre \n" +
+                        "[6] Filtrar ranking díficil por nombre \n" +
+                        "[7] Salir";
+                Console.println(menu);
 
                 option = in.nextInt();
                 if (option == 1) muestra(sistemaRanking.getRankingFacil());
