@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Tablero {
 
-/*
+    /*
     VACIO = 0;
     ROJO = 1;
     VERDE = 2;
@@ -25,11 +25,9 @@ public class Tablero {
     NEGRO = 8;
     */
 
-
     private final int numeroColumnas;
     private final int numeroFilas = 15;
     private int numeroFilaActual = 0;
-
 
     private List<Fila> tablero = new ArrayList<>(numeroFilas);
     private Codigo codigoSecreto;
@@ -75,7 +73,6 @@ public class Tablero {
     }
 
     /**
-     *
      * @return Retrona el intento actual.
      */
     public Codigo getIntentoActual(){

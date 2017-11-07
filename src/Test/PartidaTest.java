@@ -1,74 +1,131 @@
 package Test;
 
-import Domain.Partida;
+import static org.junit.Assert.*;
 
-import java.util.Scanner;
-
-/**
- * @author ISA
- *
- */
-/**
- * Implementa un Main para poder probar de manera interactiva la clase.
- */
 public class PartidaTest {
-
-    private static Partida creaPartida() {
-        Scanner in = new Scanner(System.in);
-        print("Introduce 1 para ser CodeMaker o 0 para ser CodeBreaker");
-        int rolMaker = in.nextInt();
-        Boolean rol;
-        while (rolMaker != 0 && rolMaker != 1) {
-            print("Rol no válido");
-            rolMaker = in.nextInt();
-        }
-        rol = (rolMaker == 1);
-        print("Introduce la dificultad: 'Facil', 'Medio' o 'Dificil'");
-        String dif = in.next();
-        while (!dif.equals("Facil") && !dif.equals("Medio") && !dif.equals("Dificil")) {
-            print("Dificultad no válida");
-            dif = in.next();
-        }
-        return new Partida(rolMaker==1,dif);
+    @org.junit.Before
+    public void setUp() throws Exception {
     }
 
-    private static void print (String message) {
-        System.out.print(message+"\n");
+    @org.junit.After
+    public void tearDown() throws Exception {
     }
 
-    public static void main (String[] args) {
-        print("Aquí probaremos la clase Partida");
-        Scanner in = new Scanner(System.in);
-        Partida test = creaPartida();
-        Boolean fin = false;
-        int n;
-        while (!fin) {
-            print("¿Qué quieres hacer con la nueva partida creada?");
-            print("1: Ver información principal.\n" +
-                    "2: Ver toda la información.\n" +
-                    "3: Probar operaciones.\n" +
-                    "4: Acabar la prueba");
-            n = in.nextInt();
-            switch (n) {
-                case 1:
-                    test.imprimeInfo();
-                    break;
-                case 2:
-                    test.imprimeAllInfo();
-                    break;
-                case 3:
-                    // FALTA ACABAR
-                    print("Opción no implementada por el momento");
-                    break;
-                case 4:
-                    fin = true;
-                    break;
-                default:
-                    print("Opción no válida.");
-                    break;
-            }
-        }
 
+    @org.junit.Test
+    public void getId() throws Exception {
+    }
+
+    @org.junit.Test
+    public void setId() throws Exception {
+    }
+
+    @org.junit.Test
+    public void getTiempo() throws Exception {
+    }
+
+    @org.junit.Test
+    public void setTiempo() throws Exception {
+    }
+
+    @org.junit.Test
+    public void isRolMaker() throws Exception {
+    }
+
+    @org.junit.Test
+    public void setRolMaker() throws Exception {
+    }
+
+    @org.junit.Test
+    public void getDificultad() throws Exception {
+    }
+
+    @org.junit.Test
+    public void setDificultad() throws Exception {
+    }
+
+    @org.junit.Test
+    public void getNumColores() throws Exception {
+    }
+
+    @org.junit.Test
+    public void setNumColores() throws Exception {
+    }
+
+    @org.junit.Test
+    public void getNumColumnas() throws Exception {
+    }
+
+    @org.junit.Test
+    public void setNumColumnas() throws Exception {
+    }
+
+    @org.junit.Test
+    public void isGanado() throws Exception {
+    }
+
+    @org.junit.Test
+    public void sumaTiempo() throws Exception {
+    }
+
+    @org.junit.Test
+    public void setCodigoSecreto() throws Exception {
+    }
+
+    @org.junit.Test
+    public void getCodigoSecreto() throws Exception {
+    }
+
+    @org.junit.Test
+    public void getNumeroFilaActual() throws Exception {
+    }
+
+    @org.junit.Test
+    public void generaCodigoSecretoAleatorio() throws Exception {
+    }
+
+    @org.junit.Test
+    public void getSiguienteIntento() throws Exception {
+    }
+
+    @org.junit.Test
+    public void generaPuntuacion() throws Exception {
+    }
+
+    @org.junit.Test
+    public void imprimeInfo() throws Exception {
+    }
+
+    @org.junit.Test
+    public void imprimeAllInfo() throws Exception {
+    }
+
+    @org.junit.Test
+    public void generaRespuesta() throws Exception {
+    }
+
+    @org.junit.Test
+    public void setIntento() throws Exception {
+    }
+
+    @org.junit.Test
+    public void setRespuesta() throws Exception {
+    }
+
+    @org.junit.Test
+    public void getUltimaRespuesta() throws Exception {
+    }
+
+    @org.junit.Test
+    public void getPista1() throws Exception {
+    }
+
+    @org.junit.Test
+    public void getPista2() throws Exception {
+    }
+
+    @org.junit.Test
+    public void getPista3() throws Exception {
     }
 
 }

@@ -318,7 +318,7 @@ public class Partida {
      *
      * @return Devuelve los colores que no estan en el codgigo secreto.
      */
-    public ArrayList<Integer> getPsta2(){
+    public ArrayList<Integer> getPista2(){
         pista2 = true;
         return getColoresNoSecretos();
     }

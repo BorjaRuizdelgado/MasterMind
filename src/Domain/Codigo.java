@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Estructura de datos para los intentos de Mastermind
  */
-public class Codigo implements Cloneable{
+public class Codigo {
     public List<Integer> codigo;
     public int size = 0;
 
@@ -31,6 +31,7 @@ public class Codigo implements Cloneable{
     public Respuesta getRespuesta(Codigo codigoACorregir){
         int negras = 0;
         int blancas = 0;
+
         for(int i = 0; i < size; ++i){
             if(codigoACorregir.codigo.get(i) == this.codigo.get(i)){
                 negras++;
@@ -47,8 +48,10 @@ public class Codigo implements Cloneable{
                 }
             }
         }
+
         blancas -= negras;
         Respuesta res = new Respuesta(size);
+
         for(int i = 0; i < size;++i){
             if(negras != 0){
                 res.respuesta.add(8);
@@ -63,8 +66,11 @@ public class Codigo implements Cloneable{
         return res;
     }
 
-
-    // Lo necesito para comparar código intento con el de verdad
+    /**
+     * Comprueba si dos objetos de tipo Codigo son iguales
+     * @param obj Codigo a comprobar.
+     * @return Retorna cierto si son iguales y falso si no lo son.
+     */
     public boolean equals(Codigo obj) {
         return codigo.equals(obj.codigo);
     }
