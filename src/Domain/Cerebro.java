@@ -1,5 +1,6 @@
 package Domain;
 
+import Util.Comparator;
 import Util.Console;
 
 import java.util.*;
@@ -169,6 +170,7 @@ public class Cerebro {
      * @return
      */
     private Codigo seleccionaCandidato(List<Codigo> candidatos){
+        Collections.sort(candidatos, new Comparator());
         int idCandidato = -1;
 
         for (int i = 0; i < candidatos.size(); i++) {
