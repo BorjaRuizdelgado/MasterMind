@@ -13,7 +13,7 @@ public class MasterMindo {
     public static void main(String[] args) {
 
             Scanner scan = new Scanner(System.in);
-            print("Bienvenid@ a MasterMindo un juego completamente nuevo y, \n" +
+            print("Bienvenid@ a MasterMindo un juego completamente nuevo y \n" +
                     "que no infringe ningun tipo de derechos de autor");
 
             print("Ahora introduce tu nombre de usuario y presiona Enter:");
