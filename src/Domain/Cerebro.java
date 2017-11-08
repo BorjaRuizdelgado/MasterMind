@@ -9,9 +9,9 @@ import java.util.*;
  */
 
 /**
- * Implementa la IA de Mastermind.
+ * Implementa la IA de Mastermind con el algoritmo 'Five Guess'
  */
-public class Cerebro {
+public class Cerebro implements Inteligencia{
 
     private List<Codigo> combinacionesTotales;
     private List<Codigo> solucionesPotenciales;

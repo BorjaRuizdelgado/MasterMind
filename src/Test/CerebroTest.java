@@ -1,9 +1,6 @@
 package Test;
 
-import Domain.Cerebro;
-import Domain.Codigo;
-import Domain.Fila;
-import Domain.Respuesta;
+import Domain.*;
 import Util.Console;
 
 
@@ -31,7 +28,7 @@ public class CerebroTest {
             code.codigo.add(in.nextInt());
         }
 
-        Cerebro cerebro = new Cerebro(colours, columns);
+        Inteligencia cerebro = new Cerebro(colours, columns);
         Codigo intento = cerebro.getIntentoInicial();
         System.out.print(intento.codigo);
 
