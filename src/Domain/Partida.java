@@ -5,7 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Clase Partida que contiene un tablero.
+ * Clase Partida.
+ * Contiene un tablero.
  * Puede contener una inteligencia si y solo si el jugador juega como CodeMaker.
  * Contiene atributos para puntuar al usuario cuando gane la partida.
  * @author ISA

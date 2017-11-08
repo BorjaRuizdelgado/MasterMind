@@ -4,12 +4,9 @@ import Util.Comparator;
 import java.util.*;
 
 /**
- *
+ * Clase Cerebro.
+ * Inteligencia que implementa el algoritmo 'Five Guess'
  * @author borja | ISA | Omar
- */
-
-/**
- * Implementa la IA de Mastermind con el algoritmo 'Five Guess'
  */
 public class Cerebro implements Inteligencia{
 
@@ -19,9 +16,9 @@ public class Cerebro implements Inteligencia{
     private int numeroColumnas;
 
 
-
     /**
-     * Creadora.
+     * Creadora Cerebro.
+     * Inicia las listas de soluciones potenciales y de combinaciones totales.
      * @param colores numero de colores que tiene el juego
      * @param columnas numero de columnas que tiene el tablero
      */
@@ -34,82 +31,13 @@ public class Cerebro implements Inteligencia{
         combinacionesTotales = new ArrayList<>(solucionesPotenciales);
     }
 
-    private void borraIntento(Codigo intento){
-        for (int i = 0; i < solucionesPotenciales.size(); i++) {
-            if(solucionesPotenciales.get(i).codigo.equals(intento.codigo)) solucionesPotenciales.remove(i);
-        }
-        for (int i = 0; i < combinacionesTotales.size(); i++) {
-            if(combinacionesTotales.get(i).codigo.equals(intento.codigo)) combinacionesTotales.remove(i);
-        }
-    }
+
+    /* CONSULTORAS */
 
     /**
-     * Genera el primer intento.
-     */
-    public Codigo getIntentoInicial(){
-        Codigo intentoActual = new Codigo(numeroColumnas);
-        for (int i = 0; i < numeroColumnas; i++) {
-            if(i < numeroColumnas / 2) intentoActual.codigo.add(1);
-            else intentoActual.codigo.add(2);
-        }
-        borraIntento(intentoActual);
-        return intentoActual;
-    }
-
-    /**
-     * Genera la combinacion de posibles potenciales.
-     */
-    private void generaPotenciales(){
-        Codigo actual = new Codigo(numeroColumnas);
-        for(int i = 0; i < numeroColumnas; i++){
-            actual.codigo.add(0);
-        }
-        generadorRecursivo(0, actual);
-    }
-
-    /**
-     * Recursivamente genera todos los potenciales necesarios.
-     * @param posicion posición para
-     * @param actual codigo a duplicar
-     */
-    private void generadorRecursivo(int posicion, Codigo actual){
-        if(posicion == numeroColumnas){
-            solucionesPotenciales.add(actual);
-            return;
-        }
-        for(int i = 1; i <= numeroColores; i++){
-            actual.codigo.set(posicion, i);
-            Codigo copia = new Codigo(actual.size);
-
-            copia.codigo = new ArrayList<>(actual.codigo);
-
-            generadorRecursivo(posicion + 1, copia);
-        }
-    }
-
-    /**
-     * Hace la criba de los potenciales descartados dada una fila
-     * @param ultimoIntento fila que contiene el codigo de colores
-     *                      del ultimo intento y la respuesta
-     */
-    private void actualizaPotenciales(Fila ultimoIntento) {
-        List<Codigo> codigosParaBorrar = new ArrayList<>();
-        Respuesta ultimaRespuesta = ultimoIntento.getRespuestas();
-        for (int i = 0; i < solucionesPotenciales.size(); i++) {
-            Respuesta respuestaPosible = solucionesPotenciales.get(i).getRespuesta(ultimoIntento.getColores());
-            if(!respuestaPosible.equals(ultimaRespuesta)) 
-                codigosParaBorrar.add(solucionesPotenciales.get(i));
-        }
-
-        for (int i = 0; i < codigosParaBorrar.size(); i++) 
-            solucionesPotenciales.remove(codigosParaBorrar.get(i));
-        
-    }
-
-    /**
-     * Genera el Codigo del siguiente intento
+     * Genera el codigo del siguiente intento
      * @param ultimoIntento El último intento que se ha hecho en el tablero
-     * @return El siguiente intento en forma de Codigo
+     * @return Codigo para el siguiente intento
      */
     public Codigo getSiguienteIntento(Fila ultimoIntento) {
         actualizaPotenciales(ultimoIntento);
@@ -121,8 +49,71 @@ public class Cerebro implements Inteligencia{
     }
 
     /**
-     *
-     * @return
+     * Función auxiliar del minmax para conseguir la máxima puntuación.
+     * @param contadorPuntuaciones map de contador de puntuaciones
+     * @return máximo de contador de puntuaciones.
+     */
+    private int getMaximaPuntuacion(Map<String, Integer> contadorPuntuaciones){
+        int max = 0;
+
+        Iterator<String> iterator = contadorPuntuaciones.keySet().iterator();
+        while (iterator.hasNext()) {
+            String key = iterator.next();
+            int aux = contadorPuntuaciones.get(key);
+            if (aux > max) max = aux;
+        }
+
+        return max;
+    }
+
+    /**
+     * Función auxiliar del minmax para conseguir la mínima puntuación.
+     * @param puntuacion map de puntuaciones
+     * @return puntuacion mínima
+     */
+    private int getMinimaPuntuacion(Map<Codigo, Integer> puntuacion){
+        int min = Integer.MAX_VALUE;
+
+        Iterator<Codigo> iterator = puntuacion.keySet().iterator();
+        while (iterator.hasNext()) {
+            Codigo key = iterator.next();
+            int aux = puntuacion.get(key);
+            if (aux < min) min = aux;
+        }
+        return min;
+    }
+
+    /**
+     * Selecciona el mejor codigo candidato de la lista.
+     * @param candidatos lista de posibles codigos candidatos
+     * @return mejor codigo para el siguiente intento
+     */
+    private Codigo seleccionaCandidato(List<Codigo> candidatos){
+        Collections.sort(candidatos, new Comparator());
+        int idCandidato = -1;
+
+        for (int i = 0; i < candidatos.size(); i++) {
+            if(solucionesPotenciales.contains(candidatos.get(i))){
+                idCandidato = i;
+                break;
+            }
+        }
+
+        if(idCandidato == -1){
+            for (int i = 0; i < candidatos.size(); i++) {
+                if(combinacionesTotales.contains(candidatos.get(i))){
+                    idCandidato = i;
+                    break;
+                }
+            }
+        }
+
+        return candidatos.get(idCandidato);
+    }
+
+    /**
+     * Devuelve la lista de códigos candidatos para ser el siguiente intento
+     * @return lista de códigos candidatos.
      */
     private List<Codigo> minmax(){
         int max, min;
@@ -157,74 +148,86 @@ public class Cerebro implements Inteligencia{
     }
 
     /**
-     *
-     * @param candidatos
-     * @return
+     * Descarta de la lista de potenciales los que no corresponden.
+     * @param ultimoIntento fila que contiene el codigo de colores
+     *                      del ultimo intento y la respuesta
      */
-    private Codigo seleccionaCandidato(List<Codigo> candidatos){
-        Collections.sort(candidatos, new Comparator());
-        int idCandidato = -1;
-
-        for (int i = 0; i < candidatos.size(); i++) {
-            if(solucionesPotenciales.contains(candidatos.get(i))){
-                idCandidato = i;
-                break;
-            }
-        }
-        
-        if(idCandidato == -1){
-            for (int i = 0; i < candidatos.size(); i++) {
-                if(combinacionesTotales.contains(candidatos.get(i))){
-                    idCandidato = i;
-                    break;
-                }
-            }
+    private void actualizaPotenciales(Fila ultimoIntento) {
+        List<Codigo> codigosParaBorrar = new ArrayList<>();
+        Respuesta ultimaRespuesta = ultimoIntento.getRespuestas();
+        for (int i = 0; i < solucionesPotenciales.size(); i++) {
+            Respuesta respuestaPosible = solucionesPotenciales.get(i).getRespuesta(ultimoIntento.getColores());
+            if(!respuestaPosible.equals(ultimaRespuesta))
+                codigosParaBorrar.add(solucionesPotenciales.get(i));
         }
 
-        return candidatos.get(idCandidato);
+        for (int i = 0; i < codigosParaBorrar.size(); i++)
+            solucionesPotenciales.remove(codigosParaBorrar.get(i));
+
     }
 
     /**
-     *
-     * @param contadorPuntuaciones
-     * @return
+     * Genera el primer intento.
      */
-    private int getMaximaPuntuacion(Map<String, Integer> contadorPuntuaciones){
-        int max = 0;
-
-        Iterator<String> iterator = contadorPuntuaciones.keySet().iterator();
-        while (iterator.hasNext()) {
-            String key = iterator.next();
-            int aux = contadorPuntuaciones.get(key);
-            if (aux > max) max = aux;
+    public Codigo getIntentoInicial(){
+        Codigo intentoActual = new Codigo(numeroColumnas);
+        for (int i = 0; i < numeroColumnas; i++) {
+            if(i < numeroColumnas / 2) intentoActual.codigo.add(1);
+            else intentoActual.codigo.add(2);
         }
+        borraIntento(intentoActual);
+        return intentoActual;
+    }
 
-        return max;
+
+    /* MODIFICADORAS */
+
+    /**
+     * Genera la combinacion de posibles potenciales.
+     */
+    private void generaPotenciales(){
+        Codigo actual = new Codigo(numeroColumnas);
+        for(int i = 0; i < numeroColumnas; i++){
+            actual.codigo.add(0);
+        }
+        generadorRecursivo(0, actual);
     }
 
     /**
-     *
-     * @param puntuacion
-     * @return
+     * Genera recursivamente todos los potenciales necesarios.
+     * @param posicion posición a añadir
+     * @param actual codigo a duplicar
      */
-    private int getMinimaPuntuacion(Map<Codigo, Integer> puntuacion){
-        int min = Integer.MAX_VALUE;
-
-        Iterator<Codigo> iterator = puntuacion.keySet().iterator();
-        while (iterator.hasNext()) {
-            Codigo key = iterator.next();
-            int aux = puntuacion.get(key);
-            if (aux < min) min = aux;
+    private void generadorRecursivo(int posicion, Codigo actual){
+        if(posicion == numeroColumnas){
+            solucionesPotenciales.add(actual);
+            return;
         }
-        return min;
+        for(int i = 1; i <= numeroColores; i++){
+            actual.codigo.set(posicion, i);
+            Codigo copia = new Codigo(actual.size);
+
+            copia.codigo = new ArrayList<>(actual.codigo);
+
+            generadorRecursivo(posicion + 1, copia);
+        }
     }
 
     /**
-     * Imprime por pantalla los potenciales actuales que tiene el objeto.
-
-    private void imprimePotenciales(){
-        for (Codigo candidata : solucionesPotenciales) {
-            System.out.println(candidata.codigo);
+     * Borra de ambas listas el código
+     * @param intento codigo a eliminar.
+     */
+    private void borraIntento(Codigo intento){
+        for (int i = 0; i < solucionesPotenciales.size(); i++) {
+            if(solucionesPotenciales.get(i).codigo.equals(intento.codigo)) solucionesPotenciales.remove(i);
         }
-    }*/
+        for (int i = 0; i < combinacionesTotales.size(); i++) {
+            if(combinacionesTotales.get(i).codigo.equals(intento.codigo)) combinacionesTotales.remove(i);
+        }
+    }
+
+
+    /* ESCRITURAS */
+
+
 }

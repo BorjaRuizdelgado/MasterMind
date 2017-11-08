@@ -161,6 +161,6 @@ public class TableroTest {
      * Imprime el intento actual.
      */
     private static void imprimeIntentoActual(){
-        System.out.println(tablero.getIntentoActual().codigo);
+        System.out.println(tablero.getActualColores().codigo);
     }
 }

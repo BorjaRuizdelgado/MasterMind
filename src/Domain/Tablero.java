@@ -1,15 +1,12 @@
 package Domain;
 
-/**
- *
- * @author borja
- */
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementa el tablero sobre el que Mastermind juega.
+ * Clase Tablero.
+ * Contiene una lista de Filas y un código secreto.
+ * @author Borja
  */
 public class Tablero {
 
@@ -33,7 +30,8 @@ public class Tablero {
     private Codigo codigoSecreto;
 
     /**
-     * Creadora.
+     * Creadora Tablero.
+     * Inicia el tablero lleno de filas del tamaño numeroColumnas.
      * @param columnas numero de columnas del tablero
      */
     public Tablero(int columnas){
@@ -41,6 +39,64 @@ public class Tablero {
         codigoSecreto = new Codigo(numeroColumnas);
         iniciaTablero();
     }
+
+    /**
+     * @return El El tablero sobre el que se juega.
+     */
+    public List<Fila> getTablero(){
+        return tablero;
+    }
+
+
+
+
+    /* CONSULTORAS */
+
+    /**
+     * Devuelve el numero de fila actual.
+     * @return Numero de fila actual.
+     */
+    public int getNumeroFilaActual() {
+        return numeroFilaActual;
+    }
+
+    /**
+     * Devuelve el código secreto del tablero.
+     * @return codigo secreto.
+     */
+    public Codigo getCodigoSecreto(){
+        return codigoSecreto;
+    }
+
+    /**
+     * Devuelve el código intento de la fila actual.
+     * @return Actual código del tablero.
+     */
+    public Codigo getActualColores(){
+        return tablero.get(numeroFilaActual).getColores();
+    }
+
+    /**
+     * Devuelve la fila anterior.
+     * Si estamos en la primera fila, se devuelve esta.
+     * @return Fila anterior.
+     */
+    public Fila getUltimoIntento(){
+        if(numeroFilaActual - 1 == -1) return tablero.get(numeroFilaActual);
+        return tablero.get(numeroFilaActual - 1);
+    }
+
+    /**
+     * Devuelve el código intento de la fila anterior.
+     * @return Último código del tablero.
+     */
+    public Codigo getUltimoColores(){
+        return getUltimoIntento().getColores();
+    }
+
+
+
+    /* MODIFICADORAS */
 
     /**
      * Inicia el tablero con filas de un tamaño concreto.
@@ -51,35 +107,22 @@ public class Tablero {
     }
 
     /**
-     * @return Array de codigo secreto.
+     * Se pasa a la siguiente fila
      */
-    public Codigo getCodigoSecreto(){
-        return codigoSecreto;
+    private void incrementaFilaActual(){
+        numeroFilaActual++;
     }
 
     /**
-     * @param codigoSecreto copiado en la variable codigoSecreto del tablero.
+     * Coloca el código secreto
+     * @param codigoSecreto codigo que se asigna al tablero como codigo secreto.
      */
     public void setCodigoSecreto(Codigo codigoSecreto){
-            this.codigoSecreto.codigo = new ArrayList<>(codigoSecreto.codigo);
+        this.codigoSecreto.codigo = new ArrayList<>(codigoSecreto.codigo);
     }
 
     /**
-     * @return La fila que utilizan los jugadores en ese momento.
-     */
-    public Fila getUltimoIntento(){
-        if(numeroFilaActual - 1 == -1) return tablero.get(numeroFilaActual);
-        return tablero.get(numeroFilaActual - 1);
-    }
-
-    /**
-     * @return Retrona el intento actual.
-     */
-    public Codigo getIntentoActual(){
-        return tablero.get(numeroFilaActual).getColores();
-    }
-
-    /**
+     * Añade el código a la fila actual
      * @param guess se establece como el intnto de adivinar el jugador.
      */
     public void setUltimoColores(Codigo guess){
@@ -87,56 +130,30 @@ public class Tablero {
     }
 
     /**
-     * Se añade la respuesta a la fila actual y se incrementa la fila.
-     * @param answer se establece como la correccion que ha hecho el jugador.
+     * Añade la respuesta a la fila actual y incrementa la fila.
+     * @param answer respuesta del código
      * @throws Exception si la respuesta es no se corresponde al código
      */
     public void setUltimoRespuestas(Respuesta answer) throws Exception {
-        if (answer.equals(codigoSecreto.getRespuesta(getIntentoActual())))
+        if (answer.equals(codigoSecreto.getRespuesta(getActualColores())))
             tablero.get(numeroFilaActual).setRespuestas(answer);
         else throw new Exception();
         incrementaFilaActual();
     }
 
     /**
-     * Se pasa a la siguiente fila para jugar.
-     */
-    public void incrementaFilaActual(){
-        numeroFilaActual++;
-    }
-
-    /**
-     * @return El El tablero sobre el que se juega.
-     */
-    public List<Fila> getTablero(){
-        return tablero;
-    }
-
-    /**
-     * Devuelve el numero de fila actual
-     * @return numero de fila actual
-     */
-    public int getNumeroFilaActual() {
-        return numeroFilaActual;
-    }
-
-    /**
-     * @return La ultima solución del tablero.
-     */
-    public Codigo getUltimoColores(){
-        return getUltimoIntento().getColores();
-    }
-
-    /**
-     * Genera la respuesta según el último código y se añade a la fila actual del tablero.
+     * Genera la respuesta según el último código y la añade a la fila actual del tablero.
      */
     public void generaRespuesta() {
         try {
-            setUltimoRespuestas(getIntentoActual().getRespuesta(codigoSecreto));
+            setUltimoRespuestas(getActualColores().getRespuesta(codigoSecreto));
         } catch (Exception e) {
             //Esta función siempre añade correctamente la respuesta
         }
     }
+
+
+    /* ESCRITURAS */
 
 
 

@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
+ * Clase Fila
+ * Estructura de datos para las filas del tablero
+ * Contiene un código de colores y una respuesta.
  * @author borja
- * Estructura de datos para las Filas del tablero de Mastermind.
  */
 public class Fila {
 
@@ -13,7 +15,8 @@ public class Fila {
     private Respuesta respuestas;
 
     /**
-     * Creadora.
+     * Creadora Fila.
+     * Crea un código de colores y una respuesta de tamaño numero columnas.
      * @param sizeColumnas tamaño
      */
     public Fila(int sizeColumnas){
@@ -21,14 +24,30 @@ public class Fila {
         respuestas = new Respuesta(sizeColumnas);
     }
 
+
+    /* CONSULTORAS */
+
     /**
-     * @return retorna la variable colores.
+     * Devuelve el código de colores
+     * @return codigo de colores.
      */
     public Codigo getColores(){
         return colores;
     }
 
     /**
+     * Devuelve la respuesta al codigo de colores.
+     * @return respuesta al código.
+     */
+    public Respuesta getRespuestas(){
+        return respuestas;
+    }
+
+
+    /* MODIFICADORAS */
+
+    /**
+     * Añade el código de colores.
      * @param colours es el array que se copiara en la variable colores.
      */
     public void setColores(Codigo colours){
@@ -37,14 +56,9 @@ public class Fila {
     }
 
     /**
-     * @return retorna la variable respuestas.
-     */
-    public Respuesta getRespuestas(){
-        return respuestas;
-    }
-
-    /**
-     * @param answers es el array que se copiara en la variable respuestas.
+     * Añade la respuesta al código de colores.
+     * Se añade siempre ordenada.
+     * @param answers respuesta al código.
      */
     public void setRespuestas(Respuesta answers) {
         respuestas.respuesta = new ArrayList<>(answers.respuesta);

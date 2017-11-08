@@ -3,20 +3,19 @@ package Domain;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author borja
- */
 
 /**
- * Estructura de datos para los intentos de Mastermind
+ * Estructura de datos para los codigos de los intentos
+ * @author borja
  */
 public class Codigo {
     public List<Integer> codigo;
     public int size = 0;
 
     /**
-     * Creadora.
-     * @param size
+     * Creadora Codigo.
+     * Crea un vector de tamaño pasado por parámetro
+     * @param size numero de columnas del tablero
      */
     public Codigo(int size){
         codigo = new ArrayList<>(size);
@@ -24,9 +23,9 @@ public class Codigo {
     }
 
     /**
-     * Dado Codigo se compara con el mismo y devuelve la respuesta.
-     * @param codigoACorregir
-     * @return respuesta
+     * Se compara con el codigo a corregir y devuelve la respuesta.
+     * @param codigoACorregir codigo a comparar
+     * @return respuesta de la comparación
      */
     public Respuesta getRespuesta(Codigo codigoACorregir){
         int negras = 0;
@@ -67,7 +66,7 @@ public class Codigo {
     }
 
     /**
-     * Comprueba si dos objetos de tipo Codigo son iguales
+     * Comprueba si dos Codigos son iguales
      * @param obj Codigo a comprobar.
      * @return Retorna cierto si son iguales y falso si no lo son.
      */
