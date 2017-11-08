@@ -4,6 +4,7 @@ import Domain.Codigo;
 import Domain.Partida;
 import Domain.Respuesta;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
 
 public class PartidaTest {
