@@ -2,19 +2,20 @@ package Test;
 
 import Domain.Codigo;
 import Domain.Partida;
+import Domain.Respuesta;
 
 import static org.junit.Assert.*;
 
 public class PartidaTest {
 
-    private Partida testMaker;
-    private Partida testBreaker;
-    private Partida testFacil;
-    private Partida testMedio;
-    private Partida testDificil;
+    private static Partida testMaker;
+    private static Partida testBreaker;
+    private static Partida testFacil;
+    private static Partida testMedio;
+    private static Partida testDificil;
 
     @org.junit.BeforeClass
-    public void setUp() throws Exception {
+    public static void setUp() throws Exception {
         testMaker = new Partida(true, "Dificil");
         testBreaker = new Partida(false, "Dificil");
         testFacil = new Partida(true, "Facil");
@@ -28,7 +29,7 @@ public class PartidaTest {
     }
 
     @org.junit.AfterClass
-    public void tearDown() throws Exception {
+    public static void tearDown() throws Exception {
     }
 
     @org.junit.Test
@@ -99,11 +100,45 @@ public class PartidaTest {
     }
 
     @org.junit.Test
-    public void setIntento() throws Exception {
+    public void testSetIntento() throws Exception {
+        /*Codigo cTestFacil = new Codigo(testFacil.getNumColumnas());
+        Codigo cTestMedio = new Codigo(testMedio.getNumColumnas());
+        Codigo cTestDificil = new Codigo(testDificil.getNumColumnas());
+
+        for (int i = 0; i < cTestFacil.size; i++) cTestFacil.codigo.add(1);
+        for (int i = 0; i < cTestMedio.size; i++) cTestMedio.codigo.add(2);
+        for (int i = 0; i < cTestDificil.size; i++) cTestFacil.codigo.add(3);
+
+        testFacil.setIntento(cTestFacil);
+        testMedio.setIntento(cTestMedio);
+        testDificil.setIntento(cTestDificil);
+
+        assertEquals(testFacil.get);
+        */
+
     }
 
     @org.junit.Test
-    public void setRespuesta() throws Exception {
+    public void testSetRespuestaCorrecta() throws Exception {
+        //Respuesta rTestFacil = new Respuesta(testFacil.getNumColumnas());
+    }
+
+    @org.junit.Test
+    public void testSetRespuesta() throws Exception {
+        /*Respuesta cTestFacil = new Respuesta(testFacil.getNumColumnas());
+        Respuesta cTestMedio = new Respuesta(testMedio.getNumColumnas());
+        Respuesta cTestDificil = new Respuesta(testDificil.getNumColumnas());
+
+        for (int i = 0; i < cTestFacil.size; i++) cTestFacil.respuesta.add(1);
+        for (int i = 0; i < cTestMedio.size; i++) cTestMedio.respuesta.add(2);
+        for (int i = 0; i < cTestDificil.size; i++) cTestFacil.respuesta.add(3);
+
+        testFacil.setRespuesta(cTestFacil);
+        testMedio.setRespuesta(cTestMedio);
+        testDificil.setRespuesta(cTestDificil);
+        */
+
+
     }
 
     @org.junit.Test

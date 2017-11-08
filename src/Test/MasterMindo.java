@@ -26,7 +26,6 @@ public class MasterMindo {
     /**Permite al usuario jugar como CodeBreaker.
      */
     private static void juegaCodeBreaker() {
-        long totalTime = 0;
         print("Dame un nivel de dificultad: Facil, Medio y Dificil");
         Scanner scan = new Scanner(System.in);
         String diff = scan.next();
@@ -99,56 +98,30 @@ public class MasterMindo {
     }
 
     /**
-     * El usuario corrige a la maquina.
+     * El usuario corrige el codigo de la maquina.
      */
     private static void corrige(){
-        Respuesta respuestaUsr = new Respuesta(pary.getNumColumnas());
-        Codigo intento = pary.getSiguienteIntento();
+        Respuesta respuestaUsr;
+        Codigo intento = pary.generaSiguienteIntento();
         print("Corrige el intento de la maquina\n" +
                 "Pon 8 como Negro, 7 como Blanco y 0 como vacio.\nCODIGO A CORREGIR:");
         System.out.println(intento.codigo);
         Scanner scan = new Scanner(System.in);
-        Boolean First = true;
-        while(!intento.getRespuesta(pary.getCodigoSecreto()).equals(respuestaUsr)){
-            if (!First) {
-                print("Respuesta no válida. Introduce tu respuesta de nuevo.");
-            }
+        while(true){
             respuestaUsr = new Respuesta(pary.getNumColumnas());
             for(int i = 0; i < pary.getNumColumnas();i++) respuestaUsr.respuesta.add(scan.nextInt());
-            First = false;
-
-        }
-        pary.setRespuesta(respuestaUsr);
-    }
-
-    private static void print (String message) {
-        System.out.print(message+"\n");
-    }
-
-    /**
-     * Dado una dificultad, un tiempo total de usuario y el numero de intentos esta funcion genera una puntuación.
-     * @param tiempo Tiempo total del Usuario para resolver el Mastermind.
-     * @param dificltad Dificultad Escogida.
-     * @param numeroFila Numero de intentos empleados.
-     * @return Puntuación.
-     */
-    private static int computarRanking(float tiempo, String dificltad, int numeroFila){
-        float resultado = 0;
-
-        resultado += (15 - numeroFila)*777;
-        resultado += 1000000/(tiempo/1000);
-        switch(dificltad){
-            case "Medio":
-                resultado *= 1.10;
+            try {
+                pary.setRespuesta(respuestaUsr);
                 break;
-            case "Dificil":
-                resultado *= 1.20;
+            } catch (Exception e) {
+                print("Respuesta no válida. Comprueba tu respuesta.");
+            }
         }
-        return (int)resultado;
     }
 
+
     /**
-     * Lee el intento del usuario y lo pone en el tablero.
+     * Lee el intento del usuario, lo añade al tablero y genera la respuesta.
      */
     private static void computarIntentoUsuario(){
         Scanner scan = new Scanner(System.in);
@@ -159,6 +132,14 @@ public class MasterMindo {
 
         pary.setIntento(code);
         pary.generaRespuesta();
+    }
+
+    /**
+     * Funcion para no escribir System.out.println.
+     * @param message mensaje a escribir.
+     */
+    private static void print (String message) {
+        System.out.print(message+"\n");
     }
 }
 

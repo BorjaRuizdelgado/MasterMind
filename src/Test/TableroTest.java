@@ -122,12 +122,16 @@ public class TableroTest {
             for (int i = 0; i < tam; ++i) {
                 secreto.respuesta.add(sca.nextInt());
             }
-
-            if(secreto.equals(tablero.getCodigoSecreto().getRespuesta(tablero.getIntentoActual()))){
+            try {
+                tablero.setUltimoRespuestas(secreto);
                 break;
             }
+            catch (Exception e) {
+                System.out.println("Respuesta no válida.");
+            }
+
         }
-        tablero.setUltimoRespuestas(secreto);
+
 
     }
 

@@ -89,9 +89,12 @@ public class Tablero {
     /**
      * Se añade la respuesta a la fila actual y se incrementa la fila.
      * @param answer se establece como la correccion que ha hecho el jugador.
+     * @throws Exception si la respuesta es no se corresponde al código
      */
-    public void setUltimoRespuestas(Respuesta answer){
-        tablero.get(numeroFilaActual).setRespuestas(answer);
+    public void setUltimoRespuestas(Respuesta answer) throws Exception {
+        if (answer.equals(codigoSecreto.getRespuesta(getIntentoActual())))
+            tablero.get(numeroFilaActual).setRespuestas(answer);
+        else throw new Exception();
         incrementaFilaActual();
     }
 
@@ -125,10 +128,14 @@ public class Tablero {
     }
 
     /**
-     * En el momento en el que se llama a esta función el sistema corrige el ultimo guess que se le ha hecho al tablero
+     * Genera la respuesta según el último código y se añade a la fila actual del tablero.
      */
-    public void generaRespuesta(){
-        setUltimoRespuestas(getIntentoActual().getRespuesta(codigoSecreto));
+    public void generaRespuesta() {
+        try {
+            setUltimoRespuestas(getIntentoActual().getRespuesta(codigoSecreto));
+        } catch (Exception e) {
+            //Esta función siempre añade correctamente la respuesta
+        }
     }
 
 
