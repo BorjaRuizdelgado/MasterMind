@@ -3,8 +3,6 @@ package Test;
 import Domain.Info;
 import Domain.SistemaRanking;
 import Util.Console;
-
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -21,6 +19,9 @@ import java.util.Scanner;
 public class SistemaRankingTest {
 
     private static SistemaRanking sistemaRanking;
+    /**
+     * Nombres que usaremos para generar las listas.
+     */
     private static String []names = new String[]{
             "Yasuo",
             "Camden",
@@ -34,7 +35,10 @@ public class SistemaRankingTest {
             "Zed",
             };
 
-
+    /**
+     * Función que nos sirve para mostrar una lista de tipo 'Info' de manera estética.
+     * @param ranking Es la lista que enseñaremos en pantalla.
+     */
     private static void muestra(List<Info> ranking){
         if(ranking.size() != 0) {
             for (Info info : ranking) {
@@ -48,6 +52,12 @@ public class SistemaRankingTest {
         }
     }
 
+    /**
+     * Con esta función, generamos una lista de tipo 'Info' con datos aleatorios.
+     * @return Devolvemos una lista de tamaño diez, cada instancia de clase 'Info' contiene un nombre cogido del
+     * atributo privado 'names', una puntuación de 0 a 9999, y una fecha del random del 01-1-70 al 30-12-90 (La fecha
+     * generado puede no respetar la realidad.)
+     */
     private static List<Info> getRandomInfo(){
         List<Info> Return = new ArrayList<>();
         Random random = new Random(System.currentTimeMillis());
@@ -56,7 +66,7 @@ public class SistemaRankingTest {
             int puntuacion = random.nextInt(10000);
             int day = 1 + random.nextInt(31);
             int month = 1 + random.nextInt(12);
-            int year = 70 + random.nextInt(20);
+            int year = 70 + random.nextInt(21);
             String data = String.valueOf(day) + "-" + String.valueOf(month) + "-" + String.valueOf(year);
             Return.add(new Info(name, puntuacion, data));
         }
@@ -64,6 +74,11 @@ public class SistemaRankingTest {
         return Return;
     }
 
+    /**
+     * Función que actualiza la lista de la instáncia 'sistemaRanking', dependiendo de lo que indica el parámetro 'which'.
+     * El ranking al que haga referencia 'which', se le añadirá información random.
+     * @param which Parámetro que indica el tipo de ranking (Fácil, normal o difícil).
+     */
     private static void actualiza(String which){
         switch (which){
             case "facil":
@@ -80,6 +95,13 @@ public class SistemaRankingTest {
                 break;
         }
     }
+
+    /**
+     * Este main muestra un menú en pantalla, en el que mostramos diversas opciones que pueden ser escogidas. En este
+     * menú, podemos mostrar la información de los rankings (que se generan al principio del programa), también filtrar
+     * las información de los rankings por nombres introducidos por el usuario.
+     * @param args -
+     */
     public static void main(String[] args) {
         try {
             Scanner in = new Scanner(System.in);

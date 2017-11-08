@@ -1,8 +1,6 @@
 package Domain;
 
 import Util.Comparator;
-import Util.Console;
-
 import java.util.*;
 
 /**
@@ -95,11 +93,6 @@ public class Cerebro {
      *                      del ultimo intento y la respuesta
      */
     private void actualizaPotenciales(Fila ultimoIntento) {
-        /*Respuesta ultimaRespuesta = ultimoIntento.getRespuestas();
-        for (int i = 0; i < solucionesPotenciales.size(); i++) {
-            Respuesta respuestaPosible = ultimoIntento.getColores().getRespuesta(solucionesPotenciales.get(i));
-            if(!respuestaPosible.respuesta.equals(ultimaRespuesta.respuesta)) solucionesPotenciales.remove(i);
-        }*/
         List<Codigo> codigosParaBorrar = new ArrayList<>();
         Respuesta ultimaRespuesta = ultimoIntento.getRespuestas();
         for (int i = 0; i < solucionesPotenciales.size(); i++) {
@@ -228,10 +221,10 @@ public class Cerebro {
 
     /**
      * Imprime por pantalla los potenciales actuales que tiene el objeto.
-     */
+
     private void imprimePotenciales(){
         for (Codigo candidata : solucionesPotenciales) {
             System.out.println(candidata.codigo);
         }
-    }
+    }*/
 }

@@ -3,8 +3,11 @@ package Test;
 import Domain.Codigo;
 import Util.Comparator;
 import Util.Console;
-
 import java.util.*;
+
+/**
+ * @author Omar
+ */
 
 /**
  * Clase auxiliar que compara dos códigos y que nos servirá para ordenar una lista de ellos.
