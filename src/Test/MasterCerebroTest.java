@@ -7,12 +7,11 @@ import Util.Console;
 import java.util.Scanner;
 
 /**
+ * MasterCerebro Test
+ * Implementa un Main para poder probar de manera interactiva la clase.
  * @author Omar
  */
 
-/**
- * Implementa un Main para poder probar de manera interactiva la clase.
- */
 public class MasterCerebroTest {
 
     public static void main(String[] args){

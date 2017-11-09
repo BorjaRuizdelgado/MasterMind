@@ -4,20 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Omar
- * Implementacón de un Usuario para poder guardar sus partidas.
+ * Clase Usuario
+ * Tiene un nombre único en el sistema.
+ * Tiene una partida actual y una lista de partidas guardadas. Así como un recuento de las finalizadas.
+ * @author ISA
  */
 public class Usuario {
-    /**
-     * Atributos
-     */
+
     private String nombre;
     private int numPartidasFinalizadas;
     private List <Partida> partidasGuardadas;
     private Partida partidaActual;
 
     /**
-     * Creadora que coje un nombre como parámetro
+     * Creadora Usuario.
+     * Crea un usuario con el nombre pasado como parámetro
      * @param nombre El nombre del usuario.
      */
     public Usuario(String nombre) {
@@ -26,16 +27,18 @@ public class Usuario {
         partidasGuardadas = new ArrayList<>();
     }
 
+    /* CONSULTORAS */
+
     /**
-     * Devolvemos el nombre del usuario
-     * @return Nombre.
+     * Devuelve el nombre del usuario
+     * @return Nombre del usuario
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * Actualizamos el nombre del usario
+     * Actualiza el nombre del usario
      * @param nuevoNombre Nuevo nombre del usuario.
      */
     public void setNombre(String nuevoNombre) {
@@ -43,7 +46,7 @@ public class Usuario {
     }
 
     /**
-     * Devolvemos el número de partidas totales del jugador
+     * Devuelve el número de partidas totales
      * @return numPartidasFinalizadas
      */
     public int getNumPartidasFinalizadas() {
@@ -51,35 +54,11 @@ public class Usuario {
     }
 
     /**
-     * Creamos una nueva partida y la asignamos como partida actual
-     * @param rolMaker rol de la partida
-     * @param dif dificultad de la partida
-     */
-    public void creaPartidaActual(Boolean rolMaker, String dif) {
-        this.partidaActual = new Partida(rolMaker, dif);
-    }
-
-    /**
-     * Devuelve la partida actual
+     * Devuelve la partida actual del usuario
      * @return partidaActual
      */
     public Partida getPartidaActual() {
         return this.partidaActual;
-    }
-
-    /**
-     * Añade la partida actual a la lista de partidas guardadas
-     */
-    public void guardaPartidaActual() throws NullPointerException {
-        partidasGuardadas.add(partidaActual);
-        partidaActual = null;
-    }
-
-    /**
-     * Incrementamos el número de partidas totales
-     */
-    public void incrementaPartidasTotales(){
-        numPartidasFinalizadas++;
     }
 
     /**
@@ -90,15 +69,30 @@ public class Usuario {
         return partidaActual.getId();
     }
 
+    /* MODIFICADORAS */
+
     /**
-     * Imprime por pantalla la información de todas las partidas guardadas
+     * Incrementa el número de partidas totales
      */
-    public void imprimeInfoPartidasGuardadas() {
-        if (partidasGuardadas.size() == 0)
-            System.out.println("No hay partidas guardadas");
-        for (Partida pG : partidasGuardadas) {
-            pG.imprimeInfo();
-        }
+    public void incrementaPartidasTotales(){
+        numPartidasFinalizadas++;
+    }
+
+    /**
+     * Crea una nueva partida y la asigna como partida actual
+     * @param rolMaker rol de la partida
+     * @param dif dificultad de la partida
+     */
+    public void creaPartidaActual(Boolean rolMaker, String dif) {
+        this.partidaActual = new Partida(rolMaker, dif);
+    }
+
+    /**
+     * Añade la partida actual a la lista de partidas guardadas y la elimina de partida actual.
+     */
+    public void guardaPartidaActual() {
+        partidasGuardadas.add(partidaActual);
+        partidaActual = null;
     }
 
     /**
@@ -108,5 +102,22 @@ public class Usuario {
         partidaActual = null;
         numPartidasFinalizadas++;
     }
+
+
+
+    /* ESCRITURAS */
+
+    /**
+     * Imprime por pantalla la información de todas las partidas guardadas
+     * TODO excepción concreta
+     */
+    public void imprimeInfoPartidasGuardadas() throws Exception {
+        if (partidasGuardadas.size() == 0) throw new Exception();
+        for (Partida pG : partidasGuardadas) {
+            pG.imprimeInfo();
+        }
+    }
+
+
 
 }

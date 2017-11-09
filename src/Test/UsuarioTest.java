@@ -7,17 +7,17 @@ import Domain.Usuario;
 import java.util.Scanner;
 
 /**
- * @author ISA
+ * Usuario Test
  * Implementa un Main para poder probar de manera interactiva la clase.
+ * @author ISA
  */
 public class UsuarioTest {
 
     /**
      * Crea una partida actual para el usuario pasado por parámetro y la devuelve
      * @param test usuario al que se le asigna la nueva partida
-     * @return nueva partida actual creada para el usuario
      */
-    private static Partida creaPartida (Usuario test) {
+    private static void creaPartida (Usuario test) {
         Scanner in = new Scanner(System.in);
         println("Introduce el ROL: 1 (CodeMaker) ó 0 (CodeBreaker)");
         int rol = in.nextInt();
@@ -32,7 +32,6 @@ public class UsuarioTest {
             dif = in.next();
         }
         test.creaPartidaActual(rol==1, dif);
-        return test.getPartidaActual();
     }
 
     public static void main (String[] args) {
@@ -50,7 +49,7 @@ public class UsuarioTest {
             println("¿Qué desea hacer?");
             println("1: Ver mi información.\n2: Cambiar nombre.\n3: Crear una partida\n" +
                     "4: Guardar la partida actual.\n5: Obtener info de las partidas guardadas.\n" +
-                    "6: Finalizar partida actual. \n7: Acabar la prueba.");
+                    "6: Finalizar como completa la partida actual. \n7: Acabar la prueba.");
             n = in.nextInt();
             switch (n) {
                 case 1:
@@ -79,7 +78,11 @@ public class UsuarioTest {
                     else println("No hay ninguna partida actual");
                     break;
                 case 5:
-                    test.imprimeInfoPartidasGuardadas();
+                    try {
+                        test.imprimeInfoPartidasGuardadas();
+                    } catch (Exception e) {
+                        println("No hay partidas guardadas.");
+                    }
                     break;
                 case 6:
                     if (p) {

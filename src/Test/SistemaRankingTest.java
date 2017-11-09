@@ -9,16 +9,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
+ * SistemaRanking Test
+ * Implementa un Main para poder probar de manera interactiva la clase.
  * @author Omar
  */
-
-/**
- * Implementa un Main para poder probar de manera interactiva la clase.
- */
-
 public class SistemaRankingTest {
 
     private static SistemaRanking sistemaRanking;
+
     /**
      * Nombres que usaremos para generar las listas.
      */

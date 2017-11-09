@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * Clase Cerebro.
  * Inteligencia que implementa el algoritmo 'Five Guess'
- * @author borja | ISA | Omar
+ * @author borja && ISA && Omar
  */
 public class Cerebro implements Inteligencia{
 
@@ -167,7 +167,8 @@ public class Cerebro implements Inteligencia{
     }
 
     /**
-     * Genera el primer intento.
+     * Devuelve el primer intento.
+     * Y lo borra de las listas.
      */
     public Codigo getIntentoInicial(){
         Codigo intentoActual = new Codigo(numeroColumnas);
