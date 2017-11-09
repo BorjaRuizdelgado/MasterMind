@@ -47,9 +47,9 @@ public class UsuarioTest {
         Boolean p = false;
         while(!fin) {
             println("¿Qué desea hacer?");
-            println("1: Ver mi información.\n2: Cambiar nombre.\n3: Crear una partida\n" +
-                    "4: Guardar la partida actual.\n5: Obtener info de las partidas guardadas.\n" +
-                    "6: Finalizar como completa la partida actual. \n7: Acabar la prueba.");
+            println("[1] Ver mi información.\n[2] Cambiar nombre.\n[3] Crear una partida\n" +
+                    "[4] Guardar la partida actual.\n[5] Obtener info de las partidas guardadas.\n" +
+                    "[6] Finalizar como completa la partida actual. \n[7] Acabar la prueba.");
             n = in.nextInt();
             switch (n) {
                 case 1:

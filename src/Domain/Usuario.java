@@ -74,7 +74,7 @@ public class Usuario {
     /**
      * Incrementa el número de partidas totales
      */
-    public void incrementaPartidasTotales(){
+    private void incrementaPartidasTotales(){
         numPartidasFinalizadas++;
     }
 
@@ -100,7 +100,7 @@ public class Usuario {
      */
     public void finalizarPartidaActual() {
         partidaActual = null;
-        numPartidasFinalizadas++;
+        incrementaPartidasTotales();
     }
 
 

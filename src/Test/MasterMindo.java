@@ -3,10 +3,16 @@ package Test;
 import Domain.*;
 import static Util.Console.*;
 import java.util.Scanner;
+
+/**
+ * MASTERMINDO GAME TEST
+ * Implementa un Main para poder probar de manera interactiva el juego completo.
+ * @author ISA
+ */
 public class MasterMindo {
     public static Usuario usr;
     public static Partida pary;
-    
+
     public static void main(String[] args) {
 
             Scanner scan = new Scanner(System.in);
@@ -21,9 +27,12 @@ public class MasterMindo {
             int rol = scan.nextInt();
             if(rol == 1) juegaCodeMaker();
             else if(rol == 2) juegaCodeBreaker();
+            usr.finalizarPartidaActual();
+            println("El juego ha terminado.");
     }
 
-    /**Permite al usuario jugar como CodeBreaker.
+    /**
+     * Permite al usuario jugar como CodeBreaker.
      */
     private static void juegaCodeBreaker() {
         println("Dame un nivel de dificultad: Facil, Medio y Dificil");
@@ -44,6 +53,8 @@ public class MasterMindo {
             pary.sumaTiempo(endTime - startTime);
 
             println("Has obtenido esta respuesta: " + pary.getUltimaRespuesta().toString());
+
+            //todo falta añadir el uso de pistas
         }
         if (!pary.isGanado()) {
             println("Has perdido! Este era el código secreto:");
@@ -54,7 +65,9 @@ public class MasterMindo {
             println("Has ganado con "+pary.getNumeroFilaActual()+" intentos.");
         }
 
-        System.out.println(usr.getNombre() + " tu puntuación total es de: " + pary.generaPuntuacion());
+        println(usr.getNombre() + " tu puntuación total es de: " + pary.generaPuntuacion());
+
+        //todo añadir la puntuación al ranking
 
     }
 
@@ -73,10 +86,10 @@ public class MasterMindo {
         }
 
         if (!pary.isGanado()) {
-            println("Has perdido!");
+            println("¡No ha conseguido descubrir tu código!");
         }
         else {
-            println("Has ganado con "+pary.getNumeroFilaActual()+" intentos.");
+            println("Ha descubierto tu código en "+pary.getNumeroFilaActual()+" intentos.");
         }
     }
 

@@ -6,11 +6,9 @@ import Util.Console;
 import java.util.*;
 
 /**
- * @author Omar
- */
-
-/**
+ * Comparator Test
  * Clase auxiliar que compara dos códigos y que nos servirá para ordenar una lista de ellos.
+ * @author Omar
  */
 public class ComparatorTest {
 

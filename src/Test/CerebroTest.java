@@ -6,12 +6,11 @@ import Util.Console;
 
 import java.util.Scanner;
 
-/**
- * @author Omar
- */
 
 /**
+ * Cerebro Test
  * Implementa un Main para poder probar de manera interactiva la clase.
+ * @author Omar
  */
 public class CerebroTest {
 

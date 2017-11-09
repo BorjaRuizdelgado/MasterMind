@@ -5,14 +5,14 @@ package Test;
 import Domain.Codigo;
 import Domain.Fila;
 import Domain.Respuesta;
+import static Util.Console.*;
 
 import java.util.Scanner;
 
 /**
- * @author borja
- */
-/**
+ * Fila Test
  * Implementa un Main para poder probar de manera interactiva la clase.
+ * @author borja
  */
 public class FilaTest {
     public static Fila fila;
@@ -58,7 +58,7 @@ public class FilaTest {
      * @param num sirve para agilizar el proceso de insercion ya que se dispone de el en el main
      */
     private static void insertarColores(int num){
-        System.out.println("Intorduce una serie de colores en forma de numeros\n");
+        println("Introduce una serie de colores en forma de numeros");
         Codigo code = new Codigo(num);
         Scanner s = new Scanner(System.in);
         for(int i = 0; i < num; i++) {
@@ -73,7 +73,7 @@ public class FilaTest {
      * @param num sirve para agilizar el proceso de insercion ya que se dispone del el en el main
      */
     private static void insertarRespuesta(int num){
-        System.out.println("Intorduce una serie de 8s (negro) y 7s (blanco)\n");
+        println("Intorduce una serie de 8s (negro) y 7s (blanco)\n");
         Respuesta code = new Respuesta(num);
         Scanner s = new Scanner(System.in);
         for(int i = 0; i < num; i++) {
