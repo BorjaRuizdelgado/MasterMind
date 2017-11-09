@@ -132,7 +132,7 @@ public class SistemaRanking {
      * @param information Contiene la información de la partida. Es la info. que se añadirá a uno de los rankings.
      * @param dificultad Especifica en que ranking se añadirá la información 'information'
      */
-    public void setNewPuntuation(Info information, String dificultad){
+    public void addNewPuntuation(Info information, String dificultad){
         switch (dificultad){
             case "Facil":
                 rankingFacil.add(information);
