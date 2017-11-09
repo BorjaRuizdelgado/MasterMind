@@ -2,9 +2,7 @@ package Domain;
 
 import Util.Console;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Clase MasterCerebro
@@ -61,6 +59,12 @@ public class MasterCerebro implements Inteligencia {
         while (candidatos.size() <= MAXSIZE && generationCount <= MAXGEN){
             List<Codigo> hijos = new ArrayList<>();
 
+            for (int i = 0; i < poblacion.size(); i++) {
+                // Mutaciones
+            }
+
+            Map<Codigo, Integer> puntuaciones = calculaPuntuaciones(hijos);
+
         }
 
         return new ArrayList<>();
@@ -76,5 +80,13 @@ public class MasterCerebro implements Inteligencia {
             poblacion.add(codigo);
         }
         return poblacion;
+    }
+
+    private HashMap<Codigo, Integer> calculaPuntuaciones(List<Codigo> hijos){
+        return new HashMap<>();
+    }
+
+    private void ordenaPuntuaciones(HashMap<Codigo, Integer> puntuaciones){
+
     }
 }
