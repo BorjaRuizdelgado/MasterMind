@@ -1,23 +1,21 @@
 package Test;
 
 import Domain.*;
-
-import java.util.Scanner;
 import static Util.Console.*;
-
+import java.util.Scanner;
 public class MasterMindo {
     public static Usuario usr;
     public static Partida pary;
     public static void main(String[] args) {
 
             Scanner scan = new Scanner(System.in);
-            print("Bienvenid@ a MasterMindo un juego completamente nuevo y \n" +
+            println("Bienvenid@ a MasterMindo un juego completamente nuevo y \n" +
                     "que no infringe ningun tipo de derechos de autor");
 
-            print("Ahora introduce tu nombre de usuario y presiona Enter:");
+            println("Ahora introduce tu nombre de usuario y presiona Enter:");
             String nombreUsuario = scan.next();
             usr = new Usuario(nombreUsuario);
-            print("¡Se ha creado tu usuario!\n" +
+            println("¡Se ha creado tu usuario!\n" +
                     "\nPresiona 1 para JUGAR como CODEMAKER o 2 para JUGAR com CODEBREAKER");
             int rol = scan.nextInt();
             if(rol == 1) juegaCodeMaker();
@@ -27,15 +25,15 @@ public class MasterMindo {
     /**Permite al usuario jugar como CodeBreaker.
      */
     private static void juegaCodeBreaker() {
-        print("Dame un nivel de dificultad: Facil, Medio y Dificil");
+        println("Dame un nivel de dificultad: Facil, Medio y Dificil");
         Scanner scan = new Scanner(System.in);
         String diff = scan.next();
         usr.creaPartidaActual(false,diff);
         pary = usr.getPartidaActual();
         pary.generaCodigoSecretoAleatorio();
-        print("Intenta adivinar el código secreto.");
+        println("Intenta adivinar el código secreto.");
         while(pary.getNumeroFilaActual() != 15 && !pary.isGanado()){
-            print("Introduce un código de tamaño " + pary.getNumColumnas() +" separado por espacios\n" +
+            println("Introduce un código de tamaño " + pary.getNumColumnas() +" separado por espacios\n" +
                     "Formado por numeros del 1 al "+ pary.getNumColores());
             long startTime = System.currentTimeMillis();
 
@@ -44,15 +42,15 @@ public class MasterMindo {
             long endTime = System.currentTimeMillis();
             pary.sumaTiempo(endTime - startTime);
 
-            print("Has obtenido esta respuesta: " + pary.getUltimaRespuesta().toString());
+            println("Has obtenido esta respuesta: " + pary.getUltimaRespuesta().toString());
         }
         if (!pary.isGanado()) {
-            print("Has perdido! Este era el código secreto:");
+            println("Has perdido! Este era el código secreto:");
             System.out.println(pary.getCodigoSecreto().codigo);
         }
 
         else {
-            print("Has ganado con "+pary.getNumeroFilaActual()+" intentos.");
+            println("Has ganado con "+pary.getNumeroFilaActual()+" intentos.");
         }
 
         System.out.println(usr.getNombre() + " tu puntuación total es de: " + pary.generaPuntuacion());
@@ -63,7 +61,7 @@ public class MasterMindo {
      * Permite al usuario jugar como CodeMaker.
      */
     private static void juegaCodeMaker(){
-        print("Dame un nivel de dificultad: Facil, Medio y Dificil");
+        println("Dame un nivel de dificultad: Facil, Medio y Dificil");
         Scanner scan = new Scanner(System.in);
         String diff = scan.next();
         usr.creaPartidaActual(true,diff);
@@ -74,10 +72,10 @@ public class MasterMindo {
         }
 
         if (!pary.isGanado()) {
-            print("Has perdido!");
+            println("Has perdido!");
         }
         else {
-            print("Has ganado con "+pary.getNumeroFilaActual()+" intentos.");
+            println("Has ganado con "+pary.getNumeroFilaActual()+" intentos.");
         }
     }
 
@@ -85,7 +83,7 @@ public class MasterMindo {
      * El usuario puede poner un codigo secreto en el tablero
      */
     private static void setCodigoSecreto(){
-        print("Dame el codigo secreto de tamaño " + pary.getNumColumnas() +" separado por espacios\n" +
+        println("Dame el codigo secreto de tamaño " + pary.getNumColumnas() +" separado por espacios\n" +
                 "Formado por numeros del 1 al "+ pary.getNumColores());
         Codigo code = new Codigo(pary.getNumColumnas());
         Scanner scan = new Scanner(System.in);
@@ -95,7 +93,7 @@ public class MasterMindo {
 
         pary.setCodigoSecreto(code);
 
-        print("EL JUEGO EMPIEZA\n");
+        println("EL JUEGO EMPIEZA\n");
     }
 
     /**
@@ -104,7 +102,7 @@ public class MasterMindo {
     private static void corrige(){
         Respuesta respuestaUsr;
         Codigo intento = pary.generaSiguienteIntento();
-        print("Corrige el intento de la maquina\n" +
+        println("Corrige el intento de la maquina\n" +
                 "Pon 8 como Negro, 7 como Blanco y 0 como vacio.\nCODIGO A CORREGIR:");
         System.out.println(intento.codigo);
         Scanner scan = new Scanner(System.in);
@@ -116,7 +114,7 @@ public class MasterMindo {
                 pary.setRespuesta(respuestaUsr);
                 break;
             } catch (Exception e) {
-                print("Respuesta no válida. Comprueba tu respuesta.");
+                println("Respuesta no válida. Comprueba tu respuesta.");
             }
         }
     }
