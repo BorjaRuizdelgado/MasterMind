@@ -278,6 +278,7 @@ public class Partida {
      * @return puntuación de la partida
      */
     public int generaPuntuacion() {
+        if(pista3 || pista2 || pista1 || (tablero.getNumeroFilaActual() == 15 && !ganado)) return 0;
         float resultado = 0;
 
         resultado += (15 - tablero.getNumeroFilaActual())*777;
