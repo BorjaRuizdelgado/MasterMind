@@ -3,6 +3,7 @@ package Test;
 import Domain.*;
 
 import java.util.Scanner;
+import static Util.Console.*;
 
 public class MasterMindo {
     public static Usuario usr;
@@ -134,13 +135,6 @@ public class MasterMindo {
         pary.generaRespuesta();
     }
 
-    /**
-     * Funcion para no escribir System.out.println.
-     * @param message mensaje a escribir.
-     */
-    private static void print (String message) {
-        System.out.print(message+"\n");
-    }
 }
 
 

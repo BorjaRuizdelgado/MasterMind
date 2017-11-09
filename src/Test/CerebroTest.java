@@ -35,9 +35,6 @@ public class CerebroTest {
         while(true){
             Respuesta respuesta = intento.getRespuesta(code);
             System.out.println(" -> " +  "{" + respuesta + "}");
-            /*Console.println("********", "red");
-            cerebro.imprimePotenciales();
-            Console.println("********", "red");*/
             if(code.equals(intento)) break; // Finalizamos si ya hemos encontrado el código
 
             Fila fila = new Fila(columns);
