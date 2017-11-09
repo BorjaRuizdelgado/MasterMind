@@ -126,4 +126,25 @@ public class SistemaRanking {
     public void setRankingDificil(List<Info> ranking){
         rankingDificil = new ArrayList<>(ranking);
     }
+
+    /**
+     * Añadimos la información de una nueva partida a una lista en concreto especificada en el parámetro 'dificultad'
+     * @param information Contiene la información de la partida. Es la info. que se añadirá a uno de los rankings.
+     * @param dificultad Especifica en que ranking se añadirá la información 'information'
+     */
+    public void setNewPuntuation(Info information, String dificultad){
+        switch (dificultad){
+            case "Facil":
+                rankingFacil.add(information);
+                break;
+            case "Medio":
+                rankingNormal.add(information);
+                break;
+            case "Dificil":
+                rankingDificil.add(information);
+                break;
+            default:
+                break;
+        }
+    }
 }
