@@ -1,33 +1,40 @@
 package Test;
 
-/**
- * @author Omar
- */
-
 import Domain.Info;
 import Util.Console;
 
 import java.util.Scanner;
 
 /**
+ * Info Test
  * Implementa un Main para poder probar de manera interactiva la clase.
+ * @author Omar
  */
 public class InfoTest {
 
     private static Info info;
 
+    /**
+     * Imprime el usuario
+     */
     private static void opcion1(){
         String usuario = info.getUsuario();
         Console.print("El nombre del usuario es: ");
         Console.println(usuario, "green");
     }
 
+    /**
+     * Imprime la puntuación
+     */
     private static void opcion2(){
         int puntuacion= info.getPuntuacion();
         Console.print("La puntuación es: ");
         Console.println(String.valueOf(puntuacion), "green");
     }
 
+    /**
+     * Imprime la fecha
+     */
     private static void opcion3(){
         String fecha = info.getFecha();
         Console.print("La fecha es: ");
