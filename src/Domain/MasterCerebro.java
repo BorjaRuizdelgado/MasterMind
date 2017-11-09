@@ -1,9 +1,5 @@
 package Domain;
 
-/**
- * @author Omar
- */
-
 import Util.Console;
 
 import java.util.ArrayList;
@@ -11,7 +7,9 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * Clase MasterCerebro
  * Implementa la IA de Mastermind con el algoritmo genético.
+ * @author Omar
  */
 public class MasterCerebro implements Inteligencia {
 

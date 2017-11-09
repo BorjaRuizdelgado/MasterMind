@@ -1,11 +1,11 @@
 package Domain;
 
-/**
- * @author Omar
- */
+
 
 /**
- * Interfaz que contiene métodos abstractos para que puedan ser implementados en las clases que definen la IA.
+ * Interfaz Inteligencia
+ * Contiene métodos abstractos para que puedan ser implementados en las clases que definen la IA.
+ * @author Omar
  */
 public interface Inteligencia {
     Codigo getIntentoInicial();

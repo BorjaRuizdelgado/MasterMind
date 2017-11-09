@@ -4,21 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Clase SistemaRanking
+ * Singleton que contiene tres listas que corresponden a los diferentes ránkings según dificultad.
  * @author Omar
  */
 public class SistemaRanking {
-    /**
-     * Atributos
-     */
-    private static SistemaRanking uniqueInstance;
 
+    private static SistemaRanking uniqueInstance;
     private List<Info> rankingFacil;
     private List<Info> rankingNormal;
     private List<Info> rankingDificil;
 
     /**
-     * Inicializa el singleton, obviamente el método es provado
+     * Inicializa el singleton, obviamente el método es privado
      */
     private SistemaRanking() {
         rankingFacil = new ArrayList<>();
@@ -37,10 +35,10 @@ public class SistemaRanking {
     }
 
     /**
-     * Devolvemos la intersección entre la lista que contiene datos del usuario
+     * Devuelve la intersección entre la lista que contiene datos del usuario
      * @param lista Es la lista de donde saldrán las entradas
      * @param nombre El nombre del usuario
-     * @return
+     * @return Lista con solo información del usuario.
      */
     private List<Info> getInterseccionNombre(List<Info> lista, String nombre){
         List<Info> result = new ArrayList<>();
@@ -52,7 +50,7 @@ public class SistemaRanking {
     }
 
     /**
-     * Devolvemos listaRankingFacil
+     * Devuelve listaRankingFacil
      * @return rankingFacil
      */
     public List<Info> getRankingFacil(){
@@ -60,7 +58,7 @@ public class SistemaRanking {
     }
 
     /**
-     * Devolvemos listaRankingNormal
+     * Devuelve listaRankingNormal
      * @return rankingNormal
      */
     public List<Info> getRankingNormal(){
@@ -68,7 +66,7 @@ public class SistemaRanking {
     }
 
     /**
-     * Devolvemos listaRankingDificil
+     * Devuelve listaRankingDificil
      * @return rankingDificil
      */
     public List<Info> getRankingDificil(){
@@ -76,7 +74,7 @@ public class SistemaRanking {
     }
 
     /**
-     * Devolvemos una lista con las puntuacions del nombre pasado por parámetro
+     * Devuelve una lista con las puntuacions del nombre pasado por parámetro
      * @param nombre Es el nombre del usuario
      * @return rankingFacil con entradas del usuario.
      */
@@ -85,7 +83,7 @@ public class SistemaRanking {
     }
 
     /**
-     * Devolvemos una lista con las puntuacions del nombre pasado por parámetro
+     * Devuelve una lista con las puntuacions del nombre pasado por parámetro
      * @param nombre Es el nombre del usuario
      * @return rankingNormal con entradas del usuario.
      */
@@ -94,7 +92,7 @@ public class SistemaRanking {
     }
 
     /**
-     * Devolvemos una lista con las puntuacions del nombre pasado por parámetro
+     * Devuelve una lista con las puntuacions del nombre pasado por parámetro
      * @param nombre Es el nombre del usuario
      * @return rankingDificil con entradas del usuario.
      */

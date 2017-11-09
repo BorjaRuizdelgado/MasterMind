@@ -1,12 +1,10 @@
 package Domain;
 
-/**
- *
- * @author Omar
- */
 
 /**
+ * Clase Info
  * Estructura de datos para los Rankings
+ * @author Omar
  */
 public class Info {
     private String usuario;

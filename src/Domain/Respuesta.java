@@ -5,8 +5,9 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * Clase Respuesta
+ * Estructura de datos para las Respuestas del juego
  * @author borja
- * Estructura de datos para las Respuestas de mastermind
  */
 
 public class Respuesta {
