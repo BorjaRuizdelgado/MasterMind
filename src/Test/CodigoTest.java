@@ -2,7 +2,7 @@ package Test;
 
 
 import Domain.Codigo;
-
+import static Util.Console.*;
 import java.util.Scanner;
 
 /**
@@ -28,10 +28,6 @@ public class CodigoTest {
     private static void imprimeInfoCodigo (Codigo codigo) {
         System.out.print("Este es tu código: "+codigo.codigo+"\n" +
                 "Y tiene este tamaño: "+codigo.size+"\n");
-    }
-
-    private static void print (String message) {
-        System.out.print(message+"\n");
     }
 
     public static void main(String[] args) {

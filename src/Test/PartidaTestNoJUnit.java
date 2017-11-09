@@ -1,5 +1,6 @@
 package Test;
 
+import static Util.Console.*;
 import Domain.Partida;
 
 import java.util.Scanner;
