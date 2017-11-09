@@ -107,7 +107,7 @@ public class MasterMindo {
                 "Pon 8 como Negro, 7 como Blanco y 0 como vacio.\nCODIGO A CORREGIR:");
         System.out.println(intento.codigo);
         Scanner scan = new Scanner(System.in);
-        
+
         while(true){
             respuestaUsr = new Respuesta(pary.getNumColumnas());
             for(int i = 0; i < pary.getNumColumnas();i++) respuestaUsr.respuesta.add(scan.nextInt());
@@ -130,7 +130,6 @@ public class MasterMindo {
         for(int i = 0; i < pary.getNumColumnas();++i){
             code.codigo.add(scan.nextInt());
         }
-
         pary.setIntento(code);
         pary.generaRespuesta();
     }
