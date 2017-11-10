@@ -1,5 +1,7 @@
 package Domain;
 
+import Domain.Excepciones.ExcepcionRespuestaIncorrecta;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,12 +134,12 @@ public class Tablero {
     /**
      * Añade la respuesta a la fila actual y incrementa la fila.
      * @param answer respuesta del código
-     * @throws Exception si la respuesta es no se corresponde al código
+     * @throws ExcepcionRespuestaIncorrecta si la respuesta es no se corresponde al código
      */
-    public void setUltimoRespuestas(Respuesta answer) throws Exception {
+    public void setUltimoRespuestas(Respuesta answer) throws ExcepcionRespuestaIncorrecta {
         if (answer.equals(codigoSecreto.getRespuesta(getActualColores())))
             tablero.get(numeroFilaActual).setRespuestas(answer);
-        else throw new Exception();
+        else throw new ExcepcionRespuestaIncorrecta("Respuesta incorrecta. Comprueba tu respuesta.");
         incrementaFilaActual();
     }
 

@@ -23,10 +23,6 @@ public class PartidaTest {
         testMedio = new Partida(true, "Medio");
         testDificil = new Partida(true, "Dificil");
 
-        testFacil.generaCodigoSecretoAleatorio();
-        testMedio.generaCodigoSecretoAleatorio();
-        testDificil.generaCodigoSecretoAleatorio();
-
     }
 
     @org.junit.AfterClass
