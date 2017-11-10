@@ -16,6 +16,7 @@ public class MasterCerebro implements Inteligencia {
     private int numeroColores;
     private int numeroColumnas;
     private Random random;
+    private List<Codigo> intentos;
 
     public MasterCerebro(int colores, int columnas){
         numeroColores = colores;
@@ -63,7 +64,7 @@ public class MasterCerebro implements Inteligencia {
                 // Mutaciones
             }
 
-            Map<Codigo, Integer> puntuaciones = calculaPuntuaciones(hijos);
+            Map<Integer, Codigo> puntuaciones = calculaPuntuaciones(hijos);
 
         }
 
@@ -82,11 +83,36 @@ public class MasterCerebro implements Inteligencia {
         return poblacion;
     }
 
-    private HashMap<Codigo, Integer> calculaPuntuaciones(List<Codigo> hijos){
+    private HashMap<Integer, Codigo> calculaPuntuaciones(List<Codigo> hijos){
+        Map<Integer, Codigo> Result = new HashMap<>();
+        for (int i = 0; i < hijos.size(); i++) {
+            int score = calculateFitness(hijos.get(i));
+            Result.put(score, hijos.get(i));
+        }
         return new HashMap<>();
     }
 
-    private void ordenaPuntuaciones(HashMap<Codigo, Integer> puntuaciones){
+    private void ordenaPuntuaciones(HashMap<Integer, Codigo> puntuaciones){
 
+    }
+
+    int calculateFitness(Codigo codigo){
+
+        for (int i = 0; i < intentos.size(); i++) {
+            
+        }
+        return 0;
+    }
+
+    private Codigo cruce(Codigo codigo){
+        return new Codigo(5);
+    }
+
+    private Codigo mutacion(Codigo codigo){
+        return new Codigo(4);
+    }
+
+    private Codigo permutación(Codigo codigo){
+        return new Codigo(4);
     }
 }
