@@ -117,14 +117,25 @@ public class MasterMindo {
      * Permite al usuario jugar como CodeMaker.
      */
     private static void juegaCodeMaker(){
-        println("Dame un nivel de dificultad: Facil, Medio y Dificil");
-        Scanner scan = new Scanner(System.in);
-        String diff = scan.next();
-        usr.creaPartidaActual(true,diff);
-        pary = usr.getPartidaActual();
+        println("Partida empezada.");
         setCodigoSecreto();
-        while(pary.getNumeroFilaActual() != 15 && !pary.isGanado()){
-            corrige();
+        Boolean abandonada = false;
+        int n;
+        while(pary.getNumeroFilaActual() != 15 && !pary.isGanado() && !abandonada){
+            println("¿Qué quieres hacer?");
+            println("[1] Siguiente intento.\n[2] Abandonar la partida.\n");
+            n = scan.nextInt();
+            switch (n) {
+                case 1:
+                    corrige();
+                    break;
+                case 2:
+                    abandonada = true;
+                    break;
+                default:
+                    println("Opción no válida");
+                    break;
+            }
         }
 
         if (!pary.isGanado()) {
@@ -133,6 +144,7 @@ public class MasterMindo {
         else {
             println("Ha descubierto tu código en "+pary.getNumeroFilaActual()+" intentos.");
         }
+        // todo falta ver si se suma a algun contador
     }
 
     /**
@@ -175,7 +187,9 @@ public class MasterMindo {
         }
     }
 
-
+    /**
+     * El jugador puede obtener una pista o cancelar la obtención.
+     */
     private static void obtenerPista() {
         println("Escoge el nivel de pista que quieres:\n" +
                 "[1] Obtener uno de los colores que no aparece en el código secreto.\n" +
