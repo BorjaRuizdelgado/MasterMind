@@ -130,7 +130,10 @@ public class MasterMindo {
                     corrige();
                     break;
                 case 2:
-                    abandonada = true;
+                    println("¿Estás seguro de querer abandonar? Responde: 'Si' / 'No'.");
+                    if (scan.next().equals("Si")) {
+                        abandonada = true;
+                    }
                     break;
                 default:
                     println("Opción no válida");
