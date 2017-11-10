@@ -48,11 +48,19 @@ public class Usuario {
     }
 
     /**
-     * Devuelve el número de partidas totales
+     * Devuelve el número de partidas totales finalizadas
      * @return numPartidasFinalizadas
      */
     public int getNumPartidasFinalizadas() {
         return numPartidasFinalizadas;
+    }
+
+    /**
+     * Devuelve el número de partidas ganadas
+     * @return numPartidasGanadas
+     */
+    public int getNumPartidasGanadas() {
+        return numPartidasGanadas;
     }
 
     /**

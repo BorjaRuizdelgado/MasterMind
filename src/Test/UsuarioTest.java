@@ -49,12 +49,14 @@ public class UsuarioTest {
             println("¿Qué desea hacer?");
             println("[1] Ver mi información.\n[2] Cambiar nombre.\n[3] Crear una partida\n" +
                     "[4] Guardar la partida actual.\n[5] Obtener info de las partidas guardadas.\n" +
-                    "[6] Finalizar como completa la partida actual. \n[7] Acabar la prueba.");
+                    "[6] Finalizar como perdida la partida actual.\n[7] Finalizar como ganada la partida actual.\n" +
+                    "[8] Acabar la prueba.");
             n = in.nextInt();
             switch (n) {
                 case 1:
                     println("- Nombre: "+test.getNombre());
                     println("- Partidas Finalizadas: "+test.getNumPartidasFinalizadas());
+                    println("- Partidas Ganadas: "+test.getNumPartidasGanadas());
                     break;
                 case 2:
                     println("Introduce el nuevo nombre de usuario sin espacios:");
@@ -86,13 +88,21 @@ public class UsuarioTest {
                     break;
                 case 6:
                     if (p) {
-                        test.finalizarPartidaActual();
+                        test.finalizarPartidaActual(false);
                         println("Partida Finalizada");
                         p = false;
                     }
                     else println("No hay partida actual");
                     break;
                 case 7:
+                    if (p) {
+                        test.finalizarPartidaActual(true);
+                        println("Partida Finalizada");
+                        p = false;
+                    }
+                    else println("No hay partida actual");
+                    break;
+                case 8:
                     fin = true;
                     break;
                 default:

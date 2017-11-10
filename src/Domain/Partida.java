@@ -36,6 +36,8 @@ public class Partida {
     /**
      * Creadora Partida.
      * Inicia el tiempo a 0. Y el id es la fecha+hora.
+     * Si el jugador juega como CodeMaker, se asigna automáticamente la inteligencia según la dificultad.
+     * Si el jugador juega como CodeBreaker, se genera automáticamente el código secreto del tablero.
      * @param rolMaker indica si el jugador juega como
      *                 codemaker(true) o codebreaker(false)
      * @param dificultad nivel de dificultad
@@ -209,7 +211,7 @@ public class Partida {
      */
     private ArrayList<Integer> getColoresNoSecretos(){
         ArrayList<Integer> aux = new ArrayList<>();
-        for(int i = 0; i < numColores;++i){
+        for(int i = 1; i <= numColores;++i){
             aux.add(i);
         }
 

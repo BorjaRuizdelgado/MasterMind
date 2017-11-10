@@ -1,9 +1,14 @@
 package Test;
 
 import Domain.*;
+import Domain.Excepciones.ExcepcionNoHayColoresSinUsar;
+import Domain.Excepciones.ExcepcionPistaUsada;
 import Domain.Excepciones.ExcepcionRespuestaIncorrecta;
+import Domain.Excepciones.ExcepcionUno;
 
 import static Util.Console.*;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -24,7 +29,7 @@ public class MasterMindo {
             String nombreUsuario = scan.next();
             usr = new Usuario(nombreUsuario);
             println("¡Se ha creado tu usuario!\n" +
-                    "\nPresiona 1 para JUGAR como CODEMAKER o 2 para JUGAR com CODEBREAKER");
+                    "\nPresiona 1 para JUGAR como CODEMAKER o 2 para JUGAR como CODEBREAKER");
             int rol = scan.nextInt();
             if(rol == 1) juega(true);
             else if(rol == 2) juega(false);
@@ -38,8 +43,8 @@ public class MasterMindo {
         String diff = scan.next();
         usr.creaPartidaActual(rol,diff);
         pary = usr.getPartidaActual();
-        if (rol) juegaCodeBreaker();
-        else juegaCodeMaker();
+        if (rol) juegaCodeMaker();
+        else juegaCodeBreaker();
     }
 
     /**
@@ -50,27 +55,33 @@ public class MasterMindo {
         println("Intenta adivinar el código secreto.");
         int n;
         Boolean abandonada = false;
+        Boolean nuevoIntento = false;
         while(pary.getNumeroFilaActual() != 15 && !pary.isGanado() && !abandonada){
-            println("¿Qué quieres hacer?");
-            println("[1] Introducir un nuevo intento.\n[2] Pedir una pista.\n" +
-                    "[3] Abandonar la partida.\n.");
-            while((n=scan.nextInt()) != 1) {
+            while (!nuevoIntento && !abandonada) {
+                println("¿Qué quieres hacer?");
+                println("[1] Introducir un nuevo intento.\n[2] Pedir una pista.\n" +
+                        "[3] Abandonar la partida.\n");
+                n = scan.nextInt();
                 switch (n) {
+                    case 1:
+                        nuevoIntento = true;
+                        break;
                     case 2:
                         obtenerPista();
                         break;
                     case 3:
                         println("¿Estás seguro de querer abandonar? Responde: 'Si' / 'No'.");
-                        if (scan.next().equals("Si")) abandonada = true;
-                        else break;
+                        if (scan.next().equals("Si")) {
+                            abandonada = true;
+                        }
+                        break;
                     default:
-                        println("¿Qué quieres hacer?");
-                        println("[1] Introducir un nuevo intento.\n[2] Pedir una pista.\n" +
-                                "[3] Abandonar la partida.\n[4] Reiniciar la partida.");
+                        println("Opción no valida");
                         break;
                 }
             }
             if (!abandonada) {
+                nuevoIntento = false;
                 println("Introduce un código de tamaño " + pary.getNumColumnas() + " separado por espacios\n" +
                         "Formado por numeros del 1 al " + pary.getNumColores());
                 long startTime = System.currentTimeMillis();
@@ -79,10 +90,7 @@ public class MasterMindo {
 
                 long endTime = System.currentTimeMillis();
                 pary.sumaTiempo(endTime - startTime);
-
                 println("Has obtenido esta respuesta: " + pary.getUltimaRespuesta().toString());
-
-                //todo falta añadir el uso de pistas
             }
         }
 
@@ -169,6 +177,52 @@ public class MasterMindo {
 
 
     private static void obtenerPista() {
+        println("Escoge el nivel de pista que quieres:\n" +
+                "[1] Obtener uno de los colores que no aparece en el código secreto.\n" +
+                "[2] Obtener todos los colores que no aparecen en el código secreto.\n" +
+                "[3] Obtener el color de una posición aleatoria del código secreto.\n" +
+                "[4] Cancelar.");
+        println("ATENCIÓN: El uso de pistas hará que la puntuación de la partida sea 0.");
+        int n = scan.nextInt();
+        switch (n) {
+            case 1:
+                try {
+                    System.out.println("No aparece en el código secreto: "+pary.getPista1()+".");
+                } catch (Exception e) {
+                    println(e.getMessage());
+                }
+                break;
+            case 2:
+                try {
+                    String result = "No aparecen en el código secreto: ";
+                    ArrayList<Integer> aux = pary.getPista2();
+                    for (Integer i : aux) {
+                        result += i;
+                        result += " ";
+                    }
+                    println(result);
+                }
+                catch (Exception e) {
+                    println(e.getMessage());
+                }
+                break;
+            case 3:
+                try {
+                    Codigo aux = pary.getPista3();
+                    for (int i = 0; i < aux.size; i++) {
+                        if (aux.codigo.get(i) != 0) println("En la posición " + (i+1) + " está el " + aux.codigo.get(i) + ".");
+                    }
+                }
+                catch (ExcepcionPistaUsada e) {
+                    println(e.getMessage());
+                }
+                break;
+            case 4:
+                break;
+            default:
+                println("Opción no válida.");
+                break;
+        }
 
     }
 
