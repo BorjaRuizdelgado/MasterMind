@@ -83,7 +83,6 @@ public class ControladorDominio {
 
         usuarioCargado.creaPartidaActual(false, dificultad);
         partidaActual = usuarioCargado.getPartidaActual();
-        partidaActual.generaCodigoSecretoAleatorio();
         return partidaActual.getCodigoSecreto();
 
     }
@@ -180,6 +179,6 @@ public class ControladorDominio {
         }
         return null;
     }
-    
+
 
 }

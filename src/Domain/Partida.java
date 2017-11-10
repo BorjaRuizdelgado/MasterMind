@@ -71,8 +71,6 @@ public class Partida {
         }
     }
 
-
-
     /**
      * Coloca el identificador de partida
      * @param id nombre a asignar de la partida
