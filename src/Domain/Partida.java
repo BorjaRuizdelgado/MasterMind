@@ -1,5 +1,9 @@
 package Domain;
 
+import Domain.Excepciones.ExcepcionNoHayColoresSinUsar;
+import Domain.Excepciones.ExcepcionPistaUsada;
+import Domain.Excepciones.ExcepcionRespuestaIncorrecta;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -61,6 +65,9 @@ public class Partida {
 
         if (rolMaker) {
             ia = new Cerebro(numColores, numColumnas);
+        }
+        else {
+            generaCodigoSecretoAleatorio();
         }
     }
 
@@ -220,18 +227,17 @@ public class Partida {
      * Devuelve una pista de nivel 1 que da un color que no se encuentra en el código secreto.
      * Solo se puede pedir una vez por partida.
      * @return Devuelve un color que no se encuentra en el código secreto.
-     * @throws Exception si no hay ningún color que no esté en el código secreto.
-     * @throws Exception si se accede a la función por segunda vez.
-     * TODO dos excepciones específicas.
+     * @throws ExcepcionNoHayColoresSinUsar si no hay ningún color que no esté en el código secreto.
+     * @throws ExcepcionPistaUsada si se accede a la función por segunda vez.
      */
     public int getPista1() throws Exception{
         if (!pista1) {
             pista1 = true;
             ArrayList<Integer> auxiliar = getColoresNoSecretos();
-            if (auxiliar.size() == 0) throw new Exception();
+            if (auxiliar.size() == 0) throw new ExcepcionNoHayColoresSinUsar("No hay ningún color sin usar.");
             else return auxiliar.get(0);
         }
-        throw new Exception();
+        throw new ExcepcionPistaUsada("Ya has obtenido una pista de nivel 1.");
 
     }
 
@@ -239,26 +245,27 @@ public class Partida {
      * Devuelve una pista de nivel 2 que da los colores que no se encuentran en el código secreto.
      * Solo se puede pedir una vez por partida. Si se accede una segunda vez, lanza una excepción.
      * @return Devuelve los colores que no estan en el codigo secreto.
-     * @throws Exception si se accede a la función por segunda vez.
-     * TODO una excepción específica.
+     * @throws ExcepcionPistaUsada si se accede a la función por segunda vez.
+     * @throws ExcepcionNoHayColoresSinUsar si no hay ningún color que no esté en el código secreto.
      */
     public ArrayList<Integer> getPista2() throws Exception {
         if (!pista2) {
             pista2 = true;
-            return getColoresNoSecretos();
+            ArrayList<Integer> auxiliar = getColoresNoSecretos();
+            if (auxiliar.size() == 0) throw new ExcepcionNoHayColoresSinUsar("No hay ningún color sin usar.");
+            else return auxiliar;
         }
-        throw new Exception();
+        throw new ExcepcionPistaUsada("Ya has obtenido una pista de nivel 2.");
     }
 
     /**
      * Devuelve una pista de nivel 3 que da un color en una posición.
      * Solo se puede pedir una vez por partida. Si se accede una segunda vez, lanza una excepción.
      * @return Un codigo con una unica posición no vacia que indica el color y la posición de uno de los colores del
-     * @throws Exception si se accede a la función por segunda vez.
+     * @throws ExcepcionPistaUsada si se accede a la función por segunda vez.
      * codigo secreto
-     * TODO una excepción específica.
      */
-    public Codigo getPista3() throws Exception {
+    public Codigo getPista3() throws ExcepcionPistaUsada {
         if (!pista3) {
             pista3 = true;
             Random rn = new Random();
@@ -270,7 +277,7 @@ public class Partida {
             }
             return aux;
         }
-        throw new Exception();
+        throw new ExcepcionPistaUsada("Ya has obtenido una pista de nivel 3.");
     }
 
     /**
@@ -315,7 +322,7 @@ public class Partida {
     /**
      * Genera un codigo aleatorio para el tablero y se lo asigna como código secreto
      */
-    public void generaCodigoSecretoAleatorio(){
+    private void generaCodigoSecretoAleatorio(){
         Codigo codigoSecreto = new Codigo(numColumnas);
         Random rn = new Random();
         for(int i = 0; i < numColumnas; i++)
@@ -352,10 +359,9 @@ public class Partida {
      * Añade una respuesta a la fila actual del tablero.
      * Si la respuesta es ganadora, se modifica el estado de la partida a ganada.
      * @param respuesta respuesta del último código.
-     * @throws Exception si la respuesta no se corresponde al código.
-     * TODO excepción específica
+     * @throws ExcepcionRespuestaIncorrecta si la respuesta no se corresponde al código.
      */
-    public void setRespuesta(Respuesta respuesta) throws Exception{
+    public void setRespuesta(Respuesta respuesta) throws ExcepcionRespuestaIncorrecta {
         tablero.setUltimoRespuestas(respuesta);
         if(respuesta.esGanadora())ganado = true;
     }

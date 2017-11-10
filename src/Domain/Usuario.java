@@ -13,6 +13,7 @@ public class Usuario {
 
     private String nombre;
     private int numPartidasFinalizadas;
+    private int numPartidasGanadas;
     private List <Partida> partidasGuardadas;
     private Partida partidaActual;
 
@@ -24,6 +25,7 @@ public class Usuario {
     public Usuario(String nombre) {
         this.nombre = nombre;
         numPartidasFinalizadas = 0;
+        numPartidasGanadas = 0;
         partidasGuardadas = new ArrayList<>();
     }
 
@@ -72,10 +74,17 @@ public class Usuario {
     /* MODIFICADORAS */
 
     /**
-     * Incrementa el número de partidas totales
+     * Incrementa el número de partidas totales finalizadas
      */
-    private void incrementaPartidasTotales(){
+    private void incrementaPartidasTotalesFinalizadas(){
         numPartidasFinalizadas++;
+    }
+
+    /**
+     * Incrementa el número de partidas totales ganadas
+     */
+    private void incrementaPartidasTotalesGanadas(){
+        numPartidasGanadas++;
     }
 
     /**
@@ -98,11 +107,18 @@ public class Usuario {
     /**
      * Finaliza la partida actual y aumenta el número de partidas finalizadas
      */
-    public void finalizarPartidaActual() {
+    public void finalizarPartidaActual(Boolean ganada) {
         partidaActual = null;
-        incrementaPartidasTotales();
+        incrementaPartidasTotalesFinalizadas();
+        if (ganada) incrementaPartidasTotalesGanadas();
     }
 
+    /**
+     * Abandona la partida actual.
+     */
+    public void abandonaPartidaActual() {
+        partidaActual = null;
+    }
 
 
     /* ESCRITURAS */
