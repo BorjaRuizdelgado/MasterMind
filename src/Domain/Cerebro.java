@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * Clase Cerebro.
  * Inteligencia que implementa el algoritmo 'Five Guess'
- * @author borja && ISA && Omar
+ * @author borja and ISA and Omar
  */
 public class Cerebro implements Inteligencia{
 
