@@ -1,6 +1,8 @@
 package Test;
 
 import static Util.Console.*;
+
+import Domain.Excepciones.ExcepcionNoHayPartidasGuardadas;
 import Domain.Partida;
 import Domain.Usuario;
 
@@ -52,6 +54,7 @@ public class UsuarioTest {
                     "[6] Finalizar como perdida la partida actual.\n[7] Finalizar como ganada la partida actual.\n" +
                     "[8] Acabar la prueba.");
             n = in.nextInt();
+            //todo quitar la p haciendo excepciones
             switch (n) {
                 case 1:
                     println("- Nombre: "+test.getNombre());
@@ -83,8 +86,8 @@ public class UsuarioTest {
                 case 5:
                     try {
                         test.imprimeInfoPartidasGuardadas();
-                    } catch (Exception e) {
-                        println("No hay partidas guardadas.");
+                    } catch (ExcepcionNoHayPartidasGuardadas e) {
+                       println(e.getMessage());
                     }
                     break;
                 case 6:

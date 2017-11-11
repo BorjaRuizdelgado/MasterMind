@@ -1,5 +1,7 @@
 package Domain;
 
+import Domain.Excepciones.ExcepcionNoHayPartidasGuardadas;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -156,11 +158,10 @@ public class Usuario {
 
     /**
      * Imprime por pantalla la información de todas las partidas guardadas
-     * @throws Exception cuando no hay ninguna partida guardada
-     * TODO excepción concreta
+     * @throws ExcepcionNoHayPartidasGuardadas cuando no hay ninguna partida guardada
      */
-    public void imprimeInfoPartidasGuardadas() throws Exception {
-        if (partidasGuardadas.size() == 0) throw new Exception();
+    public void imprimeInfoPartidasGuardadas() throws ExcepcionNoHayPartidasGuardadas {
+        if (partidasGuardadas.size() == 0) throw new ExcepcionNoHayPartidasGuardadas("No tienes ninguna partida guardada.");
         for (Partida pG : partidasGuardadas) {
             pG.imprimeInfo();
         }
