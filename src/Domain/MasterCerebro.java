@@ -2,8 +2,12 @@ package Domain;
 
 import Util.Console;
 import com.sun.org.apache.regexp.internal.RE;
+import jdk.internal.util.xml.impl.Pair;
 
+import java.lang.reflect.Array;
 import java.util.*;
+
+import static java.lang.Math.abs;
 
 /**
  * Clase MasterCerebro
@@ -21,9 +25,19 @@ public class MasterCerebro implements Inteligencia {
     private int numeroColores;
     private int numeroColumnas;
     private Random random;
-    private List<Codigo> intentos;
+    private List<Fila> intentos;
 
-    public MasterCerebro(int colores, int columnas){
+    private class ResultPair {
+        public int white;
+        public int black;
+
+        public ResultPair(int white, int black) {
+            this.white = white;
+            this.black = black;
+        }
+    }
+
+    public MasterCerebro(int colores, int columnas) {
         numeroColores = colores;
         numeroColumnas = columnas;
         random = new Random(System.currentTimeMillis());
@@ -32,10 +46,10 @@ public class MasterCerebro implements Inteligencia {
     /**
      * Genera el primer intento.
      */
-    public Codigo getIntentoInicial(){
+    public Codigo getIntentoInicial() {
         Codigo intentoActual = new Codigo(numeroColumnas);
         for (int i = 0; i < numeroColumnas; i++) {
-            if(i < numeroColumnas / 2) intentoActual.codigo.add(1);
+            if (i < numeroColumnas / 2) intentoActual.codigo.add(1);
             else intentoActual.codigo.add(2);
         }
         return intentoActual;
@@ -43,6 +57,7 @@ public class MasterCerebro implements Inteligencia {
 
     /**
      * Genera el Codigo del siguiente intento
+     *
      * @param ultimoIntento El último intento que se ha hecho en el tablero
      * @return El siguiente intento en forma de Codigo
      */
@@ -52,17 +67,17 @@ public class MasterCerebro implements Inteligencia {
         return candidato;
     }
 
-    private Codigo seleccionaCandidato(List<Codigo> candidatos){
+    private Codigo seleccionaCandidato(List<Codigo> candidatos) {
         return new Codigo(4);
     }
 
-    private List<Codigo> evolution(){
+    private List<Codigo> evolution() {
         List<Codigo> poblacion = generarPoblacion();
 
         List<Codigo> candidatos = new ArrayList<>(); // Candidatos óptimos que devolveremos
         int generationCount = 0; // Contador para saber la generación en la que estamos
 
-        while (candidatos.size() <= MAXSIZE && generationCount <= MAXGEN){
+        while (candidatos.size() <= MAXSIZE && generationCount <= MAXGEN) {
             List<Codigo> hijos = new ArrayList<>();
 
             for (int i = 0; i < poblacion.size(); i++) {
@@ -85,7 +100,7 @@ public class MasterCerebro implements Inteligencia {
         return new ArrayList<>();
     }
 
-    private List<Codigo> generarPoblacion(){
+    private List<Codigo> generarPoblacion() {
         List<Codigo> poblacion = new ArrayList<>();
         for (int i = 0; i < MAXSIZE; i++) {
             Codigo codigo = new Codigo(numeroColumnas);
@@ -97,7 +112,7 @@ public class MasterCerebro implements Inteligencia {
         return poblacion;
     }
 
-    private Map<Integer, Codigo> calculaPuntuaciones(List<Codigo> hijos){
+    private Map<Integer, Codigo> calculaPuntuaciones(List<Codigo> hijos) {
         Map<Integer, Codigo> Result = new HashMap<>();
         for (int i = 0; i < hijos.size(); i++) {
             int score = calculateFitness(hijos.get(i));
@@ -106,19 +121,34 @@ public class MasterCerebro implements Inteligencia {
         return new HashMap<>();
     }
 
-    private void ordenaPuntuaciones(Map<Integer, Codigo> puntuaciones){
-
+    private void ordenaPuntuaciones(Map<Integer, Codigo> puntuaciones) {
+        
     }
 
-    public int calculateFitness(Codigo codigo){
-
+    public int calculateFitness(Codigo codigo) {
+        List<ResultPair> differences = new ArrayList<>();
         for (int i = 0; i < intentos.size(); i++) {
-            
+            ResultPair intentoResultado = toResultPair(intentos.get(i).getRespuestas().toString());
+            Codigo intentoCodigo = intentos.get(i).getColores();
+
+            ResultPair resultadoCodigo = toResultPair(intentoCodigo.getRespuesta(codigo).toString());
+
+            int differenceWhite = abs(resultadoCodigo.white - intentoResultado.white);
+            int differenceBlack = abs(resultadoCodigo.black - intentoResultado.black);
+            differences.add(new ResultPair(differenceWhite, differenceBlack));
         }
-        return 0;
+
+        int totalWhite = 0;
+        int totalBlack = 0;
+        for (int i = 0; i < differences.size(); i++) {
+            totalWhite += differences.get(i).white;
+            totalBlack += differences.get(i).black;
+        }
+
+        return totalBlack + totalWhite + 2*numeroColumnas*(intentos.size() - 1);
     }
 
-    private Codigo cruce(Codigo codigoA, Codigo codigoB){
+    private Codigo cruce(Codigo codigoA, Codigo codigoB) {
         // De momento probaremos con un solo corte
         Codigo Return = new Codigo(numeroColumnas);
 
@@ -131,8 +161,7 @@ public class MasterCerebro implements Inteligencia {
         if (random.nextDouble() <= PROBABILIDAD_CRUCE) {
             Return.codigo.addAll(aPart1);
             Return.codigo.addAll(bPart2);
-        }
-        else {
+        } else {
             Return.codigo.addAll(bPart1);
             Return.codigo.addAll(aPart2);
         }
@@ -140,20 +169,20 @@ public class MasterCerebro implements Inteligencia {
         return Return;
     }
 
-    private Codigo mutacion(Codigo codigo){
+    private Codigo mutacion(Codigo codigo) {
         Codigo Return = new Codigo(numeroColumnas);
         Return.codigo = new ArrayList<>(codigo.codigo);
         Return.codigo.set(random.nextInt(numeroColumnas - 1), 1 + random.nextInt(numeroColores - 1));
         return Return;
     }
 
-    private Codigo permutacion(Codigo codigo){
+    private Codigo permutacion(Codigo codigo) {
         Codigo Return = new Codigo(numeroColumnas);
         Return.codigo = new ArrayList<>(codigo.codigo);
 
         int positionA = 0;
         int positionB = 0;
-        do{
+        do {
             positionA = random.nextInt(numeroColumnas);
             positionB = random.nextInt(numeroColumnas);
         }
@@ -164,7 +193,17 @@ public class MasterCerebro implements Inteligencia {
         return Return;
     }
 
-    private Codigo inversion(Codigo codigo){
+    private Codigo inversion(Codigo codigo) {
         return new Codigo(numeroColumnas);
+    }
+
+    private ResultPair toResultPair(String result) {
+        int white = 0, black = 0;
+        char aux[] = result.toCharArray();
+        for (int i = 0; i < Array.getLength(aux); i++) {
+            if (aux[i] == 'W') white++;
+            else if (aux[i] == 'B') black++;
+        }
+        return new ResultPair(white, black);
     }
 }
