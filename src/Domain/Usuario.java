@@ -8,6 +8,7 @@ import java.util.List;
  * Tiene un nombre único en el sistema.
  * Tiene una partida actual y una lista de partidas guardadas. Así como un recuento de las finalizadas.
  * @author ISA
+ * todo añadir num partidas finalizadas como codemaker
  */
 public class Usuario {
 

@@ -17,8 +17,8 @@ import java.util.Scanner;
  * @author ISA
  */
 public class MasterMindo {
-    public static Usuario usr;
-    public static Partida pary;
+    private static Usuario usr;
+    private static Partida pary;
     private static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
