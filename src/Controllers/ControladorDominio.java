@@ -5,6 +5,7 @@ import groovy.lang.Tuple2;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +27,7 @@ public class ControladorDominio {
 
     /**
      * Crea un nuevo usuario.
+     * @param nombre Nombre del nuevo usuario.
      * @throws Exception si el usuario ya está credo.
      */
     public void crearUsuario(String nombre) throws Exception{
@@ -40,7 +42,8 @@ public class ControladorDominio {
     }
 
     /**
-     * Carga un usuario en memoria. Si ya habia uno cargado manda guardarlo y todas sus partidas
+     * Carga un usuario en memoria. Si ya habia uno cargado manda guardarlo y todas sus partidas.
+     * @param nombre carga el usuario con id = nombre.
      * @throws Exception si el usuario con ese identificador no existe.
      */
     public void cargarUsuario(String nombre) throws Exception{
@@ -56,7 +59,6 @@ public class ControladorDominio {
     }
 
     /**
-     * @pre La partida no puede tener hechos 15 intentos.
      * Crea una partida de tipo usuario CodeMaker con una dificultad determinada y un codgigo secreto.
      * @param dificultad Determina el grado de dificualtad de la partidad.
      * @param codigoSecreto Determina el codigo secreto elegido por el usuario.
@@ -76,14 +78,14 @@ public class ControladorDominio {
      * @param dificultad Determina el grado de dificultad de la partida.
      * @return Codigo secreto aleatorio generado por la maquina.
      */
-    public Codigo crearPartidaUsuarioCargadoRolBreaker(String dificultad){
+    public List<Integer> crearPartidaUsuarioCargadoRolBreaker(String dificultad){
         if(partidaActual == null){
             usuarioCargado.guardaPartidaActual();
         }
 
         usuarioCargado.creaPartidaActual(false, dificultad);
         partidaActual = usuarioCargado.getPartidaActual();
-        return partidaActual.getCodigoSecreto();
+        return partidaActual.getCodigoSecreto().codigo;
 
     }
 
@@ -104,21 +106,26 @@ public class ControladorDominio {
      * @return Retorna el codigo de respuesta.
      * @throws Exception Si la respuesta no es correcta.
      */
-    public Codigo jugarCodeMaker(Respuesta respuesta) throws Exception{
-        partidaActual.setRespuesta(respuesta);
-        return partidaActual.generaSiguienteIntento();
+    public List<Integer> jugarCodeMaker(ArrayList<Integer> respuesta) throws Exception{
+        Respuesta res = new Respuesta(respuesta.size());
+        res.respuesta = new ArrayList<>(respuesta);
+        partidaActual.setRespuesta(res);
+        return partidaActual.generaSiguienteIntento().codigo;
     }
 
     /**
      * El usuario es capaz de poner un codigo y la maquina le devuelve una respuesta sobre su partida.
-     * @param codigo Pensado por la maquina
+     * @param codigo Pensado por la maquina.
+     * @param tiempoTardado Tiempo que ha tardado el usuario en decidor el codigo.
      * @return Respuesta pensada por la maquina.
      */
-    public Respuesta juegaCodeBreaker(Codigo codigo, float tiempoTardado){
-        partidaActual.setCodigoSecreto(codigo);
+    public List<Integer> juegaCodeBreaker(ArrayList<Integer> codigo, float tiempoTardado){
+        Codigo code = new Codigo(codigo.size());
+        code.codigo = new ArrayList<>(codigo);
+        partidaActual.setCodigoSecreto(code);
         partidaActual.generaRespuesta();
         partidaActual.sumaTiempo(tiempoTardado);
-        return partidaActual.getUltimaRespuesta();
+        return partidaActual.getUltimaRespuesta().respuesta;
     }
 
     /**
@@ -177,6 +184,14 @@ public class ControladorDominio {
             case "Dificil":
                 return ranking.getRankingDificil(nombreUsr);
         }
+        return null;
+    }
+
+    /**
+     * Devuelve las partidas que el usuario cargado ha guardado
+     * @return Lista de las partidas guardadas en forma de String.
+     */
+    public List<String> getPartidasGuardadasUsr(){
         return null;
     }
 
