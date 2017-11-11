@@ -143,11 +143,16 @@ public class MasterMindo {
 
         if (!pary.isGanado()) {
             println("¡No ha conseguido descubrir tu código!");
+            if (abandonada) {
+                usr.abandonaPartidaActual();
+                return;
+            }
         }
         else {
             println("Ha descubierto tu código en "+pary.getNumeroFilaActual()+" intentos.");
         }
-        // todo falta ver si se suma a algun contador
+        usr.finalizarPartidaActual(null);
+
     }
 
     /**

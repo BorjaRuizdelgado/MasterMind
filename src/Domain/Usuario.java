@@ -15,6 +15,7 @@ public class Usuario {
     private String nombre;
     private int numPartidasFinalizadas;
     private int numPartidasGanadas;
+    private int numPartidasCodeMaker;
     private List <Partida> partidasGuardadas;
     private Partida partidaActual;
 
@@ -27,6 +28,7 @@ public class Usuario {
         this.nombre = nombre;
         numPartidasFinalizadas = 0;
         numPartidasGanadas = 0;
+        numPartidasCodeMaker = 0;
         partidasGuardadas = new ArrayList<>();
     }
 
@@ -65,6 +67,14 @@ public class Usuario {
     }
 
     /**
+     * Devuelve el número de partidas ganadas
+     * @return numPartidasGanadas
+     */
+    public int getNumPartidasCodeMaker() {
+        return numPartidasCodeMaker;
+    }
+
+    /**
      * Devuelve la partida actual del usuario
      * @return partidaActual
      */
@@ -97,6 +107,13 @@ public class Usuario {
     }
 
     /**
+     * Incrementa el número de partidas totales ganadas
+     */
+    private void incrementaPartidasTotalesCodeMaker(){
+        numPartidasCodeMaker++;
+    }
+
+    /**
      * Crea una nueva partida y la asigna como partida actual
      * @param rolMaker rol de la partida
      * @param dif dificultad de la partida
@@ -114,12 +131,17 @@ public class Usuario {
     }
 
     /**
-     * Finaliza la partida actual y aumenta el número de partidas finalizadas
+     * Finaliza la partida actual y aumenta el número de partidas finalizadas según si es CodeMaker o CodeMaker y si la ha ganado.
+     * @param ganada indica si la partida ha sido ganada.
      */
     public void finalizarPartidaActual(Boolean ganada) {
+        if (partidaActual.isRolMaker()) incrementaPartidasTotalesCodeMaker();
+        else {
+            incrementaPartidasTotalesFinalizadas();
+            if (ganada) incrementaPartidasTotalesGanadas();
+        }
         partidaActual = null;
-        incrementaPartidasTotalesFinalizadas();
-        if (ganada) incrementaPartidasTotalesGanadas();
+
     }
 
     /**
@@ -134,6 +156,7 @@ public class Usuario {
 
     /**
      * Imprime por pantalla la información de todas las partidas guardadas
+     * @throws Exception cuando no hay ninguna partida guardada
      * TODO excepción concreta
      */
     public void imprimeInfoPartidasGuardadas() throws Exception {

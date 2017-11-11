@@ -55,8 +55,9 @@ public class UsuarioTest {
             switch (n) {
                 case 1:
                     println("- Nombre: "+test.getNombre());
-                    println("- Partidas Finalizadas: "+test.getNumPartidasFinalizadas());
-                    println("- Partidas Ganadas: "+test.getNumPartidasGanadas());
+                    println("- Partidas Finalizadas CodeBreaker: "+test.getNumPartidasFinalizadas());
+                    println("- Partidas Ganadas CodeBreaker: "+test.getNumPartidasGanadas());
+                    println("- Partidas Finalizadas CodeMaker: "+test.getNumPartidasCodeMaker());
                     break;
                 case 2:
                     println("Introduce el nuevo nombre de usuario sin espacios:");
