@@ -96,7 +96,7 @@ public class MasterCerebro implements Inteligencia {
 
     }
 
-    int calculateFitness(Codigo codigo){
+    public int calculateFitness(Codigo codigo){
 
         for (int i = 0; i < intentos.size(); i++) {
             
@@ -112,7 +112,7 @@ public class MasterCerebro implements Inteligencia {
         return new Codigo(4);
     }
 
-    private Codigo permutación(Codigo codigo){
+    private Codigo permutacion(Codigo codigo){
         return new Codigo(4);
     }
 }
