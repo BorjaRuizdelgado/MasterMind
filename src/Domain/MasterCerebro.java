@@ -1,6 +1,7 @@
 package Domain;
 
 import Util.Console;
+import com.sun.org.apache.regexp.internal.RE;
 
 import java.util.*;
 
@@ -13,6 +14,10 @@ public class MasterCerebro implements Inteligencia {
 
     private static int MAXGEN = 100; //El máximo de generaciones que permitimos
     private static int MAXSIZE = 60; //El tamaño máximo de las poblaciones
+    private static double PROBABILIDAD_CRUCE = 0.5;
+    private static double PROBABILIDAD_MUTACION = 0.3;
+    private static double PROBABILIDAD_PERMUTACION = 0.3;
+
     private int numeroColores;
     private int numeroColumnas;
     private Random random;
@@ -62,10 +67,19 @@ public class MasterCerebro implements Inteligencia {
 
             for (int i = 0; i < poblacion.size(); i++) {
                 // Mutaciones
+                Codigo hijo = cruce(poblacion.get(i), poblacion.get(i + 1));
+
+                if (random.nextDouble() <= PROBABILIDAD_MUTACION)
+                    hijo = mutacion(hijo);
+
+                if (random.nextDouble() <= PROBABILIDAD_PERMUTACION)
+                    hijo = permutacion(hijo);
+
+                hijos.add(hijo);
             }
 
             Map<Integer, Codigo> puntuaciones = calculaPuntuaciones(hijos);
-
+            ordenaPuntuaciones(puntuaciones);
         }
 
         return new ArrayList<>();
@@ -83,7 +97,7 @@ public class MasterCerebro implements Inteligencia {
         return poblacion;
     }
 
-    private HashMap<Integer, Codigo> calculaPuntuaciones(List<Codigo> hijos){
+    private Map<Integer, Codigo> calculaPuntuaciones(List<Codigo> hijos){
         Map<Integer, Codigo> Result = new HashMap<>();
         for (int i = 0; i < hijos.size(); i++) {
             int score = calculateFitness(hijos.get(i));
@@ -92,7 +106,7 @@ public class MasterCerebro implements Inteligencia {
         return new HashMap<>();
     }
 
-    private void ordenaPuntuaciones(HashMap<Integer, Codigo> puntuaciones){
+    private void ordenaPuntuaciones(Map<Integer, Codigo> puntuaciones){
 
     }
 
@@ -104,15 +118,53 @@ public class MasterCerebro implements Inteligencia {
         return 0;
     }
 
-    private Codigo cruce(Codigo codigo){
-        return new Codigo(5);
+    private Codigo cruce(Codigo codigoA, Codigo codigoB){
+        // De momento probaremos con un solo corte
+        Codigo Return = new Codigo(numeroColumnas);
+
+        int i = random.nextInt(numeroColumnas - 1);
+        List<Integer> aPart1 = new ArrayList<>(codigoA.codigo.subList(0, i));
+        List<Integer> aPart2 = new ArrayList<>(codigoA.codigo.subList(i + 1, numeroColumnas - 1));
+        List<Integer> bPart1 = new ArrayList<>(codigoB.codigo.subList(0, i));
+        List<Integer> bPart2 = new ArrayList<>(codigoB.codigo.subList(i + 1, numeroColumnas - 1));
+
+        if (random.nextDouble() <= PROBABILIDAD_CRUCE) {
+            Return.codigo.addAll(aPart1);
+            Return.codigo.addAll(bPart2);
+        }
+        else {
+            Return.codigo.addAll(bPart1);
+            Return.codigo.addAll(aPart2);
+        }
+
+        return Return;
     }
 
     private Codigo mutacion(Codigo codigo){
-        return new Codigo(4);
+        Codigo Return = new Codigo(numeroColumnas);
+        Return.codigo = new ArrayList<>(codigo.codigo);
+        Return.codigo.set(random.nextInt(numeroColumnas - 1), 1 + random.nextInt(numeroColores - 1));
+        return Return;
     }
 
     private Codigo permutacion(Codigo codigo){
-        return new Codigo(4);
+        Codigo Return = new Codigo(numeroColumnas);
+        Return.codigo = new ArrayList<>(codigo.codigo);
+
+        int positionA = 0;
+        int positionB = 0;
+        do{
+            positionA = random.nextInt(numeroColumnas);
+            positionB = random.nextInt(numeroColumnas);
+        }
+        while (positionA == positionB);
+        int aux = codigo.codigo.get(positionA);
+        Return.codigo.set(positionA, codigo.codigo.get(positionB));
+        Return.codigo.set(positionB, aux);
+        return Return;
+    }
+
+    private Codigo inversion(Codigo codigo){
+        return new Codigo(numeroColumnas);
     }
 }
