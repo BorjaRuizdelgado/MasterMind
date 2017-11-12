@@ -41,6 +41,7 @@ public class MasterCerebro implements Inteligencia {
         numeroColores = colores;
         numeroColumnas = columnas;
         random = new Random(System.currentTimeMillis());
+        intentos = new ArrayList<>();
     }
 
     /**
@@ -62,13 +63,17 @@ public class MasterCerebro implements Inteligencia {
      * @return El siguiente intento en forma de Codigo
      */
     public Codigo getSiguienteIntento(Fila ultimoIntento) {
+        intentos.add(ultimoIntento);
+
         List<Codigo> posiblesCandidatos = evolution();
         Codigo candidato = seleccionaCandidato(posiblesCandidatos);
         return candidato;
     }
 
     private Codigo seleccionaCandidato(List<Codigo> candidatos) {
-        return new Codigo(4);
+        if (candidatos.size() == 0)
+            return seleccionaCandidato(evolution());
+        else return candidatos.get(0);
     }
 
     private List<Codigo> evolution() {
@@ -77,12 +82,14 @@ public class MasterCerebro implements Inteligencia {
         List<Codigo> candidatos = new ArrayList<>(); // Candidatos óptimos que devolveremos
         int generationCount = 0; // Contador para saber la generación en la que estamos
 
-        while (candidatos.size() <= MAXSIZE && generationCount <= MAXGEN) {
+        while (candidatos.size() < MAXSIZE && generationCount < MAXGEN) {
             List<Codigo> hijos = new ArrayList<>();
 
             for (int i = 0; i < poblacion.size(); i++) {
                 // Mutaciones
-                Codigo hijo = cruce(poblacion.get(i), poblacion.get(i + 1));
+                Codigo hijo;
+                if(i == poblacion.size() - 1) hijo = cruce(poblacion.get(i), poblacion.get(0));
+                else hijo = cruce(poblacion.get(i), poblacion.get(i + 1));
 
                 if (random.nextDouble() <= PROBABILIDAD_MUTACION)
                     hijo = mutacion(hijo);
@@ -93,36 +100,78 @@ public class MasterCerebro implements Inteligencia {
                 hijos.add(hijo);
             }
 
-            Map<Integer, Codigo> puntuaciones = calculaPuntuaciones(hijos);
-            ordenaPuntuaciones(puntuaciones);
+            Map<Codigo, Integer> puntuaciones = calculaPuntuaciones(hijos);
+            puntuaciones = getPuntuacionesOrdenadas(puntuaciones);
+
+            List<Codigo> elegibles = new ArrayList<>();
+            Iterator<Codigo> iterator = puntuaciones.keySet().iterator();
+            while (iterator.hasNext()) {
+                Codigo key = iterator.next();
+                if (puntuaciones.get(key) == 0)
+                    elegibles.add(key);
+            }
+
+            if (elegibles.size() == 0) {
+                generationCount++;
+                continue;
+            }
+
+            for (int i = 0; i < elegibles.size(); i++) {
+                if (!candidatos.contains(elegibles.get(i)) && candidatos.size() <= MAXSIZE)
+                    candidatos.add(elegibles.get(i));
+            }
+
+            poblacion = new ArrayList<>(elegibles);
+            while (poblacion.size() < MAXSIZE)
+                poblacion.add(generaCodigoRandom());
+
+            generationCount++;
         }
 
-        return new ArrayList<>();
+        return candidatos;
+    }
+
+    private Codigo generaCodigoRandom(){
+        Codigo codigo = new Codigo(numeroColumnas);
+        for (int j = 0; j < numeroColumnas; j++) {
+            codigo.codigo.add(1 + random.nextInt(numeroColores));
+        }
+        return codigo;
     }
 
     private List<Codigo> generarPoblacion() {
         List<Codigo> poblacion = new ArrayList<>();
         for (int i = 0; i < MAXSIZE; i++) {
-            Codigo codigo = new Codigo(numeroColumnas);
-            for (int j = 0; j < numeroColumnas; j++) {
-                codigo.codigo.add(1 + random.nextInt(numeroColores));
-            }
+            Codigo codigo = generaCodigoRandom();
             poblacion.add(codigo);
         }
         return poblacion;
     }
 
-    private Map<Integer, Codigo> calculaPuntuaciones(List<Codigo> hijos) {
-        Map<Integer, Codigo> Result = new HashMap<>();
+    private Map<Codigo, Integer> calculaPuntuaciones(List<Codigo> hijos) {
+        Map<Codigo, Integer> Result = new HashMap<>();
         for (int i = 0; i < hijos.size(); i++) {
             int score = calculateFitness(hijos.get(i));
-            Result.put(score, hijos.get(i));
+            Result.put(hijos.get(i), score);
         }
-        return new HashMap<>();
+        return Result;
     }
 
-    private void ordenaPuntuaciones(Map<Integer, Codigo> puntuaciones) {
-        
+    private Map<Codigo, Integer> getPuntuacionesOrdenadas(Map<Codigo, Integer> puntuaciones) {
+        Set<Map.Entry<Codigo, Integer>> entradas = puntuaciones.entrySet();
+        // Usamos un LinkedList porque sus inserciones son más rápidas
+        List<Map.Entry<Codigo, Integer>> list = new LinkedList<>(entradas);
+        Collections.sort(list, new Comparator<Map.Entry<Codigo, Integer>>() {
+            @Override
+            public int compare(Map.Entry<Codigo, Integer> codigoIntegerEntry, Map.Entry<Codigo, Integer> t1) {
+                return codigoIntegerEntry.getValue() - t1.getValue();
+            }
+        });
+        puntuaciones = new LinkedHashMap<>();
+        for (Map.Entry<Codigo, Integer> entrada: list) {
+            puntuaciones.put(entrada.getKey(), entrada.getValue());
+        }
+        return puntuaciones;
     }
 
     public int calculateFitness(Codigo codigo) {
@@ -145,7 +194,8 @@ public class MasterCerebro implements Inteligencia {
             totalBlack += differences.get(i).black;
         }
 
-        return totalBlack + totalWhite + 2*numeroColumnas*(intentos.size() - 1);
+        //return totalBlack + totalWhite + 2*numeroColumnas*(intentos.size() - 1);
+        return totalBlack + totalWhite;
     }
 
     private Codigo cruce(Codigo codigoA, Codigo codigoB) {
@@ -153,10 +203,10 @@ public class MasterCerebro implements Inteligencia {
         Codigo Return = new Codigo(numeroColumnas);
 
         int i = random.nextInt(numeroColumnas - 1);
-        List<Integer> aPart1 = new ArrayList<>(codigoA.codigo.subList(0, i));
-        List<Integer> aPart2 = new ArrayList<>(codigoA.codigo.subList(i + 1, numeroColumnas - 1));
-        List<Integer> bPart1 = new ArrayList<>(codigoB.codigo.subList(0, i));
-        List<Integer> bPart2 = new ArrayList<>(codigoB.codigo.subList(i + 1, numeroColumnas - 1));
+        List<Integer> aPart1 = new ArrayList<>(codigoA.codigo.subList(0, i + 1));
+        List<Integer> aPart2 = new ArrayList<>(codigoA.codigo.subList(i + 1, numeroColumnas));
+        List<Integer> bPart1 = new ArrayList<>(codigoB.codigo.subList(0, i + 1));
+        List<Integer> bPart2 = new ArrayList<>(codigoB.codigo.subList(i + 1, numeroColumnas));
 
         if (random.nextDouble() <= PROBABILIDAD_CRUCE) {
             Return.codigo.addAll(aPart1);
