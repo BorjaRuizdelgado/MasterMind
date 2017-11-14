@@ -226,9 +226,4 @@ public class Cerebro implements Inteligencia{
             if(combinacionesTotales.get(i).codigo.equals(intento.codigo)) combinacionesTotales.remove(i);
         }
     }
-
-
-    /* ESCRITURAS */
-
-
 }

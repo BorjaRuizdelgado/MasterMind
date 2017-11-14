@@ -202,7 +202,7 @@ public class MasterCerebro implements Inteligencia {
         // De momento probaremos con un solo corte
         Codigo Return = new Codigo(numeroColumnas);
 
-        int i = random.nextInt(numeroColumnas - 1);
+        int i = numeroColumnas == 1 ? 0 : random.nextInt(numeroColumnas - 1);
         List<Integer> aPart1 = new ArrayList<>(codigoA.codigo.subList(0, i + 1));
         List<Integer> aPart2 = new ArrayList<>(codigoA.codigo.subList(i + 1, numeroColumnas));
         List<Integer> bPart1 = new ArrayList<>(codigoB.codigo.subList(0, i + 1));
@@ -222,7 +222,7 @@ public class MasterCerebro implements Inteligencia {
     private Codigo mutacion(Codigo codigo) {
         Codigo Return = new Codigo(numeroColumnas);
         Return.codigo = new ArrayList<>(codigo.codigo);
-        Return.codigo.set(random.nextInt(numeroColumnas - 1), 1 + random.nextInt(numeroColores - 1));
+        Return.codigo.set(numeroColumnas == 1 ? 0 : random.nextInt(numeroColumnas - 1), 1 + random.nextInt(numeroColores - 1));
         return Return;
     }
 
@@ -235,6 +235,7 @@ public class MasterCerebro implements Inteligencia {
         do {
             positionA = random.nextInt(numeroColumnas);
             positionB = random.nextInt(numeroColumnas);
+            if (numeroColumnas == 1) break;
         }
         while (positionA == positionB);
         int aux = codigo.codigo.get(positionA);
