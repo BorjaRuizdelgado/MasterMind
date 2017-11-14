@@ -74,7 +74,7 @@ public class SistemaRanking {
     }
 
     /**
-     * Devuelve una lista con las puntuacions del nombre pasado por parámetro
+     * Devuelve una lista con las puntuaciones del nombre pasado por parámetro
      * @param nombre Es el nombre del usuario
      * @return rankingFacil con entradas del usuario.
      */
@@ -83,7 +83,7 @@ public class SistemaRanking {
     }
 
     /**
-     * Devuelve una lista con las puntuacions del nombre pasado por parámetro
+     * Devuelve una lista con las puntuaciones del nombre pasado por parámetro
      * @param nombre Es el nombre del usuario
      * @return rankingNormal con entradas del usuario.
      */
@@ -92,7 +92,7 @@ public class SistemaRanking {
     }
 
     /**
-     * Devuelve una lista con las puntuacions del nombre pasado por parámetro
+     * Devuelve una lista con las puntuaciones del nombre pasado por parámetro
      * @param nombre Es el nombre del usuario
      * @return rankingDificil con entradas del usuario.
      */
@@ -102,7 +102,7 @@ public class SistemaRanking {
 
 
     /**
-     * Actualizamos listaRankingFacil
+     * Actualiza listaRankingFacil
      * @param ranking Nuevo ranking fácil
      */
     public void setRankingFacil(List<Info> ranking){
@@ -110,7 +110,7 @@ public class SistemaRanking {
     }
 
     /**
-     * Actualizamos listaRankingNormal
+     * Actualiza listaRankingNormal
      * @param ranking Nuevo ranking normal
      */
     public void setRankingNormal(List<Info> ranking){
@@ -118,7 +118,7 @@ public class SistemaRanking {
     }
 
     /**
-     * Actualizamos listaRankingDificil
+     * Actualiza listaRankingDificil
      * @param ranking Nuevo ranking díficil
      */
     public void setRankingDificil(List<Info> ranking){
@@ -126,7 +126,7 @@ public class SistemaRanking {
     }
 
     /**
-     * Añadimos la información de una nueva partida a una lista en concreto especificada en el parámetro 'dificultad'
+     * Añade la información de una nueva partida a una lista en concreto especificada en el parámetro 'dificultad'
      * @param information Contiene la información de la partida. Es la info. que se añadirá a uno de los rankings.
      * @param dificultad Especifica en que ranking se añadirá la información 'information'
      */
@@ -144,5 +144,6 @@ public class SistemaRanking {
             default:
                 break;
         }
+        //todo se debe pasar por parámetro info básica, y crear aqui el Info
     }
 }

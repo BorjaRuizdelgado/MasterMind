@@ -42,15 +42,6 @@ public class Tablero {
         iniciaTablero();
     }
 
-    /**
-     * @return El El tablero sobre el que se juega.
-     */
-    public List<Fila> getTablero(){
-        return tablero;
-    }
-
-
-
 
     /* CONSULTORAS */
 
@@ -139,7 +130,7 @@ public class Tablero {
     public void setUltimoRespuestas(Respuesta answer) throws ExcepcionRespuestaIncorrecta {
         if (answer.equals(codigoSecreto.getRespuesta(getActualColores())))
             tablero.get(numeroFilaActual).setRespuestas(answer);
-        else throw new ExcepcionRespuestaIncorrecta("Respuesta incorrecta. Comprueba tu respuesta.");
+        else throw new ExcepcionRespuestaIncorrecta("** ERROR **: Respuesta incorrecta. Comprueba tu respuesta.");
         incrementaFilaActual();
     }
 

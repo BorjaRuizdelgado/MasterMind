@@ -79,6 +79,7 @@ public class InfoTest {
                     option = 4;
                     exit = true;
                 }
+                //todo no se prueba el toString de Info
             }
         }
     }

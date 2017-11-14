@@ -23,7 +23,7 @@ public class Info {
     }
 
     /**
-     * Devolvemos el nombre del usuario
+     * Devuelve el nombre del usuario
      * @return usuario
      */
     public String getUsuario() {
@@ -31,7 +31,7 @@ public class Info {
     }
 
     /**
-     * Devolvemos la puntuación de la partida
+     * Devuelve la puntuación de la partida
      * @return puntuación
      */
     public int getPuntuacion() {
@@ -39,7 +39,7 @@ public class Info {
     }
 
     /**
-     * Devolvemos la fecha
+     * Devuelve la fecha
      * @return fecha
      */
     public String getFecha() {
@@ -47,6 +47,7 @@ public class Info {
     }
 
     /**
+     * Convierte una info a un String comprensible.
      * Override de 'toString'
      * @return Devolvemos un string con el formato adecuado
      */

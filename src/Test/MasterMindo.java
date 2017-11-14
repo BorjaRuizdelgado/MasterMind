@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  * MASTERMINDO GAME TEST
- * Implementa un Main para poder probar de manera interactiva el juego completo.
+ * Implementa un Main para poder probar de manera interactiva el juego.
  * @author ISA
  */
 public class MasterMindo {
@@ -21,12 +21,16 @@ public class MasterMindo {
     public static void main(String[] args) {
             println("Bienvenid@ a MasterMindo un juego completamente nuevo y \n" +
                     "que no infringe ningun tipo de derechos de autor");
+            println(">> ATENCIÓN: En esta prueba solo probaremos el juego interactivamente. <<\n" +
+                "Las demás funcionalidades se encuentran en los tests concretos.\n");
 
-            println("Ahora introduce tu nombre de usuario y presiona Enter:");
+            println("Ahora introduce tu nombre de usuario y presiona Enter.");
             String nombreUsuario = scan.next();
             usr = new Usuario(nombreUsuario);
-            println("¡Se ha creado tu usuario!\n" +
-                    "\nPresiona 1 para JUGAR como CODEMAKER o 2 para JUGAR como CODEBREAKER");
+            println("** ¡Se ha creado tu usuario! **");
+
+            println("¡Vamos a jugar! Crearemos una nueva partida.");
+            println("Escribe 1 para JUGAR como CODEMAKER o 2 para JUGAR como CODEBREAKER y presiona Enter.");
             int rol = scan.nextInt();
             if(rol == 1) juega(true);
             else if(rol == 2) juega(false);
@@ -34,26 +38,27 @@ public class MasterMindo {
             println("El juego ha terminado.");
     }
 
-
+    /**
+     * Crea una partida con el rol pasado por parámetro y la dificultad elegida por el usuario.
+     * @param rol rol de la partida. True si es CodeMaker, false si es CodeBreaker.
+     */
     private static void juega(Boolean rol) {
-        println("Dame un nivel de dificultad: Facil, Medio y Dificil");
+        println("Escribe el nivel de dificultad que elijas entre los siguientes: 'Facil', 'Medio' y 'Dificil'");
         String diff = scan.next();
         try {
             usr.creaPartidaActual(rol, diff);
             pary = usr.getPartidaActual();
-        } catch (ExcepcionYaExistePartidaActual | ExcepcionNoHayPartidaActual e) {
-            println(e.getMessage());
-        }
-        try {
             if (rol) juegaCodeMaker();
             else juegaCodeBreaker();
-        } catch (ExcepcionPartidaAbandonada | ExcepcionNoHayPartidaActual e) {
+        } catch (ExcepcionPartidaAbandonada | ExcepcionYaExistePartidaActual | ExcepcionNoHayPartidaActual e) {
             println(e.getMessage());
         }
     }
 
     /**
      * Permite al usuario jugar como CodeBreaker.
+     * @throws ExcepcionPartidaAbandonada cuando la partida se abandone.
+     * @throws ExcepcionNoHayPartidaActual cuando se intente acceder a la partida actual y no exista.
      */
     private static void juegaCodeBreaker() throws ExcepcionPartidaAbandonada, ExcepcionNoHayPartidaActual {
         println("Partida empezada.");
@@ -63,9 +68,10 @@ public class MasterMindo {
         while(pary.getNumeroFilaActual() != 15 && !pary.isGanado()){
             while (!nuevoIntento) {
                 println("¿Qué quieres hacer?");
-                println("[1] Introducir un nuevo intento.\n[2] Pedir una pista.\n" +
-                        "[3] Abandonar la partida.\n");
-                // todo falta añadir al menú la opción de ayuda
+                println("[1] Introducir un nuevo intento.\n" +
+                        "[2] Pedir una pista.\n" +
+                        "[3] Ayuda.\n" +
+                        "[4] Abandonar la partida.");
                 n = scan.nextInt();
                 switch (n) {
                     case 1:
@@ -75,6 +81,9 @@ public class MasterMindo {
                         obtenerPista();
                         break;
                     case 3:
+                        obtenerAyuda(pary.isRolMaker());
+                        break;
+                    case 4:
                         println("¿Estás seguro de querer abandonar? Responde: 'Si' / 'No'.");
                         if (scan.next().equals("Si")) {
                             usr.abandonaPartidaActual();
@@ -118,14 +127,22 @@ public class MasterMindo {
         int n;
         while(pary.getNumeroFilaActual() != 15 && !pary.isGanado()){
             println("¿Qué quieres hacer?");
-            println("[1] Siguiente intento.\n[2] Abandonar la partida.\n");
+            println("[1] Siguiente intento.\n" +
+                    "[2] Ver tu código secreto.\n" +
+                    "[3] Obtener ayuda.\n" +
+                    "[4] Abandonar la partida.");
             n = scan.nextInt();
-            //todo falta añadir la opción de ayuda
             switch (n) {
                 case 1:
                     corrige();
                     break;
                 case 2:
+                    System.out.println("Tu código secreto: "+pary.getCodigoSecreto().codigo);
+                    break;
+                case 3:
+                    obtenerAyuda(pary.isRolMaker());
+                    break;
+                case 4:
                     println("¿Estás seguro de querer abandonar? Responde: 'Si' / 'No'.");
                     if (scan.next().equals("Si")) {
                         usr.abandonaPartidaActual();
@@ -239,6 +256,40 @@ public class MasterMindo {
                 break;
         }
 
+    }
+
+    /**
+     * Devuelve el manual de usuario sobre como jugar según el rol
+     * @param rol rol que está jugando el usuario.
+     */
+    private static void obtenerAyuda (Boolean rol) {
+        if (rol) { //codemaker
+            println("** COMO JUGAR EL ROL CODEMAKER **\n" +
+                    "En este modo de juego debes crear tu código secreto.\n" +
+                    "La máquina intentará descubrirlo. Solo debes corregir sus intentos.\n" +
+                    "Hay un máximo de 15 intentos para descubrirlo.\n" +
+                    "Para corregir sus intentos debes responder por cada ficha:\n" +
+                    "> '8' si el número y la posición de la ficha coinciden con tu código secreto.\n" +
+                    "> '7' si el número de la ficha está en otra posición de tu código secreto.\n" +
+                    "> '0' si el número de la ficha no está en tu código secreto.");
+            println(">> EJEMPLO <<\n" +
+                    "Tu código secreto:  [1 2 3 4 5 6].\n" +
+                    "Intento máquina:    [1 1 2 2 5 6].\n" +
+                    "Respuesta correcta: [8 8 8 7 0 0].\n" +
+                    "> Tres '8' porque coinciden el primer 1, el 5 y el 6.\n" +
+                    "> Un '7' porque está en otra posición uno de los 2.\n" +
+                    "> Dos '0' porque no se repiten el segundo 1 y el otro 2.\n");
+        }
+        else { //codebreaker
+            println("** COMO JUGAR EL ROL CODEMAKER **\n" +
+                    "En este modo de juego la máquina creará un código secreto.\n" +
+                    "Debes intentar descubrirlo probando con códigos. La máquina corregirá tus intentos.\n" +
+                    "Hay un máximo de 15 intentos para descubrirlo.\n" +
+                    "Para intentar encontrarlo debes tener en cuenta la respuesta cada intento:\n" +
+                    "> '8' si el número y la posición de una ficha coinciden con el código secreto.\n" +
+                    "> '7' si el número de una ficha está en otra posición del código secreto.\n" +
+                    "> '0' si el número de una ficha no está en el código secreto.");
+        }
     }
 
     /**
