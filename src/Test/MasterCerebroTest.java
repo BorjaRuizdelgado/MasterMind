@@ -14,14 +14,24 @@ import java.util.Scanner;
 
 public class MasterCerebroTest {
 
+    /**
+     * Método en el que inicializamos y probamos la clase Cerebro con los datos (colores/columnas) introducidos.
+     * @param args
+     */
     public static void main(String[] args){
-        final int colours = 6;
+        final int colours;
         final int columns;
-        Console.println("Introduce el número de columnas:");
         Scanner in = new Scanner(System.in);
-        columns = in.nextInt();
-        Console.println("Introduce el código secreto con números del 1 al 6 separados por espacios:");
 
+        Console.println("Introduce el número de columnas:");
+        columns = in.nextInt();
+
+        Console.println("Introduce el número de colores:");
+        colours = in.nextInt();
+
+        if (columns >= 10 || colours >= 20) Console.println("Al tener muchas columnas/filas esto puede tardar unos minutos.", "red");
+
+        Console.println("Introduce el código secreto con números del 1 al " + String.valueOf(colours) + " separados por espacios:");
         Codigo code = new Codigo(columns);
         for (int i = 0; i < columns; i++) {
             code.codigo.add(in.nextInt());
