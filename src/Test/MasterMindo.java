@@ -214,7 +214,8 @@ public class MasterMindo {
                 "[2] Obtener todos los colores que no aparecen en el código secreto.\n" +
                 "[3] Obtener el color de una posición aleatoria del código secreto.\n" +
                 "[4] Cancelar.");
-        println("ATENCIÓN: El uso de pistas hará que la puntuación de la partida sea 0.");
+        println("ATENCIÓN: El uso de pistas hará que la puntuación de la partida sea 0." +
+                "ATENCIÓN: Solo puedes usar cada pista una vez.");
         int n = scan.nextInt();
         switch (n) {
             case 1:
@@ -310,7 +311,7 @@ public class MasterMindo {
         pary.setIntento(code);
 
         long endTime = System.currentTimeMillis();
-        pary.sumaTiempo(endTime - startTime);
+        pary.sumaTiempo((endTime - startTime)/1000);
 
         pary.generaRespuesta();
     }
