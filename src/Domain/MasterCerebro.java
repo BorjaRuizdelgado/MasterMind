@@ -1,12 +1,7 @@
 package Domain;
 
-import Util.Console;
-import com.sun.org.apache.regexp.internal.RE;
-import jdk.internal.util.xml.impl.Pair;
-
 import java.lang.reflect.Array;
 import java.util.*;
-
 import static java.lang.Math.abs;
 
 /**
@@ -27,6 +22,10 @@ public class MasterCerebro implements Inteligencia {
     private Random random;
     private List<Fila> intentos;
 
+    /**
+     * Clase auxiliar que sirve para tener una representación de la clase 'Respuesta' de manera simplista y así realizar
+     * el algoritmo de manera más sencilla.
+     */
     private class ResultPair {
         public int white;
         public int black;
@@ -37,6 +36,12 @@ public class MasterCerebro implements Inteligencia {
         }
     }
 
+    /**
+     * Creadora de la clase donde se le indican los dos atributos necesarios para realizar sus métodos correctamente.
+     * Se interpretará esta información para la creación de códigos dentro del algoritmo.
+     * @param colores Número de colores.
+     * @param columnas Número de columnas.
+     */
     public MasterCerebro(int colores, int columnas) {
         numeroColores = colores;
         numeroColumnas = columnas;
@@ -45,22 +50,32 @@ public class MasterCerebro implements Inteligencia {
     }
 
     /**
-     * Genera el primer intento.
+     * Genera el primer intento. La mitad de los colores són '1' y la otra mitad són números que comienzan por el '2'
+     * de forma creciente.
+     * Sea el número de columnas 6:
+     * Devuelve: [1, 1, 1, 2, 3, 4]
+     * Se sigue este patrón debido a que suele obtener mejores resultados.
+     * @return El código generado.
      */
     public Codigo getIntentoInicial() {
         Codigo intentoActual = new Codigo(numeroColumnas);
+        int aux = 2;
         for (int i = 0; i < numeroColumnas; i++) {
-            if (i < numeroColumnas / 2) intentoActual.codigo.add(1);
-            else intentoActual.codigo.add(2);
+            if (i < numeroColumnas / 2) {
+                intentoActual.codigo.add(1);
+            }
+            else {
+                intentoActual.codigo.add(aux);
+                aux++;
+            }
         }
         return intentoActual;
     }
 
     /**
-     * Genera el Codigo del siguiente intento
-     *
-     * @param ultimoIntento El último intento que se ha hecho en el tablero
-     * @return El siguiente intento en forma de Codigo
+     * Genera el Codigo del siguiente intento.
+     * @param ultimoIntento El último intento que se ha hecho en el tablero.
+     * @return El siguiente intento en forma de Codigo.
      */
     public Codigo getSiguienteIntento(Fila ultimoIntento) {
         intentos.add(ultimoIntento);
@@ -70,6 +85,12 @@ public class MasterCerebro implements Inteligencia {
         return candidato;
     }
 
+    /**
+     * Selecciona un candidato de entre los posibles pasado como parámetro. Si no hay posibles candidatos, hacemos
+     * una llamada recursiva hasta obtener al menos uno.
+     * @param candidatos Lista de código que contiene los posibles candidatos.
+     * @return Devolvemos el primer candidato que se encuentra en la lista.
+     */
     private Codigo seleccionaCandidato(List<Codigo> candidatos) {
         if (candidatos.size() == 0)
             return seleccionaCandidato(evolution());
@@ -131,6 +152,10 @@ public class MasterCerebro implements Inteligencia {
         return candidatos;
     }
 
+    /**
+     * Método que devuelve un código con información aleatoria.
+     * @return Código con colores aleatorios.
+     */
     private Codigo generaCodigoRandom(){
         Codigo codigo = new Codigo(numeroColumnas);
         for (int j = 0; j < numeroColumnas; j++) {
@@ -139,6 +164,10 @@ public class MasterCerebro implements Inteligencia {
         return codigo;
     }
 
+    /**
+     * Genera una lista de códigos con información aleatoria.
+     * @return Una lista de códigos.
+     */
     private List<Codigo> generarPoblacion() {
         List<Codigo> poblacion = new ArrayList<>();
         for (int i = 0; i < MAXSIZE; i++) {
@@ -148,6 +177,12 @@ public class MasterCerebro implements Inteligencia {
         return poblacion;
     }
 
+    /**
+     * Crea y devuelve un map con las puntuaciones de la lista de códigos pasado como parámetro. Los códigos són la llave
+     * y su puntuación el valor.
+     * @param hijos Lista de códigos que estarán dentro del map.
+     * @return Map generado a partir de la lista de códigos, cada uno con su puntuación adquirida.
+     */
     private Map<Codigo, Integer> calculaPuntuaciones(List<Codigo> hijos) {
         Map<Codigo, Integer> Result = new HashMap<>();
         for (int i = 0; i < hijos.size(); i++) {
@@ -157,6 +192,12 @@ public class MasterCerebro implements Inteligencia {
         return Result;
     }
 
+    /**
+     * Coge el map pasado como parámetro y devuelve un map de manera creciente según los valores (puntuaciones) que tiene
+     * el map original.
+     * @param puntuaciones Map de origen a partir del cual se creará una instancia con sus valores ordenador.
+     * @return Devuelve el Map generado con los valores del parámetro 'puntuaciones'.
+     */
     private Map<Codigo, Integer> getPuntuacionesOrdenadas(Map<Codigo, Integer> puntuaciones) {
         Set<Map.Entry<Codigo, Integer>> entradas = puntuaciones.entrySet();
         // Usamos un LinkedList porque sus inserciones son más rápidas
@@ -167,6 +208,7 @@ public class MasterCerebro implements Inteligencia {
                 return codigoIntegerEntry.getValue() - t1.getValue();
             }
         });
+        // Una vez ordenados, creamos un map y los insertamos.
         puntuaciones = new LinkedHashMap<>();
         for (Map.Entry<Codigo, Integer> entrada: list) {
             puntuaciones.put(entrada.getKey(), entrada.getValue());
@@ -174,6 +216,12 @@ public class MasterCerebro implements Inteligencia {
         return puntuaciones;
     }
 
+    /**
+     * Se calcula la puntuación del código pasado como parámetro, en base a sus resultados si jugase con los 'intentos'
+     * ya realizados.
+     * @param codigo
+     * @return
+     */
     public int calculateFitness(Codigo codigo) {
         List<ResultPair> differences = new ArrayList<>();
         for (int i = 0; i < intentos.size(); i++) {
@@ -198,6 +246,15 @@ public class MasterCerebro implements Inteligencia {
         return totalBlack + totalWhite;
     }
 
+    /**
+     * Realiza un cruce entre dos códigos con un solo punto de corte.
+     * Se adquiere una posición aleatoria y se dividen los dos códigos en cuatro sub-códigos (generados al cortas los
+     * dos códigos iniciales) y se intercambian entre ellos, dando así a dos posibles nuevos códigos de los que se coge
+     * uno de manera aleatoria.
+     * @param codigoA Código uno a cruzar.
+     * @param codigoB Código dos a cruzar.
+     * @return El código generado a partir de los cortes.
+     */
     private Codigo cruce(Codigo codigoA, Codigo codigoB) {
         // De momento probaremos con un solo corte
         Codigo Return = new Codigo(numeroColumnas);
@@ -219,6 +276,11 @@ public class MasterCerebro implements Inteligencia {
         return Return;
     }
 
+    /**
+     * Cambia un color del código de forma aleatoria.
+     * @param codigo El código al que se le va a cambiar un color.
+     * @return El código cambiado..
+     */
     private Codigo mutacion(Codigo codigo) {
         Codigo Return = new Codigo(numeroColumnas);
         Return.codigo = new ArrayList<>(codigo.codigo);
@@ -226,6 +288,11 @@ public class MasterCerebro implements Inteligencia {
         return Return;
     }
 
+    /**
+     * Intercambia de posición dos colores de forma aleatoria.
+     * @param codigo El código a cambiar.
+     * @return El código al que se le han cambiado los colores.
+     */
     private Codigo permutacion(Codigo codigo) {
         Codigo Return = new Codigo(numeroColumnas);
         Return.codigo = new ArrayList<>(codigo.codigo);
@@ -244,10 +311,12 @@ public class MasterCerebro implements Inteligencia {
         return Return;
     }
 
-    private Codigo inversion(Codigo codigo) {
-        return new Codigo(numeroColumnas);
-    }
-
+    /**
+     * Crea una instáncia 'ResultPair' con los datos del String 'result' y la devuelve
+     * @param result El String del que se tomará la información.
+     * @return Una instáncia 'ResultPair' con el atributo 'white' con la cantidad de "W" que hayan en el String y con el
+     * atributo 'black' con la cantidad de "B".
+     */
     private ResultPair toResultPair(String result) {
         int white = 0, black = 0;
         char aux[] = result.toCharArray();
