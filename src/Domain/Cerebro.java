@@ -89,7 +89,7 @@ public class Cerebro implements Inteligencia{
      * @return mejor codigo para el siguiente intento
      */
     private Codigo seleccionaCandidato(List<Codigo> candidatos){
-        Collections.sort(candidatos, new Comparator());
+        candidatos.sort(new Comparator());
         int idCandidato = -1;
 
         for (int i = 0; i < candidatos.size(); i++) {

@@ -80,7 +80,7 @@ public class MasterCerebro implements Inteligencia {
     public Codigo getSiguienteIntento(Fila ultimoIntento) {
         intentos.add(ultimoIntento);
 
-        List<Codigo> posiblesCandidatos = evolution();
+        List<Codigo> posiblesCandidatos = evolucion();
         Codigo candidato = seleccionaCandidato(posiblesCandidatos);
         return candidato;
     }
@@ -93,11 +93,22 @@ public class MasterCerebro implements Inteligencia {
      */
     private Codigo seleccionaCandidato(List<Codigo> candidatos) {
         if (candidatos.size() == 0)
-            return seleccionaCandidato(evolution());
+            return seleccionaCandidato(evolucion());
         else return candidatos.get(0);
     }
 
-    private List<Codigo> evolution() {
+    /**
+     * Genera una población (Códigos aleatorios), seguidamente se simula una evolución de ésta para obtener unos candi-
+     * datos óptimos.
+     * En la evolución, se generan hijos a partir de mutaciones. Estas mutaciones son: Cruces entre códigos, mutaciones
+     * de algun color o intercambios de color.
+     * Estos hijos, que están en una generación en concreto, son filtrados, es decir, nos quedamos con los mejores y éstos
+     * són añadidos a un grupo llamado 'candidatos'.
+     * Una vez realizada esta generacion, la siguiente partirá de los mejores hijos de la generación anterior, y así
+     * obtendremos unos candidatos eficacez, a lo largo de distintas generaciones.
+     * @return
+     */
+    private List<Codigo> evolucion() {
         List<Codigo> poblacion = generarPoblacion();
 
         List<Codigo> candidatos = new ArrayList<>(); // Candidatos óptimos que devolveremos
@@ -219,8 +230,15 @@ public class MasterCerebro implements Inteligencia {
     /**
      * Se calcula la puntuación del código pasado como parámetro, en base a sus resultados si jugase con los 'intentos'
      * ya realizados.
-     * @param codigo
-     * @return
+     * El método considera que un código es óptimo cuando la diferencia entre el resultado obtenido al
+     * jugar con un intento realizado y el resultado del intento realizado es pequeño.
+     * Por lo que se obtiene esta diferencia para cada intento y finalmente se suma todo.
+     * Nota: En un principio, se intentó obtener el resultado final aplicando la fórmula:
+     * F = constanteA * diferencias negras + diferencias blancas + constante B*(número de intentos - 1)
+     * Pero no funcionaba del todo bien, por lo que este método utiliza un fórmula más simple que de todos modos da
+     * buenos resultados.
+     * @param codigo Código a valorar.
+     * @return La valoración (Cuánto más cerca de 0, mejor).
      */
     public int calculateFitness(Codigo codigo) {
         List<ResultPair> differences = new ArrayList<>();
