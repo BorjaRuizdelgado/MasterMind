@@ -38,7 +38,7 @@ public class CodigoTest {
         Scanner in = new Scanner(System.in);
         int num = in.nextInt();
         while (num != 4 && num != 6) {
-            println("Tamaño no válido");
+            println("Tamaño no válido.");
             num = in.nextInt();
         }
         Boolean fin = false;
@@ -48,9 +48,9 @@ public class CodigoTest {
         int n;
         while (!fin) {
             println("¿Qué desea hacer?");
-            println("1: Comparar dos códigos y obtener la respuesta. " +
-                    "2: Verificar si los codigos son iguales." +
-                    "3: Finalizar la prueba. ");
+            println("[1] Comparar dos códigos y obtener la respuesta.\n" +
+                    "[2] Verificar si los codigos son iguales.\n" +
+                    "[3] Finalizar la prueba. ");
             n = in.nextInt();
             switch (n) {
                 case 1:

@@ -80,7 +80,7 @@ public class Usuario {
     /**
      * Devuelve la partida actual del usuario
      * @return partidaActual
-     *
+     * @throws ExcepcionNoHayPartidaActual cuando no hay una partida actual que obtener
      */
     public Partida getPartidaActual() throws ExcepcionNoHayPartidaActual {
         if (partidaActual == null) throw new ExcepcionNoHayPartidaActual("** ERROR **: No hay una partida actual.");
