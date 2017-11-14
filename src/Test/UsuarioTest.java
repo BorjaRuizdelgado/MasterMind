@@ -2,8 +2,10 @@ package Test;
 
 import static Util.Console.*;
 
+import Domain.Excepciones.ExcepcionNoHayPartidaActual;
 import Domain.Excepciones.ExcepcionNoHayPartidasGuardadas;
-import Domain.Partida;
+import Domain.Excepciones.ExcepcionPruebaTerminada;
+import Domain.Excepciones.ExcepcionYaExistePartidaActual;
 import Domain.Usuario;
 
 import java.util.Scanner;
@@ -14,12 +16,111 @@ import java.util.Scanner;
  * @author ISA
  */
 public class UsuarioTest {
+    private static Scanner in = new Scanner(System.in);
+
+    public static void main (String[] args) {
+        println("Aquí probamos la clase Usuario");
+        println("Introduce tu nombre de usuario sin espacios:");
+
+        String name = in.next();
+        Usuario test = new Usuario(name);
+        println("Se ha creado el usuario con nombre: "+test.getNombre());
+
+        testea(test);
+
+    }
+
+    /**
+     * @param test usuario de la prueba
+     */
+    private static void testea (Usuario test)  {
+        int n;
+        Boolean fin = false;
+        while(!fin) {
+            println("¿Qué desea hacer?");
+            println("[1] Ver mi información y estadísticas.\n" +
+                    "[2] Cambiar nombre.\n" +
+                    "[3] Crear una partida\n" +
+                    "[4] Guardar la partida actual.\n" +
+                    "[5] Obtener info de las partidas guardadas.\n" +
+                    "[6] Finalizar como perdida la partida actual.\n" +
+                    "[7] Finalizar como ganada la partida actual.\n" +
+                    "[8] Reiniciar estadísticas.\n" +
+                    "[9] Acabar la prueba.");
+            n = in.nextInt();
+            switch (n) {
+                case 1: // ver informacion y estadisticas usuario
+                    println("- Nombre: "+test.getNombre());
+                    println("- Partidas Finalizadas CodeBreaker: "+test.getNumPartidasFinalizadasCB());
+                    println("- Partidas Ganadas CodeBreaker: "+test.getNumPartidasGanadasCB());
+                    println("- Partidas Finalizadas CodeMaker: "+test.getNumPartidasFinalizadasCM());
+                    //todo falta completar las estadisticas
+                    //todo falta cargar una partida
+                    break;
+                case 2:  // cambiar nombre
+                    println("Introduce el nuevo nombre de usuario sin espacios:");
+                    String name = in.next();
+                    test.setNombre(name);
+                    break;
+                case 3: // crear una nueva partida
+                    try {
+                        creaPartida(test);
+                        println("Partida creada con ID: " + test.getIdPartidaActual());
+                    } catch (ExcepcionYaExistePartidaActual | ExcepcionNoHayPartidaActual e) {
+                        println(e.getMessage());
+                    }
+                    break;
+                case 4: // guardar partida
+                    try {
+                        test.guardaPartidaActual();
+                        println("Partida guardada.");
+                    } catch (ExcepcionNoHayPartidaActual e) {
+                        println(e.getMessage());
+                    }
+                    break;
+                case 5: // obtener info partidas guardadas
+                    try {
+                        test.imprimeInfoPartidasGuardadas();
+                    } catch (ExcepcionNoHayPartidasGuardadas e) {
+                        println(e.getMessage());
+                    }
+                    break;
+                case 6: // finalizar partida actual como perdida
+                    try {
+                        test.finalizarPartidaActual(false);
+                        println("Partida Finalizada.");
+                    } catch (ExcepcionNoHayPartidaActual e) {
+                        println(e.getMessage());
+                    }
+                    break;
+                case 7: // finalizar partida actual como ganada
+                    try {
+                        test.finalizarPartidaActual(true);
+                        println("Partida Finalizada");
+                    } catch (ExcepcionNoHayPartidaActual e) {
+                        println(e.getMessage());
+                    }
+                    break;
+                case 8: // reiniciar estadísticas
+                    test.reiniciaEstadisticas();
+                    println("Estadísticas Reiniciadas.");
+                    break;
+                case 9: // acabar prueba
+                    fin = true;
+                    break;
+                default:
+                    println("Opción no válida");
+                    break;
+            }
+        }
+    }
 
     /**
      * Crea una partida actual para el usuario pasado por parámetro y la devuelve
      * @param test usuario al que se le asigna la nueva partida
+     * @throws ExcepcionYaExistePartidaActual cuando el usuario ya tiene una partida actual
      */
-    private static void creaPartida (Usuario test) {
+    private static void creaPartida (Usuario test) throws ExcepcionYaExistePartidaActual {
         Scanner in = new Scanner(System.in);
         println("Introduce el ROL: 1 (CodeMaker) ó 0 (CodeBreaker)");
         int rol = in.nextInt();
@@ -34,86 +135,6 @@ public class UsuarioTest {
             dif = in.next();
         }
         test.creaPartidaActual(rol==1, dif);
-    }
-
-    public static void main (String[] args) {
-        println("Aquí probamos la clase Usuario");
-        println("Introduce tu nombre de usuario sin espacios:");
-        Scanner in = new Scanner(System.in);
-        String name = in.next();
-        Usuario test = new Usuario(name);
-        println("Se ha creado el usuario con nombre: "+test.getNombre());
-
-        int n;
-        Boolean fin = false;
-        Boolean p = false;
-        while(!fin) {
-            println("¿Qué desea hacer?");
-            println("[1] Ver mi información.\n[2] Cambiar nombre.\n[3] Crear una partida\n" +
-                    "[4] Guardar la partida actual.\n[5] Obtener info de las partidas guardadas.\n" +
-                    "[6] Finalizar como perdida la partida actual.\n[7] Finalizar como ganada la partida actual.\n" +
-                    "[8] Acabar la prueba.");
-            n = in.nextInt();
-            //todo quitar la p haciendo excepciones
-            switch (n) {
-                case 1:
-                    println("- Nombre: "+test.getNombre());
-                    println("- Partidas Finalizadas CodeBreaker: "+test.getNumPartidasFinalizadas());
-                    println("- Partidas Ganadas CodeBreaker: "+test.getNumPartidasGanadas());
-                    println("- Partidas Finalizadas CodeMaker: "+test.getNumPartidasCodeMaker());
-                    break;
-                case 2:
-                    println("Introduce el nuevo nombre de usuario sin espacios:");
-                    name = in.next();
-                    test.setNombre(name);
-                    break;
-                case 3:
-                    if(!p) {
-                        creaPartida(test);
-                        println("Partida creada con ID: " + test.getIdPartidaActual());
-                        p = true;
-                    }
-                    else println("Ya existe una partida actual. Guárdala antes de crear otra.");
-                    break;
-                case 4:
-                    if (p) {
-                        test.guardaPartidaActual();
-                        println("Partida guardada.");
-                        p = false;
-                    }
-                    else println("No hay ninguna partida actual");
-                    break;
-                case 5:
-                    try {
-                        test.imprimeInfoPartidasGuardadas();
-                    } catch (ExcepcionNoHayPartidasGuardadas e) {
-                       println(e.getMessage());
-                    }
-                    break;
-                case 6:
-                    if (p) {
-                        test.finalizarPartidaActual(false);
-                        println("Partida Finalizada");
-                        p = false;
-                    }
-                    else println("No hay partida actual");
-                    break;
-                case 7:
-                    if (p) {
-                        test.finalizarPartidaActual(true);
-                        println("Partida Finalizada");
-                        p = false;
-                    }
-                    else println("No hay partida actual");
-                    break;
-                case 8:
-                    fin = true;
-                    break;
-                default:
-                    println("Opción no válida");
-                    break;
-            }
-        }
     }
 
 }

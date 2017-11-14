@@ -65,11 +65,11 @@ public class ControladorDominio {
      */
     public void crearPartidaUsuarioCargadoRolMaker(String dificultad, Codigo codigoSecreto){
         if(partidaActual == null){
-            usuarioCargado.guardaPartidaActual();
+            //usuarioCargado.guardaPartidaActual();
         }
 
-        usuarioCargado.creaPartidaActual(true,dificultad);
-        partidaActual = usuarioCargado.getPartidaActual();
+       // usuarioCargado.creaPartidaActual(true,dificultad);
+       // partidaActual = usuarioCargado.getPartidaActual();
         partidaActual.setCodigoSecreto(codigoSecreto);
     }
 
@@ -80,11 +80,11 @@ public class ControladorDominio {
      */
     public List<Integer> crearPartidaUsuarioCargadoRolBreaker(String dificultad){
         if(partidaActual == null){
-            usuarioCargado.guardaPartidaActual();
+          //  usuarioCargado.guardaPartidaActual();
         }
 
-        usuarioCargado.creaPartidaActual(false, dificultad);
-        partidaActual = usuarioCargado.getPartidaActual();
+        //usuarioCargado.creaPartidaActual(false, dificultad);
+       // partidaActual = usuarioCargado.getPartidaActual();
         return partidaActual.getCodigoSecreto().codigo;
 
     }

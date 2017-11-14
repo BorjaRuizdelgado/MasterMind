@@ -1,10 +1,7 @@
 package Test;
 
 import Domain.*;
-import Domain.Excepciones.ExcepcionNoHayColoresSinUsar;
-import Domain.Excepciones.ExcepcionPistaUsada;
-import Domain.Excepciones.ExcepcionRespuestaIncorrecta;
-import Domain.Excepciones.ExcepcionUno;
+import Domain.Excepciones.*;
 
 import static Util.Console.*;
 
@@ -41,26 +38,34 @@ public class MasterMindo {
     private static void juega(Boolean rol) {
         println("Dame un nivel de dificultad: Facil, Medio y Dificil");
         String diff = scan.next();
-        usr.creaPartidaActual(rol,diff);
-        pary = usr.getPartidaActual();
-        if (rol) juegaCodeMaker();
-        else juegaCodeBreaker();
+        try {
+            usr.creaPartidaActual(rol, diff);
+            pary = usr.getPartidaActual();
+        } catch (ExcepcionYaExistePartidaActual | ExcepcionNoHayPartidaActual e) {
+            println(e.getMessage());
+        }
+        try {
+            if (rol) juegaCodeMaker();
+            else juegaCodeBreaker();
+        } catch (ExcepcionPartidaAbandonada | ExcepcionNoHayPartidaActual e) {
+            println(e.getMessage());
+        }
     }
 
     /**
      * Permite al usuario jugar como CodeBreaker.
      */
-    private static void juegaCodeBreaker() {
+    private static void juegaCodeBreaker() throws ExcepcionPartidaAbandonada, ExcepcionNoHayPartidaActual {
         println("Partida empezada.");
         println("Intenta adivinar el código secreto.");
         int n;
-        Boolean abandonada = false;
         Boolean nuevoIntento = false;
-        while(pary.getNumeroFilaActual() != 15 && !pary.isGanado() && !abandonada){
-            while (!nuevoIntento && !abandonada) {
+        while(pary.getNumeroFilaActual() != 15 && !pary.isGanado()){
+            while (!nuevoIntento) {
                 println("¿Qué quieres hacer?");
                 println("[1] Introducir un nuevo intento.\n[2] Pedir una pista.\n" +
                         "[3] Abandonar la partida.\n");
+                // todo falta añadir al menú la opción de ayuda
                 n = scan.nextInt();
                 switch (n) {
                     case 1:
@@ -72,35 +77,26 @@ public class MasterMindo {
                     case 3:
                         println("¿Estás seguro de querer abandonar? Responde: 'Si' / 'No'.");
                         if (scan.next().equals("Si")) {
-                            abandonada = true;
+                            usr.abandonaPartidaActual();
+                            throw new ExcepcionPartidaAbandonada("Partida abandonada.");
                         }
                         break;
                     default:
-                        println("Opción no valida");
+                        println("Opción no válida.");
                         break;
                 }
             }
-            if (!abandonada) {
-                nuevoIntento = false;
-                println("Introduce un código de tamaño " + pary.getNumColumnas() + " separado por espacios\n" +
-                        "Formado por numeros del 1 al " + pary.getNumColores());
-                long startTime = System.currentTimeMillis();
 
-                computarIntentoUsuario();
+            nuevoIntento = false;
 
-                long endTime = System.currentTimeMillis();
-                pary.sumaTiempo(endTime - startTime);
-                println("Has obtenido esta respuesta: " + pary.getUltimaRespuesta().toString());
-            }
+            computarIntentoUsuario();
+
+            println("-> Has obtenido esta respuesta: " + pary.getUltimaRespuesta().toString());
         }
 
         if (!pary.isGanado()) {
             println("Has perdido! Este era el código secreto:");
             System.out.println(pary.getCodigoSecreto().codigo);
-            if (abandonada) {
-                usr.abandonaPartidaActual();
-                return;
-            }
         }
         else {
             println("Has ganado con "+pary.getNumeroFilaActual()+" intentos.");
@@ -116,15 +112,15 @@ public class MasterMindo {
     /**
      * Permite al usuario jugar como CodeMaker.
      */
-    private static void juegaCodeMaker(){
+    private static void juegaCodeMaker() throws ExcepcionPartidaAbandonada, ExcepcionNoHayPartidaActual {
         println("Partida empezada.");
         setCodigoSecreto();
-        Boolean abandonada = false;
         int n;
-        while(pary.getNumeroFilaActual() != 15 && !pary.isGanado() && !abandonada){
+        while(pary.getNumeroFilaActual() != 15 && !pary.isGanado()){
             println("¿Qué quieres hacer?");
             println("[1] Siguiente intento.\n[2] Abandonar la partida.\n");
             n = scan.nextInt();
+            //todo falta añadir la opción de ayuda
             switch (n) {
                 case 1:
                     corrige();
@@ -132,7 +128,8 @@ public class MasterMindo {
                 case 2:
                     println("¿Estás seguro de querer abandonar? Responde: 'Si' / 'No'.");
                     if (scan.next().equals("Si")) {
-                        abandonada = true;
+                        usr.abandonaPartidaActual();
+                        throw new ExcepcionPartidaAbandonada("Partida abandonada.");
                     }
                     break;
                 default:
@@ -143,10 +140,6 @@ public class MasterMindo {
 
         if (!pary.isGanado()) {
             println("¡No ha conseguido descubrir tu código!");
-            if (abandonada) {
-                usr.abandonaPartidaActual();
-                return;
-            }
         }
         else {
             println("Ha descubierto tu código en "+pary.getNumeroFilaActual()+" intentos.");
@@ -250,14 +243,24 @@ public class MasterMindo {
 
     /**
      * Lee el intento del usuario, lo añade al tablero y genera la respuesta.
+     * Aumenta el tiempo de la partida en lo que haya tardado el usuario en introducir el código.
      */
     private static void computarIntentoUsuario(){
         Scanner scan = new Scanner(System.in);
         Codigo code = new Codigo(pary.getNumColumnas());
+
+        println("Introduce un código de tamaño " + pary.getNumColumnas() + " separado por espacios\n" +
+                "Formado por numeros del 1 al " + pary.getNumColores());
+        long startTime = System.currentTimeMillis();
+
         for(int i = 0; i < pary.getNumColumnas();++i){
             code.codigo.add(scan.nextInt());
         }
         pary.setIntento(code);
+
+        long endTime = System.currentTimeMillis();
+        pary.sumaTiempo(endTime - startTime);
+
         pary.generaRespuesta();
     }
 

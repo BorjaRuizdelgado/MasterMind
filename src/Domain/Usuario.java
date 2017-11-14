@@ -1,6 +1,8 @@
 package Domain;
 
+import Domain.Excepciones.ExcepcionNoHayPartidaActual;
 import Domain.Excepciones.ExcepcionNoHayPartidasGuardadas;
+import Domain.Excepciones.ExcepcionYaExistePartidaActual;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,14 +12,13 @@ import java.util.List;
  * Tiene un nombre único en el sistema.
  * Tiene una partida actual y una lista de partidas guardadas. Así como un recuento de las finalizadas.
  * @author ISA
- * todo añadir num partidas finalizadas como codemaker
  */
 public class Usuario {
 
     private String nombre;
-    private int numPartidasFinalizadas;
-    private int numPartidasGanadas;
-    private int numPartidasCodeMaker;
+    private int numPartidasFinalizadasCB;   //Partidas acabadas como rol CodeBreaker
+    private int numPartidasGanadasCB;       //Partidas ganadas como rol CodeBreaker
+    private int numPartidasFinalizadasCM;   //Partidas acabadas como rol CodeMaker
     private List <Partida> partidasGuardadas;
     private Partida partidaActual;
 
@@ -28,9 +29,9 @@ public class Usuario {
      */
     public Usuario(String nombre) {
         this.nombre = nombre;
-        numPartidasFinalizadas = 0;
-        numPartidasGanadas = 0;
-        numPartidasCodeMaker = 0;
+        numPartidasFinalizadasCB = 0;
+        numPartidasGanadasCB = 0;
+        numPartidasFinalizadasCM = 0;
         partidasGuardadas = new ArrayList<>();
     }
 
@@ -53,81 +54,98 @@ public class Usuario {
     }
 
     /**
-     * Devuelve el número de partidas totales finalizadas
-     * @return numPartidasFinalizadas
+     * Devuelve el número de partidas totales finalizadas como CodeBreaker
+     * @return numPartidasFinalizadasCB
      */
-    public int getNumPartidasFinalizadas() {
-        return numPartidasFinalizadas;
+    public int getNumPartidasFinalizadasCB() {
+        return numPartidasFinalizadasCB;
     }
 
     /**
      * Devuelve el número de partidas ganadas
-     * @return numPartidasGanadas
+     * @return numPartidasGanadasCB
      */
-    public int getNumPartidasGanadas() {
-        return numPartidasGanadas;
+    public int getNumPartidasGanadasCB() {
+        return numPartidasGanadasCB;
     }
 
     /**
-     * Devuelve el número de partidas ganadas
-     * @return numPartidasGanadas
+     * Devuelve el número de partidas finalizads como CodeMaker
+     * @return numPartidasFinalizadasCM
      */
-    public int getNumPartidasCodeMaker() {
-        return numPartidasCodeMaker;
+    public int getNumPartidasFinalizadasCM() {
+        return numPartidasFinalizadasCM;
     }
 
     /**
      * Devuelve la partida actual del usuario
      * @return partidaActual
+     *
      */
-    public Partida getPartidaActual() {
+    public Partida getPartidaActual() throws ExcepcionNoHayPartidaActual {
+        if (partidaActual == null) throw new ExcepcionNoHayPartidaActual("** ERROR **: No hay una partida actual.");
         return this.partidaActual;
     }
 
     /**
      * Devuelve el Id de la Partida Actual
      * @return id partida actual
+     * @throws ExcepcionNoHayPartidaActual cuando no hay una partida actual
      */
-    public String getIdPartidaActual() {
+    public String getIdPartidaActual() throws ExcepcionNoHayPartidaActual {
+        if (partidaActual == null) throw new ExcepcionNoHayPartidaActual("** ERROR **: No hay una partida actual.");
         return partidaActual.getId();
     }
 
     /* MODIFICADORAS */
 
     /**
-     * Incrementa el número de partidas totales finalizadas
+     * Incrementa el número de partidas totales finalizadas como CodeBreaker
      */
-    private void incrementaPartidasTotalesFinalizadas(){
-        numPartidasFinalizadas++;
+    private void incrementaPartidasFinalizadasCB(){
+        numPartidasFinalizadasCB++;
     }
 
     /**
-     * Incrementa el número de partidas totales ganadas
+     * Incrementa el número de partidas totales ganadas como CodeBreaker
      */
-    private void incrementaPartidasTotalesGanadas(){
-        numPartidasGanadas++;
+    private void incrementaPartidasGanadasCB(){
+        numPartidasGanadasCB++;
     }
 
     /**
-     * Incrementa el número de partidas totales ganadas
+     * Incrementa el número de partidas totales finalizadas como CodeMaker
      */
-    private void incrementaPartidasTotalesCodeMaker(){
-        numPartidasCodeMaker++;
+    private void incrementaPartidasFinalizadasCM(){
+        numPartidasFinalizadasCM++;
+    }
+
+    /**
+     * Reinicia los contadores del usuario.
+     */
+    public void reiniciaEstadisticas() {
+        numPartidasFinalizadasCB = 0;
+        numPartidasGanadasCB = 0;
+        numPartidasFinalizadasCM = 0;
     }
 
     /**
      * Crea una nueva partida y la asigna como partida actual
      * @param rolMaker rol de la partida
      * @param dif dificultad de la partida
+     * @throws ExcepcionYaExistePartidaActual cuando ya existe una partida actual.
      */
-    public void creaPartidaActual(Boolean rolMaker, String dif) {
+    public void creaPartidaActual(Boolean rolMaker, String dif) throws ExcepcionYaExistePartidaActual {
+        if (partidaActual != null) throw new ExcepcionYaExistePartidaActual("** ERROR **: Ya hay una partida actual. Guarda la actual o abandonala para crear otra.");
         this.partidaActual = new Partida(rolMaker, dif);
     }
 
     /**
      * Añade la partida actual a la lista de partidas guardadas y la elimina de partida actual.
+     * @throws ExcepcionNoHayPartidaActual cuando no hay una partida actual
      */
-    public void guardaPartidaActual() {
+    public void guardaPartidaActual() throws ExcepcionNoHayPartidaActual {
+        if (partidaActual == null) throw new ExcepcionNoHayPartidaActual("** ERROR **: No hay una partida actual.");
         partidasGuardadas.add(partidaActual);
         partidaActual = null;
     }
@@ -135,12 +153,14 @@ public class Usuario {
     /**
      * Finaliza la partida actual y aumenta el número de partidas finalizadas según si es CodeMaker o CodeMaker y si la ha ganado.
      * @param ganada indica si la partida ha sido ganada.
+     * @throws ExcepcionNoHayPartidaActual cuando no hay una partida actual
      */
-    public void finalizarPartidaActual(Boolean ganada) {
-        if (partidaActual.isRolMaker()) incrementaPartidasTotalesCodeMaker();
+    public void finalizarPartidaActual(Boolean ganada) throws ExcepcionNoHayPartidaActual {
+        if (partidaActual == null) throw new ExcepcionNoHayPartidaActual("** ERROR **: No hay una partida actual.");
+        if (partidaActual.isRolMaker()) incrementaPartidasFinalizadasCM();
         else {
-            incrementaPartidasTotalesFinalizadas();
-            if (ganada) incrementaPartidasTotalesGanadas();
+            incrementaPartidasFinalizadasCB();
+            if (ganada) incrementaPartidasGanadasCB();
         }
         partidaActual = null;
 
@@ -148,8 +168,10 @@ public class Usuario {
 
     /**
      * Abandona la partida actual.
+     * @throws ExcepcionNoHayPartidaActual cuando no hay una partida actual
      */
-    public void abandonaPartidaActual() {
+    public void abandonaPartidaActual() throws ExcepcionNoHayPartidaActual {
+        if (partidaActual == null) throw new ExcepcionNoHayPartidaActual("** ERROR **: No hay una partida actual.");
         partidaActual = null;
     }
 
@@ -161,7 +183,7 @@ public class Usuario {
      * @throws ExcepcionNoHayPartidasGuardadas cuando no hay ninguna partida guardada
      */
     public void imprimeInfoPartidasGuardadas() throws ExcepcionNoHayPartidasGuardadas {
-        if (partidasGuardadas.size() == 0) throw new ExcepcionNoHayPartidasGuardadas("No tienes ninguna partida guardada.");
+        if (partidasGuardadas.size() == 0) throw new ExcepcionNoHayPartidasGuardadas("** ERROR **:No tienes ninguna partida guardada.");
         for (Partida pG : partidasGuardadas) {
             pG.imprimeInfo();
         }

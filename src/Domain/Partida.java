@@ -230,7 +230,7 @@ public class Partida {
      * @throws ExcepcionNoHayColoresSinUsar si no hay ningún color que no esté en el código secreto.
      * @throws ExcepcionPistaUsada si se accede a la función por segunda vez.
      */
-    public int getPista1() throws Exception{
+    public int getPista1() throws ExcepcionPistaUsada, ExcepcionNoHayColoresSinUsar {
         if (!pista1) {
             pista1 = true;
             ArrayList<Integer> auxiliar = getColoresNoSecretos();
@@ -248,7 +248,7 @@ public class Partida {
      * @throws ExcepcionPistaUsada si se accede a la función por segunda vez.
      * @throws ExcepcionNoHayColoresSinUsar si no hay ningún color que no esté en el código secreto.
      */
-    public ArrayList<Integer> getPista2() throws Exception {
+    public ArrayList<Integer> getPista2() throws ExcepcionPistaUsada, ExcepcionNoHayColoresSinUsar {
         if (!pista2) {
             pista2 = true;
             ArrayList<Integer> auxiliar = getColoresNoSecretos();
