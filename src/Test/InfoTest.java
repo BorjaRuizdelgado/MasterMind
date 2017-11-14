@@ -41,6 +41,10 @@ public class InfoTest {
         Console.println(fecha, "green");
     }
 
+    /**
+     * Enseñam un menú interactivo que enseña diversas opción para probar los métodos de la clase 'Info'.
+     * @param args
+     */
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         Console.println("Aquí probamos la Clase Info.");
@@ -60,26 +64,27 @@ public class InfoTest {
             info = new Info(usuario, puntuacion, fecha);
 
             int option = 0;
-            while(option != 4){
+            while(option != 5){
                 String menu = "Escoge entre estas opciones: \n" +
                         "[1] Obtén el usuario. \n" +
                         "[2] Obtén la puntuación. \n" +
                         "[3] Obtén la fecha. \n" +
-                        "[4] Crear otro usuario. \n" +
-                        "[5] Salir.";
+                        "[4] Muestra un resumen con la información del usuario. \n" +
+                        "[5] Crear otro usuario. \n" +
+                        "[6] Salir.";
                 Console.println(menu);
                 do {
                     option = in.nextInt();
-                }while (option > 5 || option < 1);
+                }while (option > 6 || option < 1);
 
                 if (option == 1) opcion1();
                 else if(option == 2) opcion2();
                 else if(option == 3) opcion3();
-                else if(option == 5){
-                    option = 4;
+                else if(option == 4) System.out.println(info.toString());
+                else if(option == 6){
+                    option = 5;
                     exit = true;
                 }
-                //todo no se prueba el toString de Info
             }
         }
     }

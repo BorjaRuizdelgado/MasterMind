@@ -12,12 +12,20 @@ import java.util.*;
  */
 public class ComparatorTest {
 
+    /**
+     * Muestra la lista de códigos pasado como parámetro.
+     * @param codigos La lista que se muestra.
+     */
     private static void showList(List<Codigo> codigos){
         for (int i = 0; i < codigos.size(); i++) {
             System.out.println(codigos.get(i).codigo);
         }
     }
 
+    /**
+     * Genera códigos con información random
+     * @return Devuelve una lista con los códigos creados.
+     */
     private static List<Codigo> generateRandomCodes(){
         List<Codigo> Return = new ArrayList<>();
         Random random = new Random(System.currentTimeMillis());
@@ -31,6 +39,12 @@ public class ComparatorTest {
         return Return;
     }
 
+    /**
+     * Se crear una lista de códigos con información aleatoria y se muestra un menú.
+     * La primera opción muestra los cófdigos generados.
+     * La segunda opción los ordena usando como soporte la clase 'Comparator'
+     * @param args
+     */
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
         Console.println("Aquí probamos el funcionamiento la Clase Comparator.");

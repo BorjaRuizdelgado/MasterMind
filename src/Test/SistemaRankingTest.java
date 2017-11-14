@@ -18,7 +18,7 @@ public class SistemaRankingTest {
     private static SistemaRanking sistemaRanking;
 
     /**
-     * Nombres que usaremos para generar las listas.
+     * Nombres que se usan para generar las listas.
      */
     private static String []names = new String[]{
             "Yasuo",
