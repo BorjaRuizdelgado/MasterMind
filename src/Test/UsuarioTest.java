@@ -47,6 +47,7 @@ public class UsuarioTest {
                     "[7] Finalizar como ganada la partida actual.\n" +
                     "[8] Reiniciar estadísticas.\n" +
                     "[9] Acabar la prueba.");
+            //todo falta cargar una partida
             n = in.nextInt();
             switch (n) {
                 case 1: // ver informacion y estadisticas usuario
@@ -55,7 +56,6 @@ public class UsuarioTest {
                     println("- Partidas Ganadas CodeBreaker: "+test.getNumPartidasGanadasCB());
                     println("- Partidas Finalizadas CodeMaker: "+test.getNumPartidasFinalizadasCM());
                     //todo falta completar las estadisticas
-                    //todo falta cargar una partida
                     break;
                 case 2:  // cambiar nombre
                     println("Introduce el nuevo nombre de usuario sin espacios:");
