@@ -16,7 +16,8 @@ public class Respuesta {
     public int size = 4;
 
     /**
-     * Creadora.
+     * Creadora Respuesta.
+     * Crea un vector de tamaño pasado por parámetro.
      * @param size de la respuesta
      */
     public Respuesta(int size){
@@ -30,12 +31,9 @@ public class Respuesta {
      * @return Cierto si lo son, Falso si no.
      */
     public Boolean equals(Respuesta respuestaComprobada){
-        List<Integer> auxiliar1 = new ArrayList<>(this.respuesta);
-        auxiliar1.sort(Collections.reverseOrder());
-        List<Integer> auxiliar2 = new ArrayList<>(respuestaComprobada.respuesta);
-        auxiliar2.sort(Collections.reverseOrder());
-        return auxiliar1.equals(auxiliar2);
-        //return respuesta.equals(respuestaComprobada.respuesta); <- Yo pondría esto (Omar)
+        respuesta.sort(Collections.reverseOrder());
+        respuestaComprobada.respuesta.sort(Collections.reverseOrder());
+        return respuesta.equals(respuestaComprobada.respuesta);
     }
 
     /**

@@ -20,7 +20,8 @@ public class CerebroTest {
         Console.println("Introduce el número de columnas:");
         Scanner in = new Scanner(System.in);
         columns = in.nextInt();
-        Console.println("Introduce el código:");
+        if (columns >= 6) Console.println("Ten en cuenta que al tener muchas columnas, esto puede tardar unos minutos.");
+        Console.println("Introduce el código secreto con números del 1 al 6 separados por espacios:");
 
         Codigo code = new Codigo(columns);
         for (int i = 0; i < columns; i++) {

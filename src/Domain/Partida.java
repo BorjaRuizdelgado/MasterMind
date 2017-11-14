@@ -73,54 +73,6 @@ public class Partida {
         }
     }
 
-    /**
-     * Coloca el identificador de partida
-     * @param id nombre a asignar de la partida
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
-     * Coloca el tiempo
-     * @param tiempo tiempo que se va a asignar a la partida
-     */
-    public void setTiempo(float tiempo) {
-        this.tiempo = tiempo;
-    }
-
-    /**
-     * Coloca si el jugador es CodeMaker o Breaker
-     * @param RolMaker asignar el rol a partida
-     */
-    public void setRolMaker(boolean RolMaker) {
-        this.rolMaker = RolMaker;
-    }
-
-    /**
-     * Coloca el nivel de dificultad
-     * @param dificultad a asignar
-     */
-    public void setDificultad(String dificultad) {
-        this.dificultad = dificultad;
-    }
-
-    /**
-     * Coloca el numero de colores
-     * @param numColores numero de colores a asignar
-     */
-    public void setNumColores(int numColores) {
-        this.numColores = numColores;
-    }
-
-    /**
-     * Coloca el numero de columnas
-     * @param numColumnas numero columnas a asignar
-     */
-    public void setNumColumnas(int numColumnas) {
-        this.numColumnas = numColumnas;
-    }
-
 
 
     /* CONSULTORAS */

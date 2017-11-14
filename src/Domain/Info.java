@@ -12,6 +12,7 @@ public class Info {
     private String fecha;
 
     /**
+     * Creadora Info.
      * @param usuario Nombre de usuario
      * @param puntuacion Puntuación total de la partida
      * @param fecha Fecha en la que la partida ha sido jugada

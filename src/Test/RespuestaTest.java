@@ -41,7 +41,7 @@ public class RespuestaTest {
                 else println("Son diferentes");
 
                 println("Ahora miramos si la respuesta es de tipo ganadora y la traducimos a string");
-                if(test.esGanadora()) println("Ganadora");
+                if(test.esGanadora()) println("- Ganadora");
                 else println("- No ganadora");
                 println("- En string: "+test.toString());
             }
