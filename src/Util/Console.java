@@ -15,12 +15,20 @@ public class Console {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
 
+    /**
+     * Creadora privada, ya que se usará sin instanciar.
+     */
     private Console(){
 
     }
 
-    public static  void println(String text, String mode){
-        switch(mode){
+    /**
+     * Método que nos permite imprimir un String con color y un salto de línea, dependiendo del segundo parámetro.
+     * @param text El String que se va a imprimir.
+     * @param color Indica el color que tendrá el String 'text'.
+     */
+    public static  void println(String text, String color){
+        switch(color){
             case "black":
                 System.out.println(ANSI_BLACK + text + ANSI_RESET);
                 break;
@@ -45,15 +53,26 @@ public class Console {
             case "white":
                 System.out.println(ANSI_WHITE + text + ANSI_RESET);
                 break;
+            default:
+                System.out.println(text);
         }
     }
 
+    /**
+     * Método que imprime por pantalla el String que se le pasa por parámetro.
+     * @param text String que se va a imprimir.
+     */
     public static  void println(String text){
         System.out.println(text);
     }
 
-    public static  void print(String text, String mode){
-        switch(mode){
+    /**
+     * Método que nos permite imprimir un String con color, dependiendo del segundo parámetro.
+     * @param text El String que se va a imprimir.
+     * @param color Indica el color que tendrá el String 'text'.
+     */
+    public static  void print(String text, String color){
+        switch(color){
             case "black":
                 System.out.print(ANSI_BLACK + text + ANSI_RESET);
                 break;
@@ -81,6 +100,10 @@ public class Console {
         }
     }
 
+    /**
+     * Método que imprime por pantalla el String que se le pasa por parámetro.
+     * @param text String que se va a imprimir.
+     */
     public static  void print(String text){
         System.out.print(text);
     }
