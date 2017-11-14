@@ -102,11 +102,11 @@ public class MasterCerebro implements Inteligencia {
      * datos óptimos.
      * En la evolución, se generan hijos a partir de mutaciones. Estas mutaciones son: Cruces entre códigos, mutaciones
      * de algun color o intercambios de color.
-     * Estos hijos, que están en una generación en concreto, son filtrados, es decir, nos quedamos con los mejores y éstos
+     * Estos hijos que están en una generación en concreto, son filtrados, es decir, nos quedamos con los mejores y éstos
      * són añadidos a un grupo llamado 'candidatos'.
      * Una vez realizada esta generacion, la siguiente partirá de los mejores hijos de la generación anterior, y así
-     * obtendremos unos candidatos eficacez, a lo largo de distintas generaciones.
-     * @return
+     * obtendremos unos candidatos eficaces a lo largo de distintas generaciones.
+     * @return La lista de los mejores candidatos.
      */
     private List<Codigo> evolucion() {
         List<Codigo> poblacion = generarPoblacion();

@@ -125,12 +125,10 @@ public class Cerebro implements Inteligencia{
             for (int j = 0; j < solucionesPotenciales.size(); j++) {
                 Respuesta respuesta = combinacionesTotales.get(i).getRespuesta(solucionesPotenciales.get(j));
                 String result = respuesta.toString();
-                if(contadorPuntuaciones.containsKey(result)){
+                if(contadorPuntuaciones.containsKey(result))
                     contadorPuntuaciones.put(result, contadorPuntuaciones.get(result) + 1);
-                }
-                else{
+                else
                     contadorPuntuaciones.put(result, 1);
-                }
             }
             max = getMaximaPuntuacion(contadorPuntuaciones);
             puntuacion.put(combinacionesTotales.get(i), max);
