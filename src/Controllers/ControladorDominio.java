@@ -63,14 +63,16 @@ public class ControladorDominio {
      * @param dificultad Determina el grado de dificualtad de la partidad.
      * @param codigoSecreto Determina el codigo secreto elegido por el usuario.
      */
-    public void crearPartidaUsuarioCargadoRolMaker(String dificultad, Codigo codigoSecreto){
+    public void crearPartidaUsuarioCargadoRolMaker(String dificultad, ArrayList<Integer> codigoSecreto){
         if(partidaActual == null){
             //usuarioCargado.guardaPartidaActual();
         }
 
        // usuarioCargado.creaPartidaActual(true,dificultad);
        // partidaActual = usuarioCargado.getPartidaActual();
-        partidaActual.setCodigoSecreto(codigoSecreto);
+        Codigo secreto = new Codigo(codigoSecreto.size());
+        secreto.codigo = new ArrayList<Integer>(codigoSecreto);
+        partidaActual.setCodigoSecreto(secreto);
     }
 
     /**
@@ -147,8 +149,7 @@ public class ControladorDominio {
         LocalDate localDate = LocalDate.now();
         String fecha = dtf.format(localDate);
 
-        Info informacionRanking = new Info(usuarioCargado.getNombre(),puntuacion,fecha);
-        ranking.addNewPuntuation(informacionRanking,partidaActual.getDificultad());
+        ranking.addNewPuntuation(usuarioCargado.getNombre(),partidaActual.generaPuntuacion(),fecha,partidaActual.getDificultad());
 
     }
 
