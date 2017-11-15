@@ -235,7 +235,7 @@ public class MasterCerebro implements Inteligencia {
      * Por lo que se obtiene esta diferencia para cada intento y finalmente se suma to*do.
      * Nota: En un principio, se intentó obtener el resultado final aplicando la fórmula:
      * F = constanteA * diferencias negras + diferencias blancas + constante B*(número de intentos - 1)
-     * Pero no funcionaba del t*odo bien, por lo que este método utiliza un fórmula más simple que de todos modos da
+     * Pero no funcionaba del t0do bien, por lo que este método utiliza un fórmula más simple que de todos modos da
      * buenos resultados.
      * @param codigo Código a valorar.
      * @return La valoración (Cuánto más cerca de 0, mejor).
