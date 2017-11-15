@@ -45,7 +45,7 @@ public class MasterCerebro implements Inteligencia {
     public MasterCerebro(int colores, int columnas) {
         numeroColores = colores;
         numeroColumnas = columnas;
-        random = new Random(5);
+        random = new Random(System.currentTimeMillis());
         intentos = new ArrayList<>();
     }
 
