@@ -43,11 +43,12 @@ public class UsuarioTest {
                     "[3] Crear una partida\n" +
                     "[4] Guardar la partida actual.\n" +
                     "[5] Obtener info de las partidas guardadas.\n" +
-                    "[6] Finalizar como perdida la partida actual.\n" +
-                    "[7] Finalizar como ganada la partida actual.\n" +
-                    "[8] Reiniciar estadísticas.\n" +
-                    "[9] Acabar la prueba.");
-            //todo falta cargar una partida
+                    "[6] Cargar una partida actual\n" +
+                    "[7] Finalizar como perdida la partida actual.\n" +
+                    "[8] Finalizar como ganada la partida actual.\n" +
+                    "[9] Reiniciar estadísticas.\n" +
+                    "[10] Acabar la prueba.");
+
             n = in.nextInt();
             switch (n) {
                 case 1: // ver informacion y estadisticas usuario
@@ -85,7 +86,18 @@ public class UsuarioTest {
                         println(e.getMessage());
                     }
                     break;
-                case 6: // finalizar partida actual como perdida
+                case 6:
+                    try {
+                        test.imprimeInfoPartidasGuardadas();
+                        println("Escribe el número de partida guardada que quieras cargar.");
+                        int i = in.nextInt();
+                        test.cargaPartida(i);
+                        println("Partida cargada.");
+                    } catch (ExcepcionNoHayPartidasGuardadas | ExcepcionYaExistePartidaActual e) {
+                        println(e.getMessage());
+                    }
+                    break;
+                case 7: // finalizar partida actual como perdida
                     try {
                         test.finalizarPartidaActual(false);
                         println("Partida Finalizada.");
@@ -93,7 +105,7 @@ public class UsuarioTest {
                         println(e.getMessage());
                     }
                     break;
-                case 7: // finalizar partida actual como ganada
+                case 8: // finalizar partida actual como ganada
                     try {
                         test.finalizarPartidaActual(true);
                         println("Partida Finalizada");
@@ -101,11 +113,11 @@ public class UsuarioTest {
                         println(e.getMessage());
                     }
                     break;
-                case 8: // reiniciar estadísticas
+                case 9: // reiniciar estadísticas
                     test.reiniciaEstadisticas();
                     println("Estadísticas Reiniciadas.");
                     break;
-                case 9: // acabar prueba
+                case 10: // acabar prueba
                     fin = true;
                     break;
                 default:

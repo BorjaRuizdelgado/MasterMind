@@ -150,6 +150,12 @@ public class Usuario {
         partidaActual = null;
     }
 
+    public void cargaPartida(int n) throws ExcepcionYaExistePartidaActual {
+        if (partidaActual != null) throw new ExcepcionYaExistePartidaActual("** ERROR **: Ya hay una partida actual. Guarda la actual o abandonala para crear otra.");
+        partidaActual = partidasGuardadas.get(n-1);
+        partidasGuardadas.remove(n-1);
+    }
+
     /**
      * Finaliza la partida actual y aumenta el número de partidas finalizadas según si es CodeMaker o CodeMaker y si la ha ganado.
      * @param ganada indica si la partida ha sido ganada.
@@ -183,9 +189,10 @@ public class Usuario {
      * @throws ExcepcionNoHayPartidasGuardadas cuando no hay ninguna partida guardada
      */
     public void imprimeInfoPartidasGuardadas() throws ExcepcionNoHayPartidasGuardadas {
-        if (partidasGuardadas.size() == 0) throw new ExcepcionNoHayPartidasGuardadas("** ERROR **:No tienes ninguna partida guardada.");
-        for (Partida pG : partidasGuardadas) {
-            pG.imprimeInfo();
+        if (partidasGuardadas.size() == 0) throw new ExcepcionNoHayPartidasGuardadas("** ERROR **: No tienes ninguna partida guardada.");
+        for (int i = 0; i < partidasGuardadas.size(); i++) {
+            System.out.print("["+Integer.toString(i+1)+"]: ");
+            partidasGuardadas.get(i).imprimeInfo();
         }
     }
 
