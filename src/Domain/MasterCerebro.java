@@ -11,8 +11,8 @@ import static java.lang.Math.abs;
  */
 public class MasterCerebro implements Inteligencia {
 
-    private static int MAXGEN = 100; //El máximo de generaciones que permitimos
-    private static int MAXSIZE = 60; //El tamaño máximo de las poblaciones
+    private static int MAXGEN = 80; //El máximo de generaciones que permitimos
+    private static int MAXSIZE = 80; //El tamaño máximo de las poblaciones
     private static double PROBABILIDAD_CRUCE = 0.5;
     private static double PROBABILIDAD_MUTACION = 0.3;
     private static double PROBABILIDAD_PERMUTACION = 0.3;
@@ -45,7 +45,7 @@ public class MasterCerebro implements Inteligencia {
     public MasterCerebro(int colores, int columnas) {
         numeroColores = colores;
         numeroColumnas = columnas;
-        random = new Random(System.currentTimeMillis());
+        random = new Random(5);
         intentos = new ArrayList<>();
     }
 
