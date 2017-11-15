@@ -86,18 +86,6 @@ public class MasterCerebro implements Inteligencia {
     }
 
     /**
-     * Selecciona un candidato de entre los posibles pasado como parámetro. Si no hay posibles candidatos, hacemos
-     * una llamada recursiva hasta obtener al menos uno.
-     * @param candidatos Lista de código que contiene los posibles candidatos.
-     * @return Devolvemos el primer candidato que se encuentra en la lista.
-     */
-    private Codigo seleccionaCandidato(List<Codigo> candidatos) {
-        if (candidatos.size() == 0)
-            return seleccionaCandidato(evolucion());
-        else return candidatos.get(0);
-    }
-
-    /**
      * Genera una población (Códigos aleatorios), seguidamente se simula una evolución de ésta para obtener unos candi-
      * datos óptimos.
      * En la evolución, se generan hijos a partir de mutaciones. Estas mutaciones son: Cruces entre códigos, mutaciones
@@ -164,18 +152,6 @@ public class MasterCerebro implements Inteligencia {
     }
 
     /**
-     * Método que devuelve un código con información aleatoria.
-     * @return Código con colores aleatorios.
-     */
-    private Codigo generaCodigoRandom(){
-        Codigo codigo = new Codigo(numeroColumnas);
-        for (int j = 0; j < numeroColumnas; j++) {
-            codigo.codigo.add(1 + random.nextInt(numeroColores));
-        }
-        return codigo;
-    }
-
-    /**
      * Genera una lista de códigos con información aleatoria.
      * @return Una lista de códigos.
      */
@@ -189,79 +165,15 @@ public class MasterCerebro implements Inteligencia {
     }
 
     /**
-     * Crea y devuelve un map con las puntuaciones de la lista de códigos pasado como parámetro. Los códigos són la llave
-     * y su puntuación el valor.
-     * @param hijos Lista de códigos que estarán dentro del map.
-     * @return Map generado a partir de la lista de códigos, cada uno con su puntuación adquirida.
+     * Método que devuelve un código con información aleatoria.
+     * @return Código con colores aleatorios.
      */
-    private Map<Codigo, Integer> calculaPuntuaciones(List<Codigo> hijos) {
-        Map<Codigo, Integer> Result = new HashMap<>();
-        for (int i = 0; i < hijos.size(); i++) {
-            int score = calculateFitness(hijos.get(i));
-            Result.put(hijos.get(i), score);
+    private Codigo generaCodigoRandom(){
+        Codigo codigo = new Codigo(numeroColumnas);
+        for (int j = 0; j < numeroColumnas; j++) {
+            codigo.codigo.add(1 + random.nextInt(numeroColores));
         }
-        return Result;
-    }
-
-    /**
-     * Coge el map pasado como parámetro y devuelve un map de manera creciente según los valores (puntuaciones) que tiene
-     * el map original.
-     * @param puntuaciones Map de origen a partir del cual se creará una instancia con sus valores ordenador.
-     * @return Devuelve el Map generado con los valores del parámetro 'puntuaciones'.
-     */
-    private Map<Codigo, Integer> getPuntuacionesOrdenadas(Map<Codigo, Integer> puntuaciones) {
-        Set<Map.Entry<Codigo, Integer>> entradas = puntuaciones.entrySet();
-        // Usamos un LinkedList porque sus inserciones son más rápidas
-        List<Map.Entry<Codigo, Integer>> list = new LinkedList<>(entradas);
-        Collections.sort(list, new Comparator<Map.Entry<Codigo, Integer>>() {
-            @Override
-            public int compare(Map.Entry<Codigo, Integer> codigoIntegerEntry, Map.Entry<Codigo, Integer> t1) {
-                return codigoIntegerEntry.getValue() - t1.getValue();
-            }
-        });
-        // Una vez ordenados, creamos un map y los insertamos.
-        puntuaciones = new LinkedHashMap<>();
-        for (Map.Entry<Codigo, Integer> entrada: list) {
-            puntuaciones.put(entrada.getKey(), entrada.getValue());
-        }
-        return puntuaciones;
-    }
-
-    /**
-     * Se calcula la puntuación del código pasado como parámetro, en base a sus resultados si jugase con los 'intentos'
-     * ya realizados.
-     * El método considera que un código es óptimo cuando la diferencia entre el resultado obtenido al
-     * jugar con un intento realizado y el resultado del intento realizado es pequeño.
-     * Por lo que se obtiene esta diferencia para cada intento y finalmente se suma t0do.
-     * Nota: En un principio, se intentó obtener el resultado final aplicando la fórmula:
-     * F = constanteA * diferencias negras + diferencias blancas + constante B*(número de intentos - 1)
-     * Pero no funcionaba del t0do bien, por lo que este método utiliza un fórmula más simple que de todos modos da
-     * buenos resultados.
-     * @param codigo Código a valorar.
-     * @return La valoración (Cuánto más cerca de 0, mejor).
-     */
-    public int calculateFitness(Codigo codigo) {
-        List<ResultPair> differences = new ArrayList<>();
-        for (int i = 0; i < intentos.size(); i++) {
-            ResultPair intentoResultado = toResultPair(intentos.get(i).getRespuestas().toString());
-            Codigo intentoCodigo = intentos.get(i).getColores();
-
-            ResultPair resultadoCodigo = toResultPair(intentoCodigo.getRespuesta(codigo).toString());
-
-            int differenceWhite = abs(resultadoCodigo.white - intentoResultado.white);
-            int differenceBlack = abs(resultadoCodigo.black - intentoResultado.black);
-            differences.add(new ResultPair(differenceWhite, differenceBlack));
-        }
-
-        int totalWhite = 0;
-        int totalBlack = 0;
-        for (int i = 0; i < differences.size(); i++) {
-            totalWhite += differences.get(i).white;
-            totalBlack += differences.get(i).black;
-        }
-
-        //return totalBlack + totalWhite + 2*numeroColumnas*(intentos.size() - 1);
-        return totalBlack + totalWhite;
+        return codigo;
     }
 
     /**
@@ -330,6 +242,58 @@ public class MasterCerebro implements Inteligencia {
     }
 
     /**
+     * Crea y devuelve un map con las puntuaciones de la lista de códigos pasado como parámetro. Los códigos són la llave
+     * y su puntuación el valor.
+     * @param hijos Lista de códigos que estarán dentro del map.
+     * @return Map generado a partir de la lista de códigos, cada uno con su puntuación adquirida.
+     */
+    private Map<Codigo, Integer> calculaPuntuaciones(List<Codigo> hijos) {
+        Map<Codigo, Integer> Result = new HashMap<>();
+        for (int i = 0; i < hijos.size(); i++) {
+            int score = calculateFitness(hijos.get(i));
+            Result.put(hijos.get(i), score);
+        }
+        return Result;
+    }
+
+    /**
+     * Se calcula la puntuación del código pasado como parámetro, en base a sus resultados si jugase con los 'intentos'
+     * ya realizados.
+     * El método considera que un código es óptimo cuando la diferencia entre el resultado obtenido al
+     * jugar con un intento realizado y el resultado del intento realizado es pequeño.
+     * Por lo que se obtiene esta diferencia para cada intento y finalmente se suma t0do.
+     * Nota: En un principio, se intentó obtener el resultado final aplicando la fórmula:
+     * F = constanteA * diferencias negras + diferencias blancas + constante B*(número de intentos - 1)
+     * Pero no funcionaba del t0do bien, por lo que este método utiliza un fórmula más simple que de todos modos da
+     * buenos resultados.
+     * @param codigo Código a valorar.
+     * @return La valoración (Cuánto más cerca de 0, mejor).
+     */
+    public int calculateFitness(Codigo codigo) {
+        List<ResultPair> differences = new ArrayList<>();
+        for (int i = 0; i < intentos.size(); i++) {
+            ResultPair intentoResultado = toResultPair(intentos.get(i).getRespuestas().toString());
+            Codigo intentoCodigo = intentos.get(i).getColores();
+
+            ResultPair resultadoCodigo = toResultPair(intentoCodigo.getRespuesta(codigo).toString());
+
+            int differenceWhite = abs(resultadoCodigo.white - intentoResultado.white);
+            int differenceBlack = abs(resultadoCodigo.black - intentoResultado.black);
+            differences.add(new ResultPair(differenceWhite, differenceBlack));
+        }
+
+        int totalWhite = 0;
+        int totalBlack = 0;
+        for (int i = 0; i < differences.size(); i++) {
+            totalWhite += differences.get(i).white;
+            totalBlack += differences.get(i).black;
+        }
+
+        //return totalBlack + totalWhite + 2*numeroColumnas*(intentos.size() - 1);
+        return totalBlack + totalWhite;
+    }
+
+    /**
      * Crea una instáncia 'ResultPair' con los datos del String 'result' y la devuelve
      * @param result El String del que se tomará la información.
      * @return Una instáncia 'ResultPair' con el atributo 'white' con la cantidad de "W" que hayan en el String y con el
@@ -343,5 +307,41 @@ public class MasterCerebro implements Inteligencia {
             else if (aux[i] == 'B') black++;
         }
         return new ResultPair(white, black);
+    }
+
+    /**
+     * Coge el map pasado como parámetro y devuelve un map de manera creciente según los valores (puntuaciones) que tiene
+     * el map original.
+     * @param puntuaciones Map de origen a partir del cual se creará una instancia con sus valores ordenador.
+     * @return Devuelve el Map generado con los valores del parámetro 'puntuaciones'.
+     */
+    private Map<Codigo, Integer> getPuntuacionesOrdenadas(Map<Codigo, Integer> puntuaciones) {
+        Set<Map.Entry<Codigo, Integer>> entradas = puntuaciones.entrySet();
+        // Usamos un LinkedList porque sus inserciones son más rápidas
+        List<Map.Entry<Codigo, Integer>> list = new LinkedList<>(entradas);
+        Collections.sort(list, new Comparator<Map.Entry<Codigo, Integer>>() {
+            @Override
+            public int compare(Map.Entry<Codigo, Integer> codigoIntegerEntry, Map.Entry<Codigo, Integer> t1) {
+                return codigoIntegerEntry.getValue() - t1.getValue();
+            }
+        });
+        // Una vez ordenados, creamos un map y los insertamos.
+        puntuaciones = new LinkedHashMap<>();
+        for (Map.Entry<Codigo, Integer> entrada: list) {
+            puntuaciones.put(entrada.getKey(), entrada.getValue());
+        }
+        return puntuaciones;
+    }
+
+    /**
+     * Selecciona un candidato de entre los posibles pasado como parámetro. Si no hay posibles candidatos, hacemos
+     * una llamada recursiva hasta obtener al menos uno.
+     * @param candidatos Lista de código que contiene los posibles candidatos.
+     * @return Devolvemos el primer candidato que se encuentra en la lista.
+     */
+    private Codigo seleccionaCandidato(List<Codigo> candidatos) {
+        if (candidatos.size() == 0)
+            return seleccionaCandidato(evolucion());
+        else return candidatos.get(0);
     }
 }
