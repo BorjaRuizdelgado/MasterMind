@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Clase Codigo
  * Estructura de datos para los codigos de los intentos
- * @author ISA
+ * @author borja
  */
 public class Codigo {
     public List<Integer> codigo;

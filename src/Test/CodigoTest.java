@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * Codigo Test
  * Implementa un Main para poder probar de manera interactiva la clase.
- * @author ISA
+ * @author borja
  */
 public class CodigoTest {
 

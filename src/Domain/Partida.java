@@ -30,7 +30,7 @@ public class Partida {
     private boolean pista3 = false;
 
     private final Tablero tablero;
-    private Cerebro ia;
+    private Inteligencia ia;
 
 
     /**
@@ -66,6 +66,7 @@ public class Partida {
         tablero = new Tablero(numColumnas);
 
         if (rolMaker) {
+            if (dificultad.equals("Dificil"))
             ia = new Cerebro(numColores, numColumnas);
         }
         else {
