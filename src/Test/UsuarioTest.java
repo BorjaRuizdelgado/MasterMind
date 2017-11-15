@@ -56,7 +56,10 @@ public class UsuarioTest {
                     println("- Partidas Finalizadas CodeBreaker: "+test.getNumPartidasFinalizadasCB());
                     println("- Partidas Ganadas CodeBreaker: "+test.getNumPartidasGanadasCB());
                     println("- Partidas Finalizadas CodeMaker: "+test.getNumPartidasFinalizadasCM());
-                    //todo falta completar las estadisticas
+                    float pGanadasCodeBreaker = (float)test.getNumPartidasGanadasCB()/test.getNumPartidasFinalizadasCB()*100;
+                    float pCodeMaker = (float)test.getNumPartidasFinalizadasCM()/(test.getNumPartidasFinalizadasCB()+test.getNumPartidasFinalizadasCM())*100;
+                    println("- Porcentaje ganadas CodeBreaker: "+pGanadasCodeBreaker);
+                    println("- Porcentaje CodeMaker: "+pCodeMaker);
                     break;
                 case 2:  // cambiar nombre
                     println("Introduce el nuevo nombre de usuario sin espacios:");
@@ -86,7 +89,7 @@ public class UsuarioTest {
                         println(e.getMessage());
                     }
                     break;
-                case 6:
+                case 6: // cargar partida
                     try {
                         test.imprimeInfoPartidasGuardadas();
                         println("Escribe el número de partida guardada que quieras cargar.");

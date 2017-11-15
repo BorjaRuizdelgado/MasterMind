@@ -150,8 +150,9 @@ public class Usuario {
         partidaActual = null;
     }
 
-    public void cargaPartida(int n) throws ExcepcionYaExistePartidaActual {
+    public void cargaPartida(int n) throws ExcepcionYaExistePartidaActual, ExcepcionNoHayPartidasGuardadas {
         if (partidaActual != null) throw new ExcepcionYaExistePartidaActual("** ERROR **: Ya hay una partida actual. Guarda la actual o abandonala para crear otra.");
+        if (partidasGuardadas.size() == 0) throw new ExcepcionNoHayPartidasGuardadas("** ERROR **: No tienes ninguna partida guardada.");
         partidaActual = partidasGuardadas.get(n-1);
         partidasGuardadas.remove(n-1);
     }
