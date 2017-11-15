@@ -67,7 +67,9 @@ public class Partida {
 
         if (rolMaker) {
             if (dificultad.equals("Dificil"))
-            ia = new Cerebro(numColores, numColumnas);
+                ia = new Cerebro(numColores, numColumnas);
+            else
+                ia = new MasterCerebro(numColores, numColumnas);
         }
         else {
             generaCodigoSecretoAleatorio();

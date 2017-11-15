@@ -113,9 +113,6 @@ public class MasterMindo {
         usr.finalizarPartidaActual(pary.isGanado());
 
         println(usr.getNombre() + " tu puntuación total es de: " + pary.generaPuntuacion());
-
-        //todo añadir la puntuación al ranking
-
     }
 
     /**
