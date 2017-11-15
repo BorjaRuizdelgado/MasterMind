@@ -10,11 +10,10 @@ import java.util.*;
  */
 public class Cerebro implements Inteligencia{
 
-    private List<Codigo> combinacionesTotales;
-    private List<Codigo> solucionesPotenciales;
     private int numeroColores;
     private int numeroColumnas;
-
+    private List<Codigo> combinacionesTotales;
+    private List<Codigo> solucionesPotenciales;
 
     /**
      * Creadora Cerebro.
@@ -68,16 +67,16 @@ public class Cerebro implements Inteligencia{
 
     /**
      * Función auxiliar del minmax para conseguir la mínima puntuación.
-     * @param puntuacion map de puntuaciones
-     * @return puntuacion mínima
+     * @param puntuaciones map de puntuaciones
+     * @return puntuaciones mínima
      */
-    private int getMinimaPuntuacion(Map<Codigo, Integer> puntuacion){
+    private int getMinimaPuntuacion(Map<Codigo, Integer> puntuaciones){
         int min = Integer.MAX_VALUE;
 
-        Iterator<Codigo> iterator = puntuacion.keySet().iterator();
+        Iterator<Codigo> iterator = puntuaciones.keySet().iterator();
         while (iterator.hasNext()) {
             Codigo key = iterator.next();
-            int aux = puntuacion.get(key);
+            int aux = puntuaciones.get(key);
             if (aux < min) min = aux;
         }
         return min;
