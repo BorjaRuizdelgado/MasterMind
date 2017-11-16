@@ -46,7 +46,7 @@ public class Partida {
         DateFormat formato = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         Date hoy = Calendar.getInstance().getTime();
         this.id = formato.format(hoy);
-        this.tiempo = 0;
+        this.tiempo = 0.0f;
         this.rolMaker = rolMaker;
         this.dificultad = dificultad;
         switch (dificultad) {
@@ -257,6 +257,14 @@ public class Partida {
 
 
     /* MODIFICADORAS */
+
+    /**
+     * Coloca la nueva ID
+     * @param id nuevo id de la partida
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
 
     /**
      * Añade el tiempo de un turno al total
