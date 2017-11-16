@@ -121,7 +121,6 @@ public class MasterCerebro implements Inteligencia {
             }
 
             Map<Codigo, Integer> puntuaciones = calculaPuntuaciones(hijos);
-            puntuaciones = getPuntuacionesOrdenadas(puntuaciones);
 
             List<Codigo> elegibles = new ArrayList<>();
             Iterator<Codigo> iterator = puntuaciones.keySet().iterator();
@@ -250,7 +249,7 @@ public class MasterCerebro implements Inteligencia {
     private Map<Codigo, Integer> calculaPuntuaciones(List<Codigo> hijos) {
         Map<Codigo, Integer> Result = new HashMap<>();
         for (int i = 0; i < hijos.size(); i++) {
-            int score = calculateFitness(hijos.get(i));
+            int score = calcularAptitud(hijos.get(i));
             Result.put(hijos.get(i), score);
         }
         return Result;
@@ -269,7 +268,7 @@ public class MasterCerebro implements Inteligencia {
      * @param codigo Código a valorar.
      * @return La valoración (Cuánto más cerca de 0, mejor).
      */
-    public int calculateFitness(Codigo codigo) {
+    public int calcularAptitud(Codigo codigo) {
         List<ResultPair> differences = new ArrayList<>();
         for (int i = 0; i < intentos.size(); i++) {
             ResultPair intentoResultado = toResultPair(intentos.get(i).getRespuestas().toString());
@@ -310,36 +309,13 @@ public class MasterCerebro implements Inteligencia {
     }
 
     /**
-     * Coge el map pasado como parámetro y devuelve un map de manera creciente según los valores (puntuaciones) que tiene
-     * el map original.
-     * @param puntuaciones Map de origen a partir del cual se creará una instancia con sus valores ordenador.
-     * @return Devuelve el Map generado con los valores del parámetro 'puntuaciones'.
-     */
-    private Map<Codigo, Integer> getPuntuacionesOrdenadas(Map<Codigo, Integer> puntuaciones) {
-        Set<Map.Entry<Codigo, Integer>> entradas = puntuaciones.entrySet();
-        // Usamos un LinkedList porque sus inserciones son más rápidas
-        List<Map.Entry<Codigo, Integer>> list = new LinkedList<>(entradas);
-        Collections.sort(list, new Comparator<Map.Entry<Codigo, Integer>>() {
-            @Override
-            public int compare(Map.Entry<Codigo, Integer> codigoIntegerEntry, Map.Entry<Codigo, Integer> t1) {
-                return codigoIntegerEntry.getValue() - t1.getValue();
-            }
-        });
-        // Una vez ordenados, creamos un map y los insertamos.
-        puntuaciones = new LinkedHashMap<>();
-        for (Map.Entry<Codigo, Integer> entrada: list) {
-            puntuaciones.put(entrada.getKey(), entrada.getValue());
-        }
-        return puntuaciones;
-    }
-
-    /**
      * Selecciona un candidato de entre los posibles pasado como parámetro. Si no hay posibles candidatos, hacemos
      * una llamada recursiva hasta obtener al menos uno.
      * @param candidatos Lista de código que contiene los posibles candidatos.
      * @return Devolvemos el primer candidato que se encuentra en la lista.
      */
     private Codigo seleccionaCandidato(List<Codigo> candidatos) {
+        candidatos.sort(new Util.Comparator());
         if (candidatos.size() == 0)
             return seleccionaCandidato(evolucion());
         else return candidatos.get(0);
