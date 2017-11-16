@@ -8,6 +8,7 @@ import Domain.Respuesta;
 import org.junit.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 import static org.junit.Assert.*;
@@ -23,7 +24,7 @@ public class PartidaTestJUnit {
     @Before
     public  void setUp() throws Exception {
         testMaker = new Partida(true, "Dificil");
-        testBreaker = new Partida(false, "Dificil");
+        testBreaker = new Partida(false, "Facil");
         testFacil = new Partida(true, "Facil");
         testMedio = new Partida(true, "Medio");
         testDificil = new Partida(true, "Dificil");
@@ -107,7 +108,7 @@ public class PartidaTestJUnit {
     }
 
     @Test
-    public void testGetCodigoSecreto() throws Exception {
+    public void testSetyGetCodigoSecreto() throws Exception {
         Codigo codigoSecreto = new Codigo(testBreaker.getNumColumnas());
         for (int i = 0; i < testBreaker.getNumColumnas(); i++)
             codigoSecreto.codigo.add(7);
@@ -122,7 +123,7 @@ public class PartidaTestJUnit {
             try {
                 int a = testBreaker.getPista1();
                 for (int i = 0; i < testBreaker.getNumColumnas(); i++) {
-                    assertFalse(a == secretcode.codigo.get(i));
+                    assertFalse( a == secretcode.codigo.get(i));
                 }
 
                 try {
@@ -133,7 +134,14 @@ public class PartidaTestJUnit {
                 }
             } catch (ExcepcionNoHayColoresSinUsar e) {
                 //comprobamos que se usan todos los colores
-                //todo
+                if (!testBreaker.getDificultad().equals("Medio")) {
+                    Codigo comprueba = new Codigo(testBreaker.getNumColumnas());
+                    for (int i = 0; i < testBreaker.getNumColumnas(); i++) {
+                        comprueba.codigo.add(i + 1);
+                    }
+                    assertTrue(testBreaker.getCodigoSecreto().codigo.containsAll(comprueba.codigo));
+                }
+                //el medio nunca usará todos los colores
             }
 
     }
@@ -141,19 +149,31 @@ public class PartidaTestJUnit {
     @Test
     public void testGetPista2() throws Exception {
         Codigo secretcode = testBreaker.getCodigoSecreto();
-        ArrayList<Integer> a = testBreaker.getPista2();
-        for (int i = 0; i < testBreaker.getNumColumnas(); i++) {
-            for (int j = 0; j < a.size(); j++)
-                assertFalse(a.get(j) == secretcode.codigo.get(i));
-        }
-
         try {
-            testBreaker.getPista2();
-            fail("No ha lanzado la excepción");
-        } catch (ExcepcionPistaUsada e) {
-            // ha lanzado excepcion
+            ArrayList<Integer> a = testBreaker.getPista2();
+            for (int i = 0; i < testBreaker.getNumColumnas(); i++) {
+                for (int j = 0; j < a.size(); j++)
+                    assertFalse(a.get(j).equals(secretcode.codigo.get(i)));
+            }
+
+            try {
+                testBreaker.getPista2();
+                fail("No ha lanzado la excepción");
+            } catch (ExcepcionPistaUsada e) {
+                // ha lanzado excepcion
+            }
         }
-        //todo faltaria comprobar si no hay colores sin usar ?
+        catch (ExcepcionNoHayColoresSinUsar e) {
+            //comprobamos que se usan todos los colores
+            if (!testBreaker.getDificultad().equals("Medio")) {
+                Codigo comprueba = new Codigo(testBreaker.getNumColumnas());
+                for (int i = 0; i < testBreaker.getNumColumnas(); i++) {
+                    comprueba.codigo.add(i + 1);
+                }
+                assertTrue(testBreaker.getCodigoSecreto().codigo.containsAll(comprueba.codigo));
+            }
+            //el medio nunca usará todos los colores
+        }
     }
 
     @Test
@@ -174,8 +194,47 @@ public class PartidaTestJUnit {
     }
 
     @Test
-    public void generaPuntuacion() throws Exception {
-        // ??
+    public void testGeneraPuntuacion() throws Exception {
+        // todo probar que si hago una pista es 0, y de otra manera es >0. O si la gano. etc.
+
+
+        Codigo codigoSecreto = new Codigo(testFacil.getNumColumnas());
+        Random rn = new Random();
+        for (int i = 0; i < testFacil.getNumColumnas(); i++)
+            codigoSecreto.codigo.add(rn.nextInt(testFacil.getNumColores()) + 1);
+        testFacil.setCodigoSecreto(codigoSecreto);
+        while (!testFacil.isGanado() && testFacil.getNumeroFilaActual() < 15) {
+            //hacemos que encuentre el código secreto
+            testFacil.generaSiguienteIntento();
+            testFacil.generaRespuesta();
+            testFacil.sumaTiempo(4.0f);
+        }
+        assertTrue("Como ha ganado, tendrá puntuación.", testFacil.generaPuntuacion()>0);
+
+
+
+        codigoSecreto = new Codigo(testMedio.getNumColumnas());
+        for (int i = 0; i < testMedio.getNumColumnas(); i++)
+            codigoSecreto.codigo.add(7);
+        testMedio.setCodigoSecreto(codigoSecreto);
+        while (!testMedio.isGanado() && testMedio.getNumeroFilaActual() < 15) {
+            //hacemos no que encuentre el código secreto porque tiene un codigo no posible.
+            testMedio.generaSiguienteIntento();
+            testMedio.generaRespuesta();
+        }
+        assertEquals("No ha encontrado la respuesta así que tendrá que ser 0",testMedio.generaPuntuacion(), 0);
+
+        codigoSecreto = new Codigo(testDificil.getNumColumnas());
+        for (int i = 0; i < testDificil.getNumColumnas(); i++)
+            codigoSecreto.codigo.add(1);
+        testDificil.setCodigoSecreto(codigoSecreto);
+        testDificil.getPista2();
+        while (!testDificil.isGanado() && testDificil.getNumeroFilaActual() < 15) {
+            //hacemos no que encuentre el código secreto porque tiene un codigo no posible.
+            testDificil.generaSiguienteIntento();
+            testDificil.generaRespuesta();
+        }
+        assertEquals("Ha usado una pista así que debe ser 0", testDificil.generaPuntuacion(), 0);
     }
 
     @Test
@@ -183,20 +242,6 @@ public class PartidaTestJUnit {
         assertEquals(testBreaker.getTiempo(), 0.0f, 0.00);
         testBreaker.sumaTiempo(4.0f);
         assertEquals(testBreaker.getTiempo(), 4.0f, 0.00);
-    }
-
-    @Test
-    public void setCodigoSecreto() throws Exception {
-
-    }
-
-    @Test
-    public void setIntento() throws Exception {
-        //??
-    }
-
-    @Test
-    public void generaSiguienteIntento() throws Exception {
     }
 
     @Test
@@ -208,23 +253,8 @@ public class PartidaTestJUnit {
         Respuesta r = code.getRespuesta(secretcode);
         testBreaker.setIntento(code);
         testBreaker.setRespuesta(r);
+        //si no lanza excepción es que efectivamente la respuesta generada es correcta
         assertEquals(testBreaker.getUltimaRespuesta().respuesta, r.respuesta);
-    }
-
-    @Test
-    public void generaRespuesta() throws Exception {
-        // ??
-
-    }
-
-    @Test
-    public void imprimeInfo() throws Exception {
-        // ???
-    }
-
-    @Test
-    public void imprimeAllInfo() throws Exception {
-        // ????
     }
 
 }
