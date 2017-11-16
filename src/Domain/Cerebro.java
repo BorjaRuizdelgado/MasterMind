@@ -146,9 +146,7 @@ public class Cerebro implements Inteligencia{
         }
         min = getMinimaPuntuacion(puntuacion);
 
-        Iterator<Codigo> iterator = puntuacion.keySet().iterator();
-        while (iterator.hasNext()) {
-            Codigo key = iterator.next();
+        for (Codigo key : puntuacion.keySet()) {
             int aux = puntuacion.get(key);
             if (aux == min) posiblesCandidatos.add(key);
         }
@@ -163,9 +161,7 @@ public class Cerebro implements Inteligencia{
     private int getMaximaPuntuacion(Map<String, Integer> contadorPuntuaciones){
         int max = 0;
 
-        Iterator<String> iterator = contadorPuntuaciones.keySet().iterator();
-        while (iterator.hasNext()) {
-            String key = iterator.next();
+        for (String key : contadorPuntuaciones.keySet()) {
             int aux = contadorPuntuaciones.get(key);
             if (aux > max) max = aux;
         }
@@ -181,9 +177,7 @@ public class Cerebro implements Inteligencia{
     private int getMinimaPuntuacion(Map<Codigo, Integer> puntuaciones){
         int min = Integer.MAX_VALUE;
 
-        Iterator<Codigo> iterator = puntuaciones.keySet().iterator();
-        while (iterator.hasNext()) {
-            Codigo key = iterator.next();
+        for (Codigo key : puntuaciones.keySet()) {
             int aux = puntuaciones.get(key);
             if (aux < min) min = aux;
         }
