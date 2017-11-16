@@ -269,27 +269,21 @@ public class MasterCerebro implements Inteligencia {
      * @return La valoración (Cuánto más cerca de 0, mejor).
      */
     public int calcularAptitud(Codigo codigo) {
-        List<ResultPair> differences = new ArrayList<>();
+        int totalBlancas = 0, totalNegras = 0;
         for (int i = 0; i < intentos.size(); i++) {
             ResultPair intentoResultado = toResultPair(intentos.get(i).getRespuestas().toString());
             Codigo intentoCodigo = intentos.get(i).getColores();
 
             ResultPair resultadoCodigo = toResultPair(intentoCodigo.getRespuesta(codigo).toString());
 
-            int differenceWhite = abs(resultadoCodigo.white - intentoResultado.white);
-            int differenceBlack = abs(resultadoCodigo.black - intentoResultado.black);
-            differences.add(new ResultPair(differenceWhite, differenceBlack));
+            int diferenciaBlanca = abs(resultadoCodigo.white - intentoResultado.white);
+            int diferenciaNegra = abs(resultadoCodigo.black - intentoResultado.black);
+            totalBlancas = totalBlancas + diferenciaBlanca;
+            totalNegras = totalNegras + diferenciaNegra;
         }
 
-        int totalWhite = 0;
-        int totalBlack = 0;
-        for (int i = 0; i < differences.size(); i++) {
-            totalWhite += differences.get(i).white;
-            totalBlack += differences.get(i).black;
-        }
-
-        //return totalBlack + totalWhite + 2*numeroColumnas*(intentos.size() - 1);
-        return totalBlack + totalWhite;
+        //return totalNegras + totalBlancas + 2*numeroColumnas*(intentos.size() - 1);
+        return totalNegras + totalBlancas;
     }
 
     /**
