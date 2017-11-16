@@ -1,0 +1,22 @@
+float tiempoTotalMaster = 0;
+float tiempoTotalCerebro = 0;
+int numeroFilas = x;
+int numeroColumnas = x;
+int numeroDePruebas = 100;
+
+while(numeroPurebas != 0){
+    String codigoSecreto = generarCodigoSecreto();
+    float tiempoAux = tiemoActualSistema;
+    TestMasterCerebro(numeroFilas, numeroColumnas, codigoSecreto);
+    tiempoTotalMaster += tiempoActualSistema - tiempoAux;
+
+    tiempoAux = tiempoActualSistema;
+    TestCerebro(numeroFilas, numeroColumnas, generarCodigoSecreto);
+    tiempoTotalCerebro += tiempoActualSistema - tiempoAux;
+
+    numeroPruebas--;
+
+}
+
+System.out.println("tiempo Master: " + tiempoMaster/numeroDePruebas);
+System.out.println("tiempo Cerebro: " + tiempoCerebro/numeroDePruebas);
