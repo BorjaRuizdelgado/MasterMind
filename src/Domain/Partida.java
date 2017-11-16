@@ -251,6 +251,7 @@ public class Partida {
                 break;
             case "Dificil":
                 resultado *= 1.20;
+                break;
         }
         return (int)resultado;
     }
