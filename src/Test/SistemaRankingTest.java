@@ -17,6 +17,8 @@ public class SistemaRankingTest {
 
     private static SistemaRanking sistemaRanking;
 
+    private static Random random;
+
     /**
      * Nombres que se usan para generar las listas.
      */
@@ -58,7 +60,6 @@ public class SistemaRankingTest {
      */
     private static List<Info> getRandomInfo(){
         List<Info> Return = new ArrayList<>();
-        Random random = new Random(System.currentTimeMillis());
         for (int i = 0; i < 10; i++) {
             String name = names[random.nextInt(10)];
             int puntuacion = random.nextInt(10000);
@@ -95,6 +96,29 @@ public class SistemaRankingTest {
     }
 
     /**
+     * Añade una nueva puntuación al tipo de ranking introducido por consola.
+     */
+    private static void añade(){
+        Scanner in = new Scanner(System.in);
+        Console.println("Inserta un nombre de usuario");
+        String nombre = in.next();
+        Console.println("Inserta la puntuación");
+        int puntuacion = in.nextInt();
+        Console.println("Inserta una fecha [Formato: dd-mm-yy]");
+        String fecha = in.next();
+        Console.println("¿Qué dificultad? [Facil/Medio/Dificil]");
+        String modo = " ";
+        do{
+            if(!modo.equals(" ")) Console.println("Escribe: Facil, Medio o Dificil");
+            modo = in.next();
+        }
+        while (!modo.equals("Facil") && !modo.equals("Medio") && !modo.equals("Dificil"));
+        Console.print("Insertando información... ");
+        sistemaRanking.addNewPuntuation(nombre, puntuacion, fecha, modo);
+        Console.println("[Hecho]", "green");
+    }
+
+    /**
      * Este main muestra un menú en pantalla, en el que mostramos diversas opciones que pueden ser escogidas. En este
      * menú, podemos mostrar la información de los rankings (que se generan al principio del programa), también filtrar
      * las información de los rankings por nombres introducidos por el usuario.
@@ -102,6 +126,7 @@ public class SistemaRankingTest {
      */
     public static void main(String[] args) {
         try {
+            random = new Random(System.currentTimeMillis());
             Scanner in = new Scanner(System.in);
             Console.println("Aquí probamos la Clase SistemaRanking.");
             Console.print("Obteniendo instancia y creando el objeto... ");
@@ -121,7 +146,7 @@ public class SistemaRankingTest {
             Console.println("[Hecho]\n", "green");
 
             int option = 0;
-            while (option != 7) {
+            while (option != 8) {
                 String menu = "Menú: Selecciona una de estas opciones: \n" +
                         "[1] Mostrar ranking fácil \n" +
                         "[2] Mostrar ranking normal \n" +
@@ -129,7 +154,8 @@ public class SistemaRankingTest {
                         "[4] Filtrar ranking fácil por nombre \n" +
                         "[5] Filtrar ranking normal por nombre \n" +
                         "[6] Filtrar ranking díficil por nombre \n" +
-                        "[7] Salir";
+                        "[7] Añadir nueva puntuación \n" +
+                        "[8] Salir";
                 Console.println(menu);
 
                 option = in.nextInt();
@@ -151,6 +177,7 @@ public class SistemaRankingTest {
                             break;
                     }
                 }
+                else if(option == 7) añade();
             }
         }
         catch (Exception e){

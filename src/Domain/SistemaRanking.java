@@ -128,12 +128,12 @@ public class SistemaRanking {
     /**
      * Añade la información de una nueva partida a una lista en concreto especificada en el parámetro 'dificultad'
      * @param usuario nombre del usuario
-     * @param p puntuación de la partida
+     * @param puntuacion puntuación de la partida
      * @param fecha fecha de la partida
      * @param dificultad Especifica en que ranking se añadirá la información 'information'
      */
-    public void addNewPuntuation(String usuario, int p, String fecha, String dificultad){
-        Info information = new Info(usuario, p, fecha);
+    public void addNewPuntuation(String usuario, int puntuacion, String fecha, String dificultad){
+        Info information = new Info(usuario, puntuacion, fecha);
         switch (dificultad){
             case "Facil":
                 rankingFacil.add(information);

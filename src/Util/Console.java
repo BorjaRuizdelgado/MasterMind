@@ -1,7 +1,8 @@
 package Util;
 
 /**
- *
+ * Clase para realizar salidas en console con colores.
+ * NOTA: Solo funcione en Linux, ya que Bach de Windows no interpreta la codificación de colores.
  * @author Omar
  */
 public class Console {
