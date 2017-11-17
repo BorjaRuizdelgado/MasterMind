@@ -98,7 +98,7 @@ public class SistemaRankingTest {
     /**
      * Añade una nueva puntuación al tipo de ranking introducido por consola.
      */
-    private static void añade(){
+    private static void anade(){
         Scanner in = new Scanner(System.in);
         Console.println("Inserta un nombre de usuario");
         String nombre = in.next();
@@ -177,7 +177,7 @@ public class SistemaRankingTest {
                             break;
                     }
                 }
-                else if(option == 7) añade();
+                else if(option == 7) anade();
             }
         }
         catch (Exception e){
