@@ -46,14 +46,6 @@ public class Usuario {
     }
 
     /**
-     * Actualiza el nombre del usario
-     * @param nuevoNombre Nuevo nombre del usuario.
-     */
-    public void setNombre(String nuevoNombre) {
-        this.nombre = nuevoNombre;
-    }
-
-    /**
      * Devuelve el número de partidas totales finalizadas como CodeBreaker
      * @return numPartidasFinalizadasCB
      */
@@ -98,6 +90,14 @@ public class Usuario {
     }
 
     /* MODIFICADORAS */
+
+    /**
+     * Actualiza el nombre del usario
+     * @param nuevoNombre Nuevo nombre del usuario.
+     */
+    public void setNombre(String nuevoNombre) {
+        this.nombre = nuevoNombre;
+    }
 
     /**
      * Incrementa el número de partidas totales finalizadas como CodeBreaker

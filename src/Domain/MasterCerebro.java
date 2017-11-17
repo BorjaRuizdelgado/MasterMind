@@ -268,7 +268,7 @@ public class MasterCerebro implements Inteligencia {
      * @param codigo Código a valorar.
      * @return La valoración (Cuánto más cerca de 0, mejor).
      */
-    public int calcularAptitud(Codigo codigo) {
+    private int calcularAptitud(Codigo codigo) {
         int totalBlancas = 0, totalNegras = 0;
         for (int i = 0; i < intentos.size(); i++) {
             ResultPair intentoResultado = toResultPair(intentos.get(i).getRespuestas().toString());

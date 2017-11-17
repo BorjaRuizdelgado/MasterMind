@@ -86,7 +86,7 @@ public class SistemaRankingTest {
                 break;
             case "normal":
                 List<Info> random2 = getRandomInfo();
-                sistemaRanking.setRankingNormal(random2);
+                sistemaRanking.setRankingMedio(random2);
                 break;
             case "dificil":
                 List<Info> random3 = getRandomInfo();
@@ -160,7 +160,7 @@ public class SistemaRankingTest {
 
                 option = in.nextInt();
                 if (option == 1) muestra(sistemaRanking.getRankingFacil());
-                else if (option == 2) muestra(sistemaRanking.getRankingNormal());
+                else if (option == 2) muestra(sistemaRanking.getRankingMedio());
                 else if (option == 3) muestra(sistemaRanking.getRankingDificil());
                 else if (option == 4 || option == 5 || option == 6) {
                     Console.println("Introduce un nombre a filtrar", "blue");
@@ -170,7 +170,7 @@ public class SistemaRankingTest {
                             muestra(sistemaRanking.getRankingFacil(name));
                             break;
                         case 5:
-                            muestra(sistemaRanking.getRankingNormal(name));
+                            muestra(sistemaRanking.getRankingMedio(name));
                             break;
                         case 6:
                             muestra(sistemaRanking.getRankingDificil(name));

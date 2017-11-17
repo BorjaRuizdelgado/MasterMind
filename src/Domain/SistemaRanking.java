@@ -12,7 +12,7 @@ public class SistemaRanking {
 
     private static SistemaRanking uniqueInstance;
     private List<Info> rankingFacil;
-    private List<Info> rankingNormal;
+    private List<Info> rankingMedio;
     private List<Info> rankingDificil;
 
     /**
@@ -20,7 +20,7 @@ public class SistemaRanking {
      */
     private SistemaRanking() {
         rankingFacil = new ArrayList<>();
-        rankingNormal = new ArrayList<>();
+        rankingMedio = new ArrayList<>();
         rankingDificil = new ArrayList<>();
     }
 
@@ -59,10 +59,10 @@ public class SistemaRanking {
 
     /**
      * Devuelve listaRankingNormal
-     * @return rankingNormal
+     * @return rankingMedio
      */
-    public List<Info> getRankingNormal(){
-        return rankingNormal;
+    public List<Info> getRankingMedio(){
+        return rankingMedio;
     }
 
     /**
@@ -85,10 +85,10 @@ public class SistemaRanking {
     /**
      * Devuelve una lista con las puntuaciones del nombre pasado por parámetro
      * @param nombre Es el nombre del usuario
-     * @return rankingNormal con entradas del usuario.
+     * @return rankingMedio con entradas del usuario.
      */
-    public List<Info> getRankingNormal(String nombre){
-        return getInterseccionNombre(rankingNormal, nombre);
+    public List<Info> getRankingMedio(String nombre){
+        return getInterseccionNombre(rankingMedio, nombre);
     }
 
     /**
@@ -113,8 +113,8 @@ public class SistemaRanking {
      * Actualiza listaRankingNormal
      * @param ranking Nuevo ranking normal
      */
-    public void setRankingNormal(List<Info> ranking){
-        rankingNormal = new ArrayList<>(ranking);
+    public void setRankingMedio(List<Info> ranking){
+        rankingMedio = new ArrayList<>(ranking);
     }
 
     /**
@@ -139,7 +139,7 @@ public class SistemaRanking {
                 rankingFacil.add(information);
                 break;
             case "Medio":
-                rankingNormal.add(information);
+                rankingMedio.add(information);
                 break;
             case "Dificil":
                 rankingDificil.add(information);

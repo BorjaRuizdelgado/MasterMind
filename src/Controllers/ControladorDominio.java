@@ -163,7 +163,7 @@ public class ControladorDominio {
             case "Facil":
                 return ranking.getRankingFacil();
             case "Medio":
-                return ranking.getRankingNormal();
+                return ranking.getRankingMedio();
             case "Dificil":
                 return ranking.getRankingDificil();
         }
@@ -181,7 +181,7 @@ public class ControladorDominio {
             case "Facil":
                 return ranking.getRankingFacil(nombreUsr);
             case "Medio":
-                return ranking.getRankingNormal(nombreUsr);
+                return ranking.getRankingMedio(nombreUsr);
             case "Dificil":
                 return ranking.getRankingDificil(nombreUsr);
         }

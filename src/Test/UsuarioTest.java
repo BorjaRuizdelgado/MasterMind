@@ -4,7 +4,6 @@ import static Util.Console.*;
 
 import Domain.Excepciones.ExcepcionNoHayPartidaActual;
 import Domain.Excepciones.ExcepcionNoHayPartidasGuardadas;
-import Domain.Excepciones.ExcepcionPruebaTerminada;
 import Domain.Excepciones.ExcepcionYaExistePartidaActual;
 import Domain.Usuario;
 

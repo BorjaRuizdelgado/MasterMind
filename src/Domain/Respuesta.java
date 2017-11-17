@@ -13,7 +13,7 @@ import java.util.List;
 public class Respuesta {
 
     public List<Integer> respuesta;
-    public int size = 4;
+    public int size;
 
     /**
      * Creadora Respuesta.
