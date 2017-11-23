@@ -1,5 +1,6 @@
 package Domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  * Singleton que contiene tres listas que corresponden a los diferentes ránkings según dificultad.
  * @author Omar
  */
-public class SistemaRanking {
+public class SistemaRanking implements Serializable{
 
     private static SistemaRanking uniqueInstance;
     private List<Info> rankingFacil;
