@@ -5,7 +5,7 @@ import Domain.SistemaRanking;
 import java.io.*;
 
 public class GestionSistemaRanking {
-    String path;
+    private String path;
     private static GestionSistemaRanking uniqueInstance;
 
     private GestionSistemaRanking(){
