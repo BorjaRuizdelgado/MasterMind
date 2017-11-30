@@ -7,6 +7,7 @@ package Domain;
  * @author Omar
  */
 public class Info {
+
     private String usuario;
     private int puntuacion;
     private String fecha;
