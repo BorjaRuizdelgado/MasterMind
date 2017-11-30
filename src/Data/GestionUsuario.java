@@ -36,7 +36,7 @@ public class GestionUsuario {
 
     }
 
-    public boolean exists(String id){
+    public boolean exists(String usuario){
         return false;
     }
 }

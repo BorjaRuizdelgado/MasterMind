@@ -22,10 +22,14 @@ public class ControladorPersistencia {
         if (gp == null) {
             gp = GestionPartida.getInstance();
         }
+        return gp.cargarPartida(partida);
     }
 
-    public SistemaRanking cargarSistemaRanking() {
-
+    public void cargarSistemaRanking() {
+        if (gsr == null) {
+            gsr = GestionSistemaRanking.getInstance();
+        }
+        gsr.cargar();
     }
 
     public void guardar(SistemaRanking sr) {
@@ -41,7 +45,10 @@ public class ControladorPersistencia {
     }
 
     public boolean existeUsuario(String usuario) {
-
+        if (gu == null) {
+            gu = GestionUsuario.getInstance();
+        }
+        return gu.exists(usuario);
     }
 
 

@@ -11,7 +11,7 @@ public class GestionPartida {
         path = "aaaa";
     }
 
-    private GestionPartida getInstance() {
+    public static GestionPartida getInstance() {
         return uniqueInstance;
     }
 
