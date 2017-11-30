@@ -74,12 +74,10 @@ public class UsuarioTest {
                     }
                     break;
                 case 4: // guardar partida
-                    try {
+
                         test.guardaPartidaActual();
                         println("Partida guardada.");
-                    } catch (ExcepcionNoHayPartidaActual e) {
-                        println(e.getMessage());
-                    }
+
                     break;
                 case 5: // obtener info partidas guardadas
                     try {
