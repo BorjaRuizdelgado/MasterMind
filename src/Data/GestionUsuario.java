@@ -2,9 +2,23 @@ package Data;
 
 import Domain.Usuario;
 
+import java.util.Map;
+
 public class GestionUsuario {
     String path;
-    map<String, Usuario> finder;
+    Map<String, Usuario> finder;
+    private static GestionUsuario uniqueInstance;
+
+    private GestionUsuario() {
+        path = "aaa";
+
+    }
+
+
+
+    public static GestionUsuario getInstance() {
+        return uniqueInstance;
+    }
 
     private void cargarFinder(){
 
@@ -14,7 +28,7 @@ public class GestionUsuario {
 
     }
 
-    public void cargar(String id){
+    public Usuario cargar(String id){
 
     }
 
