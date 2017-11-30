@@ -10,7 +10,7 @@ import java.util.List;
  * @author Omar
  */
 public class SistemaRanking implements Serializable{
-
+//Todo pon que el get ranking devuelva una lista de strings en vez de info pls :)
     private static SistemaRanking uniqueInstance;
     private List<Info> rankingFacil;
     private List<Info> rankingMedio;
