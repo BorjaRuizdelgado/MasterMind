@@ -2,9 +2,11 @@ package Data;
 
 import Domain.Usuario;
 
+import java.util.Map;
+
 public class GestionUsuario {
     String path;
-    map<String, Usuario> finder;
+    Map<String, Usuario> finder;
 
     private void cargarFinder(){
 

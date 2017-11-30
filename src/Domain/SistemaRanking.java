@@ -36,6 +36,14 @@ public class SistemaRanking implements Serializable{
     }
 
     /**
+     * Reinicializa la única instáncia de SistemRanking
+     * @param sistemaRanking instáncia que será la única en SistemaRanking
+     */
+    public static void setInstance(SistemaRanking sistemaRanking){
+        uniqueInstance = sistemaRanking;
+    }
+
+    /**
      * Devuelve la intersección entre la lista que contiene datos del usuario
      * @param lista Es la lista de donde saldrán las entradas
      * @param nombre El nombre del usuario
