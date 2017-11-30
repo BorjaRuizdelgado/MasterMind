@@ -144,8 +144,7 @@ public class Usuario {
      * Añade la partida actual a la lista de partidas guardadas y la elimina de partida actual.
      * @throws ExcepcionNoHayPartidaActual cuando no hay una partida actual
      */
-    public void guardaPartidaActual() throws ExcepcionNoHayPartidaActual {
-        if (partidaActual == null) throw new ExcepcionNoHayPartidaActual("** ERROR **: No hay una partida actual.");
+    public void guardaPartidaActual() {
         partidasGuardadas.add(partidaActual);
         partidaActual = null;
     }
