@@ -1,6 +1,8 @@
-package Controllers;
+package Domain.Controllers;
 
+import Data.ControladorPersistencia;
 import Domain.*;
+import Domain.Excepciones.ExcepcionNoHayPartidaActual;
 import groovy.lang.Tuple2;
 
 import java.time.LocalDate;
@@ -17,12 +19,20 @@ public class ControladorDominio {
     private Usuario usuarioCargado = null;
     private Partida partidaActual = null;
     private SistemaRanking ranking = null;
+    private ControladorPersistencia persistencia = null;
 
     /**
      * Creadora ControladorDominio.
      */
     public ControladorDominio(){
-        //recatar ranking de la BD y si no crear uno nuevo para guardarlo después
+        try{
+            ranking = persitencia.cargarSistemaRanking();
+        }
+        catch(){
+            ranking = SistemaRanking.getInstance();
+
+        }
+        persistencia = new ControladorPersistencia().getInstance();
     }
 
     /**
@@ -31,11 +41,10 @@ public class ControladorDominio {
      * @throws Exception si el usuario ya está credo.
      */
     public void crearUsuario(String nombre) throws Exception{
-        //if(consultar usr con la bd antes y no esta) then
-        if(usuarioCargado != null){
-            //Enviar a guardar usuario.
-            usuarioCargado = null;
+        if(persistencia.existeUsuario(nombre)){
+            throw new Exception();
         }
+        guardaUsuarioActual();
 
         usuarioCargado = new Usuario(nombre);
 
@@ -47,15 +56,14 @@ public class ControladorDominio {
      * @throws Exception si el usuario con ese identificador no existe.
      */
     public void cargarUsuario(String nombre) throws Exception{
-        if(usuarioCargado != null) {
-            //Guardar en bd
-            usuarioCargado = null;
+        guardaUsuarioActual();
+
+        try{
+            usuarioCargado = persitencia.cargarUsuario(nombre);
         }
+        catch(){
 
-        //usuarioCargado = consultaDB(nombre)
-
-
-
+        }
     }
 
     /**
@@ -64,12 +72,9 @@ public class ControladorDominio {
      * @param codigoSecreto Determina el codigo secreto elegido por el usuario.
      */
     public void crearPartidaUsuarioCargadoRolMaker(String dificultad, ArrayList<Integer> codigoSecreto){
-        if(partidaActual == null){
-            //usuarioCargado.guardaPartidaActual();
-        }
-
-       // usuarioCargado.creaPartidaActual(true,dificultad);
-       // partidaActual = usuarioCargado.getPartidaActual();
+        guardaPartidaActual();
+        usuarioCargado.creaPartidaActual(true,dificultad);
+        partidaActual = usuarioCargado.getPartidaActual();
         Codigo secreto = new Codigo(codigoSecreto.size());
         secreto.codigo = new ArrayList<Integer>(codigoSecreto);
         partidaActual.setCodigoSecreto(secreto);
@@ -81,12 +86,9 @@ public class ControladorDominio {
      * @return Codigo secreto aleatorio generado por la maquina.
      */
     public List<Integer> crearPartidaUsuarioCargadoRolBreaker(String dificultad){
-        if(partidaActual == null){
-          //  usuarioCargado.guardaPartidaActual();
-        }
-
-        //usuarioCargado.creaPartidaActual(false, dificultad);
-       // partidaActual = usuarioCargado.getPartidaActual();
+        guardaPartidaActual();
+        usuarioCargado.creaPartidaActual(false, dificultad);
+       partidaActual = usuarioCargado.getPartidaActual();
         return partidaActual.getCodigoSecreto().codigo;
 
     }
@@ -98,7 +100,12 @@ public class ControladorDominio {
      * @throws Exception Si la partida con ese id no existe.
      */
     public Tuple2<Boolean,String> cargarPartidaUsuario(String idPartida) throws Exception{
-        //Ha de acceder a la BD para cargar la partida.
+        try{
+            partidaActual = persistencia.cargarPartida(idPartida);
+        }
+        catch(){
+            throw new Exception();
+        }
         return new Tuple2<>(partidaActual.isRolMaker(),partidaActual.getDificultad());
     }
 
@@ -134,10 +141,23 @@ public class ControladorDominio {
      * Finaliza la partida que esta siendo utilizada utilizada en este momento y la borra de memoria y la desasigna al
      * usuario.
      */
-    public void terminaPartidaActual(){
-        //usuario.eliminaPartidaGuardada(partidaActual.getId());
-        partidaActual = null;
+    public void terminaPartidaActual(boolean ganada){
+        try {
+            usuarioCargado.finalizarPartidaActual(ganada);
+        }
+        catch (ExcepcionNoHayPartidaActual e){
 
+        }
+        partidaActual = null;
+    }
+
+    public void abandonaPartidaAcutal(){
+        try {
+            usuarioCargado.abandonaPartidaActual();
+        }
+        catch(ExcepcionNoHayPartidaActual e){
+
+        }
     }
 
     /**
@@ -148,7 +168,6 @@ public class ControladorDominio {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDate localDate = LocalDate.now();
         String fecha = dtf.format(localDate);
-
         ranking.addNewPuntuation(usuarioCargado.getNombre(),partidaActual.generaPuntuacion(),fecha,partidaActual.getDificultad());
 
     }
@@ -196,5 +215,37 @@ public class ControladorDominio {
         return null;
     }
 
+    private void onClose(){
+       guardaUsuarioActual();
+       guardaRanking();
+    }
+
+    private void guardaRanking(){
+        if(ranking != null){
+            try {
+                persistencia.guarda(ranking);
+            }
+            catch(){}
+        }
+    }
+    private void guardaUsuarioActual(){
+
+        if(usuarioCargado != null){
+            try {
+                persistencia.guardar(usuarioCargado);
+            }
+            catch(){
+
+            }
+            usuarioCargado = null;
+        }
+    }
+
+    private void guardaPartidaActual(){
+        if(partidaActual == null){
+            usuarioCargado.guardaPartidaActual();
+        }
+        persistencia.guardar(partidaActual);
+    }
 
 }
