@@ -1,12 +1,14 @@
 package Domain;
 
 
+import java.io.Serializable;
+
 /**
  * Clase Info
  * Estructura de datos para los Rankings
  * @author Omar
  */
-public class Info {
+public class Info implements Serializable{
 
     private String usuario;
     private int puntuacion;

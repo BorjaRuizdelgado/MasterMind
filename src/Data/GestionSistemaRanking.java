@@ -9,7 +9,7 @@ public class GestionSistemaRanking {
     private static GestionSistemaRanking uniqueInstance;
 
     private GestionSistemaRanking(){
-        path = System.getProperty("user.dir") + "/Data/GestionSistemaRanking.obj";
+        path = System.getProperty("user.dir") + "/Data/GSR/GestionSistemaRanking.obj";
     }
 
     public static GestionSistemaRanking getInstance() {
@@ -18,26 +18,39 @@ public class GestionSistemaRanking {
         return uniqueInstance;
     }
 
+    private void createDirectory(){
+        File folder = new File(System.getProperty("user.dir") + "/Data/GSR");
+        folder.mkdirs();
+    }
+
+    private void createFile(){
+        File file = new File(path);
+        try {
+            file.createNewFile();
+        }
+        catch (IOException e1) {
+            e1.printStackTrace();
+        }
+    }
+
     public void guardar(){
         SistemaRanking sistemaRanking = SistemaRanking.getInstance();
 
         try {
+            createDirectory();
+            createFile();
+
             FileOutputStream fileOutputStream = new FileOutputStream(path);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(sistemaRanking);
 
             objectOutputStream.close();
             fileOutputStream.close();
-        } catch (IOException e) {
-            File file = new File(path);
-            try {
-                file.createNewFile();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public void cargar(){
@@ -49,7 +62,7 @@ public class GestionSistemaRanking {
             objectInputStream.close();
             fileInputStream.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            SistemaRanking.getInstance().clear();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
