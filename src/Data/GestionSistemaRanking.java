@@ -29,6 +29,12 @@ public class GestionSistemaRanking {
             objectOutputStream.close();
             fileOutputStream.close();
         } catch (IOException e) {
+            File file = new File(path);
+            try {
+                file.createNewFile();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
             e.printStackTrace();
         }
 
