@@ -40,13 +40,15 @@ public class SistemaRanking implements Serializable{
      * @param sistemaRanking instáncia que será la única en SistemaRanking
      */
     public static void setInstance(SistemaRanking sistemaRanking){
-        uniqueInstance = sistemaRanking;
+        uniqueInstance.rankingFacil = sistemaRanking.rankingFacil;
+        uniqueInstance.rankingMedio = sistemaRanking.rankingMedio;
+        uniqueInstance.rankingDificil = sistemaRanking.rankingDificil;
     }
 
     /**
      * Devuelve la intersección entre la lista que contiene datos del usuario
      * @param lista Es la lista de donde saldrán las entradas
-     * @param nombre El nombre del usuario
+     * @param nombre Es el nombre de usuario.
      * @return Lista con solo información del usuario.
      */
     private List<Info> getInterseccionNombre(List<Info> lista, String nombre){
@@ -156,5 +158,11 @@ public class SistemaRanking implements Serializable{
             default:
                 break;
         }
+    }
+
+    public void clear(){
+        rankingFacil.clear();
+        rankingMedio.clear();
+        rankingDificil.clear();
     }
 }
