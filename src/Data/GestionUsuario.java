@@ -1,27 +1,26 @@
 package Data;
 
+import Domain.Excepciones.ExcepcionUsuarioInexistente;
 import Domain.Usuario;
 
 import java.io.*;
 import java.util.Map;
 
 public class GestionUsuario {
-    String path;
-    Map<String, Usuario> finder;
+    private String path;
+    private Map<String, Usuario> finder;
     private static GestionUsuario uniqueInstance;
 
     private GestionUsuario() {
-        path = "aaa";
+        path = System.getProperty("user.dir") + "/Data/Users/GestionUsuarios.obj";
 
     }
-
-
 
     public static GestionUsuario getInstance() {
         return uniqueInstance;
     }
 
-    private void cargarFinder(){
+    public void cargarFinder(){
         try {
             FileInputStream fileInputStream = new FileInputStream(path);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
@@ -29,16 +28,14 @@ public class GestionUsuario {
 
             objectInputStream.close();
             fileInputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
 
     }
 
-    private void guardarFinder(){
+    public void guardarFinder(){
         try {
             FileOutputStream fos = new FileOutputStream(path);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -51,7 +48,9 @@ public class GestionUsuario {
         }
     }
 
-    public Usuario cargar(String id){
+    public Usuario cargar(String id) throws ExcepcionUsuarioInexistente {
+        Usuario aux = finder.get(id);
+        if (aux == null) throw new ExcepcionUsuarioInexistente();
         return finder.get(id);
     }
 

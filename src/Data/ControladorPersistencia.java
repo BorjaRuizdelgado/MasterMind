@@ -37,7 +37,10 @@ public class ControladorPersistencia {
     }
 
     public void guardar(Usuario u) {
-
+        if (gu == null) {
+            gu = GestionUsuario.getInstance();
+        }
+        gu.guardar(u);
     }
 
     public void guardar(Partida p) {

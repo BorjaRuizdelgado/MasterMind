@@ -4,6 +4,7 @@ import Domain.Excepciones.ExcepcionNoHayPartidaActual;
 import Domain.Excepciones.ExcepcionNoHayPartidasGuardadas;
 import Domain.Excepciones.ExcepcionYaExistePartidaActual;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * Tiene una partida actual y una lista de partidas guardadas. Así como un recuento de las finalizadas.
  * @author ISA
  */
-public class Usuario {
+public class Usuario implements Serializable{
 //todo quitar excepcion crear partidaActual, getPartidaActual :)
     private String nombre;
     private int numPartidasFinalizadasCB;   //Partidas acabadas como rol CodeBreaker
