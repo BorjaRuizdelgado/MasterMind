@@ -13,7 +13,7 @@ public class GestionUsuario {
     private static GestionUsuario uniqueInstance;
 
     private GestionUsuario() {
-        path = System.getProperty("user.dir") + "/Data/Users/GestionUsuarios.obj";
+        path = System.getProperty("user.dir") + "\\Data\\Users\\GestionUsuarios.obj";
         cargarFinder();
     }
 
@@ -30,7 +30,7 @@ public class GestionUsuario {
      * Crea el directorio si no está creado ya.
      */
     private void createDirectory(){
-        File folder = new File(System.getProperty("user.dir") + "/Data/Users");
+        File folder = new File(System.getProperty("user.dir") + "\\Data\\Users");
         folder.mkdirs();
     }
 
@@ -52,18 +52,22 @@ public class GestionUsuario {
      */
     private void cargarFinder(){
         try {
-            FileInputStream fileInputStream = new FileInputStream(path);
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            finder = (Map<String, Usuario>) objectInputStream.readObject();
+            File folder = new File (path);
+            if(!folder.exists()) {
+                createDirectory();
+                createFile();
+                finder = new HashMap<>();
+            }
+            else {
+                FileInputStream fileInputStream = new FileInputStream(path);
+                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+                finder = (Map<String, Usuario>) objectInputStream.readObject();
 
-            objectInputStream.close();
-            fileInputStream.close();
-        } catch (IOException e) { //si no encuentra el fichero, que lo cree y haga un finder vacío.
-            createDirectory();
-            createFile();
-            finder = new HashMap<>();
-        } catch ( ClassNotFoundException e) {
-            System.out.println("Clase not working.");
+                objectInputStream.close();
+                fileInputStream.close();
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
 
 
@@ -74,8 +78,11 @@ public class GestionUsuario {
      */
     private void guardarFinder(){
         try {
-            createDirectory();
-            createFile();
+            File folder = new File (path);
+            if(!folder.exists()) {
+                createDirectory();
+                createFile();
+            }
 
             FileOutputStream fos = new FileOutputStream(path);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -103,8 +110,6 @@ public class GestionUsuario {
     }
 
     public boolean existsAny(){
-        if (finder.size()==0)
-            return false;
-        return true;
+        return finder.size() != 0;
     }
 }

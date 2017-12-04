@@ -49,7 +49,10 @@ public class ControladorPersistencia {
     }
 
     public void guardar(Partida p) {
-
+        if (gp == null) {
+            gp = GestionPartida.getInstance();
+        }
+        gp.guardarPartida(p);
     }
 
     public boolean existeUsuario(String usuario) {

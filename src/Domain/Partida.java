@@ -44,7 +44,7 @@ public class Partida implements Serializable {
      * @param dificultad nivel de dificultad
      */
     public Partida(boolean rolMaker, String dificultad) {
-        DateFormat formato = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
+        DateFormat formato = new SimpleDateFormat("dd-MM-yyyy~HH-mm-ss");
         Date hoy = Calendar.getInstance().getTime();
         this.id = formato.format(hoy);
         this.tiempo = 0.0f;
