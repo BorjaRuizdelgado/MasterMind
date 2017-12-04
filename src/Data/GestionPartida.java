@@ -16,7 +16,7 @@ public class GestionPartida {
     }
 
     public Partida cargarPartida(String partida) {
-
+        return null;
     }
 
     public void guardarPartida(Partida p) {

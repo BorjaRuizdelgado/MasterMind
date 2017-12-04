@@ -29,7 +29,7 @@ public class GestionUsuario {
     }
 
     public Usuario cargar(String id){
-
+        return null;
     }
 
     public void guardar(Usuario usuario){
