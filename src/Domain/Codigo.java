@@ -1,5 +1,6 @@
 package Domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * Estructura de datos para los codigos de los intentos
  * @author borja
  */
-public class Codigo {
+public class Codigo implements Serializable{
     public List<Integer> codigo;
     public int size = 0;
 

@@ -1,5 +1,6 @@
 package Domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -9,7 +10,7 @@ import java.util.Collections;
  * Contiene un código de colores y una respuesta.
  * @author borja
  */
-public class Fila {
+public class Fila implements Serializable {
 
     private Codigo colores;
     private Respuesta respuestas;

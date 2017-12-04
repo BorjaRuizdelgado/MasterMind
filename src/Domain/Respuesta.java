@@ -1,5 +1,6 @@
 package Domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * @author borja
  */
 
-public class Respuesta {
+public class Respuesta implements Serializable {
 
     public List<Integer> respuesta;
     public int size;

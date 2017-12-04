@@ -14,13 +14,13 @@ import java.util.List;
  * Tiene una partida actual y una lista de partidas guardadas. Así como un recuento de las finalizadas.
  * @author ISA
  */
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
 //todo quitar excepcion crear partidaActual, getPartidaActual :)
     private String nombre;
     private int numPartidasFinalizadasCB;   //Partidas acabadas como rol CodeBreaker
     private int numPartidasGanadasCB;       //Partidas ganadas como rol CodeBreaker
     private int numPartidasFinalizadasCM;   //Partidas acabadas como rol CodeMaker
-    private List <Partida> partidasGuardadas;
+    private List <String> partidasGuardadas;
     private Partida partidaActual;
 
     /**
@@ -73,22 +73,11 @@ public class Usuario implements Serializable{
     /**
      * Devuelve la partida actual del usuario
      * @return partidaActual
-     * @throws ExcepcionNoHayPartidaActual cuando no hay una partida actual que obtener
      */
-    public Partida getPartidaActual() throws ExcepcionNoHayPartidaActual {
-        if (partidaActual == null) throw new ExcepcionNoHayPartidaActual("** ERROR **: No hay una partida actual.");
+    public Partida getPartidaActual()  {
         return this.partidaActual;
     }
 
-    /**
-     * Devuelve el Id de la Partida Actual
-     * @return id partida actual
-     * @throws ExcepcionNoHayPartidaActual cuando no hay una partida actual
-     */
-    public String getIdPartidaActual() throws ExcepcionNoHayPartidaActual {
-        if (partidaActual == null) throw new ExcepcionNoHayPartidaActual("** ERROR **: No hay una partida actual.");
-        return partidaActual.getId();
-    }
 
     /* MODIFICADORAS */
 
@@ -134,36 +123,33 @@ public class Usuario implements Serializable{
      * Crea una nueva partida y la asigna como partida actual
      * @param rolMaker rol de la partida
      * @param dif dificultad de la partida
-     * @throws ExcepcionYaExistePartidaActual cuando ya existe una partida actual.
      */
-    public void creaPartidaActual(Boolean rolMaker, String dif) throws ExcepcionYaExistePartidaActual {
-        if (partidaActual != null) throw new ExcepcionYaExistePartidaActual("** ERROR **: Ya hay una partida actual. Guarda la actual o abandonala para crear otra.");
+    public void creaPartidaActual(Boolean rolMaker, String dif) {
         this.partidaActual = new Partida(rolMaker, dif);
     }
 
     /**
      * Añade la partida actual a la lista de partidas guardadas y la elimina de partida actual.
-     * @throws ExcepcionNoHayPartidaActual cuando no hay una partida actual
      */
     public void guardaPartidaActual() {
-        partidasGuardadas.add(partidaActual);
+        partidasGuardadas.add(partidaActual.getId());
         partidaActual = null;
     }
 
-    public void cargaPartida(int n) throws ExcepcionYaExistePartidaActual, ExcepcionNoHayPartidasGuardadas {
-        if (partidaActual != null) throw new ExcepcionYaExistePartidaActual("** ERROR **: Ya hay una partida actual. Guarda la actual o abandonala para crear otra.");
-        if (partidasGuardadas.size() == 0) throw new ExcepcionNoHayPartidasGuardadas("** ERROR **: No tienes ninguna partida guardada.");
-        partidaActual = partidasGuardadas.get(n-1);
-        partidasGuardadas.remove(n-1);
+    /**
+     * Carga la partida pasada por parámetro: la coloca como partida actual y la elimina de partidas guardadas.
+     * @param partida partida cargada.
+     */
+    public void cargaPartida(Partida partida)  {
+        partidaActual = partida;
+        partidasGuardadas.remove(partida.getId());
     }
 
     /**
      * Finaliza la partida actual y aumenta el número de partidas finalizadas según si es CodeMaker o CodeMaker y si la ha ganado.
      * @param ganada indica si la partida ha sido ganada.
-     * @throws ExcepcionNoHayPartidaActual cuando no hay una partida actual
      */
-    public void finalizarPartidaActual(Boolean ganada) throws ExcepcionNoHayPartidaActual {
-        if (partidaActual == null) throw new ExcepcionNoHayPartidaActual("** ERROR **: No hay una partida actual.");
+    public void finalizarPartidaActual(Boolean ganada)  {
         if (partidaActual.isRolMaker()) incrementaPartidasFinalizadasCM();
         else {
             incrementaPartidasFinalizadasCB();
@@ -174,28 +160,12 @@ public class Usuario implements Serializable{
     }
 
     /**
-     * Abandona la partida actual.
-     * @throws ExcepcionNoHayPartidaActual cuando no hay una partida actual
+     * Abandona la partida actual sin guardarla.
      */
-    public void abandonaPartidaActual() throws ExcepcionNoHayPartidaActual {
-        if (partidaActual == null) throw new ExcepcionNoHayPartidaActual("** ERROR **: No hay una partida actual.");
+    public void abandonaPartidaActual() {
         partidaActual = null;
     }
 
-
-    /* ESCRITURAS */
-
-    /**
-     * Imprime por pantalla la información de todas las partidas guardadas
-     * @throws ExcepcionNoHayPartidasGuardadas cuando no hay ninguna partida guardada
-     */
-    public void imprimeInfoPartidasGuardadas() throws ExcepcionNoHayPartidasGuardadas {
-        if (partidasGuardadas.size() == 0) throw new ExcepcionNoHayPartidasGuardadas("** ERROR **: No tienes ninguna partida guardada.");
-        for (int i = 0; i < partidasGuardadas.size(); i++) {
-            System.out.print("["+Integer.toString(i+1)+"]: ");
-            partidasGuardadas.get(i).imprimeInfo();
-        }
-    }
 
 
 

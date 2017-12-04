@@ -4,6 +4,7 @@ import Domain.Excepciones.ExcepcionNoHayColoresSinUsar;
 import Domain.Excepciones.ExcepcionPistaUsada;
 import Domain.Excepciones.ExcepcionRespuestaIncorrecta;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -15,7 +16,7 @@ import java.util.*;
  * Contiene atributos para puntuar al usuario cuando gane la partida.
  * @author ISA
  */
-public class Partida {
+public class Partida implements Serializable {
 
     private String id;
     private float tiempo;

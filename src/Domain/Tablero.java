@@ -2,6 +2,7 @@ package Domain;
 
 import Domain.Excepciones.ExcepcionRespuestaIncorrecta;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * Contiene una lista de Filas y un código secreto.
  * @author Borja
  */
-public class Tablero {
+public class Tablero implements Serializable {
 
     /*
     VACIO = 0;

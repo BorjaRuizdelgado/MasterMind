@@ -6,10 +6,15 @@ import Domain.SistemaRanking;
 import Domain.Usuario;
 
 public class ControladorPersistencia {
-    private static SistemaRanking uniqueInstance;
+    private static ControladorPersistencia uniqueInstance;
     private GestionSistemaRanking gsr;
     private GestionUsuario gu;
     private GestionPartida gp;
+
+
+    public static ControladorPersistencia getInstance() {
+        return uniqueInstance;
+    }
 
     public Usuario cargarUsuario(String usuario) throws ExcepcionUsuarioInexistente {
         if (gu == null) {
@@ -32,7 +37,7 @@ public class ControladorPersistencia {
         gsr.cargar();
     }
 
-    public void guardar(SistemaRanking sr) {
+    public void guardarSistemaRanking() {
 
     }
 

@@ -3,6 +3,7 @@ package Domain.Controllers;
 import Data.ControladorPersistencia;
 import Domain.*;
 import Domain.Excepciones.ExcepcionNoHayPartidaActual;
+import Domain.Excepciones.ExcepcionUsuarioInexistente;
 import groovy.lang.Tuple2;
 
 import java.time.LocalDate;
@@ -19,20 +20,18 @@ public class ControladorDominio {
     private Usuario usuarioCargado = null;
     private Partida partidaActual = null;
     private SistemaRanking ranking = null;
-    private ControladorPersistencia persistencia = null;
+    private ControladorPersistencia persistencia = ControladorPersistencia.getInstance();
 
     /**
      * Creadora ControladorDominio.
      */
     public ControladorDominio(){
-        try{
-            ranking = persitencia.cargarSistemaRanking();
-        }
-        catch(){
-            ranking = SistemaRanking.getInstance();
+        persistencia = ControladorPersistencia.getInstance();
 
-        }
-        persistencia = new ControladorPersistencia().getInstance();
+        persistencia.cargarSistemaRanking();
+        ranking = SistemaRanking.getInstance();
+
+
     }
 
     /**
@@ -59,9 +58,9 @@ public class ControladorDominio {
         guardaUsuarioActual();
 
         try{
-            usuarioCargado = persitencia.cargarUsuario(nombre);
+            usuarioCargado = persistencia.cargarUsuario(nombre);
         }
-        catch(){
+        catch(ExcepcionUsuarioInexistente e){
 
         }
     }
@@ -100,12 +99,9 @@ public class ControladorDominio {
      * @throws Exception Si la partida con ese id no existe.
      */
     public Tuple2<Boolean,String> cargarPartidaUsuario(String idPartida) throws Exception{
-        try{
-            partidaActual = persistencia.cargarPartida(idPartida);
-        }
-        catch(){
-            throw new Exception();
-        }
+
+        partidaActual = persistencia.cargarPartida(idPartida);
+
         return new Tuple2<>(partidaActual.isRolMaker(),partidaActual.getDificultad());
     }
 
@@ -142,22 +138,13 @@ public class ControladorDominio {
      * usuario.
      */
     public void terminaPartidaActual(boolean ganada){
-        try {
-            usuarioCargado.finalizarPartidaActual(ganada);
-        }
-        catch (ExcepcionNoHayPartidaActual e){
-
-        }
+        usuarioCargado.finalizarPartidaActual(ganada);
         partidaActual = null;
     }
 
     public void abandonaPartidaAcutal(){
-        try {
-            usuarioCargado.abandonaPartidaActual();
-        }
-        catch(ExcepcionNoHayPartidaActual e){
-
-        }
+        usuarioCargado.abandonaPartidaActual();
+        partidaActual = null;
     }
 
     /**
@@ -222,21 +209,13 @@ public class ControladorDominio {
 
     private void guardaRanking(){
         if(ranking != null){
-            try {
-                persistencia.guarda(ranking);
-            }
-            catch(){}
+            persistencia.guardarSistemaRanking();
         }
     }
     private void guardaUsuarioActual(){
 
         if(usuarioCargado != null){
-            try {
-                persistencia.guardar(usuarioCargado);
-            }
-            catch(){
-
-            }
+            persistencia.guardar(usuarioCargado);
             usuarioCargado = null;
         }
     }

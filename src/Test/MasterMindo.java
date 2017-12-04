@@ -50,7 +50,7 @@ public class MasterMindo {
             pary = usr.getPartidaActual();
             if (rol) juegaCodeMaker();
             else juegaCodeBreaker();
-        } catch (ExcepcionPartidaAbandonada | ExcepcionYaExistePartidaActual | ExcepcionNoHayPartidaActual e) {
+        } catch (ExcepcionPartidaAbandonada | ExcepcionNoHayPartidaActual e) {
             println(e.getMessage());
         }
     }

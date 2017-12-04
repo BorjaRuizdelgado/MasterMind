@@ -1,6 +1,8 @@
 package Domain;
 
 import Util.Comparator;
+
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -8,7 +10,7 @@ import java.util.*;
  * Inteligencia que implementa el algoritmo 'Five Guess'
  * @author borja and ISA and Omar
  */
-public class Cerebro implements Inteligencia{
+public class Cerebro implements Inteligencia, Serializable{
 
     private int numeroColores;
     private int numeroColumnas;

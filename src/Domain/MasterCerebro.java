@@ -1,5 +1,6 @@
 package Domain;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.*;
 import static java.lang.Math.abs;
@@ -9,7 +10,7 @@ import static java.lang.Math.abs;
  * Implementa la IA de Mastermind con el algoritmo genético.
  * @author Omar
  */
-public class MasterCerebro implements Inteligencia {
+public class MasterCerebro implements Inteligencia, Serializable {
 
     private static int MAXGEN = 80; //El máximo de generaciones que permitimos
     private static int MAXSIZE = 80; //El tamaño máximo de las poblaciones

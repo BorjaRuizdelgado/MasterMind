@@ -1,4 +1,4 @@
-package Test;
+/*package Test;
 
 import static Util.Console.*;
 
@@ -7,14 +7,14 @@ import Domain.Excepciones.ExcepcionNoHayPartidasGuardadas;
 import Domain.Excepciones.ExcepcionYaExistePartidaActual;
 import Domain.Usuario;
 
-import java.util.Scanner;
+import java.util.Scanner;*/
 
 /**
  * Usuario Test
  * Implementa un Main para poder probar de manera interactiva la clase.
  * @author ISA
  */
-public class UsuarioTest {
+/*public class UsuarioTest {
     private static Scanner in = new Scanner(System.in);
 
     public static void main (String[] args) {
@@ -32,7 +32,7 @@ public class UsuarioTest {
     /**
      * @param test usuario de la prueba
      */
-    private static void testea (Usuario test)  {
+    /*private static void testea (Usuario test)  {
         int n;
         Boolean fin = false;
         while(!fin) {
@@ -125,14 +125,14 @@ public class UsuarioTest {
                     break;
             }
         }
-    }
+    }*/
 
     /**
      * Crea una partida actual para el usuario pasado por parámetro y la devuelve
      * @param test usuario al que se le asigna la nueva partida
      * @throws ExcepcionYaExistePartidaActual cuando el usuario ya tiene una partida actual
      */
-    private static void creaPartida (Usuario test) throws ExcepcionYaExistePartidaActual {
+    /*private static void creaPartida (Usuario test) throws ExcepcionYaExistePartidaActual {
         Scanner in = new Scanner(System.in);
         println("Introduce el ROL: 1 (CodeMaker) ó 0 (CodeBreaker)");
         int rol = in.nextInt();
@@ -150,3 +150,4 @@ public class UsuarioTest {
     }
 
 }
+*/
