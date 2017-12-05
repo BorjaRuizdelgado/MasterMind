@@ -137,6 +137,7 @@ public class ControladorDominio {
     }
 
     public void abandonaPartidaAcutal(){
+        persistencia.eliminarPartida(partidaActual.getId());
         usuarioCargado.abandonaPartidaActual();
         partidaActual = null;
     }
