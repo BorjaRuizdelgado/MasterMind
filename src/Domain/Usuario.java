@@ -166,6 +166,9 @@ public class Usuario implements Serializable {
         partidaActual = null;
     }
 
+    public List<String> getPartidasGuardadas(){
+        return partidasGuardadas;
+    }
 
 
 

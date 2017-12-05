@@ -3,6 +3,7 @@ package Domain.Controllers;
 import Data.ControladorPersistencia;
 import Domain.*;
 import Domain.Excepciones.ExcepcionNoHayPartidaActual;
+import Domain.Excepciones.ExcepcionUsuarioExiste;
 import Domain.Excepciones.ExcepcionUsuarioInexistente;
 import groovy.lang.Tuple2;
 
@@ -27,7 +28,6 @@ public class ControladorDominio {
      */
     public ControladorDominio(){
         persistencia = ControladorPersistencia.getInstance();
-
         persistencia.cargarSistemaRanking();
         ranking = SistemaRanking.getInstance();
 
@@ -35,16 +35,15 @@ public class ControladorDominio {
     }
 
     /**
-     * Crea un nuevo usuario.
+     * Crea y carga un nuevo usuario.
      * @param nombre Nombre del nuevo usuario.
      * @throws Exception si el usuario ya está credo.
      */
-    public void crearUsuario(String nombre) throws Exception{
+    public void crearUsuario(String nombre) throws ExcepcionUsuarioExiste {
         if(persistencia.existeUsuario(nombre)){
-            throw new Exception();
+            throw new ExcepcionUsuarioExiste();
         }
         guardaUsuarioActual();
-
         usuarioCargado = new Usuario(nombre);
 
     }
@@ -54,15 +53,9 @@ public class ControladorDominio {
      * @param nombre carga el usuario con id = nombre.
      * @throws Exception si el usuario con ese identificador no existe.
      */
-    public void cargarUsuario(String nombre) throws Exception{
+    public void cargarUsuario(String nombre) throws ExcepcionUsuarioInexistente{
         guardaUsuarioActual();
-
-        try{
-            usuarioCargado = persistencia.cargarUsuario(nombre);
-        }
-        catch(ExcepcionUsuarioInexistente e){
-
-        }
+        usuarioCargado = persistencia.cargarUsuario(nombre);
     }
 
     /**
@@ -87,7 +80,7 @@ public class ControladorDominio {
     public List<Integer> crearPartidaUsuarioCargadoRolBreaker(String dificultad){
         guardaPartidaActual();
         usuarioCargado.creaPartidaActual(false, dificultad);
-       partidaActual = usuarioCargado.getPartidaActual();
+        partidaActual = usuarioCargado.getPartidaActual();
         return partidaActual.getCodigoSecreto().codigo;
 
     }
@@ -98,10 +91,9 @@ public class ControladorDominio {
      * @return Retorna el rol del usuario en esa partida y la dificultad de la misma.
      * @throws Exception Si la partida con ese id no existe.
      */
-    public Tuple2<Boolean,String> cargarPartidaUsuario(String idPartida) throws Exception{
-
+    public Tuple2<Boolean,String> cargarPartidaUsuario(String idPartida){
+        guardaPartidaActual();
         partidaActual = persistencia.cargarPartida(idPartida);
-
         return new Tuple2<>(partidaActual.isRolMaker(),partidaActual.getDificultad());
     }
 
@@ -136,8 +128,10 @@ public class ControladorDominio {
     /**
      * Finaliza la partida que esta siendo utilizada utilizada en este momento y la borra de memoria y la desasigna al
      * usuario.
+     * @param ganada Booleano que indica si el usuario ha ganado una partida o no.
      */
     public void terminaPartidaActual(boolean ganada){
+        persistencia.eliminarPartida(partidaActual.getId());
         usuarioCargado.finalizarPartidaActual(ganada);
         partidaActual = null;
     }
@@ -199,14 +193,13 @@ public class ControladorDominio {
      * @return Lista de las partidas guardadas en forma de String.
      */
     public List<String> getPartidasGuardadasUsr(){
-        return null;
+        return usuarioCargado.getPartidasGuardadas();
     }
 
     private void onClose(){
        guardaUsuarioActual();
        guardaRanking();
     }
-
     private void guardaRanking(){
         if(ranking != null){
             persistencia.guardarSistemaRanking();
@@ -219,7 +212,6 @@ public class ControladorDominio {
             usuarioCargado = null;
         }
     }
-
     private void guardaPartidaActual(){
         if(partidaActual == null){
             usuarioCargado.guardaPartidaActual();

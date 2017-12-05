@@ -6,6 +6,7 @@ import java.io.*;
 
 
 public class GestionPartida {
+    //TODO eliminar partida no lo hisiste guey TDFW NANA NANA :)
     private static GestionPartida uniqueInstance;
     private String path;
 
