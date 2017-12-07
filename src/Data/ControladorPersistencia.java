@@ -12,9 +12,9 @@ public class ControladorPersistencia {
 
 
     public static ControladorPersistencia getInstance() {
+        if (uniqueInstance == null) uniqueInstance = new ControladorPersistencia();
         return uniqueInstance;
     }
-
 
 
     public void cargarSistemaRanking() {

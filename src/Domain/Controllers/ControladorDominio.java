@@ -3,6 +3,7 @@ package Domain.Controllers;
 import Data.ControladorPersistencia;
 import Domain.*;
 import Domain.Excepciones.ExcepcionNoHayPartidaActual;
+import Domain.Excepciones.ExcepcionRespuestaIncorrecta;
 import Domain.Excepciones.ExcepcionUsuarioExiste;
 import Domain.Excepciones.ExcepcionUsuarioInexistente;
 import groovy.lang.Tuple2;
@@ -30,14 +31,12 @@ public class ControladorDominio {
         persistencia = ControladorPersistencia.getInstance();
         persistencia.cargarSistemaRanking();
         ranking = SistemaRanking.getInstance();
-
-
     }
 
     /**
      * Crea y carga un nuevo usuario.
      * @param nombre Nombre del nuevo usuario.
-     * @throws Exception si el usuario ya está credo.
+     * @throws ExcepcionUsuarioExiste si el usuario ya está credo.
      */
     public void crearUsuario(String nombre) throws ExcepcionUsuarioExiste {
         if(persistencia.existeUsuario(nombre)){
@@ -45,13 +44,12 @@ public class ControladorDominio {
         }
         guardaUsuarioActual();
         usuarioCargado = new Usuario(nombre);
-
     }
 
     /**
      * Carga un usuario en memoria. Si ya habia uno cargado manda guardarlo y todas sus partidas.
      * @param nombre carga el usuario con id = nombre.
-     * @throws Exception si el usuario con ese identificador no existe.
+     * @throws ExcepcionUsuarioInexistente si el usuario con ese identificador no existe.
      */
     public void cargarUsuario(String nombre) throws ExcepcionUsuarioInexistente{
         guardaUsuarioActual();
@@ -59,8 +57,8 @@ public class ControladorDominio {
     }
 
     /**
-     * Crea una partida de tipo usuario CodeMaker con una dificultad determinada y un codgigo secreto.
-     * @param dificultad Determina el grado de dificualtad de la partidad.
+     * Crea una partida de tipo usuario CodeMaker con una dificultad determinada y un codigo secreto.
+     * @param dificultad Determina el grado de dificultad de la partidad.
      * @param codigoSecreto Determina el codigo secreto elegido por el usuario.
      */
     public void crearPartidaUsuarioCargadoRolMaker(String dificultad, ArrayList<Integer> codigoSecreto){
@@ -68,7 +66,7 @@ public class ControladorDominio {
         usuarioCargado.creaPartidaActual(true,dificultad);
         partidaActual = usuarioCargado.getPartidaActual();
         Codigo secreto = new Codigo(codigoSecreto.size());
-        secreto.codigo = new ArrayList<Integer>(codigoSecreto);
+        secreto.codigo = new ArrayList<>(codigoSecreto);
         partidaActual.setCodigoSecreto(secreto);
     }
 
@@ -89,7 +87,6 @@ public class ControladorDominio {
      * Carga una partida en memoria si hay una ya cargada la guarda en disco primero.
      * @param idPartida Determina que partida hay que cargar de usuario.
      * @return Retorna el rol del usuario en esa partida y la dificultad de la misma.
-     * @throws Exception Si la partida con ese id no existe.
      */
     public Tuple2<Boolean,String> cargarPartidaUsuario(String idPartida){
         guardaPartidaActual();
@@ -101,9 +98,9 @@ public class ControladorDominio {
      * Asigna la respuesta del usuario al utlimo guess y devuelve el siguiente intento generado por la maquina.
      * @param respuesta Devuelve la respuesta pensada por la maquina
      * @return Retorna el codigo de respuesta.
-     * @throws Exception Si la respuesta no es correcta.
+     * @throws ExcepcionRespuestaIncorrecta Si la respuesta no es correcta.
      */
-    public List<Integer> jugarCodeMaker(ArrayList<Integer> respuesta) throws Exception{
+    public List<Integer> jugarCodeMaker(ArrayList<Integer> respuesta) throws ExcepcionRespuestaIncorrecta {
         Respuesta res = new Respuesta(respuesta.size());
         res.respuesta = new ArrayList<>(respuesta);
         partidaActual.setRespuesta(res);
@@ -131,13 +128,11 @@ public class ControladorDominio {
      * @param ganada Booleano que indica si el usuario ha ganado una partida o no.
      */
     public void terminaPartidaActual(boolean ganada){
-        persistencia.eliminarPartida(partidaActual.getId());
         usuarioCargado.finalizarPartidaActual(ganada);
         partidaActual = null;
     }
 
     public void abandonaPartidaAcutal(){
-        persistencia.eliminarPartida(partidaActual.getId());
         usuarioCargado.abandonaPartidaActual();
         partidaActual = null;
     }
@@ -151,7 +146,6 @@ public class ControladorDominio {
         LocalDate localDate = LocalDate.now();
         String fecha = dtf.format(localDate);
         ranking.addNewPuntuation(usuarioCargado.getNombre(),partidaActual.generaPuntuacion(),fecha,partidaActual.getDificultad());
-
     }
 
     /**
@@ -191,7 +185,7 @@ public class ControladorDominio {
 
     /**
      * Devuelve las partidas que el usuario cargado ha guardado
-     * @return Lista de las partidas guardadas en forma de String.
+     * @return Lista de los identificadores de las partidas guardadas.
      */
     public List<String> getPartidasGuardadasUsr(){
         return usuarioCargado.getPartidasGuardadas();
@@ -201,18 +195,20 @@ public class ControladorDominio {
        guardaUsuarioActual();
        guardaRanking();
     }
+
     private void guardaRanking(){
         if(ranking != null){
             persistencia.guardarSistemaRanking();
         }
     }
-    private void guardaUsuarioActual(){
 
+    private void guardaUsuarioActual(){
         if(usuarioCargado != null){
             persistencia.guardar(usuarioCargado);
             usuarioCargado = null;
         }
     }
+
     private void guardaPartidaActual(){
         if(partidaActual == null){
             usuarioCargado.guardaPartidaActual();
