@@ -105,11 +105,11 @@ public class GestionUsuario {
         guardarFinder();
     }
 
-    public boolean exists(String usuario){
+    public boolean existe(String usuario){
         return finder.containsKey(usuario);
     }
 
-    public boolean existsAny(){
+    public boolean existeAlguno(){
         return finder.size() != 0;
     }
 }

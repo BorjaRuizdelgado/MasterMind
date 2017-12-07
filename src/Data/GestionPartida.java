@@ -6,7 +6,6 @@ import java.io.*;
 
 
 public class GestionPartida {
-    //TODO eliminar partida no lo hisiste guey TDFW NANA NANA :)
     private static GestionPartida uniqueInstance;
     private String path;
 
@@ -14,15 +13,14 @@ public class GestionPartida {
         path = System.getProperty("user.dir") + "\\Data\\Games";
     }
 
-    private String getPath(String name) {
-        return path+"\\"+name+".obj";
-    }
-
     public static GestionPartida getInstance() {
         if (uniqueInstance == null) uniqueInstance = new GestionPartida();
         return uniqueInstance;
     }
 
+    private String getPath(String name) {
+        return path+"\\"+name+".obj";
+    }
 
     private void createDirectory(){
         File folder = new File(path);
@@ -86,5 +84,10 @@ public class GestionPartida {
         }
 
 
+    }
+
+    public void eliminarPartida(String p) {
+        File file = new File(getPath(p));
+        file.delete();
     }
 }
