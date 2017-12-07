@@ -43,7 +43,7 @@ public class GestionUsuario {
             file.createNewFile();
         }
         catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Problema al crear el fichero del finder.");
         }
     }
 
