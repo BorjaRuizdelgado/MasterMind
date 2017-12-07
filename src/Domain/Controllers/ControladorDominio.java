@@ -18,7 +18,7 @@ import java.util.List;
  * Clase para controlar el dominio de la aplicacion.
  */
 public class ControladorDominio {
-
+    //todo get pistas wey
     private Usuario usuarioCargado = null;
     private Partida partidaActual = null;
     private SistemaRanking ranking = null;
@@ -91,6 +91,7 @@ public class ControladorDominio {
     public Tuple2<Boolean,String> cargarPartidaUsuario(String idPartida){
         guardaPartidaActual();
         partidaActual = persistencia.cargarPartida(idPartida);
+        usuarioCargado.cargaPartida(partidaActual);
         return new Tuple2<>(partidaActual.isRolMaker(),partidaActual.getDificultad());
     }
 
@@ -116,7 +117,7 @@ public class ControladorDominio {
     public List<Integer> juegaCodeBreaker(ArrayList<Integer> codigo, float tiempoTardado){
         Codigo code = new Codigo(codigo.size());
         code.codigo = new ArrayList<>(codigo);
-        partidaActual.setCodigoSecreto(code);
+        partidaActual.setIntento(code);
         partidaActual.generaRespuesta();
         partidaActual.sumaTiempo(tiempoTardado);
         return partidaActual.getUltimaRespuesta().respuesta;
@@ -205,15 +206,27 @@ public class ControladorDominio {
     private void guardaUsuarioActual(){
         if(usuarioCargado != null){
             persistencia.guardar(usuarioCargado);
-            usuarioCargado = null;
         }
     }
 
-    private void guardaPartidaActual(){
-        if(partidaActual == null){
+    public void guardaPartidaActual(){
+        if(partidaActual != null){
             usuarioCargado.guardaPartidaActual();
+            persistencia.guardar(partidaActual);
+            guardaUsuarioActual();
         }
-        persistencia.guardar(partidaActual);
+        partidaActual = null;
+
     }
+
+    public List<List<List<Integer>>> getTablero(){
+        return partidaActual.getTablero();
+    }
+
+    public List<Integer> getCodigoSecreto(){
+       return partidaActual.getCodigoSecreto().codigo;
+    }
+
+
 
 }

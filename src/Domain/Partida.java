@@ -377,6 +377,10 @@ public class Partida implements Serializable {
 
     }
 
+    public List<List<List<Integer>>> getTablero(){
+        return tablero.getTablero();
+    }
+
 
 
 
