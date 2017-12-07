@@ -54,8 +54,8 @@ public class GestionPartida {
             objectInputStream.close();
             fileInputStream.close();
 
-            File file = new File(getPath(partida));
-            file.delete();
+            //File file = new File(getPath(partida));
+            //file.delete();
 
             return p;
         } catch (IOException | ClassNotFoundException e) {
@@ -72,6 +72,7 @@ public class GestionPartida {
         try {
             File folder = new File (path);
             if(!folder.exists()) createDirectory();
+            eliminarPartida(p.getId());
             createFile(p.getId());
 
             FileOutputStream fos = new FileOutputStream(getPath(p.getId()));

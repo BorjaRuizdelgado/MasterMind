@@ -142,7 +142,7 @@ public class Usuario implements Serializable {
      */
     public void cargaPartida(Partida partida)  {
         partidaActual = partida;
-        partidasGuardadas.remove(partida.getId());
+        //partidasGuardadas.remove(partida.getId());
     }
 
     /**
@@ -155,14 +155,15 @@ public class Usuario implements Serializable {
             incrementaPartidasFinalizadasCB();
             if (ganada) incrementaPartidasGanadasCB();
         }
+        partidasGuardadas.remove(partidaActual.getId());
         partidaActual = null;
-
     }
 
     /**
      * Abandona la partida actual sin guardarla.
      */
     public void abandonaPartidaActual() {
+        partidasGuardadas.remove(partidaActual.getId());
         partidaActual = null;
     }
 
