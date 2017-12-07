@@ -6,16 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/Domain/Cerebro.java" line="201" />
+    <bookmark url="file://$PROJECT_DIR$/src/Domain/Cerebro.java" line="203" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5f44715-e429-43a1-8219-aa7d559f01a9" name="Default" comment="Pequeña mejora MasterCerebro">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/MasterMindV_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Domain/SistemaRanking.java" afterPath="$PROJECT_DIR$/src/Domain/SistemaRanking.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/SistemaRankingTest.java" afterPath="$PROJECT_DIR$/src/Test/SistemaRankingTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Util/Console.java" afterPath="$PROJECT_DIR$/src/Util/Console.java" />
-    </list>
+    <list default="true" id="c5f44715-e429-43a1-8219-aa7d559f01a9" name="Default" comment="Pequeña mejora MasterCerebro" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,112 +20,77 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Cerebro.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domain/Cerebro.java">
+      <file leaf-file-name="GestionSistemaRanking.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Data/GestionSistemaRanking.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="136" column="41" lean-forward="false" selection-start-line="136" selection-start-column="32" selection-end-line="136" selection-end-column="41" />
+            <state relative-caret-position="0">
+              <caret line="11" column="55" lean-forward="false" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#220#221#0" expanded="true" />
+                <marker date="1512384421924" expanded="true" signature="1879:1976" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Codigo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domain/Codigo.java">
+      <file leaf-file-name="GestionUsuario.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Data/GestionUsuario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="7" column="15" lean-forward="false" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+            <state relative-caret-position="416">
+              <caret line="111" column="31" lean-forward="false" selection-start-line="111" selection-start-column="31" selection-end-line="111" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Fila.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domain/Fila.java">
+      <file leaf-file-name="GestionPartida.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Data/GestionPartida.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="8" column="49" lean-forward="false" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Respuesta.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domain/Respuesta.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SistemaRanking.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domain/SistemaRanking.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-704">
-              <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="234">
+              <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
               <folding>
-                <marker date="1510832858836" expanded="true" signature="3558:3691" ph="/**...*/" />
-                <marker date="1510832858836" expanded="true" signature="4446:4452" ph="{...}" />
+                <element signature="e#470#471#0" expanded="true" />
+                <element signature="e#514#515#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MasterCerebro.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domain/MasterCerebro.java">
+      <file leaf-file-name="Usuario.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Domain/Usuario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2657">
-              <caret line="157" column="0" lean-forward="false" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Inteligencia.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domain/Inteligencia.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+            <state relative-caret-position="252">
+              <caret line="143" column="32" lean-forward="true" selection-start-line="143" selection-start-column="32" selection-end-line="143" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MasterCerebroTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Test/MasterCerebroTest.java">
+      <file leaf-file-name="ControladorDominio.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="39" column="31" lean-forward="false" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SistemaRankingTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Test/SistemaRankingTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1446">
-              <caret line="98" column="77" lean-forward="false" selection-start-line="98" selection-start-column="77" selection-end-line="98" selection-end-column="77" />
+            <state relative-caret-position="92">
+              <caret line="39" column="7" lean-forward="false" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Console.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Util/Console.java">
+      <file leaf-file-name="PruebaIsa.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Presentation/PruebaIsa.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="3" column="53" lean-forward="true" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
+            <state relative-caret-position="72">
+              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PruebaIsa.form" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Presentation/PruebaIsa.form">
+          <provider selected="true" editor-type-id="ui-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -180,7 +139,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Domain/Usuario.java" />
         <option value="$PROJECT_DIR$/src/Domain/Info.java" />
         <option value="$PROJECT_DIR$/src/Domain/Respuesta.java" />
         <option value="$PROJECT_DIR$/src/Domain/Partida.java" />
@@ -191,7 +149,6 @@
         <option value="$PROJECT_DIR$/src/Test/MasterMindo.java" />
         <option value="$PROJECT_DIR$/src/Test/CodigoTest.java" />
         <option value="$PROJECT_DIR$/src/Test/PartidaTestNoJUnit.java" />
-        <option value="$PROJECT_DIR$/src/Test/UsuarioTest.java" />
         <option value="$PROJECT_DIR$/src/Test/ConsoleTest.java" />
         <option value="$PROJECT_DIR$/src/Test/ComparatorTest.java" />
         <option value="$PROJECT_DIR$/src/Test/InfoTest.java" />
@@ -203,6 +160,19 @@
         <option value="$PROJECT_DIR$/src/Util/Console.java" />
         <option value="$PROJECT_DIR$/src/Domain/SistemaRanking.java" />
         <option value="$PROJECT_DIR$/src/Test/SistemaRankingTest.java" />
+        <option value="$PROJECT_DIR$/src/Data/Co.java" />
+        <option value="$PROJECT_DIR$/src/Data/PersistenceController.java" />
+        <option value="$PROJECT_DIR$/src/Test/UsuarioTest.java" />
+        <option value="$PROJECT_DIR$/src/Data/GestionSistemaRanking.java" />
+        <option value="$PROJECT_DIR$/src/Domain/Excepciones/ExcepcionUsuarioInexistente.java" />
+        <option value="$PROJECT_DIR$/src/GUI/PantallaIni.form" />
+        <option value="$PROJECT_DIR$/src/Domain/Usuario.java" />
+        <option value="$PROJECT_DIR$/src/Data/GestionUsuario.java" />
+        <option value="$PROJECT_DIR$/src/Data/GestionPartida.java" />
+        <option value="$PROJECT_DIR$/src/Data/ControladorPersistencia.java" />
+        <option value="$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java" />
+        <option value="$PROJECT_DIR$/src/Presentation/PruebaIsaa.form" />
+        <option value="$PROJECT_DIR$/src/Presentation/PruebaIsa.form" />
       </list>
     </option>
   </component>
@@ -213,10 +183,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1168" />
-    <option name="y" value="604" />
-    <option name="width" value="1272" />
-    <option name="height" value="684" />
+    <option name="x" value="-7" />
+    <option name="width" value="697" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -255,8 +224,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -273,6 +243,19 @@
               <item name="MasterMindV" type="b2602c69:ProjectViewProjectNode" />
               <item name="MasterMindV" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MasterMindV" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MasterMindV" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Domain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MasterMindV" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MasterMindV" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Domain" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -280,6 +263,27 @@
               <item name="MasterMindV" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Domain" type="462c0819:PsiDirectoryNode" />
+              <item name="Excepciones" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MasterMindV" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MasterMindV" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Presentation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MasterMindV" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MasterMindV" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Presentation" type="462c0819:PsiDirectoryNode" />
+              <item name="Main" type="e9f4de52:FormNode" />
+            </path>
+            <path>
+              <item name="MasterMindV" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MasterMindV" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Presentation" type="462c0819:PsiDirectoryNode" />
+              <item name="PruebaIsa" type="e9f4de52:FormNode" />
             </path>
             <path>
               <item name="MasterMindV" type="b2602c69:ProjectViewProjectNode" />
@@ -297,7 +301,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -314,6 +317,8 @@
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="mastermindv" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="177" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -331,25 +336,6 @@
     <configuration name="CerebroTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Test.CerebroTest" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="MasterMindV" />
-      <envs />
-    </configuration>
-    <configuration name="InfoTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="Test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="Test.InfoTest" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -380,14 +366,39 @@
       <module name="MasterMindV" />
       <envs />
     </configuration>
-    <configuration name="MasterMindo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="PartidaTestJUnit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="Test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="Test.MasterMindo" />
+      <module name="MasterMindV" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.PartidaTestJUnit" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="PartidaTestNoJUnit" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="Test.PartidaTestNoJUnit" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -501,18 +512,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.CerebroTest" />
-      <item index="1" class="java.lang.String" itemvalue="Application.MasterMindo" />
-      <item index="2" class="java.lang.String" itemvalue="Application.MasterCerebroTest" />
-      <item index="3" class="java.lang.String" itemvalue="Application.InfoTest" />
-      <item index="4" class="java.lang.String" itemvalue="Application.SistemaRankingTest" />
+      <item index="1" class="java.lang.String" itemvalue="Application.MasterCerebroTest" />
+      <item index="2" class="java.lang.String" itemvalue="Application.SistemaRankingTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.PartidaTestJUnit" />
+      <item index="4" class="java.lang.String" itemvalue="Application.PartidaTestNoJUnit" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.SistemaRankingTest" />
-        <item index="1" class="java.lang.String" itemvalue="Application.CerebroTest" />
-        <item index="2" class="java.lang.String" itemvalue="Application.MasterCerebroTest" />
-        <item index="3" class="java.lang.String" itemvalue="Application.MasterMindo" />
-        <item index="4" class="java.lang.String" itemvalue="Application.InfoTest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.PartidaTestNoJUnit" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.PartidaTestJUnit" />
+        <item index="3" class="java.lang.String" itemvalue="Application.CerebroTest" />
+        <item index="4" class="java.lang.String" itemvalue="Application.MasterCerebroTest" />
       </list>
     </recent_temporary>
   </component>
@@ -558,6 +569,14 @@
       <workItem from="1510743665326" duration="6423000" />
       <workItem from="1510765357971" duration="16576000" />
       <workItem from="1510823531670" duration="10306000" />
+      <workItem from="1510870135443" duration="341000" />
+      <workItem from="1510910006131" duration="628000" />
+      <workItem from="1510914655780" duration="1766000" />
+      <workItem from="1511632805657" duration="175000" />
+      <workItem from="1511888010989" duration="195000" />
+      <workItem from="1512032890405" duration="6567000" />
+      <workItem from="1512379626386" duration="4227000" />
+      <workItem from="1512662775364" duration="6444000" />
     </task>
     <task id="LOCAL-00001" summary="Asd">
       <created>1509619663343</created>
@@ -807,38 +826,52 @@
     <option name="localTasksCounter" value="36" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="PartidaTestJUnit - 2017.11.17 at 10h 18m 58s.xml">
+      <configuration name="PartidaTestJUnit" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116937000" />
+    <option name="totallyTimeSpent" value="137280000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1032" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32864866" sideWeight="0.49791667" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.50416666" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40953946" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23675676" sideWeight="0.49791667" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1671875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14220877" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39891893" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32864866" sideWeight="0.49791667" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -884,295 +917,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Util/Console.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="988">
-          <caret line="54" column="24" lean-forward="false" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/Usuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/Respuesta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Codigo.java" />
-    <entry file="file://$PROJECT_DIR$/.gitIgnore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/function/BiConsumer.class" />
-    <entry file="file://$PROJECT_DIR$/src/Domain/Main.java" />
-    <entry file="uml://JAVA/Domain">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>Domain</OriginalElement>
-          <nodes>
-            <node x="1085.673544973545" y="203.0">Domain.SistemaRanking</node>
-            <node x="375.17354497354495" y="848.0">Domain.Inteligencia</node>
-            <node x="660.173544973545" y="1123.0">Domain.Cerebro</node>
-            <node x="1175.173544973545" y="0.0">Domain.Info</node>
-            <node x="234.88055555555553" y="237.0">Domain.Codigo</node>
-            <node x="492.125" y="2381.0">Domain.Usuario</node>
-            <node x="10.5" y="703.0">Domain.Tablero</node>
-            <node x="137.625" y="500.0">Domain.Fila</node>
-            <node x="227.92222222222216" y="1243.0">Domain.MasterCerebro</node>
-            <node x="480.625" y="1577.0">Domain.Partida</node>
-            <node x="85.65436507936505" y="0.0">Domain.Respuesta</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="Domain.Cerebro" target="Domain.Respuesta">
-              <point x="151.66666666666663" y="-197.0" />
-              <point x="993.8402116402116" y="1093.0" />
-              <point x="919.3402116402117" y="1093.0" />
-              <point x="919.3402116402117" y="197.0" />
-              <point x="301.27936507936505" y="197.0" />
-              <point x="100.625" y="88.5" />
-            </edge>
-            <edge source="Domain.MasterCerebro" target="Domain.Fila">
-              <point x="-99.0" y="-77.0" />
-              <point x="260.92222222222216" y="1103.0" />
-              <point x="253.70833333333331" y="1103.0" />
-              <point x="16.583333333333343" y="76.5" />
-            </edge>
-            <edge source="Domain.MasterCerebro" target="Domain.Codigo">
-              <point x="33.0" y="-77.0" />
-              <point x="392.92222222222216" y="1103.0" />
-              <point x="364.67354497354495" y="1103.0" />
-              <point x="364.67354497354495" y="480.0" />
-              <point x="377.9162698412698" y="480.0" />
-              <point x="9.535714285714278" y="76.5" />
-            </edge>
-            <edge source="Domain.SistemaRanking" target="Domain.Info">
-              <point x="95.75" y="-137.0" />
-              <point x="1372.923544973545" y="178.0" />
-              <point x="1328.173544973545" y="178.0" />
-              <point x="51.0" y="76.5" />
-            </edge>
-            <edge source="Domain.Codigo" target="Domain.Respuesta">
-              <point x="-66.75" y="-76.5" />
-              <point x="301.63055555555553" y="217.0" />
-              <point x="243.77936507936505" y="217.0" />
-              <point x="43.125" y="88.5" />
-            </edge>
-            <edge source="Domain.Tablero" target="Domain.Fila">
-              <point x="66.0" y="-185.0" />
-              <point x="192.0" y="683.0" />
-              <point x="187.375" y="683.0" />
-              <point x="-49.75" y="76.5" />
-            </edge>
-            <edge source="Domain.Partida" target="Domain.Cerebro">
-              <point x="46.428571428571445" y="-377.0" />
-              <point x="689.5535714285714" y="1537.0" />
-              <point x="751.173544973545" y="1537.0" />
-              <point x="-91.0" y="197.0" />
-            </edge>
-            <edge source="Domain.Usuario" target="Domain.Partida">
-              <point x="113.25" y="-149.0" />
-              <point x="756.375" y="2356.0" />
-              <point x="765.0" y="2356.0" />
-              <point x="121.875" y="377.0" />
-            </edge>
-            <edge source="Domain.Tablero" target="Domain.Codigo">
-              <point x="0.0" y="-185.0" />
-              <point x="126.0" y="683.0" />
-              <point x="102.49867724867721" y="683.0" />
-              <point x="102.49867724867721" y="450.0" />
-              <point x="282.559126984127" y="450.0" />
-              <point x="-85.82142857142856" y="76.5" />
-            </edge>
-            <edge source="Domain.Fila" target="Domain.Respuesta">
-              <point x="-82.91666666666663" y="-76.5" />
-              <point x="154.20833333333337" y="420.0" />
-              <point x="156.80145502645502" y="420.0" />
-              <point x="-43.125" y="88.5" />
-            </edge>
-            <edge source="Domain.Partida" target="Domain.Tablero">
-              <point x="-92.85714285714278" y="-377.0" />
-              <point x="550.2678571428572" y="1547.0" />
-              <point x="129.69603174603174" y="1547.0" />
-              <point x="129.69603174603174" y="1103.0" />
-              <point x="68.25" y="1103.0" />
-              <point x="-57.75" y="185.0" />
-            </edge>
-            <edge source="Domain.Partida" target="Domain.Respuesta">
-              <point x="-139.28571428571422" y="-377.0" />
-              <point x="503.8392857142858" y="1557.0" />
-              <point x="0.0" y="1557.0" />
-              <point x="0.0" y="207.0" />
-              <point x="100.02936507936505" y="207.0" />
-              <point x="-100.625" y="88.5" />
-            </edge>
-            <edge source="Domain.MasterCerebro" target="Domain.Inteligencia">
-              <point x="99.0" y="-77.0" />
-              <point x="458.92222222222216" y="1103.0" />
-              <point x="441.17354497354495" y="1103.0" />
-              <point x="-66.0" y="40.0" />
-            </edge>
-            <edge source="Domain.Tablero" target="Domain.Respuesta">
-              <point x="-99.0" y="-185.0" />
-              <point x="27.0" y="683.0" />
-              <point x="52.0" y="683.0" />
-              <point x="52.0" y="217.0" />
-              <point x="128.77936507936505" y="217.0" />
-              <point x="-71.875" y="88.5" />
-            </edge>
-            <edge source="Domain.Cerebro" target="Domain.Codigo">
-              <point x="30.33333333333337" y="-197.0" />
-              <point x="872.5068783068783" y="1103.0" />
-              <point x="841.125" y="1103.0" />
-              <point x="841.125" y="450.0" />
-              <point x="454.20198412698414" y="450.0" />
-              <point x="85.82142857142861" y="76.5" />
-            </edge>
-            <edge source="Domain.Cerebro" target="Domain.Fila">
-              <point x="-91.0" y="-197.0" />
-              <point x="751.173544973545" y="1103.0" />
-              <point x="803.4986772486773" y="1103.0" />
-              <point x="803.4986772486773" y="673.0" />
-              <point x="320.04166666666663" y="673.0" />
-              <point x="82.91666666666663" y="76.5" />
-            </edge>
-            <edge source="Domain.Fila" target="Domain.Codigo">
-              <point x="16.583333333333314" y="-76.5" />
-              <point x="253.70833333333331" y="460.0" />
-              <point x="301.63055555555553" y="460.0" />
-              <point x="-66.75" y="76.5" />
-            </edge>
-            <edge source="Domain.Inteligencia" target="Domain.Fila">
-              <point x="-66.0" y="-40.0" />
-              <point x="441.17354497354495" y="683.0" />
-              <point x="286.875" y="683.0" />
-              <point x="49.75" y="76.5" />
-            </edge>
-            <edge source="Domain.Inteligencia" target="Domain.Codigo">
-              <point x="66.0" y="-40.0" />
-              <point x="573.173544973545" y="480.0" />
-              <point x="396.98769841269836" y="480.0" />
-              <point x="28.607142857142833" y="76.5" />
-            </edge>
-            <edge source="Domain.Partida" target="Domain.Codigo">
-              <point x="139.28571428571422" y="-377.0" />
-              <point x="782.4107142857142" y="1557.0" />
-              <point x="1034.673544973545" y="1557.0" />
-              <point x="1034.673544973545" y="430.0" />
-              <point x="492.3448412698413" y="430.0" />
-              <point x="123.96428571428578" y="76.5" />
-            </edge>
-            <edge source="Domain.Cerebro" target="Domain.Inteligencia">
-              <point x="-151.66666666666652" y="-197.0" />
-              <point x="690.5068783068784" y="1103.0" />
-              <point x="573.173544973545" y="1103.0" />
-              <point x="66.0" y="40.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="0.6000000000000001" x="-774.0" y="1013.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Fields</Category>
-            <Category>Inner Classes</Category>
-            <Category>Constructors</Category>
-            <Category>Properties</Category>
-            <Category>Methods</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/PartidaTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/RespuestaTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="24" column="44" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/Tablero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="12" column="6" lean-forward="true" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/Usuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/TableroTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/ConsoleTest.java" />
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/Comparator.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/ControladorDominio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1748">
-          <caret line="98" column="0" lean-forward="false" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/Excepciones/ExcepcionRespuestaIncorrecta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/Excepciones/ExcepcionUno.java" />
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/ArrayList.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="191" column="0" lean-forward="false" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/HashMap.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="21" column="47" lean-forward="false" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/LinkedHashMap.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="154" column="0" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/LinkedHashMap.class" />
     <entry file="file://$PROJECT_DIR$/src/Domain/Excepciones/ExcepcionNoHayColoresSinUsar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -1198,21 +943,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/Excepciones/ExcepcionPistaUsada.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/Partida.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6022">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1244,34 +974,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/Random.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="146" column="0" lean-forward="false" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/lang/Object.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="15" column="22" lean-forward="false" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/io/FileOutputStream.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="82" column="24" lean-forward="false" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/Random.class" />
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/lang/Object.class" />
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/io/FileOutputStream.class" />
     <entry file="file://$PROJECT_DIR$/src/Test/CerebroTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
           <caret line="33" column="23" lean-forward="false" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
-          <folding>
-            <marker date="1510680484308" expanded="true" signature="190:194" ph="/**...*/" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1282,43 +991,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/PartidaTestNoJUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1026">
-          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Util/Comparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Domain/Info.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/UsuarioTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="22" column="31" lean-forward="false" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Domain/Inteligencia.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
+        <state relative-caret-position="198">
           <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1333,7 +1016,7 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="58.5" y="56.0" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="59.0" y="56.0" />
           <SelectedNodes />
           <Categories />
           <SCOPE>All</SCOPE>
@@ -1343,83 +1026,236 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Domain/Codigo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
+        <state relative-caret-position="108">
           <caret line="7" column="15" lean-forward="false" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Domain/Fila.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
+        <state relative-caret-position="126">
           <caret line="8" column="49" lean-forward="false" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Domain/Cerebro.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
+        <state relative-caret-position="2430">
           <caret line="136" column="41" lean-forward="false" selection-start-line="136" selection-start-column="32" selection-end-line="136" selection-end-column="41" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Domain/Respuesta.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-          <folding />
+        <state relative-caret-position="342">
+          <caret line="21" column="7" lean-forward="false" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/MasterCerebroTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
+        <state relative-caret-position="630">
           <caret line="39" column="31" lean-forward="false" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Util/Console.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="53" lean-forward="true" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
-          <folding />
+        <state relative-caret-position="54">
+          <caret line="3" column="2" lean-forward="false" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Domain/MasterCerebro.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2657">
+        <state relative-caret-position="2790">
           <caret line="157" column="0" lean-forward="false" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/SistemaRanking.java">
+    <entry file="file://$PROJECT_DIR$/src/Test/PartidaTestJUnit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-704">
-          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding>
-            <marker date="1510832858836" expanded="true" signature="3558:3691" ph="/**...*/" />
-            <marker date="1510832858836" expanded="true" signature="4446:4452" ph="{...}" />
-          </folding>
+        <state relative-caret-position="72">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/SistemaRankingTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1446">
-          <caret line="98" column="77" lean-forward="false" selection-start-line="98" selection-start-column="77" selection-end-line="98" selection-end-column="77" />
+        <state relative-caret-position="2196">
+          <caret line="128" column="60" lean-forward="false" selection-start-line="128" selection-start-column="60" selection-end-line="128" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Data/PersistenciaSistemaRanking.java" />
+    <entry file="file://$PROJECT_DIR$/src/Data/Co.java" />
+    <entry file="file://$PROJECT_DIR$/src/Util/Comparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="7" column="65" lean-forward="false" selection-start-line="7" selection-start-column="65" selection-end-line="7" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/ControladorDominio.java" />
+    <entry file="file://$PROJECT_DIR$/src/Domain/Excepciones/ExcepcionPistaUsada.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/UsuarioTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="76" column="20" lean-forward="true" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="20" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/TableroTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="11" column="3" lean-forward="false" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domain/SistemaRanking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="13" column="49" lean-forward="true" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/PartidaTestNoJUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1924">
+          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Data/GestionSistemaRanking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="11" column="55" lean-forward="false" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#220#221#0" expanded="true" />
+            <marker date="1512384421924" expanded="true" signature="1879:1976" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domain/Excepciones/ExcepcionUsuarioInexistente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="13" column="43" lean-forward="false" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/PantallaIni.form" />
+    <entry file="file://$PROJECT_DIR$/src/Data/GestionUsuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="111" column="31" lean-forward="false" selection-start-line="111" selection-start-column="31" selection-end-line="111" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/GestionPartidaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="7" column="57" lean-forward="true" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domain/Partida.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="62" column="31" lean-forward="true" selection-start-line="62" selection-start-column="31" selection-end-line="62" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Data/GestionPartida.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+          <folding>
+            <element signature="e#470#471#0" expanded="true" />
+            <element signature="e#514#515#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Data/ControladorPersistencia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="13" column="57" lean-forward="true" selection-start-line="13" selection-start-column="57" selection-end-line="13" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentation/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentation/Main.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="39" column="7" lean-forward="false" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentation/PruebaIsaa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentation/PruebaIsaa.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentation/PruebaIsa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domain/Usuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="143" column="32" lean-forward="true" selection-start-line="143" selection-start-column="32" selection-end-line="143" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentation/PruebaIsa.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
       </provider>
     </entry>
   </component>
