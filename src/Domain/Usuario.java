@@ -132,6 +132,7 @@ public class Usuario implements Serializable {
      * Añade la partida actual a la lista de partidas guardadas y la elimina de partida actual.
      */
     public void guardaPartidaActual() {
+        partidasGuardadas.remove(partidaActual.getId());
         partidasGuardadas.add(partidaActual.getId());
         partidaActual = null;
     }
