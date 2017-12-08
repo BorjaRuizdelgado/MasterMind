@@ -1,4 +1,4 @@
-package GUI;
+package Presentation;
 
 import javax.swing.*;
 
@@ -9,4 +9,8 @@ public class PantallaIni {
     private JButton AJUSTESButton;
     private JButton CREAUSUARIOButton;
     private JButton CARGAUSUARIOButton;
+
+    public JPanel getPanel() {
+        return panel1;
+    }
 }

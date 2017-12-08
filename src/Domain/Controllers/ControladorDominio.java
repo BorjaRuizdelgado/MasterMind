@@ -131,13 +131,13 @@ public class ControladorDominio {
      * @param ganada Booleano que indica si el usuario ha ganado una partida o no.
      */
     public void terminaPartidaActual(boolean ganada){
-        persistencia.eliminarPartida(partidaActual.getId());
+        //persistencia.eliminarPartida(partidaActual.getId()); Lo comento para compilar
         usuarioCargado.finalizarPartidaActual(ganada);
         partidaActual = null;
     }
 
     public void abandonaPartidaAcutal(){
-        persistencia.eliminarPartida(partidaActual.getId());
+        //persistencia.eliminarPartida(partidaActual.getId()); Lo comento para compilar
         usuarioCargado.abandonaPartidaActual();
         partidaActual = null;
     }
