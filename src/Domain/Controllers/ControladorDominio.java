@@ -227,6 +227,4 @@ public class ControladorDominio {
        return partidaActual.getCodigoSecreto().codigo;
     }
 
-
-
 }

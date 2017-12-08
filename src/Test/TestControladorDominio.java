@@ -97,7 +97,7 @@ public class TestControladorDominio {
             System.out.println("Dame el codigo secreto de tamaño 4 con 4 clores si es Facil," +
                     " 4 con 6 colores si es Medio y 6 con 6 colores si es Dificil");
             int dif = 4;
-            if(dificultad == "Dificil"){
+            if(dificultad.equals("Dificil")){
                 dif = 6;
             }
             ArrayList<Integer> arr = new ArrayList<>();
@@ -119,7 +119,11 @@ public class TestControladorDominio {
         imprimeTablero();
         System.out.println("Escribe tu siguiente guess:");
        ArrayList<Integer> intento = new ArrayList<>();
-        for(int i = 0; i < 15; ++i){
+        int dif = 4;
+        if(dificultad.equals("Dificil")){
+            dif = 6;
+        }
+        for(int i = 0; i < dif; ++i){
             intento.add(scan.nextInt());
         }
         ctrl.juegaCodeBreaker(intento,1);
@@ -128,9 +132,9 @@ public class TestControladorDominio {
 
     private static void imprimeTablero(){
         List<List<List<Integer>>> tablero = ctrl.getTablero();
-        for(int i = 14 ; i >= 0; --i){
-            System.out.print(tablero.get(i).get(1));
-            System.out.print(tablero.get(i).get(2));
+        for(int i = tablero.size() - 1 ; i >= 0; --i){
+            System.out.print(tablero.get(i).get(0));
+            System.out.println(tablero.get(i).get(1));
         }
     }
 
