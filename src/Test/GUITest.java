@@ -1,18 +1,20 @@
 package Test;
 
-import Presentation.PantallaIni;
+import Presentation.Inicio;
+import Presentation.PruebaIsa;
 
 import javax.swing.*;
 
 public class GUITest {
 
     private static void createForm(String type){
-        JFrame frame = null;
-
+        JFrame frame = new JFrame(type);
         switch (type){
-            case "PantallaIni":
-                frame = new JFrame("PantallaIni");
-                frame.setContentPane(new PantallaIni().getPanel());
+            case "Inicio":
+                frame.setContentPane(new Inicio().getPanel());
+                break;
+            case "PruebaIsa":
+                frame.setContentPane(new PruebaIsa().getPanel());
                 break;
         }
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -22,6 +24,7 @@ public class GUITest {
 
     public static void main(String args[]){
 
-        createForm("PantallaIni");
+        createForm("Inicio");
+        //createForm("PruebaIsa");
     }
 }

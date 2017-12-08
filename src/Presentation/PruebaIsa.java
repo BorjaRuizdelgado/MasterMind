@@ -9,4 +9,9 @@ public class PruebaIsa {
     private JButton rankingButton;
     private JButton configuracionButton;
     private JTextArea MASTERMINDOTextArea;
+    private JPanel panel;
+
+    public JPanel getPanel() {
+        return panel;
+    }
 }
