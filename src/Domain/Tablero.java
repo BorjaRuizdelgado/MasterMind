@@ -3,8 +3,7 @@ package Domain;
 import Domain.Excepciones.ExcepcionRespuestaIncorrecta;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Clase Tablero.
@@ -146,11 +145,16 @@ public class Tablero implements Serializable {
         }
     }
 
+    public List<List<List<Integer>>> getTablero(){
+        List<List<List<Integer>>> tableroAPasar = new ArrayList<>();
 
-    /* ESCRITURAS */
-
-
-
-
+        for(int i = 0; i < 15; ++i){
+            List<List<Integer>> fila = new ArrayList<>();
+            fila.add(tablero.get(i).getColores().codigo);
+            fila.add(tablero.get(i).getRespuestas().respuesta);
+            tableroAPasar.add(i,fila);
+        }
+        return tableroAPasar;
+    }
 }
 

@@ -6,7 +6,6 @@ import java.io.*;
 
 
 public class GestionPartida {
-    //TODO eliminar partida no lo hisiste guey TDFW NANA NANA :)
     private static GestionPartida uniqueInstance;
     private String path;
 
@@ -14,15 +13,14 @@ public class GestionPartida {
         path = System.getProperty("user.dir") + "\\Data\\Games";
     }
 
-    private String getPath(String name) {
-        return path+"\\"+name+".obj";
-    }
-
     public static GestionPartida getInstance() {
         if (uniqueInstance == null) uniqueInstance = new GestionPartida();
         return uniqueInstance;
     }
 
+    private String getPath(String name) {
+        return path+"\\"+name+".obj";
+    }
 
     private void createDirectory(){
         File folder = new File(path);
@@ -56,8 +54,8 @@ public class GestionPartida {
             objectInputStream.close();
             fileInputStream.close();
 
-            File file = new File(getPath(partida));
-            file.delete();
+            //File file = new File(getPath(partida));
+            //file.delete();
 
             return p;
         } catch (IOException | ClassNotFoundException e) {
@@ -74,6 +72,7 @@ public class GestionPartida {
         try {
             File folder = new File (path);
             if(!folder.exists()) createDirectory();
+            eliminarPartida(p.getId());
             createFile(p.getId());
 
             FileOutputStream fos = new FileOutputStream(getPath(p.getId()));
@@ -86,5 +85,10 @@ public class GestionPartida {
         }
 
 
+    }
+
+    public void eliminarPartida(String p) {
+        File file = new File(getPath(p));
+        file.delete();
     }
 }

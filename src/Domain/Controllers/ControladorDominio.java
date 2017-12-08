@@ -2,9 +2,7 @@ package Domain.Controllers;
 
 import Data.ControladorPersistencia;
 import Domain.*;
-import Domain.Excepciones.ExcepcionNoHayPartidaActual;
-import Domain.Excepciones.ExcepcionUsuarioExiste;
-import Domain.Excepciones.ExcepcionUsuarioInexistente;
+import Domain.Excepciones.*;
 import groovy.lang.Tuple2;
 
 import java.time.LocalDate;
@@ -17,7 +15,6 @@ import java.util.List;
  * Clase para controlar el dominio de la aplicacion.
  */
 public class ControladorDominio {
-
     private Usuario usuarioCargado = null;
     private Partida partidaActual = null;
     private SistemaRanking ranking = null;
@@ -30,14 +27,12 @@ public class ControladorDominio {
         persistencia = ControladorPersistencia.getInstance();
         persistencia.cargarSistemaRanking();
         ranking = SistemaRanking.getInstance();
-
-
     }
 
     /**
      * Crea y carga un nuevo usuario.
      * @param nombre Nombre del nuevo usuario.
-     * @throws Exception si el usuario ya está credo.
+     * @throws ExcepcionUsuarioExiste si el usuario ya está credo.
      */
     public void crearUsuario(String nombre) throws ExcepcionUsuarioExiste {
         if(persistencia.existeUsuario(nombre)){
@@ -45,13 +40,12 @@ public class ControladorDominio {
         }
         guardaUsuarioActual();
         usuarioCargado = new Usuario(nombre);
-
     }
 
     /**
      * Carga un usuario en memoria. Si ya habia uno cargado manda guardarlo y todas sus partidas.
      * @param nombre carga el usuario con id = nombre.
-     * @throws Exception si el usuario con ese identificador no existe.
+     * @throws ExcepcionUsuarioInexistente si el usuario con ese identificador no existe.
      */
     public void cargarUsuario(String nombre) throws ExcepcionUsuarioInexistente{
         guardaUsuarioActual();
@@ -59,8 +53,8 @@ public class ControladorDominio {
     }
 
     /**
-     * Crea una partida de tipo usuario CodeMaker con una dificultad determinada y un codgigo secreto.
-     * @param dificultad Determina el grado de dificualtad de la partidad.
+     * Crea una partida de tipo usuario CodeMaker con una dificultad determinada y un codigo secreto.
+     * @param dificultad Determina el grado de dificultad de la partidad.
      * @param codigoSecreto Determina el codigo secreto elegido por el usuario.
      */
     public void crearPartidaUsuarioCargadoRolMaker(String dificultad, ArrayList<Integer> codigoSecreto){
@@ -68,7 +62,7 @@ public class ControladorDominio {
         usuarioCargado.creaPartidaActual(true,dificultad);
         partidaActual = usuarioCargado.getPartidaActual();
         Codigo secreto = new Codigo(codigoSecreto.size());
-        secreto.codigo = new ArrayList<Integer>(codigoSecreto);
+        secreto.codigo = new ArrayList<>(codigoSecreto);
         partidaActual.setCodigoSecreto(secreto);
     }
 
@@ -89,11 +83,11 @@ public class ControladorDominio {
      * Carga una partida en memoria si hay una ya cargada la guarda en disco primero.
      * @param idPartida Determina que partida hay que cargar de usuario.
      * @return Retorna el rol del usuario en esa partida y la dificultad de la misma.
-     * @throws Exception Si la partida con ese id no existe.
      */
     public Tuple2<Boolean,String> cargarPartidaUsuario(String idPartida){
         guardaPartidaActual();
         partidaActual = persistencia.cargarPartida(idPartida);
+        usuarioCargado.cargaPartida(partidaActual);
         return new Tuple2<>(partidaActual.isRolMaker(),partidaActual.getDificultad());
     }
 
@@ -101,9 +95,9 @@ public class ControladorDominio {
      * Asigna la respuesta del usuario al utlimo guess y devuelve el siguiente intento generado por la maquina.
      * @param respuesta Devuelve la respuesta pensada por la maquina
      * @return Retorna el codigo de respuesta.
-     * @throws Exception Si la respuesta no es correcta.
+     * @throws ExcepcionRespuestaIncorrecta Si la respuesta no es correcta.
      */
-    public List<Integer> jugarCodeMaker(ArrayList<Integer> respuesta) throws Exception{
+    public List<Integer> jugarCodeMaker(ArrayList<Integer> respuesta) throws ExcepcionRespuestaIncorrecta {
         Respuesta res = new Respuesta(respuesta.size());
         res.respuesta = new ArrayList<>(respuesta);
         partidaActual.setRespuesta(res);
@@ -119,7 +113,7 @@ public class ControladorDominio {
     public List<Integer> juegaCodeBreaker(ArrayList<Integer> codigo, float tiempoTardado){
         Codigo code = new Codigo(codigo.size());
         code.codigo = new ArrayList<>(codigo);
-        partidaActual.setCodigoSecreto(code);
+        partidaActual.setIntento(code);
         partidaActual.generaRespuesta();
         partidaActual.sumaTiempo(tiempoTardado);
         return partidaActual.getUltimaRespuesta().respuesta;
@@ -131,14 +125,17 @@ public class ControladorDominio {
      * @param ganada Booleano que indica si el usuario ha ganado una partida o no.
      */
     public void terminaPartidaActual(boolean ganada){
-        //persistencia.eliminarPartida(partidaActual.getId()); Lo comento para compilar
         usuarioCargado.finalizarPartidaActual(ganada);
+        persistencia.eliminarPartida(partidaActual.getId());
         partidaActual = null;
     }
 
+    /**
+     * Método para abandonar la partida actual.
+     */
     public void abandonaPartidaAcutal(){
-        //persistencia.eliminarPartida(partidaActual.getId()); Lo comento para compilar
         usuarioCargado.abandonaPartidaActual();
+        persistencia.eliminarPartida(partidaActual.getId());
         partidaActual = null;
     }
 
@@ -151,7 +148,6 @@ public class ControladorDominio {
         LocalDate localDate = LocalDate.now();
         String fecha = dtf.format(localDate);
         ranking.addNewPuntuation(usuarioCargado.getNombre(),partidaActual.generaPuntuacion(),fecha,partidaActual.getDificultad());
-
     }
 
     /**
@@ -191,33 +187,98 @@ public class ControladorDominio {
 
     /**
      * Devuelve las partidas que el usuario cargado ha guardado
-     * @return Lista de las partidas guardadas en forma de String.
+     * @return Lista de los identificadores de las partidas guardadas.
      */
     public List<String> getPartidasGuardadasUsr(){
         return usuarioCargado.getPartidasGuardadas();
     }
 
+    /**
+     * Metodo que guarda el usuario actual y el ranking en disco cuando se invoca al cerrar.
+     */
     private void onClose(){
        guardaUsuarioActual();
        guardaRanking();
     }
+
+    /**
+     * Guarda el sistema de ranking en disco.
+     */
     private void guardaRanking(){
         if(ranking != null){
             persistencia.guardarSistemaRanking();
         }
     }
-    private void guardaUsuarioActual(){
 
+    /**
+     * Guarda el usuario que tiene en memoria en disco.
+     */
+    private void guardaUsuarioActual(){
         if(usuarioCargado != null){
             persistencia.guardar(usuarioCargado);
-            usuarioCargado = null;
         }
     }
-    private void guardaPartidaActual(){
-        if(partidaActual == null){
+
+    /**
+     * Guarda en disco la partida actual.
+     */
+    public void guardaPartidaActual(){
+        if(partidaActual != null){
             usuarioCargado.guardaPartidaActual();
+            persistencia.guardar(partidaActual);
+            guardaUsuarioActual();
         }
-        persistencia.guardar(partidaActual);
+        partidaActual = null;
+
+    }
+
+    /**
+     * Método de consulta del tablero de la partida actual.
+     * @return "Matriz de integer donde la segunda lista interna hay dos listas correspondientes 1 al intendo de la fila y 2 a la respuesta.
+     */
+    public List<List<List<Integer>>> getTablero(){
+        return partidaActual.getTablero();
+    }
+
+    /**
+     * Devuelve el codigo secreto.
+     * @return Una lista equivalente al Codigo establecido como codigo secreto.
+     */
+    public List<Integer> getCodigoSecreto(){
+       return partidaActual.getCodigoSecreto().codigo;
+    }
+
+    /**
+     * Devuelve una pista de nivel 3 que da un color en una posición.
+     * Solo se puede pedir una vez por partida. Si se accede una segunda vez, lanza una excepción.
+     * @return Un Lista con una unica posición no vacia que indica el color y la posición de uno de los colores del
+     * @throws ExcepcionPistaUsada si se accede a la función por segunda vez.
+     * codigo secreto
+     */
+    public List<Integer> getPista3() throws ExcepcionPistaUsada{
+        return partidaActual.getPista3();
+    }
+
+    /**
+     * Devuelve una pista de nivel 2 que da los colores que no se encuentran en el código secreto.
+     * Solo se puede pedir una vez por partida. Si se accede una segunda vez, lanza una excepción.
+     * @return Devuelve los colores que no estan en el codigo secreto.
+     * @throws ExcepcionPistaUsada si se accede a la función por segunda vez.
+     * @throws ExcepcionNoHayColoresSinUsar si no hay ningún color que no esté en el código secreto.
+     */
+    public ArrayList<Integer> getPista2() throws ExcepcionPistaUsada,ExcepcionNoHayColoresSinUsar{
+        return partidaActual.getPista2();
+    }
+
+    /**
+     * Devuelve una pista de nivel 1 que da un color que no se encuentra en el código secreto.
+     * Solo se puede pedir una vez por partida.
+     * @return Devuelve un color que no se encuentra en el código secreto.
+     * @throws ExcepcionNoHayColoresSinUsar si no hay ningún color que no esté en el código secreto.
+     * @throws ExcepcionPistaUsada si se accede a la función por segunda vez.
+     */
+    public Integer getPista1() throws ExcepcionPistaUsada, ExcepcionNoHayColoresSinUsar{
+        return partidaActual.getPista1();
     }
 
 }
