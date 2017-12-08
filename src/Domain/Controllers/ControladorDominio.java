@@ -2,10 +2,7 @@ package Domain.Controllers;
 
 import Data.ControladorPersistencia;
 import Domain.*;
-import Domain.Excepciones.ExcepcionNoHayPartidaActual;
-import Domain.Excepciones.ExcepcionRespuestaIncorrecta;
-import Domain.Excepciones.ExcepcionUsuarioExiste;
-import Domain.Excepciones.ExcepcionUsuarioInexistente;
+import Domain.Excepciones.*;
 import groovy.lang.Tuple2;
 
 import java.time.LocalDate;
@@ -18,7 +15,6 @@ import java.util.List;
  * Clase para controlar el dominio de la aplicacion.
  */
 public class ControladorDominio {
-    //todo get pistas wey
     private Usuario usuarioCargado = null;
     private Partida partidaActual = null;
     private SistemaRanking ranking = null;
@@ -130,11 +126,16 @@ public class ControladorDominio {
      */
     public void terminaPartidaActual(boolean ganada){
         usuarioCargado.finalizarPartidaActual(ganada);
+        persistencia.eliminarPartida(partidaActual.getId());
         partidaActual = null;
     }
 
+    /**
+     * Método para abandonar la partida actual.
+     */
     public void abandonaPartidaAcutal(){
         usuarioCargado.abandonaPartidaActual();
+        persistencia.eliminarPartida(partidaActual.getId());
         partidaActual = null;
     }
 
@@ -192,23 +193,35 @@ public class ControladorDominio {
         return usuarioCargado.getPartidasGuardadas();
     }
 
+    /**
+     * Metodo que guarda el usuario actual y el ranking en disco cuando se invoca al cerrar.
+     */
     private void onClose(){
        guardaUsuarioActual();
        guardaRanking();
     }
 
+    /**
+     * Guarda el sistema de ranking en disco.
+     */
     private void guardaRanking(){
         if(ranking != null){
             persistencia.guardarSistemaRanking();
         }
     }
 
+    /**
+     * Guarda el usuario que tiene en memoria en disco.
+     */
     private void guardaUsuarioActual(){
         if(usuarioCargado != null){
             persistencia.guardar(usuarioCargado);
         }
     }
 
+    /**
+     * Guarda en disco la partida actual.
+     */
     public void guardaPartidaActual(){
         if(partidaActual != null){
             usuarioCargado.guardaPartidaActual();
@@ -219,12 +232,53 @@ public class ControladorDominio {
 
     }
 
+    /**
+     * Método de consulta del tablero de la partida actual.
+     * @return "Matriz de integer donde la segunda lista interna hay dos listas correspondientes 1 al intendo de la fila y 2 a la respuesta.
+     */
     public List<List<List<Integer>>> getTablero(){
         return partidaActual.getTablero();
     }
 
+    /**
+     * Devuelve el codigo secreto.
+     * @return Una lista equivalente al Codigo establecido como codigo secreto.
+     */
     public List<Integer> getCodigoSecreto(){
        return partidaActual.getCodigoSecreto().codigo;
+    }
+
+    /**
+     * Devuelve una pista de nivel 3 que da un color en una posición.
+     * Solo se puede pedir una vez por partida. Si se accede una segunda vez, lanza una excepción.
+     * @return Un Lista con una unica posición no vacia que indica el color y la posición de uno de los colores del
+     * @throws ExcepcionPistaUsada si se accede a la función por segunda vez.
+     * codigo secreto
+     */
+    public List<Integer> getPista3() throws ExcepcionPistaUsada{
+        return partidaActual.getPista3();
+    }
+
+    /**
+     * Devuelve una pista de nivel 2 que da los colores que no se encuentran en el código secreto.
+     * Solo se puede pedir una vez por partida. Si se accede una segunda vez, lanza una excepción.
+     * @return Devuelve los colores que no estan en el codigo secreto.
+     * @throws ExcepcionPistaUsada si se accede a la función por segunda vez.
+     * @throws ExcepcionNoHayColoresSinUsar si no hay ningún color que no esté en el código secreto.
+     */
+    public ArrayList<Integer> getPista2() throws ExcepcionPistaUsada,ExcepcionNoHayColoresSinUsar{
+        return partidaActual.getPista2();
+    }
+
+    /**
+     * Devuelve una pista de nivel 1 que da un color que no se encuentra en el código secreto.
+     * Solo se puede pedir una vez por partida.
+     * @return Devuelve un color que no se encuentra en el código secreto.
+     * @throws ExcepcionNoHayColoresSinUsar si no hay ningún color que no esté en el código secreto.
+     * @throws ExcepcionPistaUsada si se accede a la función por segunda vez.
+     */
+    public Integer getPista1() throws ExcepcionPistaUsada, ExcepcionNoHayColoresSinUsar{
+        return partidaActual.getPista1();
     }
 
 }

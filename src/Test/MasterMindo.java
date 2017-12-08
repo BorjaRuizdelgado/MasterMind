@@ -6,6 +6,7 @@ import Domain.Excepciones.*;
 import static Util.Console.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -238,9 +239,9 @@ public class MasterMindo {
                 break;
             case 3:
                 try {
-                    Codigo aux = pary.getPista3();
-                    for (int i = 0; i < aux.size; i++) {
-                        if (aux.codigo.get(i) != 0) println("En la posición " + (i+1) + " está el " + aux.codigo.get(i) + ".");
+                    List<Integer> aux = pary.getPista3();
+                    for (int i = 0; i < aux.size(); i++) {
+                        if (aux.get(i) != 0) println("En la posición " + (i+1) + " está el " + aux.get(i) + ".");
                     }
                 }
                 catch (ExcepcionPistaUsada e) {

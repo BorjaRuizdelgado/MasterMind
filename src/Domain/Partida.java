@@ -217,19 +217,19 @@ public class Partida implements Serializable {
     /**
      * Devuelve una pista de nivel 3 que da un color en una posición.
      * Solo se puede pedir una vez por partida. Si se accede una segunda vez, lanza una excepción.
-     * @return Un codigo con una unica posición no vacia que indica el color y la posición de uno de los colores del
+     * @return Un Lista con una unica posición no vacia que indica el color y la posición de uno de los colores del
      * @throws ExcepcionPistaUsada si se accede a la función por segunda vez.
      * codigo secreto
      */
-    public Codigo getPista3() throws ExcepcionPistaUsada {
+    public List<Integer> getPista3() throws ExcepcionPistaUsada {
         if (!pista3) {
             pista3 = true;
             Random rn = new Random();
-            Codigo aux = new Codigo(numColumnas);
+            List<Integer> aux = new ArrayList<>(numColumnas);
             int posicion = rn.nextInt(numColumnas);
             for (int i = 0; i < numColumnas; ++i) {
-                if (i == posicion) aux.codigo.add(tablero.getCodigoSecreto().codigo.get(posicion));
-                else aux.codigo.add(0);
+                if (i == posicion) aux.add(tablero.getCodigoSecreto().codigo.get(posicion));
+                else aux.add(0);
             }
             return aux;
         }
@@ -340,8 +340,6 @@ public class Partida implements Serializable {
         if (tablero.getUltimoIntento().getRespuestas().esGanadora())
             ganado = true;
     }
-
-
 
     /* ESCRITURAS */
 
