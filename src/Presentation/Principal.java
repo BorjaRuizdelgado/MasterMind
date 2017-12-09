@@ -28,6 +28,8 @@ public class Principal {
     private JButton CODEBREAKERButton;
     private JButton CREARUSUARIOButton;
     private JButton CARGARUSUARIOButton;
+    private JPanel contenidoCargarPart;
+    private JList list1;
 
     public Principal() {
         /* Efectos */
@@ -256,10 +258,20 @@ public class Principal {
                 main.revalidate();
             }
         });
-        CODEMAKERButton.addMouseListener(new MouseAdapter() {
+        CARGARPARTIDAButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent mouseEvent) {
                 super.mousePressed(mouseEvent);
+
+                main.removeAll();
+                main.add(contenidoCargarPart);
+                main.revalidate();
+            }
+        });
+        CODEMAKERButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
 
                 JFrame frame = new JFrame("Juego");
                 frame.setContentPane(new Juego().getPanel());
