@@ -60,7 +60,8 @@
                 </constraints>
                 <properties>
                   <editable value="false"/>
-                  <foreground color="-8026747"/>
+                  <font name="Ubuntu Light" size="15"/>
+                  <foreground color="-16777216"/>
                   <opaque value="false"/>
                   <text value="Bla bla bla"/>
                 </properties>

@@ -2,7 +2,6 @@ package Test;
 
 import Presentation.Principal;
 import Presentation.PruebaIsa;
-import Presentation.Usuario;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,13 +17,11 @@ public class GUITest {
             case "PruebaIsa":
                 frame.setContentPane(new PruebaIsa().getPanel());
                 break;
-            case "Usuario":
-                frame.setContentPane(new Usuario().getPanel());
-                break;
         }
         frame.setPreferredSize(new Dimension(850, 900));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 

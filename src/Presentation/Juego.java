@@ -2,9 +2,8 @@ package Presentation;
 
 import javax.swing.*;
 
-public class Ajustes {
+public class Juego {
     private JPanel panel;
-    private JPanel panel2;
 
     public JPanel getPanel() {
         return panel;
