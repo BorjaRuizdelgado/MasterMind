@@ -1,22 +1,28 @@
 package Test;
 
-import Presentation.Inicio;
+import Presentation.Principal;
 import Presentation.PruebaIsa;
+import Presentation.Usuario;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GUITest {
-
+    private static JFrame frame;
     private static void createForm(String type){
-        JFrame frame = new JFrame(type);
+        frame = new JFrame(type);
         switch (type){
-            case "Inicio":
-                frame.setContentPane(new Inicio().getPanel());
+            case "Principal":
+                frame.setContentPane(new Principal().getPanel());
                 break;
             case "PruebaIsa":
                 frame.setContentPane(new PruebaIsa().getPanel());
                 break;
+            case "Usuario":
+                frame.setContentPane(new Usuario().getPanel());
+                break;
         }
+        frame.setPreferredSize(new Dimension(850, 900));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
@@ -24,7 +30,7 @@ public class GUITest {
 
     public static void main(String args[]){
 
-        createForm("Inicio");
-        //createForm("PruebaIsa");
+        createForm("Principal");
+        //createForm("Usuario");
     }
 }
