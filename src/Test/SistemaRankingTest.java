@@ -159,21 +159,21 @@ public class SistemaRankingTest {
                 Console.println(menu);
 
                 option = in.nextInt();
-                if (option == 1) muestra(sistemaRanking.getRankingFacil());
-                else if (option == 2) muestra(sistemaRanking.getRankingMedio());
-                else if (option == 3) muestra(sistemaRanking.getRankingDificil());
+                if (option == 1) muestra(sistemaRanking.getRankingFacilInfo());
+                else if (option == 2) muestra(sistemaRanking.getRankingMedioInfo());
+                else if (option == 3) muestra(sistemaRanking.getRankingDificilInfo());
                 else if (option == 4 || option == 5 || option == 6) {
                     Console.println("Introduce un nombre a filtrar", "blue");
                     String name = in.next();
                     switch (option) {
                         case 4:
-                            muestra(sistemaRanking.getRankingFacil(name));
+                            muestra(sistemaRanking.getRankingFacilInfo(name));
                             break;
                         case 5:
-                            muestra(sistemaRanking.getRankingMedio(name));
+                            muestra(sistemaRanking.getRankingMedioInfo(name));
                             break;
                         case 6:
-                            muestra(sistemaRanking.getRankingDificil(name));
+                            muestra(sistemaRanking.getRankingDificilInfo(name));
                             break;
                     }
                 }

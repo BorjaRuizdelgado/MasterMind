@@ -158,11 +158,11 @@ public class ControladorDominio {
     public List<Info> getRanking(String dificultad){
         switch (dificultad){
             case "Facil":
-                return ranking.getRankingFacil();
+                return ranking.getRankingFacilInfo();
             case "Medio":
-                return ranking.getRankingMedio();
+                return ranking.getRankingMedioInfo();
             case "Dificil":
-                return ranking.getRankingDificil();
+                return ranking.getRankingDificilInfo();
         }
         return null;
     }
@@ -176,11 +176,11 @@ public class ControladorDominio {
     public List<Info> getRankingNombreUsrDificultad(String nombreUsr, String dificultad){
         switch (dificultad){
             case "Facil":
-                return ranking.getRankingFacil(nombreUsr);
+                return ranking.getRankingFacilInfo(nombreUsr);
             case "Medio":
-                return ranking.getRankingMedio(nombreUsr);
+                return ranking.getRankingMedioInfo(nombreUsr);
             case "Dificil":
-                return ranking.getRankingDificil(nombreUsr);
+                return ranking.getRankingDificilInfo(nombreUsr);
         }
         return null;
     }

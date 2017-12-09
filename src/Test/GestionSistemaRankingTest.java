@@ -19,7 +19,7 @@ public class GestionSistemaRankingTest {
 
         gestionSistemaRanking.cargar();
 
-        List<Info> facil = sistemaRanking.getRankingFacil();
+        List<Info> facil = sistemaRanking.getRankingFacilInfo();
         for (Info i: facil) {
             System.out.println(i.toString() + "*********");
         }

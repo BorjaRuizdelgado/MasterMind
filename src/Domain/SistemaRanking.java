@@ -10,7 +10,6 @@ import java.util.List;
  * @author Omar
  */
 public class SistemaRanking implements Serializable{
-//Todo pon que el get ranking devuelva una lista de strings en vez de info pls; cualquiera de ellos :)
     private static SistemaRanking uniqueInstance;
     private List<Info> rankingFacil;
     private List<Info> rankingMedio;
@@ -64,7 +63,7 @@ public class SistemaRanking implements Serializable{
      * Devuelve listaRankingFacil
      * @return rankingFacil
      */
-    public List<Info> getRankingFacil(){
+    public List<Info> getRankingFacilInfo(){
         return rankingFacil;
     }
 
@@ -72,7 +71,7 @@ public class SistemaRanking implements Serializable{
      * Devuelve listaRankingNormal
      * @return rankingMedio
      */
-    public List<Info> getRankingMedio(){
+    public List<Info> getRankingMedioInfo(){
         return rankingMedio;
     }
 
@@ -80,7 +79,7 @@ public class SistemaRanking implements Serializable{
      * Devuelve listaRankingDificil
      * @return rankingDificil
      */
-    public List<Info> getRankingDificil(){
+    public List<Info> getRankingDificilInfo(){
         return rankingDificil;
     }
 
@@ -89,7 +88,7 @@ public class SistemaRanking implements Serializable{
      * @param nombre Es el nombre del usuario
      * @return rankingFacil con entradas del usuario.
      */
-    public List<Info> getRankingFacil(String nombre){
+    public List<Info> getRankingFacilInfo(String nombre){
         return getInterseccionNombre(rankingFacil, nombre);
     }
 
@@ -98,7 +97,7 @@ public class SistemaRanking implements Serializable{
      * @param nombre Es el nombre del usuario
      * @return rankingMedio con entradas del usuario.
      */
-    public List<Info> getRankingMedio(String nombre){
+    public List<Info> getRankingMedioInfo(String nombre){
         return getInterseccionNombre(rankingMedio, nombre);
     }
 
@@ -107,7 +106,7 @@ public class SistemaRanking implements Serializable{
      * @param nombre Es el nombre del usuario
      * @return rankingDificil con entradas del usuario.
      */
-    public List<Info> getRankingDificil(String nombre){
+    public List<Info> getRankingDificilInfo(String nombre){
         return getInterseccionNombre(rankingDificil, nombre);
     }
 
@@ -160,9 +159,76 @@ public class SistemaRanking implements Serializable{
         }
     }
 
+    /**
+     * Reiniciamos los rankings.
+     */
     public void clear(){
         rankingFacil.clear();
         rankingMedio.clear();
         rankingDificil.clear();
+    }
+
+    /**
+     * Pasamos de una lista de tipo Info a una lista de String.
+     * @param list La lista a convertir
+     * @return Lista convertida
+     */
+    private List<String> fromInfoListToStringList(List<Info> list){
+        List<String> Return = new ArrayList<>();
+        for (Info info: list) {
+            Return.add(info.getUsuario() + " " + info.getFecha() + " " + info.getPuntuacion());
+        }
+        return Return;
+    }
+
+    /**
+     * Devuelve una lista con las puntuaciones del nombre pasado por parámetro
+     * @param nombre Es el nombre del usuario
+     * @return rankingMedio con entradas del usuario en una lista de String.
+     */
+    public List<String> getRankingFacil(String nombre){
+        return fromInfoListToStringList(getInterseccionNombre(rankingFacil, nombre));
+    }
+
+    /**
+     * Devuelve una lista con las puntuaciones del nombre pasado por parámetro
+     * @param nombre Es el nombre del usuario
+     * @return rankingMedio con entradas del usuario en una lista de String.
+     */
+    public List<String> getRankingMedio(String nombre){
+        return fromInfoListToStringList(getInterseccionNombre(rankingMedio, nombre));
+    }
+
+    /**
+     * Devuelve una lista con las puntuaciones del nombre pasado por parámetro
+     * @param nombre Es el nombre del usuario
+     * @return rankingDificil con entradas del usuario en una lista de String.
+     */
+    public List<String> getRankingDificil(String nombre){
+        return fromInfoListToStringList(getInterseccionNombre(rankingDificil, nombre));
+    }
+
+    /**
+     * Devuelve listaRankingFacil
+     * @return rankingFacil en una lista de String
+     */
+    public List<String> getRankingFacil(){
+        return fromInfoListToStringList(rankingFacil);
+    }
+
+    /**
+     * Devuelve listaRankingNormal
+     * @return rankingMedio en una lista de String
+     */
+    public List<String> getRankingMedio(){
+        return fromInfoListToStringList(rankingMedio);
+    }
+
+    /**
+     * Devuelve listaRankingDificil
+     * @return rankingDificil en una lista de String
+     */
+    public List<String> getRankingDificil(){
+        return fromInfoListToStringList(rankingDificil);
     }
 }
