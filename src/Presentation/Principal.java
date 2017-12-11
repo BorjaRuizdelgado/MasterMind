@@ -139,8 +139,8 @@ public class Principal {
 
         b1.addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-                super.mousePressed(mouseEvent);
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
 
                 JFrame frame = new JFrame("Ayuda");
                 frame.setContentPane(new Ayuda().getPanel());
@@ -153,8 +153,8 @@ public class Principal {
         });
         b2.addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-                super.mousePressed(mouseEvent);
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
 
                 JFrame frame = new JFrame("Ranking");
                 frame.setContentPane(new Ranking().getPanel());
@@ -167,8 +167,8 @@ public class Principal {
         });
         b3.addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-                super.mousePressed(mouseEvent);
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
 
                 JFrame frame = new JFrame("Ajustes");
                 frame.setContentPane(new Ajustes().getPanel());
@@ -279,19 +279,18 @@ public class Principal {
         });
         CREARUSUARIOButton.addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-                super.mousePressed(mouseEvent);
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
 
                 main.removeAll();
                 main.add(contenidoUsuario);
                 main.revalidate();
-
             }
         });
         CARGARUSUARIOButton.addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-                super.mousePressed(mouseEvent);
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
 
                 main.removeAll();
                 main.add(contenidoUsuario);
@@ -300,8 +299,8 @@ public class Principal {
         });
         ACEPTARButton.addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-                super.mousePressed(mouseEvent);
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
 
                 main.removeAll();
                 main.add(contenidoInicio);
@@ -310,8 +309,8 @@ public class Principal {
         });
         CREARPARTIDAButton.addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-                super.mousePressed(mouseEvent);
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
 
                 main.removeAll();
                 main.add(contenidoNuevaPart);
@@ -320,8 +319,8 @@ public class Principal {
         });
         CARGARPARTIDAButton.addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-                super.mousePressed(mouseEvent);
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
 
                 main.removeAll();
                 main.add(contenidoCargarPart);
@@ -330,7 +329,7 @@ public class Principal {
         });
         CODEMAKERButton.addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent mouseEvent) {
+            public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
 
                 JFrame frame = new JFrame("Juego");
@@ -344,8 +343,8 @@ public class Principal {
         });
         CODEBREAKERButton.addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-                super.mousePressed(mouseEvent);
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
 
                 JFrame frame = new JFrame("Juego");
                 frame.setContentPane(new Juego().getPanel());
@@ -354,6 +353,54 @@ public class Principal {
                 frame.pack();
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
+            }
+        });
+        r1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
+
+                //CardLayout cardLayout = (CardLayout) main.getLayout();
+                //cardLayout.show(main, "contenidoPrincipal");
+                main.removeAll();
+                main.add(contenidoPrincipal);
+                main.revalidate();
+            }
+        });
+        r2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
+
+                //CardLayout cardLayout = (CardLayout) main.getLayout();
+                //cardLayout.show(main, "contenidoPrincipal");
+                main.removeAll();
+                main.add(contenidoInicio);
+                main.revalidate();
+            }
+        });
+        r3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
+
+                //CardLayout cardLayout = (CardLayout) main.getLayout();
+                //cardLayout.show(main, "contenidoPrincipal");
+                main.removeAll();
+                main.add(contenidoUsuario);
+                main.revalidate();
+            }
+        });
+        r4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
+
+                //CardLayout cardLayout = (CardLayout) main.getLayout();
+                //cardLayout.show(main, "contenidoPrincipal");
+                main.removeAll();
+                main.add(contenidoInicio);
+                main.revalidate();
             }
         });
     }
