@@ -155,14 +155,14 @@ public class ControladorDominio {
      * @param dificultad Dificultad en forma de string
      * @return Los rankings
      */
-    public List<Info> getRanking(String dificultad){
+    public List<String> getRanking(String dificultad){
         switch (dificultad){
             case "Facil":
-                return ranking.getRankingFacilInfo();
+                return ranking.getRankingFacil();
             case "Medio":
-                return ranking.getRankingMedioInfo();
+                return ranking.getRankingMedio();
             case "Dificil":
-                return ranking.getRankingDificilInfo();
+                return ranking.getRankingDificil();
         }
         return null;
     }

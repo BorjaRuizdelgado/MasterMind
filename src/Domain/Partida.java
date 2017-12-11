@@ -44,12 +44,14 @@ public class Partida implements Serializable {
      * @param dificultad nivel de dificultad
      */
     public Partida(boolean rolMaker, String dificultad) {
+        this.rolMaker = rolMaker;
+        this.dificultad = dificultad;
         DateFormat formato = new SimpleDateFormat("dd-MM-yyyy~HH-mm-ss");
         Date hoy = Calendar.getInstance().getTime();
         this.id = formato.format(hoy);
+        this.id += "$" + rolToString();
+        this.id += "$" + dificultad;
         this.tiempo = 0.0f;
-        this.rolMaker = rolMaker;
-        this.dificultad = dificultad;
         switch (dificultad) {
             case "Facil":
                 numColores = 4;
