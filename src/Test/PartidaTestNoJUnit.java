@@ -217,7 +217,7 @@ public class PartidaTestNoJUnit {
                 }
                 break;
             case 3:
-                try {
+                /*try {
                     Codigo aux = test.getPista3();
                     for (int i = 0; i < aux.size; i++) {
                         if (aux.codigo.get(i) != 0) println("En la posición " + (i+1) + " está el " + aux.codigo.get(i) + ".");
@@ -226,7 +226,7 @@ public class PartidaTestNoJUnit {
                 catch (ExcepcionPistaUsada e) {
                     println(e.getMessage());
                 }
-                break;
+                break;*/
             case 4:
                 break;
             default:
