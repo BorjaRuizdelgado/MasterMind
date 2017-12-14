@@ -5,11 +5,14 @@ import Presentation.PruebaIsa;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class GUITest {
     private static JFrame frame;
     private static void createForm(String type){
         frame = new JFrame(type);
+
         switch (type){
             case "Principal":
                 frame.setContentPane(new Principal().getPanel());
@@ -18,6 +21,7 @@ public class GUITest {
                 frame.setContentPane(new PruebaIsa().getPanel());
                 break;
         }
+
         frame.setPreferredSize(new Dimension(850, 900));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
