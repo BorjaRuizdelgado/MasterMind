@@ -20,7 +20,7 @@ public class Juego {
         JPanel copied = new JPanel();
         int i = row.getComponentCount();
         for (int j = 0; j < i; j++) {
-            
+
         }
 
     }
