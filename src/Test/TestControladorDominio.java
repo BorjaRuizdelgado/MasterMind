@@ -16,7 +16,7 @@ public class TestControladorDominio {
     private static String dificultad;
 
     public static void main(String[] args) {
-        ctrl = new ControladorDominio();
+        ctrl = ctrl.getInstance();
         System.out.println("Pulsa 1 para cargar tu usuario o 2 para crear uno nuevo:");
         if(scan.nextInt() == 1) cargaUsuario();
         else creaUsuario();
