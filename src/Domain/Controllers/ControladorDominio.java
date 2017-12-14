@@ -15,6 +15,7 @@ import java.util.List;
  * Clase para controlar el dominio de la aplicacion.
  */
 public class ControladorDominio {
+    private static ControladorDominio uniqueInstance;
     private Usuario usuarioCargado = null;
     private Partida partidaActual = null;
     private SistemaRanking ranking = null;
@@ -23,10 +24,18 @@ public class ControladorDominio {
     /**
      * Creadora ControladorDominio.
      */
-    public ControladorDominio(){
+    private ControladorDominio(){
         persistencia = ControladorPersistencia.getInstance();
         persistencia.cargarSistemaRanking();
         ranking = SistemaRanking.getInstance();
+    }
+    /** Si la instancia no existe, se inicializa con su método privado
+     * @return La única instancia de la clase
+     */
+    public static ControladorDominio getInstance() {
+        if(uniqueInstance == null)
+            uniqueInstance = new ControladorDominio();
+        return uniqueInstance;
     }
 
     /**
