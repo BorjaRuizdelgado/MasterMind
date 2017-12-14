@@ -333,7 +333,7 @@ public class Principal {
                 super.mouseClicked(mouseEvent);
 
                 JFrame frame = new JFrame("Juego");
-                frame.setContentPane(new Juego().getPanel());
+                frame.setContentPane(new Juego().getBg());
                 frame.setPreferredSize(new Dimension(850, 900));
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
@@ -347,7 +347,7 @@ public class Principal {
                 super.mouseClicked(mouseEvent);
 
                 JFrame frame = new JFrame("Juego");
-                frame.setContentPane(new Juego().getPanel());
+                frame.setContentPane(new Juego().getBg());
                 frame.setPreferredSize(new Dimension(850, 900));
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();

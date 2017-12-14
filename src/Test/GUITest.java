@@ -1,5 +1,6 @@
 package Test;
 
+import Presentation.Juego;
 import Presentation.Principal;
 import Presentation.PruebaIsa;
 
@@ -20,10 +21,14 @@ public class GUITest {
             case "PruebaIsa":
                 frame.setContentPane(new PruebaIsa().getPanel());
                 break;
+            case "Juego":
+                frame.setContentPane(new Juego().getBg());
+                break;
         }
 
         frame.setPreferredSize(new Dimension(850, 900));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setUndecorated(true);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
@@ -31,7 +36,7 @@ public class GUITest {
 
     public static void main(String args[]){
 
-        createForm("Principal");
-        //createForm("Usuario");
+        //createForm("Principal");
+        createForm("Juego");
     }
 }
