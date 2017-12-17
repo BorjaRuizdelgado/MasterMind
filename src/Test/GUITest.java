@@ -6,8 +6,6 @@ import Presentation.PruebaIsa;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class GUITest {
     private static JFrame frame;
@@ -22,7 +20,7 @@ public class GUITest {
                 frame.setContentPane(new PruebaIsa().getPanel());
                 break;
             case "Juego":
-                frame.setContentPane(new Juego().getBg());
+                frame.setContentPane(new Juego().getPanel());
                 break;
         }
 

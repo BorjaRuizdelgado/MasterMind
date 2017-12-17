@@ -12,17 +12,26 @@ public class Juego {
     private JPanel row;
     private JPanel header;
 
-    public JPanel getBg() {
+    public JPanel getPanel() {
         return panel2;
     }
 
     private void makeTable(){
-        JPanel copied = new JPanel();
-        int i = row.getComponentCount();
-        for (int j = 0; j < i; j++) {
+        GridBagConstraints gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        for (int i = 0; i < 5; i++) {
+            /*JPanel copied = new JPanel();
+            int size = row.getComponentCount();
+            for (int j = 0; j < size; j++) {
+                copied.add(row.getComponent(i));
+            }*/
 
+            //rows.add(copied);
+
+            rows.add(new JButton(String.valueOf(i)), gridBagConstraints);
+
+            //rows.validate();
         }
-
     }
 
     public Juego() {
