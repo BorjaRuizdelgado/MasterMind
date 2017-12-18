@@ -2,6 +2,7 @@ package Presentation;
 
 import Domain.Controllers.ControladorDominio;
 import Domain.Excepciones.ExcepcionUsuarioExiste;
+import Domain.Excepciones.ExcepcionUsuarioInexistente;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,6 +40,7 @@ public class Principal {
     private JButton r4;
 
     private ControladorDominio ctrl;
+    private Boolean crearUsuario;
 
     public Principal() {
         ctrl = ControladorDominio.getInstance();
@@ -287,7 +289,7 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-
+                crearUsuario = true;
                 main.removeAll();
                 main.add(contenidoUsuario);
                 main.revalidate();
@@ -297,7 +299,7 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-
+                crearUsuario = false;
                 main.removeAll();
                 main.add(contenidoUsuario);
                 main.revalidate();
@@ -312,11 +314,21 @@ public class Principal {
                 }
                 else {
                     Boolean exception = false;
-                    try {
-                        ctrl.crearUsuario(entraTuNombreDeTextField.getText());
-                    } catch (ExcepcionUsuarioExiste e) {
-                        exception = true;
-                        JOptionPane.showMessageDialog(new Frame(), "¡El usuario ya existe!");
+                    if(crearUsuario) {
+                        try {
+                            ctrl.crearUsuario(entraTuNombreDeTextField.getText());
+                        } catch (ExcepcionUsuarioExiste e) {
+                            exception = true;
+                            JOptionPane.showMessageDialog(new Frame(), "¡El usuario ya existe!");
+                        }
+                    }
+                    else if(!crearUsuario){
+                        try{
+                            ctrl.cargarUsuario(entraTuNombreDeTextField.getText());
+                        }
+                        catch (ExcepcionUsuarioInexistente e){
+                            JOptionPane.showMessageDialog(new Frame(), "¡El usuario no existe!");
+                        }
                     }
                     if (!exception) {
                         main.removeAll();
