@@ -264,7 +264,7 @@ public class MasterMindo {
     private static void obtenerAyuda (Boolean rol) {
         if (rol) { //codemaker
             println("** COMO JUGAR EL ROL CODEMAKER **\n" +
-                    "En este modo de juego debes crear tu código secreto.\n" +
+            "En este modo de juego debes crear tu código secreto.\n" +
                     "La máquina intentará descubrirlo. Solo debes corregir sus intentos.\n" +
                     "Hay un máximo de 15 intentos para descubrirlo.\n" +
                     "Para corregir sus intentos debes responder por cada ficha:\n" +
@@ -280,7 +280,7 @@ public class MasterMindo {
                     "> Dos '0' porque no se repiten el segundo 1 y el otro 2.\n");
         }
         else { //codebreaker
-            println("** COMO JUGAR EL ROL CODEMAKER **\n" +
+            println("** COMO JUGAR EL ROL CODEBREAKER **\n" +
                     "En este modo de juego la máquina creará un código secreto.\n" +
                     "Debes intentar descubrirlo probando con códigos. La máquina corregirá tus intentos.\n" +
                     "Hay un máximo de 15 intentos para descubrirlo.\n" +

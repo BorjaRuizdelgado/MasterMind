@@ -1,0 +1,15 @@
+** COMO JUGAR EL ROL CODEMAKER **
+En este modo de juego deberás crear tu código secreto y la máquina intentará descubrirlo. 
+La máquina tendrá un máximo de 15 intentos para descubrirlo. Debes corregir sus intentos.
+Para corregir sus intentos debes responder por cada ficha del intento:
+> Ficha Negra (N) si el número y la posición de la ficha coinciden con tu código secreto.
+> Ficha Blanca (B) si el número de la ficha está en otra posición de tu código secreto.
+> Nada (-) si el número de la ficha no está en tu código secreto.
+El orden no influye, puedes responder en el orden que quieras.
+~~ EJEMPLO ~~ [insert image]
+Tu código secreto:  [1 2 3 4 5 6]. 
+Intento máquina:    [1 1 2 2 5 6].
+Respuesta correcta: [N N N B - -].
+> Tres fichas negras porque coinciden el primer 1, el 5 y el 6.
+> Una ficha blanca porque está en otra posición uno de los 2.
+> Dos vacíos porque no se repiten el segundo 1 y el otro 2.

@@ -95,6 +95,7 @@
                           <foreground color="-1"/>
                           <margin top="10" left="14" bottom="10" right="14"/>
                           <text value="CREAR USUARIO"/>
+                          <toolTipText value="Crea un nuevo usuario"/>
                         </properties>
                       </component>
                       <component id="99c3c" class="javax.swing.JButton" binding="CARGARUSUARIOButton">
@@ -109,6 +110,8 @@
                           <foreground color="-1"/>
                           <margin top="10" left="14" bottom="10" right="14"/>
                           <text value="CARGAR USUARIO"/>
+                          <toolTipText value="Cargar un usuario existente"/>
+                          <verifyInputWhenFocusTarget value="true"/>
                         </properties>
                       </component>
                     </children>
@@ -534,6 +537,7 @@
                       <focusPainted value="false"/>
                       <icon value="imgs/icons8-trophy-64.png"/>
                       <text value=""/>
+                      <toolTipText value="Ránking"/>
                     </properties>
                   </component>
                   <component id="f72dd" class="javax.swing.JButton" binding="b1">
@@ -548,6 +552,7 @@
                       <hideActionText value="false"/>
                       <icon value="imgs/icons8-help-64.png"/>
                       <text value=""/>
+                      <toolTipText value="Ayuda"/>
                     </properties>
                   </component>
                   <component id="25d27" class="javax.swing.JButton" binding="b3">
@@ -560,6 +565,7 @@
                       <focusPainted value="false"/>
                       <icon value="imgs/icons8-settings-64.png"/>
                       <text value=""/>
+                      <toolTipText value="Ajustes"/>
                     </properties>
                   </component>
                 </children>
