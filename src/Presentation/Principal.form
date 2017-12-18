@@ -183,7 +183,7 @@
                               <background color="-1"/>
                               <borderPainted value="false"/>
                               <focusPainted value="false"/>
-                              <icon value="imgs/icons8-volver-64.png"/>
+                              <icon value="imgs/volver-red.png"/>
                               <opaque value="false"/>
                               <text value=""/>
                               <toolTipText value="Volver"/>
@@ -304,7 +304,7 @@
                               <background color="-1"/>
                               <borderPainted value="false"/>
                               <focusPainted value="false"/>
-                              <icon value="imgs/icons8-volver-64.png"/>
+                              <icon value="imgs/volver-red.png"/>
                               <opaque value="false"/>
                               <text value=""/>
                               <toolTipText value="Volver"/>
@@ -389,7 +389,7 @@
                               <background color="-1"/>
                               <borderPainted value="false"/>
                               <focusPainted value="false"/>
-                              <icon value="imgs/icons8-volver-64.png"/>
+                              <icon value="imgs/volver-red.png"/>
                               <text value=""/>
                               <toolTipText value="Volver"/>
                             </properties>
@@ -509,7 +509,7 @@
                               <background color="-1"/>
                               <borderPainted value="false"/>
                               <focusPainted value="false"/>
-                              <icon value="imgs/icons8-volver-64.png"/>
+                              <icon value="imgs/volver-red.png"/>
                               <text value=""/>
                               <toolTipText value="Volver"/>
                             </properties>
@@ -543,7 +543,7 @@
                       <background color="-1"/>
                       <borderPainted value="false"/>
                       <focusPainted value="false"/>
-                      <icon value="imgs/icons8-trophy-64.png"/>
+                      <icon value="imgs/trofeo-red.png"/>
                       <text value=""/>
                       <toolTipText value="Ránking"/>
                     </properties>
@@ -558,7 +558,7 @@
                       <focusPainted value="false"/>
                       <foreground color="-4473925"/>
                       <hideActionText value="false"/>
-                      <icon value="imgs/icons8-help-64.png"/>
+                      <icon value="imgs/help-red.png"/>
                       <text value=""/>
                       <toolTipText value="Ayuda"/>
                     </properties>
@@ -571,7 +571,7 @@
                       <background color="-1"/>
                       <borderPainted value="false"/>
                       <focusPainted value="false"/>
-                      <icon value="imgs/icons8-settings-64.png"/>
+                      <icon value="imgs/settings-red.png"/>
                       <text value=""/>
                       <toolTipText value="Ajustes"/>
                     </properties>
