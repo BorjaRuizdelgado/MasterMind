@@ -1,0 +1,8 @@
+** COMO JUGAR EL ROL CODEBREAKER **
+En este modo de juego la máquina creará un código secreto y deberás intentar descubrirlo probando códigos. 
+La máquina corregirá tus intentos. Hay un máximo de 15 intentos para descubrirlo.
+Para intentar encontrarlo debes tener en cuenta la respuesta de cada intento:
+> Ficha Negra (N) si el número y la posición de una ficha coinciden con el código secreto.
+> Ficha Blanca (B) si el número de una ficha está en otra posición del código secreto.
+> Nada si el número de una ficha no está en el código secreto.
+El orden de la respuesta no influye en nada. 
