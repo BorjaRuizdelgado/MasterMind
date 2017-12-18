@@ -9,8 +9,9 @@ public class Juego {
     private JPanel lateralB;
     private JPanel bg;
     private JPanel rows;
-    private JPanel row;
     private JPanel header;
+    private JPanel row;
+    private JButton button1;
 
     public JPanel getPanel() {
         return panel2;
@@ -18,20 +19,9 @@ public class Juego {
 
     private void makeTable(){
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        for (int i = 0; i < 5; i++) {
-            /*JPanel copied = new JPanel();
-            int size = row.getComponentCount();
-            for (int j = 0; j < size; j++) {
-                copied.add(row.getComponent(i));
-            }*/
+        //gridBagConstraints.gridx = 1;
 
-            //rows.add(copied);
-
-            rows.add(new JButton(String.valueOf(i)), gridBagConstraints);
-
-            //rows.validate();
-        }
+        rows.add(new JPanel().add(new JButton("ASD")), gridBagConstraints);
     }
 
     public Juego() {
