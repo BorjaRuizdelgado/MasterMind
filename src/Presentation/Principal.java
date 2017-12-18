@@ -1,5 +1,8 @@
 package Presentation;
 
+import Domain.Controllers.ControladorDominio;
+import Domain.Excepciones.ExcepcionUsuarioExiste;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -35,7 +38,10 @@ public class Principal {
     private JButton r3;
     private JButton r4;
 
+    private ControladorDominio ctrl;
+
     public Principal() {
+        ctrl = ControladorDominio.getInstance();
         /* Efectos */
         CREARUSUARIOButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -301,9 +307,23 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
+                if(entraTuNombreDeTextField.getText().equals("")){
+                    JOptionPane.showMessageDialog(new Frame(), "¡Entra tu usuario primero!");
+                }
+                else {
+                    Boolean exception = false;
+                    try {
+                        ctrl.crearUsuario(entraTuNombreDeTextField.getText());
+                    } catch (ExcepcionUsuarioExiste e) {
+                        exception = true;
+                        JOptionPane.showMessageDialog(new Frame(), "¡El usuario ya existe!");
+                    }
+                    if (!exception) {
+                        main.removeAll();
+                        main.add(contenidoInicio);
 
-                main.removeAll();
-                main.add(contenidoInicio);
+                    }
+                }
                 main.revalidate();
             }
         });
