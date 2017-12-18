@@ -6,6 +6,8 @@ import Domain.SistemaRanking;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -23,47 +25,65 @@ public class Ranking {
 
 
     Ranking() {
-        ctrl = ControladorDominio.getInstance();
-        tableModel = new DefaultTableModel(0, 3);
-
-        onCreate();
+       onCreate();
     }
 
     public JPanel getPanel() {
         return panel;
     }
 
+    /**
+     * Hace posible seleccionar el ranking por diversos niveles de dificultad con un listener en el selector
+     */
     private void setSelectorListener(){
         selector.addActionListener (e -> {
-            tableModel = new DefaultTableModel(0, 3);
-            int Dificultad = selector.getSelectedIndex();
-
-            if (Dificultad == 0) {
-                insertDataOnTable(new ArrayList<>(ctrl.getRanking("Facil")), "Fácil");
-                insertDataOnTable(new ArrayList<>(ctrl.getRanking("Medio")), "Medio");
-                insertDataOnTable(new ArrayList<>(ctrl.getRanking("Dificil")), "Difícil");
-            } else if (Dificultad == 1) {
-                insertDataOnTable(new ArrayList<>(ctrl.getRanking("Facil")), "Fácil");
-
-            } else if (Dificultad == 2) {
-                insertDataOnTable(new ArrayList<>(ctrl.getRanking("Medio")), "Medio");
-            } else if (Dificultad == 3) {
-                insertDataOnTable(new ArrayList<>(ctrl.getRanking("Dificil")), "Difícil");
-            }
-
-            table1.setModel(tableModel);
-            setCellRenderer();
+            filtrar(mostrarSoloMisPartidasCheckBox.isSelected());
         });
     }
 
-    private void testing(){
-        SistemaRanking sistemaRanking = SistemaRanking.getInstance();
-        sistemaRanking.addNewPuntuation("Pole", 666, "99", "Dificil");
-        for (int i = 0; i < 30; i++) {
-            sistemaRanking.addNewPuntuation(String.valueOf(new Random().nextInt(i+1)), i, "99", "Facil");
+    /**
+     * Actualiza la vista de los ranking de pendiendo si se quiere por el propio usuario cargado o no.
+     * @param usuario variable booleana que indica si se quiere el filtrado por el usario actual cargado o no.
+     */
+    private void filtrar(Boolean usuario){
+        tableModel = new DefaultTableModel(0, 3);
+        int Dificultad = selector.getSelectedIndex();
+        if (Dificultad == 0 && !usuario) {
+            insertDataOnTable(new ArrayList<>(ctrl.getRanking("Facil")), "Fácil");
+            insertDataOnTable(new ArrayList<>(ctrl.getRanking("Medio")), "Medio");
+            insertDataOnTable(new ArrayList<>(ctrl.getRanking("Dificil")), "Difícil");
+        } else if (Dificultad == 1 && !usuario) {
+            insertDataOnTable(new ArrayList<>(ctrl.getRanking("Facil")), "Fácil");
+
+        } else if (Dificultad == 2 && !usuario) {
+            insertDataOnTable(new ArrayList<>(ctrl.getRanking("Medio")), "Medio");
+        } else if (Dificultad == 3 && !usuario) {
+            insertDataOnTable(new ArrayList<>(ctrl.getRanking("Dificil")), "Difícil");
         }
+        else if(Dificultad == 0){
+
+            insertDataOnTable(new ArrayList<>(ctrl.getRankingNombreUsrDificultad(ctrl.getUsuario(),"Facil")), "Fácil");
+            insertDataOnTable(new ArrayList<>(ctrl.getRankingNombreUsrDificultad(ctrl.getUsuario(), "Medio")), "Medio");
+            insertDataOnTable(new ArrayList<>(ctrl.getRankingNombreUsrDificultad(ctrl.getUsuario(),"Dificil")), "Difícil");
+        }
+        else if(Dificultad == 1){
+            insertDataOnTable(new ArrayList<>(ctrl.getRankingNombreUsrDificultad(ctrl.getUsuario(),"Facil")), "Fácil");
+        }
+        else if(Dificultad == 2){
+            insertDataOnTable(new ArrayList<>(ctrl.getRankingNombreUsrDificultad(ctrl.getUsuario(), "Medio")), "Medio");
+        }
+        else if (Dificultad == 3){
+            insertDataOnTable(new ArrayList<>(ctrl.getRankingNombreUsrDificultad(ctrl.getUsuario(),"Dificil")), "Difícil");
+
+        }
+
+        table1.setModel(tableModel);
+        setCellRenderer();
     }
 
+    /**
+     * Hace display del ranking en la matriz.
+     */
     private void setCellRenderer(){
         DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
         cellRenderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
@@ -74,6 +94,11 @@ public class Ranking {
         }
     }
 
+    /**
+     * Añade una lista de strings a la lista qu ese hará display.
+     * @param ranking
+     * @param dificultad
+     */
     private void insertDataOnTable(List<String> ranking, String dificultad){
 
         for (String aRanking : ranking) {
@@ -82,9 +107,33 @@ public class Ranking {
         }
     }
 
+    /**
+     * Mira si el usuario quiere sus propios rankings o no y manda a hacer diplay
+     */
+    private void setCheckboxListener(){
+
+        mostrarSoloMisPartidasCheckBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() == ItemEvent.SELECTED) {
+                    filtrar(true);
+                } else {
+                    filtrar(false);
+
+                };
+            }
+        });
+
+    }
+
+    /**
+     * Acciones por defecto al crear la vista del ranking.
+     */
     private void onCreate() {
-        testing();
+        ctrl = ControladorDominio.getInstance();
+        tableModel = new DefaultTableModel(0, 3);
         setSelectorListener();
+        setCheckboxListener();
         table1.setTableHeader(null);
 
         insertDataOnTable(new ArrayList<>(ctrl.getRanking("Facil")), "Fácil");

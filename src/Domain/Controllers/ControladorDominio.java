@@ -182,14 +182,14 @@ public class ControladorDominio {
      * @param dificultad Nivel de dificultad en forma de String (Facil, Medio, Dificil)
      * @return Los rankings.
      */
-    public List<Info> getRankingNombreUsrDificultad(String nombreUsr, String dificultad){
+    public List<String> getRankingNombreUsrDificultad(String nombreUsr, String dificultad){
         switch (dificultad){
             case "Facil":
-                return ranking.getRankingFacilInfo(nombreUsr);
+                return ranking.getRankingFacil(nombreUsr);
             case "Medio":
-                return ranking.getRankingMedioInfo(nombreUsr);
+                return ranking.getRankingMedio(nombreUsr);
             case "Dificil":
-                return ranking.getRankingDificilInfo(nombreUsr);
+                return ranking.getRankingDificil(nombreUsr);
         }
         return null;
     }
@@ -289,5 +289,7 @@ public class ControladorDominio {
     public Integer getPista1() throws ExcepcionPistaUsada, ExcepcionNoHayColoresSinUsar{
         return partidaActual.getPista1();
     }
-
+    public String getUsuario(){
+        return usuarioCargado.getNombre();
+    }
 }
