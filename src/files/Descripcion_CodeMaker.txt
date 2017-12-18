@@ -1,0 +1,1 @@
+Crea un código secreto que la máquina tendrá que resolver en menos de 15 intentos.

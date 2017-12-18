@@ -186,6 +186,7 @@
                               <icon value="imgs/icons8-volver-64.png"/>
                               <opaque value="false"/>
                               <text value=""/>
+                              <toolTipText value="Volver"/>
                             </properties>
                           </component>
                           <hspacer id="92d34">
@@ -264,6 +265,7 @@
                               <foreground color="-1"/>
                               <margin top="10" left="14" bottom="10" right="14"/>
                               <text value="CODEBREAKER"/>
+                              <toolTipText value="La máquina creará un código secreto que tendrás que adivinar en menos de 15 intentos. "/>
                             </properties>
                           </component>
                           <component id="5be7c" class="javax.swing.JButton" binding="CODEMAKERButton" default-binding="true">
@@ -278,6 +280,7 @@
                               <foreground color="-1"/>
                               <margin top="10" left="14" bottom="10" right="14"/>
                               <text value="CODEMAKER"/>
+                              <toolTipText value="Crea un código secreto que la máquina tendrá que resolver en menos de 15 intentos."/>
                             </properties>
                           </component>
                         </children>
@@ -304,6 +307,7 @@
                               <icon value="imgs/icons8-volver-64.png"/>
                               <opaque value="false"/>
                               <text value=""/>
+                              <toolTipText value="Volver"/>
                             </properties>
                           </component>
                           <hspacer id="dc0a0">
@@ -347,6 +351,7 @@
                               <foreground color="-1"/>
                               <margin top="10" left="14" bottom="10" right="14"/>
                               <text value="CARGAR PARTIDA"/>
+                              <toolTipText value="Carga una partida guardada"/>
                             </properties>
                           </component>
                           <component id="e14cc" class="javax.swing.JButton" binding="CREARPARTIDAButton" default-binding="true">
@@ -361,6 +366,7 @@
                               <foreground color="-1"/>
                               <margin top="10" left="14" bottom="10" right="14"/>
                               <text value="CREAR PARTIDA"/>
+                              <toolTipText value="Crea una nueva partida"/>
                             </properties>
                           </component>
                         </children>
@@ -385,6 +391,7 @@
                               <focusPainted value="false"/>
                               <icon value="imgs/icons8-volver-64.png"/>
                               <text value=""/>
+                              <toolTipText value="Volver"/>
                             </properties>
                           </component>
                           <hspacer id="6f0b9">
@@ -504,6 +511,7 @@
                               <focusPainted value="false"/>
                               <icon value="imgs/icons8-volver-64.png"/>
                               <text value=""/>
+                              <toolTipText value="Volver"/>
                             </properties>
                           </component>
                           <hspacer id="1bf8c">

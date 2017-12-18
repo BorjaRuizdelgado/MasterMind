@@ -1,0 +1,1 @@
+La máquina creará un código secreto que tendrás que adivinar en menos de 15 intentos. 
