@@ -30,7 +30,7 @@ public class Partida implements Serializable {
     private boolean pista2 = false;
     private boolean pista3 = false;
 
-    private final Tablero tablero;
+    private Tablero tablero;
     private Inteligencia ia;
 
 
@@ -341,6 +341,27 @@ public class Partida implements Serializable {
         tablero.generaRespuesta();
         if (tablero.getUltimoIntento().getRespuestas().esGanadora())
             ganado = true;
+    }
+
+    /**
+     * Reinicia la partida. Como si fuera una partida nueva, pero con la misma dificultad y rol.
+     * Se diferencia si es rol CodeMaker o CodeBreaker, ya que el nuevo código secreto deberá ser nuevo.
+     */
+    public void reset(Codigo nuevoCodigoSecretoCM) {
+        if (isRolMaker()) {
+            tablero = new Tablero(numColumnas);
+            tablero.setCodigoSecreto(nuevoCodigoSecretoCM);
+            if (dificultad.equals("Dificil"))
+                ia = new MasterCerebro(numColores, numColumnas);
+            else
+                ia = new Cerebro(numColores, numColumnas);
+        }
+        else {
+            tablero = new Tablero(numColumnas);
+            generaCodigoSecretoAleatorio();
+            tiempo = 0;
+            pista1 = pista2 = pista3 = false;
+        }
     }
 
     /* ESCRITURAS */
