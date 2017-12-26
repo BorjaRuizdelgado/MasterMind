@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * Clase Partida.
  * Contiene un tablero.
- * Puede contener una inteligencia si y solo si el jugador juega como CodeMaker.
+ * Puede contener una inteligencia si y solo si el rol del jugador es CodeMaker.
  * Contiene atributos para puntuar al usuario cuando gane la partida.
  * @author ISA
  */
@@ -36,11 +36,10 @@ public class Partida implements Serializable {
 
     /**
      * Creadora Partida.
-     * Inicia el tiempo a 0. Y el id es la fecha+hora.
+     * Inicia el tiempo a 0. Y el id es la Fecha+Hora+Rol+Dificultad.
      * Si el jugador juega como CodeMaker, se asigna automáticamente la inteligencia según la dificultad.
      * Si el jugador juega como CodeBreaker, se genera automáticamente el código secreto del tablero.
-     * @param rolMaker indica si el jugador juega como
-     *                 codemaker(true) o codebreaker(false)
+     * @param rolMaker indica si el jugador juega como codemaker(true) o codebreaker(false)
      * @param dificultad nivel de dificultad
      */
     public Partida(boolean rolMaker, String dificultad) {
@@ -167,7 +166,7 @@ public class Partida implements Serializable {
      * Función auxiliar de las pistas 1 y 2 para obtener los colores que no se encuentran en el código secreto.
      * @return Devuelve una lista de colores que no estan en el codigo secreto.
      */
-    private ArrayList<Integer> getColoresNoSecretos(){
+    private ArrayList<Integer> getColoresNoSecretos() {
         ArrayList<Integer> aux = new ArrayList<>();
         for(int i = 1; i <= numColores;++i){
             aux.add(i);

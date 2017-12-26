@@ -1,0 +1,5 @@
+Mastermindo es un juego interactivo creado por tres estudiantes de PROP de la FIB con el fin de sacar un excelente en la asignatura. 
+Equipo:
+Isabel Codina García
+Borja Fernández Ruizdelgado 
+Omar Aníbal García Ríos

@@ -195,9 +195,6 @@ public class PartidaTestJUnit {
 
     @Test
     public void testGeneraPuntuacion() throws Exception {
-        // todo probar que si hago una pista es 0, y de otra manera es >0. O si la gano. etc.
-
-
         Codigo codigoSecreto = new Codigo(testFacil.getNumColumnas());
         Random rn = new Random();
         for (int i = 0; i < testFacil.getNumColumnas(); i++)
