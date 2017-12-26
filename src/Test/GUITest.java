@@ -16,9 +16,6 @@ public class GUITest {
             case "Principal":
                 frame.setContentPane(new Principal().getPanel());
                 break;
-            case "PruebaIsa":
-                frame.setContentPane(new PruebaIsa().getPanel());
-                break;
             case "Juego":
                 frame.setContentPane(new Juego().getPanel());
                 break;

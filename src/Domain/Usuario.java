@@ -1,9 +1,5 @@
 package Domain;
 
-import Domain.Excepciones.ExcepcionNoHayPartidaActual;
-import Domain.Excepciones.ExcepcionNoHayPartidasGuardadas;
-import Domain.Excepciones.ExcepcionYaExistePartidaActual;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +7,15 @@ import java.util.List;
 /**
  * Clase Usuario
  * Tiene un nombre único en el sistema.
- * Tiene una partida actual y una lista de partidas guardadas. Así como un recuento de las finalizadas.
+ * Tiene una partida actual y una lista de los ids de las partidas guardadas.
+ * Contiene información para calcular estadísticas sobre sus partidas.
  * @author ISA
  */
 public class Usuario implements Serializable {
-//todo quitar excepcion crear partidaActual, getPartidaActual :)
     private String nombre;
     private int numPartidasFinalizadasCB;   //Partidas acabadas como rol CodeBreaker
-    private int numPartidasGanadasCB;       //Partidas ganadas como rol CodeBreaker
     private int numPartidasFinalizadasCM;   //Partidas acabadas como rol CodeMaker
+    private int numPartidasGanadasCB;       //Partidas ganadas  como rol CodeBreaker
     private List <String> partidasGuardadas;
     private Partida partidaActual;
 
@@ -35,6 +31,7 @@ public class Usuario implements Serializable {
         numPartidasFinalizadasCM = 0;
         partidasGuardadas = new ArrayList<>();
     }
+
 
     /* CONSULTORAS */
 
@@ -63,7 +60,7 @@ public class Usuario implements Serializable {
     }
 
     /**
-     * Devuelve el número de partidas finalizads como CodeMaker
+     * Devuelve el número de partidas finalizadas como CodeMaker
      * @return numPartidasFinalizadasCM
      */
     public int getNumPartidasFinalizadasCM() {
@@ -138,7 +135,7 @@ public class Usuario implements Serializable {
     }
 
     /**
-     * Carga la partida pasada por parámetro: la coloca como partida actual y la elimina de partidas guardadas.
+     * Carga la partida pasada por parámetro: la coloca como partida actual.
      * @param partida partida cargada.
      */
     public void cargaPartida(Partida partida)  {
@@ -147,7 +144,7 @@ public class Usuario implements Serializable {
     }
 
     /**
-     * Finaliza la partida actual y aumenta el número de partidas finalizadas según si es CodeMaker o CodeMaker y si la ha ganado.
+     * Finaliza la partida actual y aumenta el número de partidas finalizadas según si es CodeMaker o CodeBreaker y si la ha ganado.
      * @param ganada indica si la partida ha sido ganada.
      */
     public void finalizarPartidaActual(Boolean ganada)  {
@@ -168,6 +165,10 @@ public class Usuario implements Serializable {
         partidaActual = null;
     }
 
+    /**
+     * Devuelve la lista de identificadores de las partidas que tiene guardadas.
+     * @return
+     */
     public List<String> getPartidasGuardadas(){
         return partidasGuardadas;
     }

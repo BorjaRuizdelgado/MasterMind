@@ -327,6 +327,7 @@ public class Principal {
                             ctrl.cargarUsuario(entraTuNombreDeTextField.getText());
                         }
                         catch (ExcepcionUsuarioInexistente e){
+                            exception = true;
                             JOptionPane.showMessageDialog(new Frame(), "¡El usuario no existe!");
                         }
                     }
