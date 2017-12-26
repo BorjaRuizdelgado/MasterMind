@@ -25,7 +25,7 @@ public class GUITest {
         }
 
         frame.setPreferredSize(new Dimension(850, 900));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //frame.setUndecorated(true);
         frame.pack();
         frame.setLocationRelativeTo(null);
@@ -34,7 +34,7 @@ public class GUITest {
 
     public static void main(String args[]){
 
-        createForm("Principal");
-        //createForm("Juego");
+        //createForm("Principal");
+        createForm("Juego");
     }
 }
