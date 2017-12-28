@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="panel2" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="15" left="15" bottom="15" right="15"/>
     <constraints>
-      <xy x="20" y="20" width="691" height="643"/>
+      <xy x="20" y="20" width="693" height="834"/>
     </constraints>
     <properties>
       <autoscrolls value="true"/>
@@ -12,7 +12,7 @@
     <border type="none"/>
     <children>
       <grid id="6e0c0" binding="bg" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="25" left="20" bottom="20" right="20"/>
+        <margin top="25" left="25" bottom="25" right="25"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -48,9 +48,10 @@
                 <children>
                   <component id="d767d" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="Umpush" size="24"/>
                       <foreground color="-16777216"/>
                       <text value="Descubre la combinación"/>
                     </properties>
@@ -68,7 +69,7 @@
                 <border type="none"/>
                 <children/>
               </grid>
-              <grid id="82762" binding="colors" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="82762" binding="solution" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -107,69 +108,300 @@
               <color color="-16777216"/>
             </border>
             <children>
-              <grid id="5dcf0" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
+              <grid id="5dcf0" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="50" left="50" bottom="0" right="50"/>
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
+                <properties>
+                  <opaque value="false"/>
+                </properties>
                 <border type="none"/>
                 <children>
-                  <component id="e2040" class="javax.swing.JButton" binding="verClasificaciónButton" default-binding="true">
+                  <grid id="e7ced" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <opaque value="false"/>
-                      <text value="Ver clasificación"/>
                     </properties>
-                  </component>
-                  <component id="4460d" class="javax.swing.JButton" binding="abandonarPartidaButton" default-binding="true">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <opaque value="false"/>
-                      <text value="Abandonar partida"/>
-                    </properties>
-                  </component>
-                  <component id="f0731" class="javax.swing.JButton" binding="reiniciarPartidaButton" default-binding="true">
-                    <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <opaque value="false"/>
-                      <text value="Reiniciar partida"/>
-                    </properties>
-                  </component>
-                  <component id="fc3f" class="javax.swing.JButton" binding="ayudaButton" default-binding="true">
-                    <constraints>
-                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <opaque value="false"/>
-                      <text value="Ayuda"/>
-                    </properties>
-                  </component>
-                  <component id="16d4e" class="javax.swing.JButton" binding="guardarYSalirButton" default-binding="true">
-                    <constraints>
-                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <opaque value="false"/>
-                      <text value="Guardar y salir"/>
-                    </properties>
-                  </component>
+                    <border type="none"/>
+                    <children>
+                      <component id="e2040" class="javax.swing.JButton" binding="verClasificaciónButton" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-4180169"/>
+                          <borderPainted value="false"/>
+                          <focusPainted value="false"/>
+                          <font name="Umpush" size="16"/>
+                          <foreground color="-1"/>
+                          <opaque value="true"/>
+                          <text value="Ver clasificación"/>
+                        </properties>
+                      </component>
+                      <component id="4460d" class="javax.swing.JButton" binding="abandonarPartidaButton" default-binding="true">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-4180169"/>
+                          <borderPainted value="false"/>
+                          <focusPainted value="false"/>
+                          <font name="Umpush" size="16"/>
+                          <foreground color="-1"/>
+                          <opaque value="true"/>
+                          <text value="Abandonar partida"/>
+                        </properties>
+                      </component>
+                      <component id="f0731" class="javax.swing.JButton" binding="reiniciarPartidaButton" default-binding="true">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-4180169"/>
+                          <borderPainted value="false"/>
+                          <contentAreaFilled value="true"/>
+                          <focusPainted value="false"/>
+                          <font name="Umpush" size="16"/>
+                          <foreground color="-1"/>
+                          <margin top="2" left="14" bottom="2" right="14"/>
+                          <opaque value="true"/>
+                          <text value="Reiniciar partida"/>
+                        </properties>
+                      </component>
+                      <component id="fc3f" class="javax.swing.JButton" binding="ayudaButton" default-binding="true">
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-4180169"/>
+                          <borderPainted value="false"/>
+                          <focusPainted value="false"/>
+                          <font name="Umpush" size="16"/>
+                          <foreground color="-1"/>
+                          <opaque value="true"/>
+                          <text value="Ayuda"/>
+                        </properties>
+                      </component>
+                      <component id="16d4e" class="javax.swing.JButton" binding="guardarYSalirButton" default-binding="true">
+                        <constraints>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-4180169"/>
+                          <borderPainted value="false"/>
+                          <focusPainted value="false"/>
+                          <font name="Umpush" size="16"/>
+                          <foreground color="-1"/>
+                          <hideActionText value="false"/>
+                          <opaque value="true"/>
+                          <text value="Guardar y salir"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
                 </children>
               </grid>
-              <grid id="cc7a0" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
+              <grid id="cc7a0" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="50" bottom="50" right="50"/>
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
+                <properties>
+                  <background color="-4754063"/>
+                  <opaque value="false"/>
+                </properties>
                 <border type="none"/>
-                <children/>
+                <children>
+                  <grid id="ddab8" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <opaque value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="c6e71" class="javax.swing.JButton" binding="button1" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-65536"/>
+                          <borderPainted value="true"/>
+                          <focusPainted value="false"/>
+                          <text value=" "/>
+                        </properties>
+                      </component>
+                      <component id="f4176" class="javax.swing.JButton" binding="button2" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-16728292"/>
+                          <borderPainted value="true"/>
+                          <focusPainted value="false"/>
+                          <text value=" "/>
+                        </properties>
+                      </component>
+                      <hspacer id="be276">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </hspacer>
+                      <hspacer id="61374">
+                        <constraints>
+                          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </hspacer>
+                    </children>
+                  </grid>
+                  <grid id="eda05" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <opaque value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="11768" class="javax.swing.JButton" binding="button3" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-15259168"/>
+                          <borderPainted value="true"/>
+                          <focusPainted value="false"/>
+                          <text value=" "/>
+                        </properties>
+                      </component>
+                      <component id="2a3b3" class="javax.swing.JButton" binding="button4" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-2040281"/>
+                          <borderPainted value="true"/>
+                          <focusPainted value="false"/>
+                          <text value=" "/>
+                        </properties>
+                      </component>
+                      <hspacer id="44901">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </hspacer>
+                      <hspacer id="77ea6">
+                        <constraints>
+                          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </hspacer>
+                    </children>
+                  </grid>
+                  <grid id="fd56" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <opaque value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="97c72" class="javax.swing.JButton" binding="button5" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-1272016"/>
+                          <borderPainted value="true"/>
+                          <focusPainted value="false"/>
+                          <text value=" "/>
+                        </properties>
+                      </component>
+                      <component id="a5a2d" class="javax.swing.JButton" binding="button6" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-6738718"/>
+                          <borderPainted value="true"/>
+                          <focusPainted value="false"/>
+                          <text value=" "/>
+                        </properties>
+                      </component>
+                      <hspacer id="60c7a">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </hspacer>
+                      <hspacer id="82a9d">
+                        <constraints>
+                          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </hspacer>
+                    </children>
+                  </grid>
+                  <grid id="ebbdf" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <opaque value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="df61e" class="javax.swing.JButton" binding="button7" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-1"/>
+                          <borderPainted value="true"/>
+                          <focusPainted value="false"/>
+                          <text value=" "/>
+                        </properties>
+                      </component>
+                      <component id="652dc" class="javax.swing.JButton" binding="button8" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-16777216"/>
+                          <borderPainted value="true"/>
+                          <focusPainted value="false"/>
+                          <text value=" "/>
+                        </properties>
+                      </component>
+                      <hspacer id="48f2c">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </hspacer>
+                      <hspacer id="27c8c">
+                        <constraints>
+                          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </hspacer>
+                    </children>
+                  </grid>
+                  <component id="dca0b" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Umpush" size="24"/>
+                      <text value="Colores"/>
+                    </properties>
+                  </component>
+                </children>
               </grid>
             </children>
           </grid>

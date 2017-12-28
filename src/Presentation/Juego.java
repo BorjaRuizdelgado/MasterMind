@@ -1,8 +1,10 @@
 package Presentation;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Juego {
     private JPanel panel2;
@@ -12,13 +14,21 @@ public class Juego {
     private JPanel rows;
     private JPanel header;
     private JPanel tablew;
-    private JPanel colors;
+    private JPanel solution;
     private JPanel responses;
     private JButton verClasificaciónButton;
     private JButton abandonarPartidaButton;
     private JButton reiniciarPartidaButton;
     private JButton ayudaButton;
     private JButton guardarYSalirButton;
+    private JButton button1;
+    private JButton button2;
+    private JButton button3;
+    private JButton button4;
+    private JButton button5;
+    private JButton button6;
+    private JButton button7;
+    private JButton button8;
     private DefaultTableModel tableModel;
 
     public JPanel getPanel() {
@@ -39,16 +49,16 @@ public class Juego {
     }
 
     private void createColorsRow(){
-        colors.setLayout(new GridLayout(1, 4));
+        solution.setLayout(new GridLayout(1, 4));
         for (int i = 0; i < 4; i++) {
             JButton jButton = new JButton();
             setDesign(jButton);
-            colors.add(jButton);
+            solution.add(jButton);
         }
 
         /* With GridBagLayout
         GridBagLayout gridBagLayout = new GridBagLayout();
-        colors.setLayout(gridBagLayout);
+        solution.setLayout(gridBagLayout);
         GridBagConstraints constraints = new GridBagConstraints();
 
         constraints.gridy = 0;
@@ -57,19 +67,19 @@ public class Juego {
         constraints.weighty = 0.5;
         constraints.fill = GridBagConstraints.BOTH;
         JButton jButton1 = new JButton();
-        colors.add(jButton1, constraints);
+        solution.add(jButton1, constraints);
 
         constraints.gridx = 1;
         JButton jButton2 = new JButton();
-        colors.add(jButton2, constraints);
+        solution.add(jButton2, constraints);
 
         constraints.gridx =2;
         JButton jButton3 = new JButton();
-        colors.add(jButton3, constraints);
+        solution.add(jButton3, constraints);
 
         constraints.gridx = 3;
         JButton jButton4 = new JButton();
-        colors.add(jButton4, constraints);
+        solution.add(jButton4, constraints);
         */
     }
 
@@ -131,6 +141,23 @@ public class Juego {
         createMainTable();
         createColorsRow();
         createAnswersSquare();
+        setBordersOnColors();
+    }
+
+    private void setBordersOnColors(){
+        ArrayList<JButton> list = new ArrayList<>();
+        list.add(button1);
+        list.add(button2);
+        list.add(button3);
+        list.add(button4);
+        list.add(button5);
+        list.add(button6);
+        list.add(button7);
+        list.add(button8);
+
+        for (JButton button: list) {
+            //button.setBorder(new LineBorder(Color.BLACK, 0));
+        }
     }
 
     public Juego() {
