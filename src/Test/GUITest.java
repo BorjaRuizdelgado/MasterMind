@@ -31,7 +31,7 @@ public class GUITest {
 
     public static void main(String args[]){
 
-        //createForm("Principal");
-        createForm("Juego");
+        createForm("Principal");
+        //createForm("Juego");
     }
 }

@@ -392,7 +392,7 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-
+                entraTuNombreDeTextField.setText(null);
                 //CardLayout cardLayout = (CardLayout) main.getLayout();
                 //cardLayout.show(main, "contenidoPrincipal");
                 main.removeAll();
@@ -400,6 +400,7 @@ public class Principal {
                 main.revalidate();
             }
         });
+
         r2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
