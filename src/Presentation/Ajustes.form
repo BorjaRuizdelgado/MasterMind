@@ -63,8 +63,12 @@
                 </constraints>
                 <properties>
                   <maximum value="50"/>
+                  <paintLabels value="false"/>
+                  <paintTicks value="false"/>
+                  <paintTrack value="true"/>
                   <snapToTicks value="false"/>
-                  <value value="50"/>
+                  <value value="25"/>
+                  <valueIsAdjusting value="false"/>
                 </properties>
               </component>
               <component id="9d7f7" class="javax.swing.JLabel">

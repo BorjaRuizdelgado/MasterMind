@@ -47,6 +47,7 @@ public class Principal {
     public Principal() {
         mp3Player = Mp3Player.getInstance();
         mp3Player.play(System.getProperty("user.dir") + "\\src\\MP3Player\\Tetris.wav");
+        mp3Player.changeVolume(-25);
 
         ctrl = ControladorDominio.getInstance();
         /* Efectos */
