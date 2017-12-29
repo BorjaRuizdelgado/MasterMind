@@ -3,6 +3,7 @@ package Presentation;
 import Domain.Controllers.ControladorDominio;
 import Domain.Excepciones.ExcepcionUsuarioExiste;
 import Domain.Excepciones.ExcepcionUsuarioInexistente;
+import MP3Player.Mp3Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,11 +39,14 @@ public class Principal {
     private JButton r2;
     private JButton r3;
     private JButton r4;
+    private Mp3Player mp3Player;
 
     private ControladorDominio ctrl;
     private Boolean crearUsuario;
 
     public Principal() {
+        mp3Player = new Mp3Player();
+        mp3Player.play(System.getProperty("user.dir") + "\\src\\MP3Player\\Tetris.wav");
         ctrl = ControladorDominio.getInstance();
         /* Efectos */
         CREARUSUARIOButton.addMouseListener(new MouseAdapter() {

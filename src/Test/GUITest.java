@@ -3,7 +3,9 @@ package Test;
 import Presentation.Juego;
 import Presentation.Principal;
 import Presentation.PruebaIsa;
+import javafx.scene.media.MediaPlayer;
 
+import javax.print.attribute.standard.Media;
 import javax.swing.*;
 import java.awt.*;
 
@@ -31,7 +33,8 @@ public class GUITest {
 
     public static void main(String args[]){
 
-        //createForm("Principal");
-        createForm("Juego");
+        createForm("Principal");
+        //createForm("Juego");
+
     }
 }
