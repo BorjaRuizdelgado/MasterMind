@@ -45,8 +45,9 @@ public class Principal {
     private Boolean crearUsuario;
 
     public Principal() {
-        mp3Player = new Mp3Player();
+        mp3Player = Mp3Player.getInstance();
         mp3Player.play(System.getProperty("user.dir") + "\\src\\MP3Player\\Tetris.wav");
+
         ctrl = ControladorDominio.getInstance();
         /* Efectos */
         CREARUSUARIOButton.addMouseListener(new MouseAdapter() {

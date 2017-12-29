@@ -8,8 +8,16 @@ import java.io.InputStream;
 
 public class Mp3Player {
     private Clip audioClip;
+    private static Mp3Player uniqueInstance;
+    private static String pathAnterior;
+    public static Mp3Player getInstance() {
+        if(uniqueInstance == null)
+            uniqueInstance = new Mp3Player();
+        return uniqueInstance;
+    }
     public void play(String path) {
         try {
+            pathAnterior = path;
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File(path));
             AudioFormat format = audioStream.getFormat();
             DataLine.Info info = new DataLine.Info(Clip.class, format);
@@ -33,5 +41,17 @@ public class Mp3Player {
 
     public void close(){
         audioClip.close();
+    }
+
+    public void changeVolume(float gain){
+        FloatControl gainControl =
+                (FloatControl) audioClip.getControl(FloatControl.Type.MASTER_GAIN);
+        gainControl.setValue(gain);
+    }
+
+    public void playAnterior(){
+        if(!pathAnterior.equals(null)){
+            play(pathAnterior);
+        }
     }
 }
