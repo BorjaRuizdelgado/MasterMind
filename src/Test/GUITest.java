@@ -1,11 +1,14 @@
 package Test;
 
+import Domain.Controllers.ControladorDominio;
+import Domain.Excepciones.ExcepcionUsuarioExiste;
 import Presentation.Juego;
 import Presentation.Principal;
 import Presentation.PruebaIsa;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Scanner;
 
 public class GUITest {
     private static JFrame frame;
@@ -29,9 +32,18 @@ public class GUITest {
         frame.setVisible(true);
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) throws ExcepcionUsuarioExiste {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Select option:");
+        int opt = in.nextInt();
 
-        //createForm("Principal");
-        createForm("Juego");
+        if (opt == 1)
+            createForm("Principal");
+        else if (opt == 2) {
+            ControladorDominio controlador = ControladorDominio.getInstance();
+            //controlador.crearUsuario("Omar");
+
+            createForm("Juego");
+        }
     }
 }

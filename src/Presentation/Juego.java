@@ -16,7 +16,7 @@ public class Juego {
     private JPanel tablew;
     private JPanel solution;
     private JPanel responses;
-    private JButton verClasificaciónButton;
+    private JButton verClasificacionButton;
     private JButton abandonarPartidaButton;
     private JButton reiniciarPartidaButton;
     private JButton ayudaButton;
@@ -29,6 +29,7 @@ public class Juego {
     private JButton button6;
     private JButton button7;
     private JButton button8;
+    private JButton ACEPTARButton;
 
 
     private ArrayList<JButton> colorsButtons;
@@ -83,7 +84,7 @@ public class Juego {
         tableButtons.add(new ArrayList<>());
         int column = 0;
 
-        tablew.setLayout(new GridLayout(12, 4));
+        tablew.setLayout(new GridLayout(4, 12));
         for (int i = 0; i < 48; i++) {
             JButton jButton = new JButton();
             setDesign(jButton);
@@ -279,8 +280,36 @@ public class Juego {
         }
     }
 
+    private void applyButtonsEffects(){
+        ArrayList<JButton> aux = new ArrayList<>();
+        aux.add(verClasificacionButton);
+        aux.add(abandonarPartidaButton);
+        aux.add(reiniciarPartidaButton);
+        aux.add(ayudaButton);
+        aux.add(guardarYSalirButton);
+
+        for (JButton button: aux) {
+            button.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent mouseEvent) {
+                    super.mouseEntered(mouseEvent);
+                    button.setBackground(Color.BLACK);
+                }
+            });
+
+            button.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseExited(MouseEvent mouseEvent) {
+                    super.mouseExited(mouseEvent);
+                    button.setBackground(new Color(192, 55, 55));
+                }
+            });
+        }
+    }
+
     public Juego() {
         makeTable();
+        applyButtonsEffects();
     }
 
 }
