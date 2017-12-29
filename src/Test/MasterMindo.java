@@ -51,7 +51,7 @@ public class MasterMindo {
             pary = usr.getPartidaActual();
             if (rol) juegaCodeMaker();
             else juegaCodeBreaker();
-        } catch (ExcepcionPartidaAbandonada | ExcepcionNoHayPartidaActual e) {
+        } catch (ExcepcionPartidaAbandonada e) {
             println(e.getMessage());
         }
     }
@@ -59,9 +59,8 @@ public class MasterMindo {
     /**
      * Permite al usuario jugar como CodeBreaker.
      * @throws ExcepcionPartidaAbandonada cuando la partida se abandone.
-     * @throws ExcepcionNoHayPartidaActual cuando se intente acceder a la partida actual y no exista.
      */
-    private static void juegaCodeBreaker() throws ExcepcionPartidaAbandonada, ExcepcionNoHayPartidaActual {
+    private static void juegaCodeBreaker() throws ExcepcionPartidaAbandonada {
         println("Partida empezada.");
         println("Intenta adivinar el código secreto.");
         int n;
@@ -119,7 +118,7 @@ public class MasterMindo {
     /**
      * Permite al usuario jugar como CodeMaker.
      */
-    private static void juegaCodeMaker() throws ExcepcionPartidaAbandonada, ExcepcionNoHayPartidaActual {
+    private static void juegaCodeMaker() throws ExcepcionPartidaAbandonada {
         println("Partida empezada.");
         setCodigoSecreto();
         int n;
