@@ -12,7 +12,7 @@ public class Ajustes {
     private JPanel panel;
     private JPanel panel2;
     private JSlider slider1;
-    private JCheckBox silenciarMúsicaCheckBox;
+    private JCheckBox silenciarMusicaCheckBox;
 
     private Mp3Player mp3Player;
     public Ajustes(){
@@ -29,10 +29,10 @@ public class Ajustes {
             }
         });
 
-        silenciarMúsicaCheckBox.addItemListener(new ItemListener() {
+        silenciarMusicaCheckBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                if(silenciarMúsicaCheckBox.isSelected()){
+                if(silenciarMusicaCheckBox.isSelected()){
                     mp3Player.close();
                 }
                 else{
