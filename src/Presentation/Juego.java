@@ -1,9 +1,9 @@
 package Presentation;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class Juego {
@@ -29,31 +29,86 @@ public class Juego {
     private JButton button6;
     private JButton button7;
     private JButton button8;
-    private DefaultTableModel tableModel;
+
+
+    private ArrayList<JButton> colorsButtons;
+    private ArrayList<JButton> solutionButtons;
+    private ArrayList<ArrayList<JButton>> tableButtons;
+    private ArrayList<ArrayList<JButton>> answerButtons;
+
+    private int color;
+
+    /*
+        VACIO = 0;
+        ROJO = 1;
+        VERDE = 2;
+        AZUL = 3;
+        AMARILLO = 4;
+        NARANJA = 5;
+        MORADO = 6;
+        BLANCO = 7;
+        NEGRO = 8;
+    */
 
     public JPanel getPanel() {
         return panel2;
     }
 
     private void setDesign(JButton jButton){
-        jButton.setBackground(Color.white);
+        jButton.setBackground(new Color(230, 230, 230));
+        jButton.setFocusPainted(false);
+    }
+
+    private void setColor(JButton button, int color){
+        if (color == 1)
+            button.setBackground(new Color(255, 0, 0));
+        else if(color == 2)
+            button.setBackground(new Color(0, 191, 28));
+        else if(color == 3)
+            button.setBackground(new Color(23, 41, 224));
+        else if(color == 4)
+            button.setBackground(new Color(224, 222, 39));
+        else if(color == 5)
+            button.setBackground(new Color(236, 151, 48));
+        else if(color == 6)
+            button.setBackground(new Color(153, 44, 226));
+        else if(color == 7)
+            button.setBackground(new Color(255, 255, 255));
+        else if(color == 8)
+            button.setBackground(new Color(0, 0, 0));
     }
 
     private void createMainTable(){
+        int row = 0;
+        tableButtons.add(new ArrayList<>());
+        int column = 0;
+
         tablew.setLayout(new GridLayout(12, 4));
         for (int i = 0; i < 48; i++) {
             JButton jButton = new JButton();
             setDesign(jButton);
             tablew.add(jButton);
+
+            if(column == 4){
+                row++;
+                tableButtons.add(new ArrayList<>());
+                column = 0;
+            }
+            else {
+                column++;
+            }
+            tableButtons.get(row).add(jButton);
         }
     }
 
-    private void createColorsRow(){
+    private void createSolutionRow(){
         solution.setLayout(new GridLayout(1, 4));
         for (int i = 0; i < 4; i++) {
             JButton jButton = new JButton();
             setDesign(jButton);
             solution.add(jButton);
+
+            solutionButtons.add(jButton);
         }
 
         /* With GridBagLayout
@@ -89,7 +144,6 @@ public class Juego {
             JPanel j = new JPanel();
             j.setOpaque(false);
             j.setLayout(new GridBagLayout());
-            //
             GridBagConstraints constraints = new GridBagConstraints();
 
             /*constraints.gridy = 0;
@@ -117,6 +171,7 @@ public class Juego {
             int x = 0;
             int y = 0;
             int size = 4;
+            answerButtons.add(new ArrayList<>()); // <-
             for (int k = 0; k < size; k++) {
                 constraints.gridx = x;
                 constraints.gridy = y;
@@ -130,33 +185,97 @@ public class Juego {
                     y++;
                 }
                 else x++;
-            }
 
+                answerButtons.get(answerButtons.size()-1).add(jButton3);
+            }
             //
             responses.add(j);
         }
     }
 
     private void makeTable(){
+        solutionButtons = new ArrayList<>();
+        tableButtons = new ArrayList<>();
+        answerButtons = new ArrayList<>();
+
         createMainTable();
-        createColorsRow();
+        createSolutionRow();
         createAnswersSquare();
-        setBordersOnColors();
+
+        setFunctionColors();
+        setFunctionSolution();
+        setFunctionTable();
+        setFunctionsAnswers();
     }
 
-    private void setBordersOnColors(){
-        ArrayList<JButton> list = new ArrayList<>();
-        list.add(button1);
-        list.add(button2);
-        list.add(button3);
-        list.add(button4);
-        list.add(button5);
-        list.add(button6);
-        list.add(button7);
-        list.add(button8);
+    private void setFunctionsAnswers(){
+        for (int i = 0; i < answerButtons.size(); i++) {
+            for (int j = 0; j < answerButtons.get(i).size(); j++) {
+                int finalI = i;
+                int finalJ = j;
+                answerButtons.get(i).get(j).addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent mouseEvent) {
+                        super.mouseClicked(mouseEvent);
 
-        for (JButton button: list) {
-            //button.setBorder(new LineBorder(Color.BLACK, 0));
+                        setColor(answerButtons.get(finalI).get(finalJ), color);
+                    }
+                });
+            }
+        }
+    }
+
+    private void setFunctionTable(){
+        for (int i = 0; i < tableButtons.size(); i++) {
+            for (int j = 0; j < tableButtons.get(i).size(); j++) {
+                int finalI = i;
+                int finalJ = j;
+                tableButtons.get(i).get(j).addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent mouseEvent) {
+                        super.mouseClicked(mouseEvent);
+
+                        setColor(tableButtons.get(finalI).get(finalJ), color);
+                    }
+                });
+            }
+        }
+    }
+
+    private void setFunctionSolution(){
+        for (int i = 0; i < solutionButtons.size(); i++) {
+            int finalI = i;
+            solutionButtons.get(i).addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent mouseEvent) {
+                    super.mouseClicked(mouseEvent);
+
+                    setColor(solutionButtons.get(finalI), color);
+                }
+            });
+        }
+    }
+
+    private void setFunctionColors(){
+        colorsButtons = new ArrayList<>();
+        colorsButtons.add(button1);
+        colorsButtons.add(button2);
+        colorsButtons.add(button3);
+        colorsButtons.add(button4);
+        colorsButtons.add(button5);
+        colorsButtons.add(button6);
+        colorsButtons.add(button7);
+        colorsButtons.add(button8);
+
+        for (int i = 0; i < colorsButtons.size(); i++) {
+            int finalI = i;
+            colorsButtons.get(i).addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent mouseEvent) {
+                    super.mouseClicked(mouseEvent);
+                    color = finalI + 1;
+                }
+            });
         }
     }
 
@@ -164,22 +283,4 @@ public class Juego {
         makeTable();
     }
 
-    /*
-    private void createAnswersSquare(){
-        responses.setLayout(new GridLayout(12, 1));
-        for (int i = 0; i < 12; i++) {
-            GridLayout gridLayout = new GridLayout(2, 2);
-            JPanel j = new JPanel();
-            j.setLayout(gridLayout);
-
-
-            for (int k = 0; k < 4; k++) {
-                JButton jButton = new JButton(String.valueOf(i+1));
-                j.add(jButton);
-            }
-
-            responses.add(j);
-        }
-    }
-     */
 }
