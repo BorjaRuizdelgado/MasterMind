@@ -34,7 +34,7 @@ public class GUITest {
 
     public static void main(String args[]) throws ExcepcionUsuarioExiste {
         Scanner in = new Scanner(System.in);
-        System.out.println("Select option:");
+        System.out.println("Select option: (1 -> principal), (2 -> juego)");
         int opt = in.nextInt();
 
         if (opt == 1)
