@@ -84,7 +84,7 @@ public class Juego {
         tableButtons.add(new ArrayList<>());
         int column = 0;
 
-        tablew.setLayout(new GridLayout(4, 12));
+        tablew.setLayout(new GridLayout(12, 4));
         for (int i = 0; i < 48; i++) {
             JButton jButton = new JButton();
             setDesign(jButton);
