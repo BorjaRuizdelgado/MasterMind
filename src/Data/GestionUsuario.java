@@ -4,8 +4,7 @@ import Domain.Excepciones.ExcepcionUsuarioInexistente;
 import Domain.Usuario;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class GestionUsuario {
     private static String path;
@@ -96,7 +95,7 @@ public class GestionUsuario {
 
     public Usuario cargar(String id) throws ExcepcionUsuarioInexistente {
         Usuario aux = finder.get(id);
-        if (aux == null) throw new ExcepcionUsuarioInexistente();
+        if (aux == null) throw new ExcepcionUsuarioInexistente("El nombre de usuario no existe.");
         return finder.get(id);
     }
 
@@ -111,5 +110,14 @@ public class GestionUsuario {
 
     public boolean existeAlguno(){
         return finder.size() != 0;
+    }
+
+    public List<String> getTodos() {
+        List<String> nombres = new ArrayList<>();
+        if (finder.size() == 0) return null;
+        for (Map.Entry<String, Usuario> entry : finder.entrySet()) {
+            nombres.add(entry.getKey());
+        }
+        return nombres;
     }
 }

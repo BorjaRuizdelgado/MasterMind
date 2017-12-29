@@ -1,14 +1,23 @@
 package Data;
 
+import Domain.Controllers.ControladorDominio;
 import Domain.Excepciones.ExcepcionUsuarioInexistente;
 import Domain.Partida;
 import Domain.Usuario;
+
+import java.util.List;
 
 public class ControladorPersistencia {
     private static ControladorPersistencia uniqueInstance;
     private GestionSistemaRanking gsr;
     private GestionUsuario gu;
     private GestionPartida gp;
+
+    private ControladorPersistencia() {
+        gsr = GestionSistemaRanking.getInstance();
+        gu = GestionUsuario.getInstance();
+        gp = GestionPartida.getInstance();
+    }
 
 
     public static ControladorPersistencia getInstance() {
@@ -79,6 +88,13 @@ public class ControladorPersistencia {
             gu = GestionUsuario.getInstance();
         }
         return gu.existeAlguno();
+    }
+
+    public List<String> getTodosUsuarios() {
+        if (gu == null) {
+            gu = GestionUsuario.getInstance();
+        }
+        return gu.getTodos();
     }
 
 

@@ -45,10 +45,11 @@ public class ControladorDominio {
      */
     public void crearUsuario(String nombre) throws ExcepcionUsuarioExiste {
         if(persistencia.existeUsuario(nombre)){
-            throw new ExcepcionUsuarioExiste();
+            throw new ExcepcionUsuarioExiste("Ya existe un usuario con este nombre.");
         }
         guardaUsuarioActual();
         usuarioCargado = new Usuario(nombre);
+        guardaUsuarioActual();
     }
 
     /**
@@ -277,6 +278,7 @@ public class ControladorDominio {
      */
     public ArrayList<Integer> getPista2() throws ExcepcionPistaUsada,ExcepcionNoHayColoresSinUsar{
         return partidaActual.getPista2();
+        //todo lo que se devuelve no debería ser una list? @isa
     }
 
     /**
@@ -289,7 +291,12 @@ public class ControladorDominio {
     public Integer getPista1() throws ExcepcionPistaUsada, ExcepcionNoHayColoresSinUsar{
         return partidaActual.getPista1();
     }
+
     public String getUsuario(){
         return usuarioCargado.getNombre();
+    }
+
+    public List<String> getTodosUsuarios() {
+        return persistencia.getTodosUsuarios();
     }
 }
