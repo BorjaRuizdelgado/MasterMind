@@ -2,7 +2,6 @@
 
 import static Util.Console.*;
 
-import Domain.Excepciones.ExcepcionNoHayPartidaActual;
 import Domain.Excepciones.ExcepcionNoHayPartidasGuardadas;
 import Domain.Excepciones.ExcepcionYaExistePartidaActual;
 import Domain.Usuario;
@@ -69,7 +68,7 @@ import java.util.Scanner;*/
                     try {
                         creaPartida(test);
                         println("Partida creada con ID: " + test.getIdPartidaActual());
-                    } catch (ExcepcionYaExistePartidaActual | ExcepcionNoHayPartidaActual e) {
+                    } catch (ExcepcionYaExistePartidaActual e) {
                         println(e.getMessage());
                     }
                     break;
@@ -98,20 +97,16 @@ import java.util.Scanner;*/
                     }
                     break;
                 case 7: // finalizar partida actual como perdida
-                    try {
-                        test.finalizarPartidaActual(false);
-                        println("Partida Finalizada.");
-                    } catch (ExcepcionNoHayPartidaActual e) {
-                        println(e.getMessage());
-                    }
+
+                    test.finalizarPartidaActual(false);
+                    println("Partida Finalizada.");
+
                     break;
                 case 8: // finalizar partida actual como ganada
-                    try {
-                        test.finalizarPartidaActual(true);
-                        println("Partida Finalizada");
-                    } catch (ExcepcionNoHayPartidaActual e) {
-                        println(e.getMessage());
-                    }
+
+                    test.finalizarPartidaActual(true);
+                    println("Partida Finalizada");
+
                     break;
                 case 9: // reiniciar estadísticas
                     test.reiniciaEstadisticas();
