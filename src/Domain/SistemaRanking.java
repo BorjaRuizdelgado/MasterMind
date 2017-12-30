@@ -39,6 +39,7 @@ public class SistemaRanking implements Serializable{
      * @param sistemaRanking instáncia que será la única en SistemaRanking
      */
     public static void setInstance(SistemaRanking sistemaRanking){
+        if(uniqueInstance == null) uniqueInstance = new SistemaRanking();
         uniqueInstance.rankingFacil = sistemaRanking.rankingFacil;
         uniqueInstance.rankingMedio = sistemaRanking.rankingMedio;
         uniqueInstance.rankingDificil = sistemaRanking.rankingDificil;
