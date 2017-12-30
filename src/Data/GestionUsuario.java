@@ -31,10 +31,7 @@ public class GestionUsuario {
      */
     private void createDirectory(){
         File folder = new File(System.getProperty("user.dir") + "\\Data\\Users");
-        Boolean out = folder.mkdirs();
-        if (out) System.out.println("Carpeta creada.");
-        else System.out.println("Carpeta no creada!");
-        //todo borrar souts
+        folder.mkdirs();
     }
 
     /**
@@ -43,10 +40,7 @@ public class GestionUsuario {
     private void createFile(){
         File file = new File(path);
         try {
-            Boolean out = file.createNewFile();
-            if (out) System.out.println("Fichero creado.");
-            else System.out.println("Fichero no creado!");
-            //todo borrar souts
+            file.createNewFile();
         }
         catch (IOException e) {
             System.out.println("Problema al crear el fichero del finder.");
