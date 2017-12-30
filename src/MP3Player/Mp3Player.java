@@ -44,9 +44,11 @@ public class Mp3Player {
     }
 
     public void changeVolume(float gain){
-        FloatControl gainControl =
-                (FloatControl) audioClip.getControl(FloatControl.Type.MASTER_GAIN);
-        gainControl.setValue(gain);
+        if(audioClip.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
+            FloatControl gainControl =
+                    (FloatControl) audioClip.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(gain);
+        }
     }
 
     public void playAnterior(){
