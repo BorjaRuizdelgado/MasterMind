@@ -206,7 +206,7 @@ public class ControladorDominio {
     /**
      * Metodo que guarda el usuario actual y el ranking en disco cuando se invoca al cerrar.
      */
-    private void onClose(){
+    public void onClose(){
        guardaUsuarioActual();
        guardaRanking();
     }
@@ -278,7 +278,6 @@ public class ControladorDominio {
      */
     public ArrayList<Integer> getPista2() throws ExcepcionPistaUsada,ExcepcionNoHayColoresSinUsar{
         return partidaActual.getPista2();
-        //todo lo que se devuelve no debería ser una list? @isa
     }
 
     /**
@@ -298,5 +297,9 @@ public class ControladorDominio {
 
     public List<String> getTodosUsuarios() {
         return persistencia.getTodosUsuarios();
+    }
+
+    public void creaPuntuacion(String usuario, int puntuacion, String fecha, String dificultad) {
+        ranking.addNewPuntuation(usuario, puntuacion, fecha, dificultad);
     }
 }

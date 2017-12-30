@@ -4,6 +4,8 @@ import Domain.Controllers.ControladorDominio;
 import Domain.Excepciones.ExcepcionUsuarioExiste;
 import Domain.Excepciones.ExcepcionUsuarioInexistente;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 import static Util.Console.*;
@@ -19,7 +21,8 @@ public class CreadorJuegosDePrueba {
 
     public static void main(String[] args) {
         println("Bienvenid@ al creador de juegos de prueba de MasterMindo.\n" +
-                "Aquí podrás crear y borrar Usuarios, Partidas guardadas y Clasificaciones.\n");
+                "Aquí podrás crear y borrar Usuarios, Partidas guardadas y Clasificaciones.\n" +
+                "Para que no haya ningún error, por favor cierre el creador correctamente.\n");
         controladorDominio = ControladorDominio.getInstance();
         menu();
     }
@@ -44,6 +47,7 @@ public class CreadorJuegosDePrueba {
                     menuBorrar();
                     break;
                 case 4:
+                    controladorDominio.onClose();
                     println("Creación finalizada.");
                     break;
                 default:
@@ -146,30 +150,14 @@ public class CreadorJuegosDePrueba {
 
     private static void crearPartidaUsuario() {
         if (verUsuarios()) {
-            println("Escribe el nombre de usuario al que asignar la partida guardada.");
-            Boolean done = false;
-            while (!done) {
-                String username = scan.next();
-                try {
-                    controladorDominio.cargarUsuario(username);
-                    done = true;
-                    println("Usuario " + username + " cargado.");
-                } catch (ExcepcionUsuarioInexistente e) {
-                    println(e.getMessage());
-                }
-            }
+            escogerUsuario();
             int rol = -1;
             while (rol != 0 && rol != 1) {
                 if (rol != -1) println("Rol incorrecto.");
                 println("Escoge rol: [0] CodeBreaker, [1] CodeMaker.");
                 rol = scan.nextInt();
             }
-            String dif = "Dif";
-            while (!dif.equals("Facil") && !dif.equals("Medio") && !dif.equals("Dificil")) {
-                if (!dif.equals("Dif")) println("Dificultad incorrecta.");
-                println("Escige dificultad: [Facil], [Medio] o [Dificil].");
-                dif = scan.next();
-            }
+            String dif = escogerDificultad();
             if(rol == 0) controladorDominio.crearPartidaUsuarioCargadoRolBreaker(dif);
             else controladorDominio.crearPartidaUsuarioCargadoRolMaker(dif,null);
             println("Partida creada.");
@@ -177,6 +165,21 @@ public class CreadorJuegosDePrueba {
     }
 
     private static void crearNuevoRecord() {
+        if (verUsuarios()) {
+            escogerUsuario();
+            println("Escribe la puntuación");
+            int points = -1;
+            while (points < 0 || points > 300001) {
+                if (points != -1) println("Puntuación incorrecta.");
+                println("Escribe la puntuación [rango: 0 - 300000].");
+                points = scan.nextInt();
+            }
+            String dif = escogerDificultad();
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            LocalDate localDate = LocalDate.now();
+            String fecha = dtf.format(localDate);
+            controladorDominio.creaPuntuacion(controladorDominio.getUsuario(), points, fecha, dif);
+        }
 
     }
 
@@ -213,4 +216,33 @@ public class CreadorJuegosDePrueba {
     private static void borrarRecord() {
 
     }
+
+
+
+
+    private static void escogerUsuario() {
+        println("Escribe el nombre de usuario al que asignar la partida guardada.");
+        Boolean done = false;
+        while (!done) {
+            String username = scan.next();
+            try {
+                controladorDominio.cargarUsuario(username);
+                done = true;
+                println("Usuario " + username + " cargado.");
+            } catch (ExcepcionUsuarioInexistente e) {
+                println(e.getMessage());
+            }
+        }
+    }
+
+    private static String escogerDificultad() {
+        String dif = "Dif";
+        while (!dif.equals("Facil") && !dif.equals("Medio") && !dif.equals("Dificil")) {
+            if (!dif.equals("Dif")) println("Dificultad incorrecta.");
+            println("Escige dificultad: [Facil], [Medio] o [Dificil].");
+            dif = scan.next();
+        }
+        return dif;
+    }
+
 }

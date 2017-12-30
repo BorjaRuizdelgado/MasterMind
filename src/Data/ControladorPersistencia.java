@@ -1,6 +1,5 @@
 package Data;
 
-import Domain.Controllers.ControladorDominio;
 import Domain.Excepciones.ExcepcionUsuarioInexistente;
 import Domain.Partida;
 import Domain.Usuario;
@@ -34,7 +33,10 @@ public class ControladorPersistencia {
     }
 
     public void guardarSistemaRanking() {
-            //todo falta guardar sistemaRanking
+        if (gsr == null) {
+            gsr = GestionSistemaRanking.getInstance();
+        }
+        gsr.cargar();
     }
 
     /* PARTIDA */
