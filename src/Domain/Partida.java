@@ -290,9 +290,7 @@ public class Partida implements Serializable {
      */
     private void generaCodigoSecretoAleatorio(){
         Codigo codigoSecreto = new Codigo(numColumnas);
-        Random rn = new Random();
-        for(int i = 0; i < numColumnas; i++)
-            codigoSecreto.codigo.add(rn.nextInt(numColores) + 1);
+        codigoSecreto.random(numColores);
         setCodigoSecreto(codigoSecreto);
     }
 

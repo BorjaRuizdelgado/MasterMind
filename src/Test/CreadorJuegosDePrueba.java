@@ -161,8 +161,17 @@ public class CreadorJuegosDePrueba {
             }
             String dif = escogerDificultad();
             Codigo codigoSecreto;
-            if (dif.equals("Dificil")) codigoSecreto = new Codigo(6);
-            else codigoSecreto = new Codigo(4);
+            int numColores;
+            if (dif.equals("Dificil")) {
+                codigoSecreto = new Codigo(6);
+                numColores = 6;
+            }
+            else {
+                codigoSecreto = new Codigo(4);
+                if (dif.equals("Medio")) numColores = 6;
+                else numColores = 4;
+            }
+            codigoSecreto.random(numColores);
             if(rol == 0) controladorDominio.crearPartidaUsuarioCargadoRolBreaker(dif);
             else controladorDominio.crearPartidaUsuarioCargadoRolMaker(dif,(ArrayList)codigoSecreto.codigo);
             println("Partida creada.");

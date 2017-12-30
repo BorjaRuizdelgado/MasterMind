@@ -3,6 +3,7 @@ package Domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -75,4 +76,12 @@ public class Codigo implements Serializable{
     public boolean equals(Codigo obj) {
         return codigo.equals(obj.codigo);
     }
+
+    public void random(int numColores) {
+        Random rn = new Random();
+        for(int i = 0; i < size; i++)
+            codigo.add(rn.nextInt(numColores) + 1);
+    }
+
+
 }
