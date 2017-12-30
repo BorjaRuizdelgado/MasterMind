@@ -114,9 +114,9 @@ public class CreadorJuegosDePrueba {
 
     private static void menuBorrar() {
         println("¿Qué quieres borrar?");
-        println("[1] Borrar usuario.\n" +
-                "[2] Borrar partida guardada.\n" +
-                "[3] Borrar récord.\n" +
+        println("[1] Borrar usuario. -> Borrará todos los datos del usuario.\n" +
+                "[2] Borrar partidas guardadas. -> Borrará todas las partidas de un usuario.\n" +
+                "[3] Borrar puntuaciones. -> Borrará todas las puntuaciones de un usuario.\n" +
                 "[4] Atrás.");
         int number;
         number = scan.nextInt();
@@ -128,7 +128,7 @@ public class CreadorJuegosDePrueba {
                 borrarPartidaUsuario();
                 break;
             case 3:
-                borrarRecord();
+                borrarRecordUsuario();
                 break;
             case 4:
                 break;
@@ -242,29 +242,39 @@ public class CreadorJuegosDePrueba {
     }
 
     private static void borrarUsuario() {
+        if (verUsuarios()) {
+            escogerUsuario();
+            controladorDominio.borrarUsuario();
+            println("Datos del usuario borrados.");
+        }
 
     }
 
     private static void borrarPartidaUsuario() {
-
+        if (verUsuarios()) {
+            escogerUsuario();
+            controladorDominio.borrarPartidasGuardadas();
+            println("Partidas del usuario borradas.");
+        }
     }
 
-    private static void borrarRecord() {
-
+    private static void borrarRecordUsuario() {
+        if (verUsuarios()) {
+            escogerUsuario();
+            controladorDominio.borrarRankings();
+            println("Rankings del usuario borrados.");
+        }
     }
-
-
 
 
     private static void escogerUsuario() {
-        println("Escribe el nombre de usuario al que asignar la partida guardada.");
+        println("Escribe el nombre de usuario que quieres escoger.");
         Boolean done = false;
         while (!done) {
             String username = scan.next();
             try {
                 controladorDominio.cargarUsuario(username);
                 done = true;
-                println("Usuario " + username + " cargado.");
             } catch (ExcepcionUsuarioInexistente e) {
                 println(e.getMessage());
             }

@@ -43,7 +43,7 @@ public class GestionPartida {
      * @param partida identificador de la partida a cargar
      * @return partida a cargar
      */
-    public Partida cargarPartida(String partida) {
+    public Partida cargar(String partida) {
         Partida p;
         try {
             FileInputStream fileInputStream = new FileInputStream(getPath(partida));
@@ -68,11 +68,11 @@ public class GestionPartida {
      * Se guarda la partida pasada por parámetro. Si no existe el directorio se crea.
      * @param p partida a guardar.
      */
-    public void guardarPartida(Partida p) {
+    public void guardar(Partida p) {
         try {
             File folder = new File (path);
             if(!folder.exists()) createDirectory();
-            eliminarPartida(p.getId());
+            eliminar(p.getId());
             createFile(p.getId());
 
             FileOutputStream fos = new FileOutputStream(getPath(p.getId()));
@@ -87,7 +87,7 @@ public class GestionPartida {
 
     }
 
-    public void eliminarPartida(String p) {
+    public void eliminar(String p) {
         File file = new File(getPath(p));
         file.delete();
     }

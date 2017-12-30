@@ -232,4 +232,16 @@ public class SistemaRanking implements Serializable{
     public List<String> getRankingDificil(){
         return fromInfoListToStringList(rankingDificil);
     }
+
+    public void eliminaRankingFacil(List<Info> rankings) {
+        rankingFacil.removeAll(rankings);
+    }
+
+    public void eliminaRankingMedio(List<Info> rankings) {
+        rankingMedio.removeAll(rankings);
+    }
+
+    public void eliminaRankingDificil(List<Info> rankings) {
+        rankingDificil.removeAll(rankings);
+    }
 }

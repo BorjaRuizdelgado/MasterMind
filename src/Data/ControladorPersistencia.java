@@ -46,37 +46,44 @@ public class ControladorPersistencia {
         if (gp == null) {
             gp = GestionPartida.getInstance();
         }
-        return gp.cargarPartida(partida);
+        return gp.cargar(partida);
     }
 
     public void guardar(Partida p) {
         if (gp == null) {
             gp = GestionPartida.getInstance();
         }
-        gp.guardarPartida(p);
+        gp.guardar(p);
     }
 
     public void eliminarPartida(String p) {
         if (gp == null) {
             gp = GestionPartida.getInstance();
         }
-        gp.eliminarPartida(p);
+        gp.eliminar(p);
     }
 
     /* USUARIO */
 
-    public Usuario cargarUsuario(String usuario) throws ExcepcionUsuarioInexistente {
+    public Usuario cargarUsuario(String username) throws ExcepcionUsuarioInexistente {
         if (gu == null) {
             gu = GestionUsuario.getInstance();
         }
-        return gu.cargar(usuario);
+        return gu.cargar(username);
     }
 
-    public void guardar(Usuario u) {
+    public void guardar(Usuario user) {
         if (gu == null) {
             gu = GestionUsuario.getInstance();
         }
-        gu.guardar(u);
+        gu.guardar(user);
+    }
+
+    public void eliminarUsuario(String username) {
+        if (gu == null) {
+            gu = GestionUsuario.getInstance();
+        }
+        gu.eliminar(username);
     }
 
     public boolean existeUsuario(String usuario) {

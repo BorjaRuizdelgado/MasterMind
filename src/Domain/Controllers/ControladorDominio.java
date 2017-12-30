@@ -306,4 +306,30 @@ public class ControladorDominio {
     public boolean existeAlgunUsuario(){
         return persistencia.existeAlgunUsuario();
     }
+
+    public void borrarUsuario() {
+        borrarPartidasGuardadas();
+        borrarRankings();
+        persistencia.eliminarUsuario(usuarioCargado.getNombre());
+        usuarioCargado = null;
+    }
+
+    public void borrarPartidasGuardadas() {
+        List<String> partidas = getPartidasGuardadasUsr();
+        for (String partida : partidas) {
+            persistencia.eliminarPartida(partida);
+        }
+        usuarioCargado.borrarPartidasGuardadas();
+        persistencia.guardar(usuarioCargado);
+    }
+
+    public void borrarRankings() {
+        List<Info> rankingFacil = ranking.getRankingFacilInfo(usuarioCargado.getNombre());
+        ranking.eliminaRankingFacil(rankingFacil);
+        List<Info> rankingMedio = ranking.getRankingMedioInfo(usuarioCargado.getNombre());
+        ranking.eliminaRankingMedio(rankingMedio);
+        List<Info> rankingDificil = ranking.getRankingDificilInfo(usuarioCargado.getNombre());
+        ranking.eliminaRankingDificil(rankingDificil);
+        persistencia.guardarSistemaRanking();
+    }
 }
