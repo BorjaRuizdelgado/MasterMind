@@ -63,4 +63,9 @@ public class Info implements Serializable{
                 "fecha='" + fecha + '\'';
 
     }
+
+
+    public void setUsuario(String nuevoUsuario) {
+        usuario = nuevoUsuario;
+    }
 }
