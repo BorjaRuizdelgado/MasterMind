@@ -36,7 +36,8 @@ public class ControladorPersistencia {
         if (gsr == null) {
             gsr = GestionSistemaRanking.getInstance();
         }
-        gsr.cargar();
+        gsr.guardar();
+        //todo @Omar esto no estaba hecho. Lo he añadido pero peta al cargarse.
     }
 
     /* PARTIDA */

@@ -1,11 +1,13 @@
 package Test;
 
+import Domain.Codigo;
 import Domain.Controllers.ControladorDominio;
 import Domain.Excepciones.ExcepcionUsuarioExiste;
 import Domain.Excepciones.ExcepcionUsuarioInexistente;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import static Util.Console.*;
@@ -158,9 +160,13 @@ public class CreadorJuegosDePrueba {
                 rol = scan.nextInt();
             }
             String dif = escogerDificultad();
+            Codigo codigoSecreto;
+            if (dif.equals("Dificil")) codigoSecreto = new Codigo(6);
+            else codigoSecreto = new Codigo(4);
             if(rol == 0) controladorDominio.crearPartidaUsuarioCargadoRolBreaker(dif);
-            else controladorDominio.crearPartidaUsuarioCargadoRolMaker(dif,null);
+            else controladorDominio.crearPartidaUsuarioCargadoRolMaker(dif,(ArrayList)codigoSecreto.codigo);
             println("Partida creada.");
+            controladorDominio.guardaPartidaActual();
         }
     }
 
@@ -180,7 +186,6 @@ public class CreadorJuegosDePrueba {
             String fecha = dtf.format(localDate);
             controladorDominio.creaPuntuacion(controladorDominio.getUsuario(), points, fecha, dif);
         }
-
     }
 
     private static Boolean verUsuarios() {
@@ -198,11 +203,32 @@ public class CreadorJuegosDePrueba {
     }
 
     private static void verPartidasUsuarios() {
-
+        List<String> usernames = controladorDominio.getTodosUsuarios();
+        for (String username : usernames) {
+            try {
+                println("* Usuario: "+username);
+                controladorDominio.cargarUsuario(username);
+                List<String> partidas = controladorDominio.getPartidasGuardadasUsr();
+                for(String partida : partidas) {
+                    println("-> "+partida);
+                }
+            } catch (ExcepcionUsuarioInexistente e) {
+                println(e.getMessage());
+            }
+        }
     }
 
     private static void verRecords() {
-
+        String dif = escogerDificultad();
+        List<String> ranking = controladorDominio.getRanking(dif);
+        if (ranking.size() > 0) {
+            println("Usuario  Fecha  Puntuación");
+            for (String rank : ranking) {
+                println(rank);
+            }
+        } else {
+            println("No hay ninguna puntuación en este ránking.");
+        }
     }
 
     private static void borrarUsuario() {
