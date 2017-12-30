@@ -12,7 +12,7 @@ public class GestionUsuario {
     private static GestionUsuario uniqueInstance;
 
     private GestionUsuario() {
-        path = System.getProperty("user.dir") + "\\Data\\Users\\GestionUsuarios.obj";
+        path = System.getProperty("user.dir") + "/Data/Users/GestionUsuarios.obj";
         cargarFinder();
         guardarFinder();
     }
@@ -30,7 +30,7 @@ public class GestionUsuario {
      * Crea el directorio si no está creado ya.
      */
     private void createDirectory(){
-        File folder = new File(System.getProperty("user.dir") + "\\Data\\Users");
+        File folder = new File(System.getProperty("user.dir") + "/Data/Users");
         folder.mkdirs();
     }
 

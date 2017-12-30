@@ -10,7 +10,7 @@ public class GestionPartida {
     private String path;
 
     private GestionPartida() {
-        path = System.getProperty("user.dir") + "\\Data\\Games";
+        path = System.getProperty("user.dir") + "/Data/Games";
     }
 
     public static GestionPartida getInstance() {
@@ -19,7 +19,7 @@ public class GestionPartida {
     }
 
     private String getPath(String name) {
-        return path+"\\"+name+".obj";
+        return path+"/"+name+".obj";
     }
 
     private void createDirectory(){
