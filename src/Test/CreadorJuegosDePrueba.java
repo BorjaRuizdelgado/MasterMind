@@ -145,13 +145,8 @@ public class CreadorJuegosDePrueba {
     }
 
     private static void crearPartidaUsuario() {
-        println("Escribe el nombre de usuario al que asignar la partida guardada.");
-        List<String> userNames = controladorDominio.getTodosUsuarios();
-        if (userNames == null) println("Crea primero algún usuario.");
-        else {
-            for (String userName : userNames) {
-                println("* " + userName);
-            }
+        if (verUsuarios()) {
+            println("Escribe el nombre de usuario al que asignar la partida guardada.");
             Boolean done = false;
             while (!done) {
                 String username = scan.next();
@@ -185,13 +180,17 @@ public class CreadorJuegosDePrueba {
 
     }
 
-    private static void verUsuarios() {
+    private static Boolean verUsuarios() {
         List<String> userNames = controladorDominio.getTodosUsuarios();
-        if (userNames == null) println("Crea primero algún usuario.");
+        if (userNames == null) {
+            println("Crea primero algún usuario.");
+            return false;
+        }
         else {
             for (String userName : userNames) {
                 println("* " + userName);
             }
+            return true;
         }
     }
 
