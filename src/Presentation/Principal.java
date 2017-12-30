@@ -46,15 +46,12 @@ public class Principal {
 
     public Principal() {
         mp3Player = Mp3Player.getInstance();
-        mp3Player.play(System.getProperty("user.dir") + "\\src\\MP3Player\\Tetris.wav");
+        mp3Player.play(System.getProperty("user.dir") + "\\src\\MP3Player\\frenadol.wav");
         mp3Player.changeVolume(-25);
 
         ctrl = ControladorDominio.getInstance();
 
-        if(ctrl.existeAlgunUsuario()){
-            CREARUSUARIOButton.setEnabled(false);
-            System.out.println("isa no sabe hacer su trabajo");
-        }
+
         /* Efectos */
         CREARUSUARIOButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -309,11 +306,17 @@ public class Principal {
         CARGARUSUARIOButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
-                super.mouseClicked(mouseEvent);
-                crearUsuario = false;
-                main.removeAll();
-                main.add(contenidoUsuario);
-                main.revalidate();
+                if(!ctrl.existeAlgunUsuario()){
+                    JOptionPane.showMessageDialog(new Frame(), "No existen usuarios, primero crea uno.");
+                }
+                else{
+                    super.mouseClicked(mouseEvent);
+                    crearUsuario = false;
+                    main.removeAll();
+                    main.add(contenidoUsuario);
+                    main.revalidate();
+                }
+
             }
         });
         ACEPTARButton.addMouseListener(new MouseAdapter() {
@@ -448,6 +451,8 @@ public class Principal {
                 main.revalidate();
             }
         });
+
+
     }
 
     public JPanel getPanel() {
