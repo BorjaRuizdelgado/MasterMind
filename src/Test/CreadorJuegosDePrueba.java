@@ -60,6 +60,7 @@ public class CreadorJuegosDePrueba {
     }
 
     private static void menuCrear() {
+        println("¿Qué quieres crear?");
         println("[1] Crear usuario.\n" +
                 "[2] Crear partida y guardarla.\n" +
                 "[3] Crear un nuevo récord.\n" +
@@ -86,6 +87,7 @@ public class CreadorJuegosDePrueba {
     }
 
     private static void menuVer() {
+        println("¿Qué quieres ver?");
         println("[1] Ver usuarios.\n" +
                 "[2] Ver usuarios y sus partidas guardadas.\n" +
                 "[3] Ver ránking.\n" +
@@ -111,6 +113,7 @@ public class CreadorJuegosDePrueba {
     }
 
     private static void menuBorrar() {
+        println("¿Qué quieres borrar?");
         println("[1] Borrar usuario.\n" +
                 "[2] Borrar partida guardada.\n" +
                 "[3] Borrar récord.\n" +
@@ -153,12 +156,7 @@ public class CreadorJuegosDePrueba {
     private static void crearPartidaUsuario() {
         if (verUsuarios()) {
             escogerUsuario();
-            int rol = -1;
-            while (rol != 0 && rol != 1) {
-                if (rol != -1) println("Rol incorrecto.");
-                println("Escoge rol: [0] CodeBreaker, [1] CodeMaker.");
-                rol = scan.nextInt();
-            }
+            int rol = escogerRol();
             String dif = escogerDificultad();
             Codigo codigoSecreto;
             int numColores;
@@ -178,6 +176,8 @@ public class CreadorJuegosDePrueba {
             controladorDominio.guardaPartidaActual();
         }
     }
+
+
 
     private static void crearNuevoRecord() {
         if (verUsuarios()) {
@@ -204,6 +204,7 @@ public class CreadorJuegosDePrueba {
             return false;
         }
         else {
+            println("Usuarios:");
             for (String userName : userNames) {
                 println("* " + userName);
             }
@@ -278,6 +279,16 @@ public class CreadorJuegosDePrueba {
             dif = scan.next();
         }
         return dif;
+    }
+
+    private static int escogerRol() {
+        int rol = -1;
+        while (rol != 0 && rol != 1) {
+            if (rol != -1) println("Rol incorrecto.");
+            println("Escoge rol: [0] CodeBreaker, [1] CodeMaker.");
+            rol = scan.nextInt();
+        }
+        return rol;
     }
 
 }
