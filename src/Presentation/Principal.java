@@ -45,6 +45,7 @@ public class Principal {
     private JButton facil;
     private JButton medio;
     private JButton dificil;
+    private JButton r5;
     private Mp3Player mp3Player;
 
     private ControladorDominio ctrl;
@@ -157,48 +158,50 @@ public class Principal {
                 CODEBREAKERButton.setBackground(new Color(192, 55, 55));
             }
         });
+
         facil.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent mouseEvent) {
                 super.mouseEntered(mouseEvent);
-                CODEBREAKERButton.setBackground(Color.BLACK);
+                facil.setBackground(Color.BLACK);
             }
         });
         facil.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent mouseEvent) {
                 super.mouseExited(mouseEvent);
-                CODEBREAKERButton.setBackground(new Color(192, 55, 55));
+                facil.setBackground(new Color(192, 55, 55));
             }
         });
         medio.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent mouseEvent) {
                 super.mouseEntered(mouseEvent);
-                CODEBREAKERButton.setBackground(Color.BLACK);
+                medio.setBackground(Color.BLACK);
             }
         });
         medio.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent mouseEvent) {
                 super.mouseExited(mouseEvent);
-                CODEBREAKERButton.setBackground(new Color(192, 55, 55));
+                medio.setBackground(new Color(192, 55, 55));
             }
         });
         dificil.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent mouseEvent) {
                 super.mouseEntered(mouseEvent);
-                CODEBREAKERButton.setBackground(Color.BLACK);
+                dificil.setBackground(Color.BLACK);
             }
         });
         dificil.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent mouseEvent) {
                 super.mouseExited(mouseEvent);
-                CODEBREAKERButton.setBackground(new Color(192, 55, 55));
+                dificil.setBackground(new Color(192, 55, 55));
             }
         });
+
         /* ************************* */
 
         b1.addMouseListener(new MouseAdapter() {
@@ -339,6 +342,20 @@ public class Principal {
             public void mouseExited(MouseEvent mouseEvent) {
                 super.mouseExited(mouseEvent);
                 r4.setBorderPainted(false);
+            }
+        });
+        r5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                super.mouseEntered(mouseEvent);
+                r5.setBorderPainted(true);
+            }
+        });
+        r5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                super.mouseExited(mouseEvent);
+                r5.setBorderPainted(false);
             }
         });
         CREARUSUARIOButton.addMouseListener(new MouseAdapter() {
@@ -485,6 +502,17 @@ public class Principal {
             }
         });
 
+        r5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
+                //CardLayout cardLayout = (CardLayout) main.getLayout();
+                //cardLayout.show(main, "contenidoPrincipal");
+                main.removeAll();
+                main.add(contenidoNuevaPart);
+                main.revalidate();
+            }
+        });
 
     }
 
