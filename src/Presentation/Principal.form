@@ -529,7 +529,9 @@
                     <constraints>
                       <card name="Card5"/>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <background color="-1"/>
+                    </properties>
                     <border type="none"/>
                     <children>
                       <component id="c6d2e" class="javax.swing.JButton" binding="facil">
@@ -544,7 +546,7 @@
                           <foreground color="-1"/>
                           <margin top="10" left="14" bottom="10" right="14"/>
                           <text value="Fácil"/>
-                          <toolTipText value="Crea un nuevo usuario"/>
+                          <toolTipText value=""/>
                         </properties>
                       </component>
                       <component id="e30bd" class="javax.swing.JButton" binding="medio">
@@ -559,7 +561,7 @@
                           <foreground color="-1"/>
                           <margin top="10" left="14" bottom="10" right="14"/>
                           <text value="Medio"/>
-                          <toolTipText value="Crea un nuevo usuario"/>
+                          <toolTipText value=""/>
                         </properties>
                       </component>
                       <component id="288d2" class="javax.swing.JButton" binding="dificil">
@@ -569,12 +571,13 @@
                         <properties>
                           <background color="-4180169"/>
                           <borderPainted value="false"/>
+                          <enabled value="true"/>
                           <focusPainted value="false"/>
                           <font name="Umpush" size="24"/>
                           <foreground color="-1"/>
                           <margin top="10" left="14" bottom="10" right="14"/>
                           <text value="Difícil"/>
-                          <toolTipText value="Crea un nuevo usuario"/>
+                          <toolTipText value=""/>
                         </properties>
                       </component>
                     </children>

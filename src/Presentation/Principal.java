@@ -7,8 +7,10 @@ import MP3Player.Mp3Player;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeListener;
 
 public class Principal {
     private JPanel panel;
@@ -149,6 +151,48 @@ public class Principal {
             }
         });
         CODEBREAKERButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                super.mouseExited(mouseEvent);
+                CODEBREAKERButton.setBackground(new Color(192, 55, 55));
+            }
+        });
+        facil.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                super.mouseEntered(mouseEvent);
+                CODEBREAKERButton.setBackground(Color.BLACK);
+            }
+        });
+        facil.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                super.mouseExited(mouseEvent);
+                CODEBREAKERButton.setBackground(new Color(192, 55, 55));
+            }
+        });
+        medio.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                super.mouseEntered(mouseEvent);
+                CODEBREAKERButton.setBackground(Color.BLACK);
+            }
+        });
+        medio.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                super.mouseExited(mouseEvent);
+                CODEBREAKERButton.setBackground(new Color(192, 55, 55));
+            }
+        });
+        dificil.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                super.mouseEntered(mouseEvent);
+                CODEBREAKERButton.setBackground(Color.BLACK);
+            }
+        });
+        dificil.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent mouseEvent) {
                 super.mouseExited(mouseEvent);
@@ -372,7 +416,6 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-
                 main.removeAll();
                 main.add(contenidoCargarPart);
                 main.revalidate();
@@ -382,28 +425,15 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-
-                JFrame frame = new JFrame("Juego");
-                frame.setContentPane(new Juego().getPanel());
-                frame.setPreferredSize(new Dimension(850, 900));
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
+                escogerDificultad(false);
             }
         });
         CODEBREAKERButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
+                escogerDificultad(true);
 
-                JFrame frame = new JFrame("Juego");
-                frame.setContentPane(new Juego().getPanel());
-                frame.setPreferredSize(new Dimension(850, 900));
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
             }
         });
         r1.addMouseListener(new MouseAdapter() {
@@ -447,7 +477,6 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-
                 //CardLayout cardLayout = (CardLayout) main.getLayout();
                 //cardLayout.show(main, "contenidoPrincipal");
                 main.removeAll();
@@ -457,6 +486,48 @@ public class Principal {
         });
 
 
+    }
+
+    private void escogerDificultad(boolean maker) {
+        main.removeAll();
+        main.add(nivelDificultad);
+        main.revalidate();
+
+        facil.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
+                crearJuego();
+            }
+        });
+
+        medio.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
+                crearJuego();
+            }
+        });
+        dificil.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
+                crearJuego();
+            }
+        });
+
+
+
+    }
+
+    private void crearJuego() {
+        JFrame frame = new JFrame("Juego");
+        frame.setContentPane(new Juego().getPanel());
+        frame.setPreferredSize(new Dimension(850, 900));
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 
     public JPanel getPanel() {
