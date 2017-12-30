@@ -524,6 +524,61 @@
                       </grid>
                     </children>
                   </grid>
+                  <grid id="60c93" binding="nivelDificultad" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <card name="Card5"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="c6d2e" class="javax.swing.JButton" binding="facil">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-4180169"/>
+                          <borderPainted value="false"/>
+                          <focusPainted value="false"/>
+                          <font name="Umpush" size="24"/>
+                          <foreground color="-1"/>
+                          <margin top="10" left="14" bottom="10" right="14"/>
+                          <text value="Fácil"/>
+                          <toolTipText value="Crea un nuevo usuario"/>
+                        </properties>
+                      </component>
+                      <component id="e30bd" class="javax.swing.JButton" binding="medio">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-4180169"/>
+                          <borderPainted value="false"/>
+                          <focusPainted value="false"/>
+                          <font name="Umpush" size="24"/>
+                          <foreground color="-1"/>
+                          <margin top="10" left="14" bottom="10" right="14"/>
+                          <text value="Medio"/>
+                          <toolTipText value="Crea un nuevo usuario"/>
+                        </properties>
+                      </component>
+                      <component id="288d2" class="javax.swing.JButton" binding="dificil">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-4180169"/>
+                          <borderPainted value="false"/>
+                          <focusPainted value="false"/>
+                          <font name="Umpush" size="24"/>
+                          <foreground color="-1"/>
+                          <margin top="10" left="14" bottom="10" right="14"/>
+                          <text value="Difícil"/>
+                          <toolTipText value="Crea un nuevo usuario"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
                 </children>
               </grid>
               <grid id="e31de" binding="footer" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">

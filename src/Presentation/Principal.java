@@ -39,6 +39,10 @@ public class Principal {
     private JButton r2;
     private JButton r3;
     private JButton r4;
+    private JPanel nivelDificultad;
+    private JButton facil;
+    private JButton medio;
+    private JButton dificil;
     private Mp3Player mp3Player;
 
     private ControladorDominio ctrl;
