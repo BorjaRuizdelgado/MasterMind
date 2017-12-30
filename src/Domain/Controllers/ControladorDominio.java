@@ -302,4 +302,8 @@ public class ControladorDominio {
     public void creaPuntuacion(String usuario, int puntuacion, String fecha, String dificultad) {
         ranking.addNewPuntuation(usuario, puntuacion, fecha, dificultad);
     }
+
+    public boolean existeAlgunUsuario(){
+        return persistencia.existeAlgunUsuario();
+    }
 }
