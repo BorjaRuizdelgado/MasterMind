@@ -39,7 +39,7 @@ public class GUITest {
         if (opt == 1)
             createForm("Principal");
         else if (opt == 2) {
-            ControladorDominio controlador = ControladorDominio.getInstance();
+            //ControladorDominio controlador = ControladorDominio.getInstance();
             //controlador.crearUsuario("Omar");
 
             createForm("Juego");

@@ -287,6 +287,7 @@ public class Juego {
         aux.add(reiniciarPartidaButton);
         aux.add(ayudaButton);
         aux.add(guardarYSalirButton);
+        aux.add(ACEPTARButton);
 
         for (JButton button: aux) {
             button.addMouseListener(new MouseAdapter() {
