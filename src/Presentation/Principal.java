@@ -50,6 +50,11 @@ public class Principal {
         mp3Player.changeVolume(-25);
 
         ctrl = ControladorDominio.getInstance();
+
+        if(ctrl.existeAlgunUsuario()){
+            CREARUSUARIOButton.setEnabled(false);
+            System.out.println("isa no sabe hacer su trabajo");
+        }
         /* Efectos */
         CREARUSUARIOButton.addMouseListener(new MouseAdapter() {
             @Override

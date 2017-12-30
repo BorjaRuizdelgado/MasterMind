@@ -278,7 +278,6 @@ public class ControladorDominio {
      */
     public ArrayList<Integer> getPista2() throws ExcepcionPistaUsada,ExcepcionNoHayColoresSinUsar{
         return partidaActual.getPista2();
-        //todo lo que se devuelve no debería ser una list? @isa
     }
 
     /**
@@ -298,5 +297,9 @@ public class ControladorDominio {
 
     public List<String> getTodosUsuarios() {
         return persistencia.getTodosUsuarios();
+    }
+
+    public boolean existeAlgunUsuario(){
+        return persistencia.existeAlgunUsuario();
     }
 }
