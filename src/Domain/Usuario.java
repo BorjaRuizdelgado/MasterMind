@@ -173,6 +173,10 @@ public class Usuario implements Serializable {
         return partidasGuardadas;
     }
 
+    public void borrarPartidasGuardadas() {
+        partidasGuardadas = new ArrayList<>();
+    }
+
 
 
 }

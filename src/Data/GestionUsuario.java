@@ -94,14 +94,19 @@ public class GestionUsuario {
         }
     }
 
-    public Usuario cargar(String id) throws ExcepcionUsuarioInexistente {
-        Usuario aux = finder.get(id);
+    public Usuario cargar(String username) throws ExcepcionUsuarioInexistente {
+        Usuario aux = finder.get(username);
         if (aux == null) throw new ExcepcionUsuarioInexistente("El nombre de usuario no existe.");
-        return finder.get(id);
+        return finder.get(username);
     }
 
     public void guardar(Usuario usuario){
         finder.put(usuario.getNombre(),usuario);
+        guardarFinder();
+    }
+
+    public void eliminar(String username) {
+        finder.remove(username);
         guardarFinder();
     }
 

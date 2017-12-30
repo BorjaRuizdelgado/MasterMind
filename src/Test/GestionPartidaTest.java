@@ -10,12 +10,12 @@ public class GestionPartidaTest {
         Partida partidaTestA = new Partida(true, "Facil");
         System.out.println(partidaTestA.getId());
 
-        gp.guardarPartida(partidaTestA);
+        gp.guardar(partidaTestA);
 
-        Partida partidaTestB = gp.cargarPartida(partidaTestA.getId());
+        Partida partidaTestB = gp.cargar(partidaTestA.getId());
         System.out.println(partidaTestB.getId());
 
-        gp.guardarPartida(partidaTestA);
+        gp.guardar(partidaTestA);
 
 
     }
