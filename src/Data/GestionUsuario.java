@@ -14,6 +14,7 @@ public class GestionUsuario {
     private GestionUsuario() {
         path = System.getProperty("user.dir") + "\\Data\\Users\\GestionUsuarios.obj";
         cargarFinder();
+        guardarFinder();
     }
 
     /**
