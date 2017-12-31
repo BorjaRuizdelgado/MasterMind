@@ -42,8 +42,8 @@ public class Juego {
     private ArrayList<ArrayList<JButton>> answerButtons;
 
     private int numColors = 6;
-    private int numColumns = 4;
-    private String dificultad = "Facil";
+    private int numColumns = 6;
+    private String dificultad = "Dificil";
     private int color;
 
     private boolean codeMaker = true;
@@ -92,13 +92,13 @@ public class Juego {
         tableButtons.add(new ArrayList<>());
         int column = -1;
 
-        tablew.setLayout(new GridLayout(12, 4));
-        for (int i = 0; i < 48; i++) {
+        tablew.setLayout(new GridLayout(12, numColumns));
+        for (int i = 0; i < 12*numColumns; i++) {
             JButton jButton = new JButton();
             setDesign(jButton);
             tablew.add(jButton);
 
-            if(column == 3){
+            if(column == numColumns-1){
                 row++;
                 tableButtons.add(new ArrayList<>());
                 column = 0;
@@ -112,8 +112,8 @@ public class Juego {
     }
 
     private void createSolutionRow(){
-        solution.setLayout(new GridLayout(1, 4));
-        for (int i = 0; i < 4; i++) {
+        solution.setLayout(new GridLayout(1, numColumns));
+        for (int i = 0; i < numColumns; i++) {
             JButton jButton = new JButton();
             setDesign(jButton);
             solution.add(jButton);
@@ -180,9 +180,8 @@ public class Juego {
             constraints.fill = GridBagConstraints.VERTICAL;
             int x = 0;
             int y = 0;
-            int size = 4;
             answerButtons.add(new ArrayList<>()); // <-
-            for (int k = 0; k < size; k++) {
+            for (int k = 0; k < numColumns; k++) {
                 constraints.gridx = x;
                 constraints.gridy = y;
 
@@ -190,7 +189,7 @@ public class Juego {
                 j.add(jButton3, constraints);
                 setDesign(jButton3);
 
-                if (x == (size/2 - 1)) {
+                if (x == (numColumns/2 - 1)) {
                     x = 0;
                     y++;
                 }
@@ -410,7 +409,8 @@ public class Juego {
                         fillRow(actualRow, controller.jugarCodeMaker(fromJButtonListToIntList(answerButtons.get(actualRow-1))));
                     }
                     catch (ExcepcionRespuestaIncorrecta excepcionRespuestaIncorrecta) {
-                        System.out.println("ERROR");
+                        actualRow--;
+                        JOptionPane.showMessageDialog(null,"¡Corrección incorrecta!", "Error", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
             }
