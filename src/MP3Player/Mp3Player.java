@@ -10,6 +10,7 @@ public class Mp3Player {
     private Clip audioClip;
     private static Mp3Player uniqueInstance;
     private static String pathAnterior;
+    private static Boolean isPlaying;
     public static Mp3Player getInstance() {
         if(uniqueInstance == null)
             uniqueInstance = new Mp3Player();
@@ -25,6 +26,7 @@ public class Mp3Player {
             audioClip.open(audioStream);
             audioClip.loop(Clip.LOOP_CONTINUOUSLY);
             audioClip.start();
+            isPlaying = true;
 
         } catch (UnsupportedAudioFileException ex) {
             System.out.println("The specified audio file is not supported.");
@@ -40,7 +42,9 @@ public class Mp3Player {
 
 
     public void close(){
+
         audioClip.close();
+        isPlaying = false;
     }
 
     public void changeVolume(float gain){
@@ -55,5 +59,8 @@ public class Mp3Player {
         if(!pathAnterior.equals(null)){
             play(pathAnterior);
         }
+    }
+    public boolean isPlaying(){
+        return isPlaying;
     }
 }
