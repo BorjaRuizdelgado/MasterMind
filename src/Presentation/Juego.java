@@ -1,10 +1,14 @@
 package Presentation;
 
+import Domain.Controllers.ControladorDominio;
+import Domain.Excepciones.ExcepcionRespuestaIncorrecta;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+import java.util.*;
+import java.util.List;
 
 public class Juego {
     private JPanel panel2;
@@ -37,7 +41,26 @@ public class Juego {
     private ArrayList<ArrayList<JButton>> tableButtons;
     private ArrayList<ArrayList<JButton>> answerButtons;
 
+    private int numColors = 6;
+    private int numColumns = 4;
+    private String dificultad = "Facil";
     private int color;
+
+    private boolean codeMaker = true;
+    private boolean firstAttempt = true;
+    private int actualRow = 0;
+
+    private static Color defaultColor = new Color(230, 230 , 230);
+    private static Color rojo = new Color(255, 0 , 0);
+    private static Color verde = new Color(0, 191 , 28);
+    private static Color azul = new Color(23, 41 , 224);
+    private static Color amarillo = new Color(224, 222 , 39);
+    private static Color naranja = new Color(236, 151 , 48);
+    private static Color morado = new Color(153, 44 , 226);
+    private static Color blanco = new Color(255, 255 , 255);
+    private static Color negro = new Color(0, 0 , 0);
+
+    private Map<Integer, Color> colorMap;
 
     /*
         VACIO = 0;
@@ -56,33 +79,18 @@ public class Juego {
     }
 
     private void setDesign(JButton jButton){
-        jButton.setBackground(new Color(230, 230, 230));
+        jButton.setBackground(defaultColor);
         jButton.setFocusPainted(false);
     }
 
     private void setColor(JButton button, int color){
-        if (color == 1)
-            button.setBackground(new Color(255, 0, 0));
-        else if(color == 2)
-            button.setBackground(new Color(0, 191, 28));
-        else if(color == 3)
-            button.setBackground(new Color(23, 41, 224));
-        else if(color == 4)
-            button.setBackground(new Color(224, 222, 39));
-        else if(color == 5)
-            button.setBackground(new Color(236, 151, 48));
-        else if(color == 6)
-            button.setBackground(new Color(153, 44, 226));
-        else if(color == 7)
-            button.setBackground(new Color(255, 255, 255));
-        else if(color == 8)
-            button.setBackground(new Color(0, 0, 0));
+        button.setBackground(colorMap.get(color));
     }
 
     private void createMainTable(){
         int row = 0;
         tableButtons.add(new ArrayList<>());
-        int column = 0;
+        int column = -1;
 
         tablew.setLayout(new GridLayout(12, 4));
         for (int i = 0; i < 48; i++) {
@@ -90,7 +98,7 @@ public class Juego {
             setDesign(jButton);
             tablew.add(jButton);
 
-            if(column == 4){
+            if(column == 3){
                 row++;
                 tableButtons.add(new ArrayList<>());
                 column = 0;
@@ -98,6 +106,7 @@ public class Juego {
             else {
                 column++;
             }
+            //System.out.println("Row: " + String.valueOf(row) + " Col: " + String.valueOf(column));
             tableButtons.get(row).add(jButton);
         }
     }
@@ -218,8 +227,12 @@ public class Juego {
                     @Override
                     public void mouseClicked(MouseEvent mouseEvent) {
                         super.mouseClicked(mouseEvent);
+                        if (mouseEvent.getButton() != MouseEvent.BUTTON3)
+                            setColor(answerButtons.get(finalI).get(finalJ), color);
+                        else {
+                            setColor(answerButtons.get(finalI).get(finalJ), 0);
+                        }
 
-                        setColor(answerButtons.get(finalI).get(finalJ), color);
                     }
                 });
             }
@@ -236,7 +249,10 @@ public class Juego {
                     public void mouseClicked(MouseEvent mouseEvent) {
                         super.mouseClicked(mouseEvent);
 
-                        setColor(tableButtons.get(finalI).get(finalJ), color);
+                        if (mouseEvent.getButton() != MouseEvent.BUTTON3)
+                            setColor(tableButtons.get(finalI).get(finalJ), color);
+                        else
+                            setColor(tableButtons.get(finalI).get(finalJ), 0);
                     }
                 });
             }
@@ -251,7 +267,10 @@ public class Juego {
                 public void mouseClicked(MouseEvent mouseEvent) {
                     super.mouseClicked(mouseEvent);
 
-                    setColor(solutionButtons.get(finalI), color);
+                    if (mouseEvent.getButton() != MouseEvent.BUTTON3)
+                        setColor(solutionButtons.get(finalI), color);
+                    else
+                        setColor(solutionButtons.get(finalI), 0);
                 }
             });
         }
@@ -308,9 +327,94 @@ public class Juego {
         }
     }
 
+    private int getFilledButtonsSize(ArrayList<JButton> buttons){
+        int count = 0;
+        for (JButton button: buttons){
+            if (button.getBackground().equals(defaultColor))
+                count++;
+        }
+        return count;
+    }
+
+    private int fromColorToInt(Color color){
+        if (color.equals(rojo))
+            return 1;
+        else if(color.equals(verde))
+            return 2;
+        else if(color.equals(azul))
+            return 3;
+        else if(color.equals(amarillo))
+            return 4;
+        else if(color.equals(naranja))
+            return 5;
+        else if(color.equals(morado))
+            return 6;
+        else if(color.equals(blanco))
+            return 7;
+        else if(color.equals(negro))
+            return 8;
+        else return 0;
+    }
+
+    private ArrayList<Integer> fromJButtonListToIntList(ArrayList<JButton> Buttons){
+        ArrayList<Integer> Return = new ArrayList<>();
+        for (JButton button:Buttons) {
+            Return.add(fromColorToInt(button.getBackground()));
+        }
+        return Return;
+    }
+
+    private void fillRow(int row, List<Integer> list){
+        System.out.println(list.size());
+        System.out.println(tableButtons.get(row).size());
+        int j = 0;
+        for (JButton button: tableButtons.get(row)) {
+            button.setBackground(colorMap.get(list.get(j)));
+            j++;
+        }
+    }
+
+    private void initMap(){
+        colorMap = new HashMap<>();
+        colorMap.put(0, defaultColor);
+        colorMap.put(1, rojo);
+        colorMap.put(2, verde);
+        colorMap.put(3, azul);
+        colorMap.put(4, amarillo);
+        colorMap.put(5, naranja);
+        colorMap.put(6, morado);
+        colorMap.put(7, blanco);
+        colorMap.put(8, negro);
+    }
+
     public Juego() {
+        initMap();
+        ControladorDominio controller = ControladorDominio.getInstance();
         makeTable();
         applyButtonsEffects();
+
+        ACEPTARButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+                super.mousePressed(mouseEvent);
+                if (codeMaker && getFilledButtonsSize(solutionButtons) == 0 && firstAttempt){
+                    controller.crearPartidaUsuarioCargadoRolMaker(dificultad, fromJButtonListToIntList(solutionButtons));
+                    firstAttempt = false;
+
+                    fillRow(actualRow, controller.jugarCodeMaker());
+                }
+                else if (codeMaker && !firstAttempt){
+                    System.out.println("Pole:" + fromJButtonListToIntList(answerButtons.get(actualRow)));
+                    try {
+                        actualRow++;
+                        fillRow(actualRow, controller.jugarCodeMaker(fromJButtonListToIntList(answerButtons.get(actualRow-1))));
+                    }
+                    catch (ExcepcionRespuestaIncorrecta excepcionRespuestaIncorrecta) {
+                        System.out.println("ERROR");
+                    }
+                }
+            }
+        });
     }
 
 }

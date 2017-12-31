@@ -114,6 +114,10 @@ public class ControladorDominio {
         return partidaActual.generaSiguienteIntento().codigo;
     }
 
+    public List<Integer> jugarCodeMaker() { // Lo necesito para el primer intento que juego como codeMaker
+        return partidaActual.generaSiguienteIntento().codigo;
+    }
+
     /**
      * El usuario es capaz de poner un codigo y la maquina le devuelve una respuesta sobre su partida.
      * @param codigo Pensado por la maquina.

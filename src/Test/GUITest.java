@@ -7,6 +7,7 @@ import Presentation.Principal;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 import java.util.Scanner;
 
 public class GUITest {
@@ -39,8 +40,8 @@ public class GUITest {
         if (opt == 1)
             createForm("Principal");
         else if (opt == 2) {
-            //ControladorDominio controlador = ControladorDominio.getInstance();
-            //controlador.crearUsuario("Omar");
+            ControladorDominio controlador = ControladorDominio.getInstance();
+            controlador.crearUsuario(String.valueOf(new Random().nextInt()));
 
             createForm("Juego");
         }
