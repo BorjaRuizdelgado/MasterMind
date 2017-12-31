@@ -6,105 +6,164 @@ import Domain.Usuario;
 
 import java.util.List;
 
+/**
+ * Clase Controlador Persistencia.
+ * Controlador de la capa de datos que comunica el controlador de dominio con los tres gestores.
+ * Contiene los gestores de Usuarios, SistemaRanking y de Partidas guardadas.
+ * @author ISA
+ */
+
 public class ControladorPersistencia {
     private static ControladorPersistencia uniqueInstance;
-    private GestionSistemaRanking gsr;
-    private GestionUsuario gu;
-    private GestionPartida gp;
+    private GestionSistemaRanking gestorSistRank;
+    private GestionUsuario gestorUsuario;
+    private GestionPartida gestorPartida;
 
+    /**
+     * Creadora Controlador Persistencia.
+     * Inicia los tres gestores.
+     */
     private ControladorPersistencia() {
-        gsr = GestionSistemaRanking.getInstance();
-        gu = GestionUsuario.getInstance();
-        gp = GestionPartida.getInstance();
+        gestorSistRank = GestionSistemaRanking.getInstance();
+        gestorUsuario = GestionUsuario.getInstance();
+        gestorPartida = GestionPartida.getInstance();
     }
 
 
+    /**
+     * Controlador Persistencia es un singleton y por ello se debe acceder mediante getInstance.
+     * @return uniqueInstance de ControladorPersistencia
+     */
     public static ControladorPersistencia getInstance() {
         if (uniqueInstance == null) uniqueInstance = new ControladorPersistencia();
         return uniqueInstance;
     }
 
-
+    /**
+     * Carga el sistema ranking del fichero guardado.
+     */
     public void cargarSistemaRanking() {
-        if (gsr == null) {
-            gsr = GestionSistemaRanking.getInstance();
+        if (gestorSistRank == null) {
+            gestorSistRank = GestionSistemaRanking.getInstance();
         }
-        gsr.cargar();
+        gestorSistRank.cargar();
     }
 
+    /**
+     * Guarda el sistema ranking en el fichero.
+     */
     public void guardarSistemaRanking() {
-        if (gsr == null) {
-            gsr = GestionSistemaRanking.getInstance();
+        if (gestorSistRank == null) {
+            gestorSistRank = GestionSistemaRanking.getInstance();
         }
-        gsr.guardar();
-        //todo @Omar esto no estaba hecho. Lo he añadido pero peta al cargarse.
+        gestorSistRank.guardar();
     }
 
     /* PARTIDA */
 
-    public Partida cargarPartida(String partida) {
-        if (gp == null) {
-            gp = GestionPartida.getInstance();
+    /**
+     * Carga la partida cuyo identificador es pasado por parámetro
+     * @param idPartida identificador de la partida a cargar
+     * @return objeto partida cuyo identificador se ha pasado por parámetro.
+     */
+    public Partida cargarPartida(String idPartida) {
+        if (gestorPartida == null) {
+            gestorPartida = GestionPartida.getInstance();
         }
-        return gp.cargar(partida);
+        return gestorPartida.cargar(idPartida);
     }
 
-    public void guardar(Partida p) {
-        if (gp == null) {
-            gp = GestionPartida.getInstance();
+    /**
+     * Guarda la partida que se haya pasado por parámetro.
+     * @param partida partida a guardar
+     */
+    public void guardar(Partida partida) {
+        if (gestorPartida == null) {
+            gestorPartida = GestionPartida.getInstance();
         }
-        gp.guardar(p);
+        gestorPartida.guardar(partida);
     }
 
-    public void eliminarPartida(String p) {
-        if (gp == null) {
-            gp = GestionPartida.getInstance();
+    /**
+     * Elimina la partida cuyo identificador es pasado por parámetro
+     * @param idPartida identificador de la partida a cargar
+     */
+    public void eliminarPartida(String idPartida) {
+        if (gestorPartida == null) {
+            gestorPartida = GestionPartida.getInstance();
         }
-        gp.eliminar(p);
+        gestorPartida.eliminar(idPartida);
     }
 
     /* USUARIO */
 
+    /**
+     * Carga el usuario cuyo nombre de usuario es pasado por parámetro
+     * @param username nombre del usuario a cargar
+     * @return Usuario cuyo nombre se ha pasado por parámetro
+     * @throws ExcepcionUsuarioInexistente el nombre pasado por parámetro no coincide con ningún usuario existente.
+     */
     public Usuario cargarUsuario(String username) throws ExcepcionUsuarioInexistente {
-        if (gu == null) {
-            gu = GestionUsuario.getInstance();
+        if (gestorUsuario == null) {
+            gestorUsuario = GestionUsuario.getInstance();
         }
-        return gu.cargar(username);
+        return gestorUsuario.cargar(username);
     }
 
+    /**
+     * Guarda el usuario que se ha pasado por parámetro.
+     * @param user Usuario a guardar
+     */
     public void guardar(Usuario user) {
-        if (gu == null) {
-            gu = GestionUsuario.getInstance();
+        if (gestorUsuario == null) {
+            gestorUsuario = GestionUsuario.getInstance();
         }
-        gu.guardar(user);
+        gestorUsuario.guardar(user);
     }
 
+    /**
+     * Elimina el usuario cuyo nombre de usuario es pasado por parámetro
+     * @param username nombre del usuario a eliminar
+     */
     public void eliminarUsuario(String username) {
-        if (gu == null) {
-            gu = GestionUsuario.getInstance();
+        if (gestorUsuario == null) {
+            gestorUsuario = GestionUsuario.getInstance();
         }
-        gu.eliminar(username);
+        gestorUsuario.eliminar(username);
     }
 
-    public boolean existeUsuario(String usuario) {
-        if (gu == null) {
-            gu = GestionUsuario.getInstance();
+    /**
+     * Devuelve si existe un usuario con el nombre de usuario pasado por parámetro
+     * @param username nombre del usuario a comprobar
+     * @return cierto si existe; falso si no existe.
+     */
+    public boolean existeUsuario(String username) {
+        if (gestorUsuario == null) {
+            gestorUsuario = GestionUsuario.getInstance();
         }
-        return gu.existe(usuario);
+        return gestorUsuario.existe(username);
     }
 
+    /**
+     * Devuelve si hay algún usuario creado en el sistema.
+     * @return cierto si existe alguno; falso si no hay ninguno.
+     */
     public boolean existeAlgunUsuario() {
-        if (gu == null) {
-            gu = GestionUsuario.getInstance();
+        if (gestorUsuario == null) {
+            gestorUsuario = GestionUsuario.getInstance();
         }
-        return gu.existeAlguno();
+        return gestorUsuario.existeAlguno();
     }
 
+    /**
+     * Devuelve una lista de todos los nombres de usuarios que hay guardados en el sistema
+     * @return lista de todos los nombres de usuario.
+     */
     public List<String> getTodosUsuarios() {
-        if (gu == null) {
-            gu = GestionUsuario.getInstance();
+        if (gestorUsuario == null) {
+            gestorUsuario = GestionUsuario.getInstance();
         }
-        return gu.getTodos();
+        return gestorUsuario.getTodos();
     }
 
 
