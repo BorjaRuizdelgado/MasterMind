@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_mastermindv" default="compile.module.mastermindv">
+  <dirname property="module.mastermindv.basedir" file="${ant.file.module_mastermindv}"/>
+  
+  <property name="module.jdk.home.mastermindv" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.mastermindv" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.mastermindv" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.mastermindv" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="mastermindv.output.dir" value="${module.mastermindv.basedir}/out/production/MasterMindV"/>
+  <property name="mastermindv.testoutput.dir" value="${module.mastermindv.basedir}/out/test/MasterMindV"/>
+  
+  <path id="mastermindv.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="mastermindv.module.production.classpath">
+    <path refid="${module.jdk.classpath.mastermindv}"/>
+    <pathelement location="${idea.home}/lib/groovy-all-2.4.6.jar"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+  </path>
+  
+  <path id="mastermindv.runtime.production.module.classpath">
+    <pathelement location="${mastermindv.output.dir}"/>
+    <pathelement location="${idea.home}/lib/groovy-all-2.4.6.jar"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+  </path>
+  
+  <path id="mastermindv.module.classpath">
+    <path refid="${module.jdk.classpath.mastermindv}"/>
+    <pathelement location="${mastermindv.output.dir}"/>
+    <pathelement location="${idea.home}/plugins/junit/lib/junit-jupiter-api-5.0.0.jar"/>
+    <pathelement location="${idea.home}/plugins/junit/lib/opentest4j-1.0.0.jar"/>
+    <pathelement location="${idea.home}/lib/groovy-all-2.4.6.jar"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+  </path>
+  
+  <path id="mastermindv.runtime.module.classpath">
+    <pathelement location="${mastermindv.testoutput.dir}"/>
+    <pathelement location="${mastermindv.output.dir}"/>
+    <pathelement location="${idea.home}/plugins/junit/lib/junit-jupiter-api-5.0.0.jar"/>
+    <pathelement location="${idea.home}/plugins/junit/lib/opentest4j-1.0.0.jar"/>
+    <pathelement location="${idea.home}/lib/groovy-all-2.4.6.jar"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.mastermindv">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.mastermindv">
+    <patternset refid="excluded.from.module.mastermindv"/>
+  </patternset>
+  
+  <path id="mastermindv.module.sourcepath">
+    <dirset dir="${module.mastermindv.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.mastermindv" depends="compile.module.mastermindv.production,compile.module.mastermindv.tests" description="Compile module MasterMindV"/>
+  
+  <target name="compile.module.mastermindv.production" depends="register.custom.compilers" description="Compile module MasterMindV; production classes">
+    <mkdir dir="${mastermindv.output.dir}"/>
+    <javac2 destdir="${mastermindv.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.mastermindv}/javac">
+      <compilerarg line="${compiler.args.mastermindv}"/>
+      <bootclasspath refid="mastermindv.module.bootclasspath"/>
+      <classpath refid="mastermindv.module.production.classpath"/>
+      <src refid="mastermindv.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.mastermindv"/>
+    </javac2>
+    
+    <copy todir="${mastermindv.output.dir}">
+      <fileset dir="${module.mastermindv.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.mastermindv.tests" depends="register.custom.compilers,compile.module.mastermindv.production" description="compile module MasterMindV; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.mastermindv" description="cleanup module">
+    <delete dir="${mastermindv.output.dir}"/>
+    <delete dir="${mastermindv.testoutput.dir}"/>
+  </target>
+</project>

@@ -525,7 +525,7 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                crearJuego();
+                crearJuego("Facil", maker);
             }
         });
 
@@ -533,14 +533,14 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                crearJuego();
+                crearJuego("Medio", maker);
             }
         });
         dificil.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                crearJuego();
+                crearJuego("Dificil", maker);
             }
         });
 
@@ -548,9 +548,9 @@ public class Principal {
 
     }
 
-    private void crearJuego() {
-        JFrame frame = new JFrame("Juego");
-        frame.setContentPane(new Juego().getPanel());
+    private void crearJuego(String dificultad, boolean isCodeMaker) {
+        JFrame frame = new JFrame("Mastermindo");
+        frame.setContentPane(new Juego(dificultad, isCodeMaker).getPanel());
         frame.setPreferredSize(new Dimension(850, 900));
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();

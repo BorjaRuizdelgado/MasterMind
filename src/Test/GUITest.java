@@ -20,7 +20,7 @@ public class GUITest {
                 frame.setContentPane(new Principal().getPanel());
                 break;
             case "Juego":
-                frame.setContentPane(new Juego().getPanel());
+                frame.setContentPane(new Juego("Facil", true).getPanel());
                 break;
         }
 

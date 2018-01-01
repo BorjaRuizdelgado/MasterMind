@@ -371,7 +371,22 @@ public class Juego {
         });
     }
 
-    public Juego() {
+    public Juego(String dificultad, boolean isCodeMaker) {
+        this.codeMaker = isCodeMaker;
+        this.dificultad = dificultad;
+        if(dificultad == "Facil") {
+            numColumns = 4;
+            numColors = 4;
+        }
+        else if(dificultad == "Medio"){
+            numColumns = 4;
+            numColors = 6;
+        }
+        else{
+            numColumns = 6;
+            numColors = 6;
+        }
+
         initMap();
         makeTables();
         applyButtonsEffects();
