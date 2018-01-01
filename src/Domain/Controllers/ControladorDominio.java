@@ -21,6 +21,7 @@ public class ControladorDominio {
     private SistemaRanking ranking = null;
     private ControladorPersistencia persistencia = ControladorPersistencia.getInstance();
 
+
     /**
      * Creadora ControladorDominio.
      */
@@ -295,22 +296,44 @@ public class ControladorDominio {
         return partidaActual.getPista1();
     }
 
+    /**
+     * Da el nombre del usuario cargado actualmente
+     * @return usuarioCargado.getNombre()
+     */
     public String getUsuario(){
         return usuarioCargado.getNombre();
     }
 
+    /**
+     * Devuelve la lista de todos los usuarios guardados en disco.
+     * @return persistencia.getTodosUsuarios()
+     */
     public List<String> getTodosUsuarios() {
         return persistencia.getTodosUsuarios();
     }
 
+    /**
+     * Crea una punetuación a partir de un usuario, fecha y dificultad
+     * @param usuario
+     * @param puntuacion
+     * @param fecha
+     * @param dificultad
+     */
     public void creaPuntuacion(String usuario, int puntuacion, String fecha, String dificultad) {
         ranking.addNewPuntuation(usuario, puntuacion, fecha, dificultad);
     }
 
+    /**
+     * Determina si existe algún usuario guardado en disco.
+     * @return
+     */
     public boolean existeAlgunUsuario(){
         return persistencia.existeAlgunUsuario();
     }
 
+    /**
+     * borra el usuario cargado actualmente, sus partidas y rankings.
+     */
     public void borrarUsuario() {
         borrarPartidasGuardadas();
         borrarRankings();
@@ -318,6 +341,9 @@ public class ControladorDominio {
         usuarioCargado = null;
     }
 
+    /**
+     * borra las partidas guardadas del usuario cargado en memoria.
+     */
     public void borrarPartidasGuardadas() {
         List<String> partidas = getPartidasGuardadasUsr();
         for (String partida : partidas) {
@@ -327,6 +353,9 @@ public class ControladorDominio {
         persistencia.guardar(usuarioCargado);
     }
 
+    /**
+     * borra los rankings del usuario cargado en memoria.
+     */
     public void borrarRankings() {
         List<Info> rankingFacil = ranking.getRankingFacilInfo(usuarioCargado.getNombre());
         ranking.eliminaRankingFacil(rankingFacil);
@@ -335,5 +364,13 @@ public class ControladorDominio {
         List<Info> rankingDificil = ranking.getRankingDificilInfo(usuarioCargado.getNombre());
         ranking.eliminaRankingDificil(rankingDificil);
         persistencia.guardarSistemaRanking();
+    }
+
+    /**
+     * devuelve si una partida está ganada o no
+     * @return partidaActual.isGanado()
+     */
+    public boolean isPartidaGanada(){
+        return partidaActual.isGanado();
     }
 }
