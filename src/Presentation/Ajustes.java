@@ -18,6 +18,8 @@ public class Ajustes {
     public Ajustes(){
         mp3Player = Mp3Player.getInstance();
 
+        if(!mp3Player.isPlaying()) silenciarMusicaCheckBox.setSelected(true);
+
         slider1.addChangeListener(new ChangeListener()
         {
             @Override public void stateChanged(ChangeEvent e)
