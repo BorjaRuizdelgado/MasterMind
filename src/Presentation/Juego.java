@@ -7,8 +7,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.*;
 import java.util.List;
+
+/**
+ * Clase Juego que conecta el controlador y la interfaz gráfica
+ * @author Omar
+ */
 
 public class Juego {
     private JPanel panel2;
@@ -36,21 +42,23 @@ public class Juego {
     private JButton ACEPTARButton;
 
 
-    private ArrayList<JButton> colorsButtons;
     private ArrayList<JButton> solutionButtons;
     private ArrayList<ArrayList<JButton>> tableButtons;
     private ArrayList<ArrayList<JButton>> answerButtons;
 
-    private int numColors = 6;
-    private int numColumns = 6;
-    private String dificultad = "Dificil";
+    private int numColors = 4;
+    private int numColumns = 4;
+    private String dificultad = "Facil";
     private int color;
 
-    private boolean codeMaker = true;
+    /* Cosas de codeMaker */
+    private ControladorDominio controller = ControladorDominio.getInstance();
+    private boolean codeMaker = false;
     private boolean firstAttempt = true;
     private int actualRow = 0;
 
-    private static Color defaultColor = new Color(230, 230 , 230);
+    private static Color hide = new Color(160, 160, 160);
+    private static Color defaultColor = new Color(240, 240 , 240);
     private static Color rojo = new Color(255, 0 , 0);
     private static Color verde = new Color(0, 191 , 28);
     private static Color azul = new Color(23, 41 , 224);
@@ -61,18 +69,6 @@ public class Juego {
     private static Color negro = new Color(0, 0 , 0);
 
     private Map<Integer, Color> colorMap;
-
-    /*
-        VACIO = 0;
-        ROJO = 1;
-        VERDE = 2;
-        AZUL = 3;
-        AMARILLO = 4;
-        NARANJA = 5;
-        MORADO = 6;
-        BLANCO = 7;
-        NEGRO = 8;
-    */
 
     public JPanel getPanel() {
         return panel2;
@@ -106,7 +102,6 @@ public class Juego {
             else {
                 column++;
             }
-            //System.out.println("Row: " + String.valueOf(row) + " Col: " + String.valueOf(column));
             tableButtons.get(row).add(jButton);
         }
     }
@@ -120,32 +115,6 @@ public class Juego {
 
             solutionButtons.add(jButton);
         }
-
-        /* With GridBagLayout
-        GridBagLayout gridBagLayout = new GridBagLayout();
-        solution.setLayout(gridBagLayout);
-        GridBagConstraints constraints = new GridBagConstraints();
-
-        constraints.gridy = 0;
-        constraints.gridx = 0;
-        constraints.weightx = 1.0;
-        constraints.weighty = 0.5;
-        constraints.fill = GridBagConstraints.BOTH;
-        JButton jButton1 = new JButton();
-        solution.add(jButton1, constraints);
-
-        constraints.gridx = 1;
-        JButton jButton2 = new JButton();
-        solution.add(jButton2, constraints);
-
-        constraints.gridx =2;
-        JButton jButton3 = new JButton();
-        solution.add(jButton3, constraints);
-
-        constraints.gridx = 3;
-        JButton jButton4 = new JButton();
-        solution.add(jButton4, constraints);
-        */
     }
 
     private void createAnswersSquare(){
@@ -155,26 +124,6 @@ public class Juego {
             j.setOpaque(false);
             j.setLayout(new GridBagLayout());
             GridBagConstraints constraints = new GridBagConstraints();
-
-            /*constraints.gridy = 0;
-            constraints.gridx = 0;
-            constraints.weighty = 1.0;
-            constraints.fill = GridBagConstraints.VERTICAL;
-            JButton jButton1 = new JButton(" ");
-            j.add(jButton1, constraints);
-
-            constraints.gridx = 1;
-            JButton jButton2 = new JButton(" ");
-            j.add(jButton2, constraints);
-
-            constraints.gridx = 0;
-            constraints.gridy = 1;
-            JButton jButton3 = new JButton(" ");
-            j.add(jButton3, constraints);
-
-            constraints.gridx = 1;
-            JButton jButton4 = new JButton(" ");
-            j.add(jButton4, constraints);*/
 
             constraints.weighty = 1.0;
             constraints.fill = GridBagConstraints.VERTICAL;
@@ -202,7 +151,7 @@ public class Juego {
         }
     }
 
-    private void makeTable(){
+    private void makeTables(){
         solutionButtons = new ArrayList<>();
         tableButtons = new ArrayList<>();
         answerButtons = new ArrayList<>();
@@ -212,71 +161,26 @@ public class Juego {
         createAnswersSquare();
 
         setFunctionColors();
-        setFunctionSolution();
-        setFunctionTable();
-        setFunctionsAnswers();
     }
 
-    private void setFunctionsAnswers(){
-        for (int i = 0; i < answerButtons.size(); i++) {
-            for (int j = 0; j < answerButtons.get(i).size(); j++) {
-                int finalI = i;
-                int finalJ = j;
-                answerButtons.get(i).get(j).addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent mouseEvent) {
-                        super.mouseClicked(mouseEvent);
-                        if (mouseEvent.getButton() != MouseEvent.BUTTON3)
-                            setColor(answerButtons.get(finalI).get(finalJ), color);
-                        else {
-                            setColor(answerButtons.get(finalI).get(finalJ), 0);
-                        }
-
-                    }
-                });
-            }
-        }
-    }
-
-    private void setFunctionTable(){
-        for (int i = 0; i < tableButtons.size(); i++) {
-            for (int j = 0; j < tableButtons.get(i).size(); j++) {
-                int finalI = i;
-                int finalJ = j;
-                tableButtons.get(i).get(j).addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent mouseEvent) {
-                        super.mouseClicked(mouseEvent);
-
-                        if (mouseEvent.getButton() != MouseEvent.BUTTON3)
-                            setColor(tableButtons.get(finalI).get(finalJ), color);
-                        else
-                            setColor(tableButtons.get(finalI).get(finalJ), 0);
-                    }
-                });
-            }
-        }
-    }
-
-    private void setFunctionSolution(){
-        for (int i = 0; i < solutionButtons.size(); i++) {
-            int finalI = i;
-            solutionButtons.get(i).addMouseListener(new MouseAdapter() {
+    private void setButtonsEnabled(ArrayList<JButton> buttons){
+        for (JButton button: buttons) {
+            button.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent mouseEvent) {
                     super.mouseClicked(mouseEvent);
-
                     if (mouseEvent.getButton() != MouseEvent.BUTTON3)
-                        setColor(solutionButtons.get(finalI), color);
-                    else
-                        setColor(solutionButtons.get(finalI), 0);
+                        setColor(button, color);
+                    else {
+                        setColor(button, 0);
+                    }
                 }
             });
         }
     }
 
     private void setFunctionColors(){
-        colorsButtons = new ArrayList<>();
+        ArrayList<JButton> colorsButtons = new ArrayList<>();
         colorsButtons.add(button1);
         colorsButtons.add(button2);
         colorsButtons.add(button3);
@@ -326,7 +230,7 @@ public class Juego {
         }
     }
 
-    private int getFilledButtonsSize(ArrayList<JButton> buttons){
+    private int getEmptyButtonsSize(ArrayList<JButton> buttons){
         int count = 0;
         for (JButton button: buttons){
             if (button.getBackground().equals(defaultColor))
@@ -363,11 +267,9 @@ public class Juego {
         return Return;
     }
 
-    private void fillRow(int row, List<Integer> list){
-        System.out.println(list.size());
-        System.out.println(tableButtons.get(row).size());
+    private void fillRow(List<Integer> list, ArrayList<JButton> buttons){
         int j = 0;
-        for (JButton button: tableButtons.get(row)) {
+        for (JButton button: buttons) {
             button.setBackground(colorMap.get(list.get(j)));
             j++;
         }
@@ -375,6 +277,7 @@ public class Juego {
 
     private void initMap(){
         colorMap = new HashMap<>();
+        colorMap.put(-1, hide);
         colorMap.put(0, defaultColor);
         colorMap.put(1, rojo);
         colorMap.put(2, verde);
@@ -386,35 +289,94 @@ public class Juego {
         colorMap.put(8, negro);
     }
 
-    public Juego() {
-        initMap();
-        ControladorDominio controller = ControladorDominio.getInstance();
-        makeTable();
-        applyButtonsEffects();
+    private void setButtonsDisabled(ArrayList<JButton> buttons){
+        for (JButton button: buttons) {
+            for (MouseListener listener:button.getMouseListeners()) {
+                button.removeMouseListener(listener);
+            }
+        }
+    }
 
+    private void showMessage(String title, String message){
+        JOptionPane.showMessageDialog(null,message, title, JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void initGame(){
+        if (!codeMaker){
+            List<Integer> solCode = controller.crearPartidaUsuarioCargadoRolBreaker(dificultad);
+
+            List <Integer> aux = new ArrayList<>();
+            for (int i = 0; i < numColumns; i++) {
+                aux.add(-1);
+            }
+            fillRow(aux, solutionButtons);
+
+            setButtonsDisabled(solutionButtons);
+
+            setButtonsEnabled(tableButtons.get(actualRow));
+        }
+        else{
+            setButtonsEnabled(solutionButtons);
+        }
+    }
+
+    private void setAcceptButtonFunction(){
         ACEPTARButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent mouseEvent) {
                 super.mousePressed(mouseEvent);
-                if (codeMaker && getFilledButtonsSize(solutionButtons) == 0 && firstAttempt){
-                    controller.crearPartidaUsuarioCargadoRolMaker(dificultad, fromJButtonListToIntList(solutionButtons));
-                    firstAttempt = false;
 
-                    fillRow(actualRow, controller.jugarCodeMaker());
+                //CodeMaker
+                if (codeMaker && firstAttempt){
+                    if (getEmptyButtonsSize(solutionButtons) == 0) {
+                        controller.crearPartidaUsuarioCargadoRolMaker(dificultad, fromJButtonListToIntList(solutionButtons));
+                        firstAttempt = false;
+
+                        fillRow(controller.jugarCodeMaker(), tableButtons.get(actualRow));
+                        setButtonsDisabled(solutionButtons);
+                    }
+                    else{
+                        showMessage("Error", "¡No puede existir un hueco vacío en tu solución!");
+                    }
                 }
                 else if (codeMaker && !firstAttempt){
-                    System.out.println("Pole:" + fromJButtonListToIntList(answerButtons.get(actualRow)));
                     try {
                         actualRow++;
-                        fillRow(actualRow, controller.jugarCodeMaker(fromJButtonListToIntList(answerButtons.get(actualRow-1))));
+                        fillRow(controller.jugarCodeMaker(fromJButtonListToIntList(answerButtons.get(actualRow-1))), tableButtons.get(actualRow));
                     }
                     catch (ExcepcionRespuestaIncorrecta excepcionRespuestaIncorrecta) {
                         actualRow--;
-                        JOptionPane.showMessageDialog(null,"¡Corrección incorrecta!", "Error", JOptionPane.INFORMATION_MESSAGE);
+                        showMessage("Error", "Corrección incorrecta!");
+                    }
+                }
+                if (codeMaker){
+                    if (actualRow!=0)setButtonsDisabled(answerButtons.get(actualRow-1));
+                    setButtonsEnabled(answerButtons.get(actualRow));
+                }
+
+                // CodeBreaker
+                if(!codeMaker){
+                    if (getEmptyButtonsSize(tableButtons.get(actualRow)) == 0) {
+                        List<Integer> response = controller.juegaCodeBreaker(fromJButtonListToIntList(tableButtons.get(actualRow)), 0);
+                        fillRow(response, answerButtons.get(actualRow));
+                        actualRow++;
+                        setButtonsEnabled(tableButtons.get(actualRow));
+                        if (actualRow != 0) setButtonsDisabled(tableButtons.get(actualRow - 1));
+                    }
+                    else{
+                        showMessage("Error", "Tienes que rellenar todos los huecos de la fila " + String.valueOf(actualRow+1));
                     }
                 }
             }
         });
+    }
+
+    public Juego() {
+        initMap();
+        makeTables();
+        applyButtonsEffects();
+        initGame();
+        setAcceptButtonFunction();
     }
 
 }
