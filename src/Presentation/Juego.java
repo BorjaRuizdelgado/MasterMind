@@ -407,11 +407,62 @@ public class Juego {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
+
                 frame.dispose();
                 oldFrame.setVisible(true);
             }
         });
 
+        guardarYSalirButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
+
+                controller.guardaPartidaActual();
+                frame.dispose();
+                oldFrame.setVisible(true);
+            }
+        });
+
+        ayudaButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
+
+                JFrame frame = new JFrame("Ayuda");
+                frame.setContentPane(new Ayuda().getPanel());
+                frame.setPreferredSize(new Dimension(550, 600));
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+            }
+        });
+
+        pistaButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
+
+                System.out.println();
+            }
+        });
+
+        reiniciarPartidaButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
+
+                frame.dispose();
+                JFrame frame = new JFrame("Mastermindo");
+                frame.setContentPane(new Juego(dificultad, codeMaker, frame, oldFrame).getPanel());
+                frame.setPreferredSize(new Dimension(850, 900));
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+            }
+        });
     }
 
 }
