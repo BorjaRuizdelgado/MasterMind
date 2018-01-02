@@ -130,7 +130,7 @@
                     </properties>
                     <border type="none"/>
                     <children>
-                      <component id="e2040" class="javax.swing.JButton" binding="verClasificacionButton">
+                      <component id="e2040" class="javax.swing.JButton" binding="pistaButton">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -141,21 +141,7 @@
                           <font name="Umpush" size="16"/>
                           <foreground color="-1"/>
                           <opaque value="true"/>
-                          <text value="Ver clasificación"/>
-                        </properties>
-                      </component>
-                      <component id="4460d" class="javax.swing.JButton" binding="abandonarPartidaButton" default-binding="true">
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <background color="-4180169"/>
-                          <borderPainted value="false"/>
-                          <focusPainted value="false"/>
-                          <font name="Umpush" size="16"/>
-                          <foreground color="-1"/>
-                          <opaque value="true"/>
-                          <text value="Abandonar partida"/>
+                          <text value="Pista"/>
                         </properties>
                       </component>
                       <component id="f0731" class="javax.swing.JButton" binding="reiniciarPartidaButton" default-binding="true">
@@ -174,20 +160,6 @@
                           <text value="Reiniciar partida"/>
                         </properties>
                       </component>
-                      <component id="fc3f" class="javax.swing.JButton" binding="ayudaButton" default-binding="true">
-                        <constraints>
-                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <background color="-4180169"/>
-                          <borderPainted value="false"/>
-                          <focusPainted value="false"/>
-                          <font name="Umpush" size="16"/>
-                          <foreground color="-1"/>
-                          <opaque value="true"/>
-                          <text value="Ayuda"/>
-                        </properties>
-                      </component>
                       <component id="16d4e" class="javax.swing.JButton" binding="guardarYSalirButton" default-binding="true">
                         <constraints>
                           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -201,6 +173,34 @@
                           <hideActionText value="false"/>
                           <opaque value="true"/>
                           <text value="Guardar y salir"/>
+                        </properties>
+                      </component>
+                      <component id="4460d" class="javax.swing.JButton" binding="abandonarPartidaButton" default-binding="true">
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-4180169"/>
+                          <borderPainted value="false"/>
+                          <focusPainted value="false"/>
+                          <font name="Umpush" size="16"/>
+                          <foreground color="-1"/>
+                          <opaque value="true"/>
+                          <text value="Abandonar partida"/>
+                        </properties>
+                      </component>
+                      <component id="fc3f" class="javax.swing.JButton" binding="ayudaButton" default-binding="true">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-4180169"/>
+                          <borderPainted value="false"/>
+                          <focusPainted value="false"/>
+                          <font name="Umpush" size="16"/>
+                          <foreground color="-1"/>
+                          <opaque value="true"/>
+                          <text value="Ayuda"/>
                         </properties>
                       </component>
                     </children>

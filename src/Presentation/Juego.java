@@ -26,7 +26,7 @@ public class Juego {
     private JPanel tablew;
     private JPanel solution;
     private JPanel responses;
-    private JButton verClasificacionButton;
+    private JButton pistaButton;
     private JButton abandonarPartidaButton;
     private JButton reiniciarPartidaButton;
     private JButton ayudaButton;
@@ -204,7 +204,7 @@ public class Juego {
 
     private void applyButtonsEffects(){
         ArrayList<JButton> aux = new ArrayList<>();
-        aux.add(verClasificacionButton);
+        aux.add(pistaButton);
         aux.add(abandonarPartidaButton);
         aux.add(reiniciarPartidaButton);
         aux.add(ayudaButton);
@@ -339,10 +339,10 @@ public class Juego {
                             showMessage("Error", "¡No puede existir un hueco vacío en tu solución!");
                         }
                     } else if (codeMaker && !firstAttempt) {
-                        System.out.println(controller.isPartidaGanada());
                         try {
                             actualRow++;
-                            fillRow(controller.jugarCodeMaker(fromJButtonListToIntList(answerButtons.get(actualRow - 1))), tableButtons.get(actualRow));
+                            List<Integer> aux = controller.jugarCodeMaker(fromJButtonListToIntList(answerButtons.get(actualRow - 1)));
+                            if (!controller.isPartidaGanada())fillRow(aux, tableButtons.get(actualRow));
                         } catch (ExcepcionRespuestaIncorrecta excepcionRespuestaIncorrecta) {
                             actualRow--;
                             showMessage("Error", "Corrección incorrecta!");
@@ -350,7 +350,7 @@ public class Juego {
                     }
                     if (codeMaker) {
                         if (actualRow != 0) setButtonsDisabled(answerButtons.get(actualRow - 1));
-                        setButtonsEnabled(answerButtons.get(actualRow));
+                        if (!controller.isPartidaGanada())setButtonsEnabled(answerButtons.get(actualRow));
                     }
 
                     // CodeBreaker
@@ -371,6 +371,9 @@ public class Juego {
                         if (!codeMaker) {
                             fillRow(controller.getCodigoSecreto(), solutionButtons);
                             showMessage("Mastermindo", "¡Enhorabuena! Has descubierto el código secreto!");
+                        }
+                        else{
+                            showMessage("Mastermindo", "¡Creo que te he ganado!");
                         }
                     }
                 }
@@ -399,6 +402,7 @@ public class Juego {
         applyButtonsEffects();
         initGame();
         setAcceptButtonFunction();
+
         abandonarPartidaButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
