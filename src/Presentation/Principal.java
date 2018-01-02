@@ -405,6 +405,7 @@ public class Principal {
             partidas.addRow(aux);
         }
         table1.setModel(partidas);
+        table1.setCellSelectionEnabled(false);
         table1.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent mouseEvent) {
                 JTable table =(JTable) mouseEvent.getSource();

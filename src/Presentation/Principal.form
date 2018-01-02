@@ -484,7 +484,10 @@
                                     <preferred-size width="150" height="50"/>
                                   </grid>
                                 </constraints>
-                                <properties/>
+                                <properties>
+                                  <enabled value="true"/>
+                                  <fillsViewportHeight value="false"/>
+                                </properties>
                               </component>
                             </children>
                           </grid>
