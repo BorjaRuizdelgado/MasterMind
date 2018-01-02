@@ -50,8 +50,10 @@ public class Principal {
 
     private ControladorDominio ctrl;
     private Boolean crearUsuario;
+    private JFrame frame;
 
-    public Principal() {
+    public Principal(JFrame jframe) {
+        frame = jframe;
         mp3Player = Mp3Player.getInstance();
         mp3Player.play(System.getProperty("user.dir") + "/src/MP3Player/Skyrim.wav");
         mp3Player.changeVolume(-25);
@@ -185,8 +187,10 @@ public class Principal {
             public void mouseExited(MouseEvent mouseEvent) {
                 super.mouseExited(mouseEvent);
                 medio.setBackground(new Color(192, 55, 55));
+
             }
         });
+
         dificil.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent mouseEvent) {
@@ -550,15 +554,17 @@ public class Principal {
 
     private void crearJuego(String dificultad, boolean isCodeMaker) {
         JFrame frame = new JFrame("Mastermindo");
-        frame.setContentPane(new Juego(dificultad, isCodeMaker).getPanel());
+        frame.setContentPane(new Juego(dificultad, isCodeMaker, frame, this.frame).getPanel());
         frame.setPreferredSize(new Dimension(850, 900));
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        this.frame.setVisible(false);
     }
 
     public JPanel getPanel() {
         return panel;
     }
+
 }

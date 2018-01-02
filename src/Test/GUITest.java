@@ -18,10 +18,10 @@ public class GUITest {
 
         switch (type){
             case "Principal":
-                frame.setContentPane(new Principal().getPanel());
+                frame.setContentPane(new Principal(frame).getPanel());
                 break;
             case "Juego":
-                frame.setContentPane(new Juego("Facil", true).getPanel());
+                frame.setContentPane(new Juego("Facil", true,null,null).getPanel());
                 break;
         }
 
