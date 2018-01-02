@@ -19,7 +19,7 @@ public class ControladorDominio {
     private Usuario usuarioCargado = null;
     private Partida partidaActual = null;
     private SistemaRanking ranking = null;
-    private ControladorPersistencia persistencia = ControladorPersistencia.getInstance();
+    private ControladorPersistencia persistencia;
 
 
     /**
