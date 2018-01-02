@@ -378,7 +378,7 @@ public class Juego {
         });
     }
 
-    public Juego(String dificultad, boolean isCodeMaker) {
+    public Juego(String dificultad, boolean isCodeMaker, JFrame frame, JFrame oldFrame) {
         this.codeMaker = isCodeMaker;
         this.dificultad = dificultad;
         if(dificultad == "Facil") {
@@ -399,6 +399,15 @@ public class Juego {
         applyButtonsEffects();
         initGame();
         setAcceptButtonFunction();
+        abandonarPartidaButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
+                frame.dispose();
+                oldFrame.setVisible(true);
+            }
+        });
+
     }
 
 }
