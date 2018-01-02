@@ -27,7 +27,6 @@ public class GUITest {
 
         frame.setPreferredSize(new Dimension(850, 900));
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //frame.setUndecorated(true);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

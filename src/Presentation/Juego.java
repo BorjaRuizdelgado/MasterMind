@@ -40,6 +40,8 @@ public class Juego {
     private JButton button7;
     private JButton button8;
     private JButton ACEPTARButton;
+    private JPanel coloresPanel;
+    private JPanel narvioPanel;
 
 
     private ArrayList<JButton> solutionButtons;
@@ -359,7 +361,7 @@ public class Juego {
                             List<Integer> response = controller.juegaCodeBreaker(fromJButtonListToIntList(tableButtons.get(actualRow)), 0);
                             fillRow(response, answerButtons.get(actualRow));
                             actualRow++;
-                            if (!controller.isPartidaGanada()) setButtonsEnabled(tableButtons.get(actualRow));
+                            if (!controller.isPartidaGanada() && actualRow < 12) setButtonsEnabled(tableButtons.get(actualRow));
                             if (actualRow != 0) setButtonsDisabled(tableButtons.get(actualRow - 1));
                         } else {
                             showMessage("Error", "Tienes que rellenar todos los huecos de la fila " + String.valueOf(actualRow + 1));
@@ -376,6 +378,16 @@ public class Juego {
                             showMessage("Mastermindo", "¡Creo que te he ganado!");
                         }
                     }
+
+                    if (!controller.isPartidaGanada() && actualRow == 12){
+                        finished = true;
+                        if (codeMaker){
+                            showMessage("Mastermindo", "¡Has ganado a Mastermindo!");
+                        }
+                        else if (!codeMaker){
+                            showMessage("Mastermindo", "¡Has perdido!, no tienes más intentos");
+                        }
+                    }
                 }
             }
         });
@@ -387,6 +399,8 @@ public class Juego {
         if(dificultad == "Facil") {
             numColumns = 4;
             numColors = 4;
+
+            coloresPanel.remove(narvioPanel);
         }
         else if(dificultad == "Medio"){
             numColumns = 4;
