@@ -69,7 +69,6 @@ public class ControladorDominio {
      * @param codigoSecreto Determina el codigo secreto elegido por el usuario.
      */
     public void crearPartidaUsuarioCargadoRolMaker(String dificultad, ArrayList<Integer> codigoSecreto){
-        guardaPartidaActual();
         usuarioCargado.creaPartidaActual(true,dificultad);
         partidaActual = usuarioCargado.getPartidaActual();
         Codigo secreto = new Codigo(codigoSecreto.size());
@@ -83,7 +82,6 @@ public class ControladorDominio {
      * @return Codigo secreto aleatorio generado por la maquina.
      */
     public List<Integer> crearPartidaUsuarioCargadoRolBreaker(String dificultad){
-        guardaPartidaActual();
         usuarioCargado.creaPartidaActual(false, dificultad);
         partidaActual = usuarioCargado.getPartidaActual();
         return partidaActual.getCodigoSecreto().codigo;
@@ -96,7 +94,6 @@ public class ControladorDominio {
      * @return Retorna el rol del usuario en esa partida y la dificultad de la misma.
      */
     public Tuple2<Boolean,String> cargarPartidaUsuario(String idPartida){
-        guardaPartidaActual();
         partidaActual = persistencia.cargarPartida(idPartida);
         usuarioCargado.cargaPartida(partidaActual);
         return new Tuple2<>(partidaActual.isRolMaker(),partidaActual.getDificultad());
