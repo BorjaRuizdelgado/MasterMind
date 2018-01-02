@@ -332,7 +332,7 @@ public class ControladorDominio {
     }
 
     /**
-     * borra el usuario cargado actualmente, sus partidas y rankings.
+     * Borra el usuario cargado actualmente, sus partidas y rankings.
      */
     public void borrarUsuario() {
         borrarPartidasGuardadas();
@@ -342,7 +342,7 @@ public class ControladorDominio {
     }
 
     /**
-     * borra las partidas guardadas del usuario cargado en memoria.
+     * Borra las partidas guardadas del usuario cargado.
      */
     public void borrarPartidasGuardadas() {
         List<String> partidas = getPartidasGuardadasUsr();
@@ -354,7 +354,7 @@ public class ControladorDominio {
     }
 
     /**
-     * borra los rankings del usuario cargado en memoria.
+     * Borra los rankings del usuario cargado.
      */
     public void borrarRankings() {
         List<Info> rankingFacil = ranking.getRankingFacilInfo(usuarioCargado.getNombre());
@@ -367,8 +367,8 @@ public class ControladorDominio {
     }
 
     /**
-     * devuelve si una partida está ganada o no
-     * @return partidaActual.isGanado()
+     * Devuelve si la partida actual está ganada
+     * @return cierto si está ganada, falso si no.
      */
     public boolean isPartidaGanada(){
         return partidaActual.isGanado();
