@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Principal {
     private JPanel panel;
@@ -308,6 +310,7 @@ public class Principal {
                 main.removeAll();
                 main.add(contenidoCargarPart);
                 main.revalidate();
+                displayListaPartidas();
             }
         });
         CODEMAKERButton.addMouseListener(new MouseAdapter() {
@@ -386,6 +389,37 @@ public class Principal {
             }
         });
 
+    }
+
+    /**
+     * Muestra las partidas del usuario gruardadas en disco, dentro de la lista deja escoger una para cargar realizando
+     * un doble click.
+     */
+    private void displayListaPartidas(){
+        List<String> partidasUsuario = ctrl.getPartidasGuardadasUsr();
+        DefaultListModel<String > partidas = new DefaultListModel<>();
+        for(int i = 0; i < partidasUsuario.size(); ++i) {
+            partidas.addElement(partidasUsuario.get(i));
+        }
+        list1.setModel(partidas);
+        list1.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                JList list = (JList)evt.getSource();
+                if (evt.getClickCount() == 2) {
+                    int index = list.locationToIndex(evt.getPoint());
+                    cargarPartida(partidasUsuario.get(index));
+                }
+            }
+        });
+    }
+
+    /**
+     * Carga una del usuario cargado en memoria con un id = partidaACargar
+     * @param partidaACargar
+     */
+    private void cargarPartida(String partidaACargar) {
+        //TODO hacer método para cargar la partida con id s
+        System.out.println("implementa que se pueda cargar una partida como la que se ha seleccionado: " + partidaACargar);
     }
 
     private void addMouseEfect(JButton button) {
