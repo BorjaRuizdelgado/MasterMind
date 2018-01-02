@@ -25,7 +25,7 @@ public class Tablero implements Serializable {
     */
 
     private final int numeroColumnas;
-    private final int numeroFilas = 15;
+    private final int numeroFilas = 12;
     private int numeroFilaActual = 0;
 
     private List<Fila> tablero = new ArrayList<>(numeroFilas);
@@ -148,7 +148,7 @@ public class Tablero implements Serializable {
     public List<List<List<Integer>>> getTablero(){
         List<List<List<Integer>>> tableroAPasar = new ArrayList<>();
 
-        for(int i = 0; i < 15; ++i){
+        for(int i = 0; i < numeroFilas; ++i){
             List<List<Integer>> fila = new ArrayList<>();
             fila.add(tablero.get(i).getColores().codigo);
             fila.add(tablero.get(i).getRespuestas().respuesta);

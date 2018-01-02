@@ -2,6 +2,7 @@ package Test;
 
 import Domain.Controllers.ControladorDominio;
 import Domain.Excepciones.ExcepcionUsuarioExiste;
+import Domain.Tablero;
 import Presentation.Juego;
 import Presentation.Principal;
 

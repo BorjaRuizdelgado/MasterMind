@@ -242,10 +242,10 @@ public class Partida implements Serializable {
      * @return puntuación de la partida
      */
     public int generaPuntuacion() {
-        if(pista3 || pista2 || pista1 || (tablero.getNumeroFilaActual() == 15 && !ganado)) return 0;
+        if(pista3 || pista2 || pista1 || (tablero.getNumeroFilaActual() == tablero.getTablero().size() && !ganado)) return 0;
         float resultado = 0;
 
-        resultado += (15 - tablero.getNumeroFilaActual())*777;
+        resultado += (tablero.getTablero().size() - tablero.getNumeroFilaActual())*777;
         resultado += 1000000/(tiempo/1000);
         switch(dificultad){
             case "Medio":

@@ -51,14 +51,14 @@ public class Juego {
     private String dificultad = "Facil";
     private int color;
 
-    /* Cosas de codeMaker */
     private ControladorDominio controller = ControladorDominio.getInstance();
     private boolean codeMaker = false;
     private boolean firstAttempt = true;
     private int actualRow = 0;
+    private boolean finished = false;
 
     private static Color hide = new Color(160, 160, 160);
-    private static Color defaultColor = new Color(240, 240 , 240);
+    private static Color defaultColor = new Color(238, 238 , 238);
     private static Color rojo = new Color(255, 0 , 0);
     private static Color verde = new Color(0, 191 , 28);
     private static Color azul = new Color(23, 41 , 224);
@@ -326,45 +326,52 @@ public class Juego {
             public void mousePressed(MouseEvent mouseEvent) {
                 super.mousePressed(mouseEvent);
 
-                //CodeMaker
-                if (codeMaker && firstAttempt){
-                    if (getEmptyButtonsSize(solutionButtons) == 0) {
-                        controller.crearPartidaUsuarioCargadoRolMaker(dificultad, fromJButtonListToIntList(solutionButtons));
-                        firstAttempt = false;
+                if (!finished) {
+                    //CodeMaker
+                    if (codeMaker && firstAttempt) {
+                        if (getEmptyButtonsSize(solutionButtons) == 0) {
+                            controller.crearPartidaUsuarioCargadoRolMaker(dificultad, fromJButtonListToIntList(solutionButtons));
+                            firstAttempt = false;
 
-                        fillRow(controller.jugarCodeMaker(), tableButtons.get(actualRow));
-                        setButtonsDisabled(solutionButtons);
+                            fillRow(controller.jugarCodeMaker(), tableButtons.get(actualRow));
+                            setButtonsDisabled(solutionButtons);
+                        } else {
+                            showMessage("Error", "¡No puede existir un hueco vacío en tu solución!");
+                        }
+                    } else if (codeMaker && !firstAttempt) {
+                        System.out.println(controller.isPartidaGanada());
+                        try {
+                            actualRow++;
+                            fillRow(controller.jugarCodeMaker(fromJButtonListToIntList(answerButtons.get(actualRow - 1))), tableButtons.get(actualRow));
+                        } catch (ExcepcionRespuestaIncorrecta excepcionRespuestaIncorrecta) {
+                            actualRow--;
+                            showMessage("Error", "Corrección incorrecta!");
+                        }
                     }
-                    else{
-                        showMessage("Error", "¡No puede existir un hueco vacío en tu solución!");
+                    if (codeMaker) {
+                        if (actualRow != 0) setButtonsDisabled(answerButtons.get(actualRow - 1));
+                        setButtonsEnabled(answerButtons.get(actualRow));
                     }
-                }
-                else if (codeMaker && !firstAttempt){
-                    try {
-                        actualRow++;
-                        fillRow(controller.jugarCodeMaker(fromJButtonListToIntList(answerButtons.get(actualRow-1))), tableButtons.get(actualRow));
-                    }
-                    catch (ExcepcionRespuestaIncorrecta excepcionRespuestaIncorrecta) {
-                        actualRow--;
-                        showMessage("Error", "Corrección incorrecta!");
-                    }
-                }
-                if (codeMaker){
-                    if (actualRow!=0)setButtonsDisabled(answerButtons.get(actualRow-1));
-                    setButtonsEnabled(answerButtons.get(actualRow));
-                }
 
-                // CodeBreaker
-                if(!codeMaker){
-                    if (getEmptyButtonsSize(tableButtons.get(actualRow)) == 0) {
-                        List<Integer> response = controller.juegaCodeBreaker(fromJButtonListToIntList(tableButtons.get(actualRow)), 0);
-                        fillRow(response, answerButtons.get(actualRow));
-                        actualRow++;
-                        setButtonsEnabled(tableButtons.get(actualRow));
-                        if (actualRow != 0) setButtonsDisabled(tableButtons.get(actualRow - 1));
+                    // CodeBreaker
+                    if (!codeMaker) {
+                        if (getEmptyButtonsSize(tableButtons.get(actualRow)) == 0) {
+                            List<Integer> response = controller.juegaCodeBreaker(fromJButtonListToIntList(tableButtons.get(actualRow)), 0);
+                            fillRow(response, answerButtons.get(actualRow));
+                            actualRow++;
+                            if (!controller.isPartidaGanada()) setButtonsEnabled(tableButtons.get(actualRow));
+                            if (actualRow != 0) setButtonsDisabled(tableButtons.get(actualRow - 1));
+                        } else {
+                            showMessage("Error", "Tienes que rellenar todos los huecos de la fila " + String.valueOf(actualRow + 1));
+                        }
                     }
-                    else{
-                        showMessage("Error", "Tienes que rellenar todos los huecos de la fila " + String.valueOf(actualRow+1));
+
+                    if (controller.isPartidaGanada()) {
+                        finished = true;
+                        if (!codeMaker) {
+                            fillRow(controller.getCodigoSecreto(), solutionButtons);
+                            showMessage("Mastermindo", "¡Enhorabuena! Has descubierto el código secreto!");
+                        }
                     }
                 }
             }

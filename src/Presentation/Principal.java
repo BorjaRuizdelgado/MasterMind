@@ -442,14 +442,14 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                escogerDificultad(false);
+                escogerDificultad(true);
             }
         });
         CODEBREAKERButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                escogerDificultad(true);
+                escogerDificultad(false);
 
             }
         });
