@@ -6,6 +6,7 @@ import Domain.Excepciones.ExcepcionUsuarioInexistente;
 import MP3Player.Mp3Player;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -48,6 +49,7 @@ public class Principal {
     private JButton medio;
     private JButton dificil;
     private JButton r5;
+    private JTable table1;
     private Mp3Player mp3Player;
 
     private ControladorDominio ctrl;
@@ -397,17 +399,20 @@ public class Principal {
      */
     private void displayListaPartidas(){
         List<String> partidasUsuario = ctrl.getPartidasGuardadasUsr();
-        DefaultListModel<String > partidas = new DefaultListModel<>();
-        for(int i = 0; i < partidasUsuario.size(); ++i) {
-            partidas.addElement(partidasUsuario.get(i));
+        DefaultTableModel partidas = new DefaultTableModel(0,3);
+        for (String aPartidasUsuario : partidasUsuario) {
+            String aux[] = aPartidasUsuario.split("@");
+            partidas.addRow(aux);
         }
-        list1.setModel(partidas);
-        list1.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                JList list = (JList)evt.getSource();
-                if (evt.getClickCount() == 2) {
-                    int index = list.locationToIndex(evt.getPoint());
-                    cargarPartida(partidasUsuario.get(index));
+        table1.setModel(partidas);
+        table1.setCellSelectionEnabled(false);
+        table1.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent mouseEvent) {
+                JTable table =(JTable) mouseEvent.getSource();
+                Point point = mouseEvent.getPoint();
+                int row = table.rowAtPoint(point);
+                if (mouseEvent.getClickCount() == 2) {
+                    cargarPartida(partidasUsuario.get(row));
                 }
             }
         });
@@ -486,4 +491,7 @@ public class Principal {
         return panel;
     }
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }

@@ -442,7 +442,7 @@
                                 <properties>
                                   <font name="Ubuntu Light" size="20"/>
                                   <foreground color="-1"/>
-                                  <text value="Modo"/>
+                                  <text value="Fecha"/>
                                 </properties>
                               </component>
                               <component id="6a635" class="javax.swing.JLabel">
@@ -452,7 +452,7 @@
                                 <properties>
                                   <font name="Ubuntu Light" size="20"/>
                                   <foreground color="-1"/>
-                                  <text value="Dificultad"/>
+                                  <text value="Modo"/>
                                 </properties>
                               </component>
                               <component id="34a35" class="javax.swing.JLabel">
@@ -462,7 +462,7 @@
                                 <properties>
                                   <font name="Ubuntu Light" size="20"/>
                                   <foreground color="-1"/>
-                                  <text value="Fecha"/>
+                                  <text value="Dificultad"/>
                                 </properties>
                               </component>
                             </children>
@@ -478,16 +478,15 @@
                             </properties>
                             <border type="none"/>
                             <children>
-                              <component id="2a9d8" class="javax.swing.JList" binding="list1" default-binding="true">
+                              <component id="6738b" class="javax.swing.JTable" binding="table1" default-binding="true">
                                 <constraints>
-                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                                    <minimum-size width="-1" height="50"/>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="50"/>
                                   </grid>
                                 </constraints>
                                 <properties>
-                                  <font name="Copperplate Gothic Bold"/>
-                                  <opaque value="false"/>
+                                  <enabled value="true"/>
+                                  <fillsViewportHeight value="false"/>
                                 </properties>
                               </component>
                             </children>
