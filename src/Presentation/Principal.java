@@ -60,147 +60,17 @@ public class Principal {
 
 
         /* Efectos */
-        CREARUSUARIOButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                CREARUSUARIOButton.setBackground(Color.BLACK);
-            }
-        });
-        CREARUSUARIOButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                CREARUSUARIOButton.setBackground(new Color(192, 55, 55));
-            }
-        });
-        CARGARUSUARIOButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                CARGARUSUARIOButton.setBackground(Color.BLACK);
-            }
-        });
-        CARGARUSUARIOButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                CARGARUSUARIOButton.setBackground(new Color(192, 55, 55));
-            }
-        });
-        ACEPTARButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                ACEPTARButton.setBackground(Color.BLACK);
-            }
-        });
-        ACEPTARButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                ACEPTARButton.setBackground(new Color(192, 55, 55));
-            }
-        });
-        CREARPARTIDAButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                CREARPARTIDAButton.setBackground(Color.BLACK);
-            }
-        });
-        CREARPARTIDAButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                CREARPARTIDAButton.setBackground(new Color(192, 55, 55));
-            }
-        });
-        CARGARPARTIDAButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                CARGARPARTIDAButton.setBackground(Color.BLACK);
-            }
-        });
-        CARGARPARTIDAButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                CARGARPARTIDAButton.setBackground(new Color(192, 55, 55));
-            }
-        });
-        CODEMAKERButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                CODEMAKERButton.setBackground(Color.BLACK);
-            }
-        });
-        CODEMAKERButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                CODEMAKERButton.setBackground(new Color(192, 55, 55));
-            }
-        });
-        CODEBREAKERButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                CODEBREAKERButton.setBackground(Color.BLACK);
-            }
-        });
-        CODEBREAKERButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                CODEBREAKERButton.setBackground(new Color(192, 55, 55));
-            }
-        });
+        addMouseEfect(CREARUSUARIOButton);
+        addMouseEfect(CARGARUSUARIOButton);
+        addMouseEfect(ACEPTARButton);
+        addMouseEfect(CREARPARTIDAButton);
+        addMouseEfect(CARGARPARTIDAButton);
+        addMouseEfect(CODEMAKERButton);
+        addMouseEfect(CODEBREAKERButton);
+        addMouseEfect(facil);
+        addMouseEfect(medio);
+        addMouseEfect(dificil);
 
-        facil.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                facil.setBackground(Color.BLACK);
-            }
-        });
-        facil.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                facil.setBackground(new Color(192, 55, 55));
-            }
-        });
-        medio.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                medio.setBackground(Color.BLACK);
-            }
-        });
-        medio.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                medio.setBackground(new Color(192, 55, 55));
-            }
-        });
-        dificil.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                dificil.setBackground(Color.BLACK);
-            }
-        });
-        dificil.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                dificil.setBackground(new Color(192, 55, 55));
-            }
-        });
 
         /* ************************* */
 
@@ -514,6 +384,23 @@ public class Principal {
             }
         });
 
+    }
+
+    private void addMouseEfect(JButton button) {
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                super.mouseEntered(mouseEvent);
+                button.setBackground(Color.BLACK);
+            }
+        });
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                super.mouseExited(mouseEvent);
+                button.setBackground(new Color(192, 55, 55));
+            }
+        });
     }
 
     private void escogerDificultad(boolean maker) {
