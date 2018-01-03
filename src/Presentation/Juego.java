@@ -273,7 +273,8 @@ public class Juego {
     private void fillRow(List<Integer> list, ArrayList<JButton> buttons) {
         int j = 0;
         for (JButton button : buttons) {
-            button.setBackground(colorMap.get(list.get(j)));
+            int aux = list.get(j);
+            button.setBackground(colorMap.get(aux));
             j++;
         }
     }
@@ -302,6 +303,10 @@ public class Juego {
 
     private void showMessage(String title, String message) {
         JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void showMessage(String message){
+        JOptionPane.showMessageDialog(null, message, "Mastermindo", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void initGame() {
@@ -395,12 +400,12 @@ public class Juego {
     public Juego(String dificultad, boolean isCodeMaker, JFrame frame, JFrame oldFrame) {
         this.codeMaker = isCodeMaker;
         this.dificultad = dificultad;
-        if (dificultad == "Facil") {
+        if (dificultad.equals("Facil")) {
             numColumns = 4;
             numColors = 4;
 
             coloresPanel.remove(narvioPanel);
-        } else if (dificultad == "Medio") {
+        } else if (dificultad.equals("Medio")) {
             numColumns = 4;
             numColors = 6;
         } else {
@@ -455,7 +460,7 @@ public class Juego {
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
                 if(codeMaker) {
-                    JOptionPane.showMessageDialog(new Frame(), "Probablemente no estes haciendo una corrección correcta, prueba de nuevo");
+                    showMessage("Probablemente no estes haciendo una corrección correcta, prueba de nuevo");
                 }
                 else{
                     confirmarYPedirPista(frame);
@@ -494,7 +499,6 @@ public class Juego {
         try {
             getPista1();
         }
-
         catch(Exception e){
             try {
                 getPista2();
@@ -502,7 +506,7 @@ public class Juego {
                 try {
                     getPista3();
                 } catch (ExcepcionPistaUsada excepcionPistaUsada) {
-                    JOptionPane.showMessageDialog(new Frame(), "No quedan pistas por utilizar...");
+                    showMessage("No quedan pistas por utilizar...");
                 }
             }
         }
@@ -510,14 +514,14 @@ public class Juego {
 
     private void getPista1() throws ExcepcionPistaUsada, ExcepcionNoHayColoresSinUsar {
         int i = controller.getPista1();
-        JOptionPane.showMessageDialog(new Frame(), "Uno de los colores que no se encuentran en el codigo secreto es: " + numberToColorString(i));
+        showMessage("Uno de los colores que no se encuentran en el codigo secreto es: " + numberToColorString(i));
     }
 
     private void getPista3() throws ExcepcionPistaUsada {
         List<Integer> pista3 = controller.getPista3();
         for(int i = 0; i < pista3.size(); ++i){
             if(pista3.get(i) != 0){
-                JOptionPane.showMessageDialog(new Frame(), "El color del codigo secreto: "
+                showMessage("El color del codigo secreto: "
                         + numberToColorString(pista3.get(i))+ " y se encuentra en la posición: " + (i+1));
             }
         }
@@ -529,7 +533,7 @@ public class Juego {
         for (Integer aPista2 : pista2) {
             colores += numberToColorString(aPista2) + " ";
         }
-        JOptionPane.showMessageDialog(new Frame(), "Los colores que no están en el codigo secreto són:" + colores);
+        showMessage("Los colores que no están en el codigo secreto són:" + colores);
     }
 
     private String numberToColorString(int i) {
@@ -546,8 +550,12 @@ public class Juego {
     public void cargarTablero() {
         List<List<List<Integer>>> tablero = controller.getTablero();
         List<Integer> secreto = controller.getCodigoSecreto();
-        //TODO hay que rellenar el tablero con esto si es code breaker el usuario obviamente sin el codigo.
 
+        for(int i = 0; i < tablero.size(); i++){
+            if (tablero.get(i).get(0).size() != 0) fillRow(tablero.get(i).get(0), tableButtons.get(i));
+            if (tablero.get(i).get(1).size() != 0) fillRow(tablero.get(i).get(1), answerButtons.get(i));
+        }
+        fillRow(secreto, solutionButtons);
     }
 
 }
