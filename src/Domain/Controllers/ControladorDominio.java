@@ -151,6 +151,10 @@ public class ControladorDominio {
         partidaActual = null;
     }
 
+    public int getNumeroFilaActual() {
+        return partidaActual.getNumeroFilaActual();
+    }
+
     /**
      * Actualiza el ranking según la partida actual.
      */
