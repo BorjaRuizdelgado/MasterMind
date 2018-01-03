@@ -1,6 +1,8 @@
 package Presentation;
 
 import Domain.Controllers.ControladorDominio;
+import Domain.Excepciones.ExcepcionNoHayColoresSinUsar;
+import Domain.Excepciones.ExcepcionPistaUsada;
 import Domain.Excepciones.ExcepcionRespuestaIncorrecta;
 
 import javax.swing.*;
@@ -60,17 +62,16 @@ public class Juego {
     private boolean finished = false;
 
     private static Color hide = new Color(160, 160, 160);
-    private static Color defaultColor = new Color(238, 238 , 238);
-    private static Color rojo = new Color(255, 0 , 0);
-    private static Color verde = new Color(0, 191 , 28);
-    private static Color azul = new Color(23, 41 , 224);
-    private static Color amarillo = new Color(224, 222 , 39);
-    private static Color naranja = new Color(236, 151 , 48);
-    private static Color morado = new Color(153, 44 , 226);
-    private static Color blanco = new Color(255, 255 , 255);
-    private static Color negro = new Color(0, 0 , 0);
+    private static Color defaultColor = new Color(238, 238, 238);
+    private static Color rojo = new Color(255, 0, 0);
+    private static Color verde = new Color(0, 191, 28);
+    private static Color azul = new Color(23, 41, 224);
+    private static Color amarillo = new Color(224, 222, 39);
+    private static Color naranja = new Color(236, 151, 48);
+    private static Color morado = new Color(153, 44, 226);
+    private static Color blanco = new Color(255, 255, 255);
+    private static Color negro = new Color(0, 0, 0);
 
-    private ControladorDominio ctrl;
 
     private Map<Integer, Color> colorMap;
 
@@ -78,39 +79,38 @@ public class Juego {
         return panel2;
     }
 
-    private void setDesign(JButton jButton){
+    private void setDesign(JButton jButton) {
         jButton.setBackground(defaultColor);
         jButton.setFocusPainted(false);
     }
 
-    private void setColor(JButton button, int color){
+    private void setColor(JButton button, int color) {
         button.setBackground(colorMap.get(color));
     }
 
-    private void createMainTable(){
+    private void createMainTable() {
         int row = 0;
         tableButtons.add(new ArrayList<>());
         int column = -1;
 
         tablew.setLayout(new GridLayout(12, numColumns));
-        for (int i = 0; i < 12*numColumns; i++) {
+        for (int i = 0; i < 12 * numColumns; i++) {
             JButton jButton = new JButton();
             setDesign(jButton);
             tablew.add(jButton);
 
-            if(column == numColumns-1){
+            if (column == numColumns - 1) {
                 row++;
                 tableButtons.add(new ArrayList<>());
                 column = 0;
-            }
-            else {
+            } else {
                 column++;
             }
             tableButtons.get(row).add(jButton);
         }
     }
 
-    private void createSolutionRow(){
+    private void createSolutionRow() {
         solution.setLayout(new GridLayout(1, numColumns));
         for (int i = 0; i < numColumns; i++) {
             JButton jButton = new JButton();
@@ -121,7 +121,7 @@ public class Juego {
         }
     }
 
-    private void createAnswersSquare(){
+    private void createAnswersSquare() {
         responses.setLayout(new GridLayout(12, 1));
         for (int i = 0; i < 12; i++) {
             JPanel j = new JPanel();
@@ -142,20 +142,19 @@ public class Juego {
                 j.add(jButton3, constraints);
                 setDesign(jButton3);
 
-                if (x == (numColumns/2 - 1)) {
+                if (x == (numColumns / 2 - 1)) {
                     x = 0;
                     y++;
-                }
-                else x++;
+                } else x++;
 
-                answerButtons.get(answerButtons.size()-1).add(jButton3);
+                answerButtons.get(answerButtons.size() - 1).add(jButton3);
             }
             //
             responses.add(j);
         }
     }
 
-    private void makeTables(){
+    private void makeTables() {
         solutionButtons = new ArrayList<>();
         tableButtons = new ArrayList<>();
         answerButtons = new ArrayList<>();
@@ -167,8 +166,8 @@ public class Juego {
         setFunctionColors();
     }
 
-    private void setButtonsEnabled(ArrayList<JButton> buttons){
-        for (JButton button: buttons) {
+    private void setButtonsEnabled(ArrayList<JButton> buttons) {
+        for (JButton button : buttons) {
             button.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent mouseEvent) {
@@ -183,7 +182,7 @@ public class Juego {
         }
     }
 
-    private void setFunctionColors(){
+    private void setFunctionColors() {
         ArrayList<JButton> colorsButtons = new ArrayList<>();
         colorsButtons.add(button1);
         colorsButtons.add(button2);
@@ -206,7 +205,7 @@ public class Juego {
         }
     }
 
-    private void applyButtonsEffects(){
+    private void applyButtonsEffects() {
         ArrayList<JButton> aux = new ArrayList<>();
         aux.add(pistaButton);
         aux.add(abandonarPartidaButton);
@@ -215,7 +214,7 @@ public class Juego {
         aux.add(guardarYSalirButton);
         aux.add(ACEPTARButton);
 
-        for (JButton button: aux) {
+        for (JButton button : aux) {
             button.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent mouseEvent) {
@@ -234,52 +233,52 @@ public class Juego {
         }
     }
 
-    private int getEmptyButtonsSize(ArrayList<JButton> buttons){
+    private int getEmptyButtonsSize(ArrayList<JButton> buttons) {
         int count = 0;
-        for (JButton button: buttons){
+        for (JButton button : buttons) {
             if (button.getBackground().equals(defaultColor))
                 count++;
         }
         return count;
     }
 
-    private int fromColorToInt(Color color){
+    private int fromColorToInt(Color color) {
         if (color.equals(rojo))
             return 1;
-        else if(color.equals(verde))
+        else if (color.equals(verde))
             return 2;
-        else if(color.equals(azul))
+        else if (color.equals(azul))
             return 3;
-        else if(color.equals(amarillo))
+        else if (color.equals(amarillo))
             return 4;
-        else if(color.equals(naranja))
+        else if (color.equals(naranja))
             return 5;
-        else if(color.equals(morado))
+        else if (color.equals(morado))
             return 6;
-        else if(color.equals(blanco))
+        else if (color.equals(blanco))
             return 7;
-        else if(color.equals(negro))
+        else if (color.equals(negro))
             return 8;
         else return 0;
     }
 
-    private ArrayList<Integer> fromJButtonListToIntList(ArrayList<JButton> Buttons){
+    private ArrayList<Integer> fromJButtonListToIntList(ArrayList<JButton> Buttons) {
         ArrayList<Integer> Return = new ArrayList<>();
-        for (JButton button:Buttons) {
+        for (JButton button : Buttons) {
             Return.add(fromColorToInt(button.getBackground()));
         }
         return Return;
     }
 
-    private void fillRow(List<Integer> list, ArrayList<JButton> buttons){
+    private void fillRow(List<Integer> list, ArrayList<JButton> buttons) {
         int j = 0;
-        for (JButton button: buttons) {
+        for (JButton button : buttons) {
             button.setBackground(colorMap.get(list.get(j)));
             j++;
         }
     }
 
-    private void initMap(){
+    private void initMap() {
         colorMap = new HashMap<>();
         colorMap.put(-1, hide);
         colorMap.put(0, defaultColor);
@@ -293,23 +292,23 @@ public class Juego {
         colorMap.put(8, negro);
     }
 
-    private void setButtonsDisabled(ArrayList<JButton> buttons){
-        for (JButton button: buttons) {
-            for (MouseListener listener:button.getMouseListeners()) {
+    private void setButtonsDisabled(ArrayList<JButton> buttons) {
+        for (JButton button : buttons) {
+            for (MouseListener listener : button.getMouseListeners()) {
                 button.removeMouseListener(listener);
             }
         }
     }
 
-    private void showMessage(String title, String message){
-        JOptionPane.showMessageDialog(null,message, title, JOptionPane.INFORMATION_MESSAGE);
+    private void showMessage(String title, String message) {
+        JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
     }
 
-    private void initGame(){
-        if (!codeMaker){
+    private void initGame() {
+        if (!codeMaker) {
             List<Integer> solCode = controller.crearPartidaUsuarioCargadoRolBreaker(dificultad);
 
-            List <Integer> aux = new ArrayList<>();
+            List<Integer> aux = new ArrayList<>();
             for (int i = 0; i < numColumns; i++) {
                 aux.add(-1);
             }
@@ -318,13 +317,12 @@ public class Juego {
             setButtonsDisabled(solutionButtons);
 
             setButtonsEnabled(tableButtons.get(actualRow));
-        }
-        else{
+        } else {
             setButtonsEnabled(solutionButtons);
         }
     }
 
-    private void setAcceptButtonFunction(){
+    private void setAcceptButtonFunction() {
         ACEPTARButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent mouseEvent) {
@@ -346,7 +344,7 @@ public class Juego {
                         try {
                             actualRow++;
                             List<Integer> aux = controller.jugarCodeMaker(fromJButtonListToIntList(answerButtons.get(actualRow - 1)));
-                            if (!controller.isPartidaGanada())fillRow(aux, tableButtons.get(actualRow));
+                            if (!controller.isPartidaGanada()) fillRow(aux, tableButtons.get(actualRow));
                         } catch (ExcepcionRespuestaIncorrecta excepcionRespuestaIncorrecta) {
                             actualRow--;
                             showMessage("Error", "Corrección incorrecta!");
@@ -354,7 +352,7 @@ public class Juego {
                     }
                     if (codeMaker) {
                         if (actualRow != 0) setButtonsDisabled(answerButtons.get(actualRow - 1));
-                        if (!controller.isPartidaGanada())setButtonsEnabled(answerButtons.get(actualRow));
+                        if (!controller.isPartidaGanada()) setButtonsEnabled(answerButtons.get(actualRow));
                     }
 
                     // CodeBreaker
@@ -363,7 +361,8 @@ public class Juego {
                             List<Integer> response = controller.juegaCodeBreaker(fromJButtonListToIntList(tableButtons.get(actualRow)), 0);
                             fillRow(response, answerButtons.get(actualRow));
                             actualRow++;
-                            if (!controller.isPartidaGanada() && actualRow < 12) setButtonsEnabled(tableButtons.get(actualRow));
+                            if (!controller.isPartidaGanada() && actualRow < 12)
+                                setButtonsEnabled(tableButtons.get(actualRow));
                             if (actualRow != 0) setButtonsDisabled(tableButtons.get(actualRow - 1));
                         } else {
                             showMessage("Error", "Tienes que rellenar todos los huecos de la fila " + String.valueOf(actualRow + 1));
@@ -375,18 +374,16 @@ public class Juego {
                         if (!codeMaker) {
                             fillRow(controller.getCodigoSecreto(), solutionButtons);
                             showMessage("Mastermindo", "¡Enhorabuena! Has descubierto el código secreto!");
-                        }
-                        else{
+                        } else {
                             showMessage("Mastermindo", "¡Creo que te he ganado!");
                         }
                     }
 
-                    if (!controller.isPartidaGanada() && actualRow == 12){
+                    if (!controller.isPartidaGanada() && actualRow == 12) {
                         finished = true;
-                        if (codeMaker){
+                        if (codeMaker) {
                             showMessage("Mastermindo", "¡Has ganado a Mastermindo!");
-                        }
-                        else if (!codeMaker){
+                        } else if (!codeMaker) {
                             showMessage("Mastermindo", "¡Has perdido!, no tienes más intentos");
                         }
                     }
@@ -396,20 +393,17 @@ public class Juego {
     }
 
     public Juego(String dificultad, boolean isCodeMaker, JFrame frame, JFrame oldFrame) {
-        ctrl = ControladorDominio.getInstance();
         this.codeMaker = isCodeMaker;
         this.dificultad = dificultad;
-        if(dificultad == "Facil") {
+        if (dificultad == "Facil") {
             numColumns = 4;
             numColors = 4;
 
             coloresPanel.remove(narvioPanel);
-        }
-        else if(dificultad == "Medio"){
+        } else if (dificultad == "Medio") {
             numColumns = 4;
             numColors = 6;
-        }
-        else{
+        } else {
             numColumns = 6;
             numColors = 6;
         }
@@ -445,14 +439,14 @@ public class Juego {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
+                    JFrame frame = new JFrame("Si tienes problemas con las correcciones vigila que tus correcciones sean las correctas.");
+                    frame.setContentPane(new Ayuda().getPanel());
+                    frame.setPreferredSize(new Dimension(550, 600));
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.pack();
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
 
-                JFrame frame = new JFrame("Ayuda");
-                frame.setContentPane(new Ayuda().getPanel());
-                frame.setPreferredSize(new Dimension(550, 600));
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
             }
         });
 
@@ -460,8 +454,38 @@ public class Juego {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
+                if(codeMaker) {
+                    JOptionPane.showMessageDialog(new Frame(), "Probablemente no estes haciendo una corrección correcta, prueba de nuevo");
+                }
+                else{
+                    try {
+                        int i = controller.getPista1();
+                        JOptionPane.showMessageDialog(new Frame(), "Uno de los colores que no se encuentran en el codigo secreto es: " + numberToColorString(i));
+                    }
+                    catch(Exception e){
+                        try {
+                            ArrayList<Integer> pista2 = controller.getPista2();
+                            String colores = "";
+                            for (Integer aPista2 : pista2) {
+                                colores += numberToColorString(aPista2) + " ";
+                            }
+                            JOptionPane.showMessageDialog(new Frame(), "Los colores que no están en el codigo secreto són:" + colores);
+                        } catch (Exception es) {
+                            try {
+                                List<Integer> pista3 = controller.getPista3();
+                                for(int i = 0; i < pista3.size(); ++i){
+                                    if(pista3.get(i) != 0){
+                                        JOptionPane.showMessageDialog(new Frame(), "El color del codigo secreto: "
+                                                + numberToColorString(pista3.get(i))+ " y se encuentra en la posición: " + (i+1);
+                                    }
+                                }
+                            } catch (ExcepcionPistaUsada excepcionPistaUsada) {
+                                JOptionPane.showMessageDialog(new Frame(), "No quedan pistas por utilizar...");
+                            }
+                        }
 
-                System.out.println();
+                    }
+                }
             }
         });
 
@@ -483,11 +507,22 @@ public class Juego {
 
     }
 
+    private String numberToColorString(int i) {
+        if(i == 1) return "Rojo";
+        else if(i == 2) return "Verde";
+        else if(i == 3) return "Azul";
+        else if(i == 4) return "Amarillo";
+        else if(i == 5) return "Naranja";
+        else if(i == 6) return "Morado";
+        else return null;
+    }
+
 
     public void cargarTablero() {
-        List<List<List<Integer>>> tablero = ctrl.getTablero();
-        List<Integer> secreto = ctrl.getCodigoSecreto();
+        List<List<List<Integer>>> tablero = controller.getTablero();
+        List<Integer> secreto = controller.getCodigoSecreto();
         //TODO hay que rellenar el tablero con esto si es code breaker el usuario obviamente sin el codigo.
 
     }
+
 }
