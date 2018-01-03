@@ -7,6 +7,7 @@ import MP3Player.Mp3Player;
 import groovy.lang.Tuple2;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -51,6 +52,7 @@ public class Principal {
     private JButton dificil;
     private JButton r5;
     private JTable table1;
+    private JScrollPane scrollpanel;
     private Mp3Player mp3Player;
 
     private ControladorDominio ctrl;
@@ -405,7 +407,10 @@ public class Principal {
             String aux[] = aPartidasUsuario.split("@");
             partidas.addRow(aux);
         }
+        table1.setTableHeader(null);
+        scrollpanel.setColumnHeader(null);
         table1.setModel(partidas);
+        setCellRenderer();
         table1.setCellSelectionEnabled(false);
         table1.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent mouseEvent) {
@@ -417,6 +422,19 @@ public class Principal {
                 }
             }
         });
+    }
+
+    /**
+     * Hace display del ranking en la matriz.
+     */
+    private void setCellRenderer(){
+        DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+        cellRenderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+        cellRenderer.setVerticalAlignment(DefaultTableCellRenderer.CENTER);
+        for (int columnIndex = 0; columnIndex < table1.getColumnCount(); columnIndex++)
+        {
+            table1.getColumnModel().getColumn(columnIndex).setCellRenderer(cellRenderer);
+        }
     }
 
     /**
