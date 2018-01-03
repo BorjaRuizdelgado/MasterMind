@@ -332,7 +332,7 @@ public class Juego {
             @Override
             public void mousePressed(MouseEvent mouseEvent) {
                 super.mousePressed(mouseEvent);
-
+                System.out.println(controller.getCodigoSecreto());
                 if (!finished) {
                     //CodeMaker
                     if (codeMaker && firstAttempt) {
@@ -379,8 +379,10 @@ public class Juego {
                         if (!codeMaker) {
                             fillRow(controller.getCodigoSecreto(), solutionButtons);
                             showMessage("Mastermindo", "¡Enhorabuena! Has descubierto el código secreto!");
+                            controller.terminaPartidaActual(true);
                         } else {
                             showMessage("Mastermindo", "¡Creo que te he ganado!");
+                            controller.terminaPartidaActual(false);
                         }
                     }
 
@@ -388,8 +390,10 @@ public class Juego {
                         finished = true;
                         if (codeMaker) {
                             showMessage("Mastermindo", "¡Has ganado a Mastermindo!");
+                            controller.terminaPartidaActual(true);
                         } else if (!codeMaker) {
                             showMessage("Mastermindo", "¡Has perdido!, no tienes más intentos");
+                            controller.terminaPartidaActual(false);
                         }
                     }
                 }
@@ -397,7 +401,7 @@ public class Juego {
         });
     }
 
-    public Juego(String dificultad, boolean isCodeMaker, JFrame frame, JFrame oldFrame) {
+    public Juego(String dificultad, boolean isCodeMaker, boolean cargarTablero, JFrame frame, JFrame oldFrame) {
         this.codeMaker = isCodeMaker;
         this.dificultad = dificultad;
         if (dificultad.equals("Facil")) {
@@ -416,13 +420,16 @@ public class Juego {
         initMap();
         makeTables();
         applyButtonsEffects();
-        initGame();
+        if (!cargarTablero) initGame();
+        else cargarTablero();
         setAcceptButtonFunction();
 
         abandonarPartidaButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
+
+                //1controller.abandonaPartidaAcutal();
                 frame.dispose();
                 oldFrame.setVisible(true);
             }
@@ -474,7 +481,7 @@ public class Juego {
                 super.mouseClicked(mouseEvent);
                 frame.dispose();
                 JFrame frame = new JFrame("Mastermindo");
-                frame.setContentPane(new Juego(dificultad, codeMaker, frame, oldFrame).getPanel());
+                frame.setContentPane(new Juego(dificultad, codeMaker, false, frame, oldFrame).getPanel());
                 frame.setPreferredSize(new Dimension(850, 900));
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
@@ -547,7 +554,9 @@ public class Juego {
     }
 
 
-    public void cargarTablero() {
+    private void cargarTablero() {
+        firstAttempt = false;
+        actualRow = controller.getNumeroFilaActual();
         List<List<List<Integer>>> tablero = controller.getTablero();
         List<Integer> secreto = controller.getCodigoSecreto();
 
@@ -556,6 +565,20 @@ public class Juego {
             if (tablero.get(i).get(1).size() != 0) fillRow(tablero.get(i).get(1), answerButtons.get(i));
         }
         fillRow(secreto, solutionButtons);
+
+        if (codeMaker){
+            setButtonsDisabled(solutionButtons);
+            setButtonsEnabled(answerButtons.get(actualRow));
+        }
+        else {
+            List<Integer> aux = new ArrayList<>();
+            for (int i = 0; i < numColumns; i++) {
+                aux.add(-1);
+            }
+            fillRow(aux, solutionButtons);
+            setButtonsDisabled(solutionButtons);
+            setButtonsEnabled(tableButtons.get(actualRow));
+        }
     }
 
 }

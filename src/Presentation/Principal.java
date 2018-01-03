@@ -444,7 +444,7 @@ public class Principal {
     private void cargarPartida(String partidaACargar) {
         Tuple2<Boolean,String> info = ctrl.cargarPartidaUsuario(partidaACargar);
         JFrame frame = new JFrame("Mastermindo");
-        Juego j = new Juego(info.getSecond(),info.getFirst(),frame,this.frame);
+        Juego j = new Juego(info.getSecond(),info.getFirst(), true, frame,this.frame);
         frame.setContentPane(j.getPanel());
         frame.setPreferredSize(new Dimension(850, 900));
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -452,8 +452,6 @@ public class Principal {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         this.frame.setVisible(false);
-        j.cargarTablero();
-
     }
 
     private void addMouseEfect(JButton button) {
@@ -507,7 +505,7 @@ public class Principal {
 
     private void crearJuego(String dificultad, boolean isCodeMaker) {
         JFrame frame = new JFrame("Mastermindo");
-        frame.setContentPane(new Juego(dificultad, isCodeMaker, frame, this.frame).getPanel());
+        frame.setContentPane(new Juego(dificultad, isCodeMaker,false, frame, this.frame).getPanel());
         frame.setPreferredSize(new Dimension(850, 900));
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
