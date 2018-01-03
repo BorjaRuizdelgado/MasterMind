@@ -3,6 +3,7 @@ package Domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -35,7 +36,7 @@ public class Codigo implements Serializable{
         int blancas = 0;
 
         for(int i = 0; i < size; ++i){
-            if(codigoACorregir.codigo.get(i) == this.codigo.get(i)){
+            if(Objects.equals(codigoACorregir.codigo.get(i), this.codigo.get(i))){
                 negras++;
             }
         }

@@ -579,6 +579,7 @@ public class Juego {
             setButtonsDisabled(solutionButtons);
             setButtonsEnabled(tableButtons.get(actualRow));
         }
+        System.out.println(tablero);
     }
 
 }
