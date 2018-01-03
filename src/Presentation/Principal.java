@@ -4,6 +4,7 @@ import Domain.Controllers.ControladorDominio;
 import Domain.Excepciones.ExcepcionUsuarioExiste;
 import Domain.Excepciones.ExcepcionUsuarioInexistente;
 import MP3Player.Mp3Player;
+import groovy.lang.Tuple2;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -423,8 +424,18 @@ public class Principal {
      * @param partidaACargar
      */
     private void cargarPartida(String partidaACargar) {
-        //TODO hacer método para cargar la partida con id s
-        System.out.println("implementa que se pueda cargar una partida como la que se ha seleccionado: " + partidaACargar);
+        Tuple2<Boolean,String> info = ctrl.cargarPartidaUsuario(partidaACargar);
+        JFrame frame = new JFrame("Mastermindo");
+        Juego j = new Juego(info.getSecond(),info.getFirst(),frame,this.frame);
+        frame.setContentPane(j.getPanel());
+        frame.setPreferredSize(new Dimension(850, 900));
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        this.frame.setVisible(false);
+        j.cargarTablero();
+
     }
 
     private void addMouseEfect(JButton button) {

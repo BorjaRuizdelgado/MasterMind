@@ -23,11 +23,11 @@
       <file leaf-file-name="Principal.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Presentation/Principal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="407" column="44" lean-forward="false" selection-start-line="407" selection-start-column="44" selection-end-line="407" selection-end-column="44" />
+            <state relative-caret-position="289">
+              <caret line="436" column="20" lean-forward="false" selection-start-line="436" selection-start-column="20" selection-end-line="436" selection-end-column="20" />
               <folding>
-                <element signature="e#12179#12235#0" expanded="false" />
-                <element signature="e#12639#12695#0" expanded="false" />
+                <element signature="e#12206#12262#0" expanded="false" />
+                <element signature="e#12666#12722#0" expanded="false" />
                 <element signature="method#addMouseEfect#0;class#Principal#0" expanded="false" />
                 <element signature="method#escogerDificultad#0;class#Principal#0" expanded="false" />
               </folding>
@@ -35,12 +35,39 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControladorDominio.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ControladorDominio.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="96" column="44" lean-forward="false" selection-start-line="96" selection-start-column="37" selection-end-line="96" selection-end-column="44" />
+            <state relative-caret-position="172">
+              <caret line="250" column="36" lean-forward="false" selection-start-line="250" selection-start-column="11" selection-end-line="250" selection-end-column="36" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Juego.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Presentation/Juego.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="386">
+              <caret line="489" column="107" lean-forward="false" selection-start-line="489" selection-start-column="107" selection-end-line="489" selection-end-column="107" />
+              <folding>
+                <element signature="method#setDesign#0;class#Juego#0" expanded="false" />
+                <element signature="method#createMainTable#0;class#Juego#0" expanded="false" />
+                <element signature="method#createSolutionRow#0;class#Juego#0" expanded="false" />
+                <element signature="method#createAnswersSquare#0;class#Juego#0" expanded="false" />
+                <element signature="method#makeTables#0;class#Juego#0" expanded="false" />
+                <element signature="method#setButtonsEnabled#0;class#Juego#0" expanded="false" />
+                <element signature="method#setFunctionColors#0;class#Juego#0" expanded="false" />
+                <element signature="method#applyButtonsEffects#0;class#Juego#0" expanded="false" />
+                <element signature="method#getEmptyButtonsSize#0;class#Juego#0" expanded="false" />
+                <element signature="method#fromColorToInt#0;class#Juego#0" expanded="false" />
+                <element signature="method#fromJButtonListToIntList#0;class#Juego#0" expanded="false" />
+                <element signature="method#initMap#0;class#Juego#0" expanded="false" />
+                <element signature="method#setButtonsDisabled#0;class#Juego#0" expanded="false" />
+                <element signature="method#showMessage#0;class#Juego#0" expanded="false" />
+                <element signature="method#initGame#0;class#Juego#0" expanded="false" />
+                <element signature="method#setAcceptButtonFunction#0;class#Juego#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,6 +102,7 @@
       <find>get</find>
       <find>escoger</find>
       <find>cargarP</find>
+      <find>getTab</find>
     </findStrings>
     <replaceStrings>
       <replace>List&lt;Integer&gt;</replace>
@@ -127,12 +155,12 @@
         <option value="$PROJECT_DIR$/src/MP3Player/Mp3Player.java" />
         <option value="$PROJECT_DIR$/src/Presentation/Ajustes.java" />
         <option value="$PROJECT_DIR$/src/Presentation/Juego.form" />
-        <option value="$PROJECT_DIR$/src/Presentation/Juego.java" />
         <option value="$PROJECT_DIR$/src/Test/GUITest.java" />
         <option value="$PROJECT_DIR$/src/Domain/Partida.java" />
-        <option value="$PROJECT_DIR$/src/Presentation/Principal.java" />
-        <option value="$PROJECT_DIR$/src/Presentation/Principal.form" />
         <option value="$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java" />
+        <option value="$PROJECT_DIR$/src/Presentation/Principal.form" />
+        <option value="$PROJECT_DIR$/src/Presentation/Principal.java" />
+        <option value="$PROJECT_DIR$/src/Presentation/Juego.java" />
       </list>
     </option>
   </component>
@@ -184,6 +212,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -231,15 +261,27 @@
               <item name="MasterMindV" type="b2602c69:ProjectViewProjectNode" />
               <item name="MasterMindV" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Presentation" type="462c0819:PsiDirectoryNode" />
+              <item name="Juego" type="e9f4de52:FormNode" />
+            </path>
+            <path>
+              <item name="MasterMindV" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MasterMindV" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Presentation" type="462c0819:PsiDirectoryNode" />
+              <item name="Principal" type="e9f4de52:FormNode" />
+            </path>
+            <path>
+              <item name="MasterMindV" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MasterMindV" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -512,6 +554,8 @@
       <workItem from="1514826652353" duration="1605000" />
       <workItem from="1514906279603" duration="8627000" />
       <workItem from="1514916241885" duration="142000" />
+      <workItem from="1514929611455" duration="179000" />
+      <workItem from="1514975452617" duration="1206000" />
     </task>
     <task id="LOCAL-00001" summary="Asd">
       <created>1509619663343</created>
@@ -762,20 +806,22 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132211000" />
+    <option name="totallyTimeSpent" value="133596000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32785088" sideWeight="0.49791667" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.50416666" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3256579" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23675676" sideWeight="0.49791667" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3256579" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -791,7 +837,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32785088" sideWeight="0.49791667" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1119,32 +1164,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentation/Juego.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="942">
-          <caret line="406" column="40" lean-forward="false" selection-start-line="406" selection-start-column="40" selection-end-line="406" selection-end-column="40" />
-          <folding>
-            <element signature="method#setDesign#0;class#Juego#0" expanded="false" />
-            <element signature="method#createMainTable#0;class#Juego#0" expanded="false" />
-            <element signature="method#createSolutionRow#0;class#Juego#0" expanded="false" />
-            <element signature="method#createAnswersSquare#0;class#Juego#0" expanded="false" />
-            <element signature="method#makeTables#0;class#Juego#0" expanded="false" />
-            <element signature="method#setButtonsEnabled#0;class#Juego#0" expanded="false" />
-            <element signature="method#setFunctionColors#0;class#Juego#0" expanded="false" />
-            <element signature="method#applyButtonsEffects#0;class#Juego#0" expanded="false" />
-            <element signature="method#getEmptyButtonsSize#0;class#Juego#0" expanded="false" />
-            <element signature="method#fromColorToInt#0;class#Juego#0" expanded="false" />
-            <element signature="method#fromJButtonListToIntList#0;class#Juego#0" expanded="false" />
-            <element signature="method#fillRow#0;class#Juego#0" expanded="false" />
-            <element signature="method#initMap#0;class#Juego#0" expanded="false" />
-            <element signature="method#setButtonsDisabled#0;class#Juego#0" expanded="false" />
-            <element signature="method#showMessage#0;class#Juego#0" expanded="false" />
-            <element signature="method#initGame#0;class#Juego#0" expanded="false" />
-            <element signature="method#setAcceptButtonFunction#0;class#Juego#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Presentation/PruebaIsa.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
@@ -1174,11 +1193,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentation/Principal.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Domain/Tablero.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="729">
@@ -1187,24 +1201,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentation/Principal.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="250" column="36" lean-forward="false" selection-start-line="250" selection-start-column="11" selection-end-line="250" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Presentation/Principal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="407" column="44" lean-forward="false" selection-start-line="407" selection-start-column="44" selection-end-line="407" selection-end-column="44" />
+        <state relative-caret-position="289">
+          <caret line="436" column="20" lean-forward="false" selection-start-line="436" selection-start-column="20" selection-end-line="436" selection-end-column="20" />
           <folding>
-            <element signature="e#12179#12235#0" expanded="false" />
-            <element signature="e#12639#12695#0" expanded="false" />
+            <element signature="e#12206#12262#0" expanded="false" />
+            <element signature="e#12666#12722#0" expanded="false" />
             <element signature="method#addMouseEfect#0;class#Principal#0" expanded="false" />
             <element signature="method#escogerDificultad#0;class#Principal#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java">
+    <entry file="file://$PROJECT_DIR$/src/Presentation/Juego.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="96" column="44" lean-forward="false" selection-start-line="96" selection-start-column="37" selection-end-line="96" selection-end-column="44" />
-          <folding />
+        <state relative-caret-position="386">
+          <caret line="489" column="107" lean-forward="false" selection-start-line="489" selection-start-column="107" selection-end-line="489" selection-end-column="107" />
+          <folding>
+            <element signature="method#setDesign#0;class#Juego#0" expanded="false" />
+            <element signature="method#createMainTable#0;class#Juego#0" expanded="false" />
+            <element signature="method#createSolutionRow#0;class#Juego#0" expanded="false" />
+            <element signature="method#createAnswersSquare#0;class#Juego#0" expanded="false" />
+            <element signature="method#makeTables#0;class#Juego#0" expanded="false" />
+            <element signature="method#setButtonsEnabled#0;class#Juego#0" expanded="false" />
+            <element signature="method#setFunctionColors#0;class#Juego#0" expanded="false" />
+            <element signature="method#applyButtonsEffects#0;class#Juego#0" expanded="false" />
+            <element signature="method#getEmptyButtonsSize#0;class#Juego#0" expanded="false" />
+            <element signature="method#fromColorToInt#0;class#Juego#0" expanded="false" />
+            <element signature="method#fromJButtonListToIntList#0;class#Juego#0" expanded="false" />
+            <element signature="method#initMap#0;class#Juego#0" expanded="false" />
+            <element signature="method#setButtonsDisabled#0;class#Juego#0" expanded="false" />
+            <element signature="method#showMessage#0;class#Juego#0" expanded="false" />
+            <element signature="method#initGame#0;class#Juego#0" expanded="false" />
+            <element signature="method#setAcceptButtonFunction#0;class#Juego#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -70,6 +70,8 @@ public class Juego {
     private static Color blanco = new Color(255, 255 , 255);
     private static Color negro = new Color(0, 0 , 0);
 
+    private ControladorDominio ctrl;
+
     private Map<Integer, Color> colorMap;
 
     public JPanel getPanel() {
@@ -394,6 +396,7 @@ public class Juego {
     }
 
     public Juego(String dificultad, boolean isCodeMaker, JFrame frame, JFrame oldFrame) {
+        ctrl = ControladorDominio.getInstance();
         this.codeMaker = isCodeMaker;
         this.dificultad = dificultad;
         if(dificultad == "Facil") {
@@ -421,7 +424,6 @@ public class Juego {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-
                 frame.dispose();
                 oldFrame.setVisible(true);
             }
@@ -435,6 +437,7 @@ public class Juego {
                 controller.guardaPartidaActual();
                 frame.dispose();
                 oldFrame.setVisible(true);
+
             }
         });
 
@@ -477,6 +480,14 @@ public class Juego {
                 frame.setVisible(true);
             }
         });
+
     }
 
+
+    public void cargarTablero() {
+        List<List<List<Integer>>> tablero = ctrl.getTablero();
+        List<Integer> secreto = ctrl.getCodigoSecreto();
+        //TODO hay que rellenar el tablero con esto si es code breaker el usuario obviamente sin el codigo.
+
+    }
 }
