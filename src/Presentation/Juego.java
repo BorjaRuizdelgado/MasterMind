@@ -458,33 +458,7 @@ public class Juego {
                     JOptionPane.showMessageDialog(new Frame(), "Probablemente no estes haciendo una corrección correcta, prueba de nuevo");
                 }
                 else{
-                    try {
-                        int i = controller.getPista1();
-                        JOptionPane.showMessageDialog(new Frame(), "Uno de los colores que no se encuentran en el codigo secreto es: " + numberToColorString(i));
-                    }
-                    catch(Exception e){
-                        try {
-                            ArrayList<Integer> pista2 = controller.getPista2();
-                            String colores = "";
-                            for (Integer aPista2 : pista2) {
-                                colores += numberToColorString(aPista2) + " ";
-                            }
-                            JOptionPane.showMessageDialog(new Frame(), "Los colores que no están en el codigo secreto són:" + colores);
-                        } catch (Exception es) {
-                            try {
-                                List<Integer> pista3 = controller.getPista3();
-                                for(int i = 0; i < pista3.size(); ++i){
-                                    if(pista3.get(i) != 0){
-                                        JOptionPane.showMessageDialog(new Frame(), "El color del codigo secreto: "
-                                                + numberToColorString(pista3.get(i))+ " y se encuentra en la posición: " + (i+1);
-                                    }
-                                }
-                            } catch (ExcepcionPistaUsada excepcionPistaUsada) {
-                                JOptionPane.showMessageDialog(new Frame(), "No quedan pistas por utilizar...");
-                            }
-                        }
-
-                    }
+                    confirmarYPedirPista(frame);
                 }
             }
         });
@@ -493,7 +467,6 @@ public class Juego {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-
                 frame.dispose();
                 JFrame frame = new JFrame("Mastermindo");
                 frame.setContentPane(new Juego(dificultad, codeMaker, frame, oldFrame).getPanel());
@@ -505,6 +478,58 @@ public class Juego {
             }
         });
 
+    }
+
+    private void confirmarYPedirPista(JFrame frame) {
+        int n = JOptionPane.showConfirmDialog(
+                frame, "¡Esto podría perjudicar tu puntuación!",
+                "¿Necesitas una pista?",
+                JOptionPane.YES_NO_OPTION);
+        if (n == JOptionPane.YES_OPTION) {
+            pistas();
+        }
+    }
+
+    private void pistas() {
+        try {
+            getPista1();
+        }
+
+        catch(Exception e){
+            try {
+                getPista2();
+            } catch (Exception es) {
+                try {
+                    getPista3();
+                } catch (ExcepcionPistaUsada excepcionPistaUsada) {
+                    JOptionPane.showMessageDialog(new Frame(), "No quedan pistas por utilizar...");
+                }
+            }
+        }
+    }
+
+    private void getPista1() throws ExcepcionPistaUsada, ExcepcionNoHayColoresSinUsar {
+        int i = controller.getPista1();
+        JOptionPane.showMessageDialog(new Frame(), "Uno de los colores que no se encuentran en el codigo secreto es: " + numberToColorString(i));
+    }
+
+    private void getPista3() throws ExcepcionPistaUsada {
+        List<Integer> pista3 = controller.getPista3();
+        for(int i = 0; i < pista3.size(); ++i){
+            if(pista3.get(i) != 0){
+                JOptionPane.showMessageDialog(new Frame(), "El color del codigo secreto: "
+                        + numberToColorString(pista3.get(i))+ " y se encuentra en la posición: " + (i+1));
+            }
+        }
+    }
+
+    private void getPista2() throws ExcepcionPistaUsada, ExcepcionNoHayColoresSinUsar {
+        ArrayList<Integer> pista2 = controller.getPista2();
+        String colores = "";
+        for (Integer aPista2 : pista2) {
+            colores += numberToColorString(aPista2) + " ";
+        }
+        JOptionPane.showMessageDialog(new Frame(), "Los colores que no están en el codigo secreto són:" + colores);
     }
 
     private String numberToColorString(int i) {
