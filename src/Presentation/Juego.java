@@ -332,7 +332,6 @@ public class Juego {
             @Override
             public void mousePressed(MouseEvent mouseEvent) {
                 super.mousePressed(mouseEvent);
-                System.out.println(controller.getCodigoSecreto());
                 if (!finished) {
                     //CodeMaker
                     if (codeMaker && firstAttempt) {
@@ -386,7 +385,7 @@ public class Juego {
                         }
                     }
 
-                    if (!controller.isPartidaGanada() && actualRow == 12) {
+                    if (!finished && !controller.isPartidaGanada() && actualRow == 12) {
                         finished = true;
                         if (codeMaker) {
                             showMessage("Mastermindo", "¡Has ganado a Mastermindo!");
@@ -579,7 +578,6 @@ public class Juego {
             setButtonsDisabled(solutionButtons);
             setButtonsEnabled(tableButtons.get(actualRow));
         }
-        System.out.println(tablero);
     }
 
 }
