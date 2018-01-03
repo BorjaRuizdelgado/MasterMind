@@ -378,6 +378,7 @@ public class Juego {
                         if (!codeMaker) {
                             fillRow(controller.getCodigoSecreto(), solutionButtons);
                             showMessage("Mastermindo", "¡Enhorabuena! Has descubierto el código secreto!");
+                            controller.actualizaRanking();
                             controller.terminaPartidaActual(true);
                         } else {
                             showMessage("Mastermindo", "¡Creo que te he ganado!");

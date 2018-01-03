@@ -164,6 +164,7 @@ public class ControladorDominio {
         LocalDate localDate = LocalDate.now();
         String fecha = dtf.format(localDate);
         ranking.addNewPuntuation(usuarioCargado.getNombre(),partidaActual.generaPuntuacion(),fecha,partidaActual.getDificultad());
+        persistencia.guardarSistemaRanking();
     }
 
     /**
