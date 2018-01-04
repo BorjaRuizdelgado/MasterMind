@@ -59,6 +59,7 @@ public class Juego {
     private boolean firstAttempt = true;
     private int actualRow = 0;
     private boolean finished = false;
+    private Principal principal;
 
     private static Color hide = new Color(160, 160, 160);
     private static Color defaultColor = new Color(238, 238, 238);
@@ -410,7 +411,8 @@ public class Juego {
         oldFrame.setVisible(true);
     }
 
-    public Juego(String dificultad, boolean isCodeMaker, boolean cargarTablero, JFrame frame, JFrame oldFrame) {
+    public Juego(String dificultad, boolean isCodeMaker, boolean cargarTablero, JFrame frame, JFrame oldFrame, Principal principal) {
+        this.principal = principal;
         frame.setUndecorated(true);
         this.frame = frame;
         this.oldFrame = oldFrame;
@@ -441,10 +443,11 @@ public class Juego {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-
                 if (!firstAttempt) controller.abandonaPartidaAcutal();
                 frame.dispose();
                 oldFrame.setVisible(true);
+                Juego.this.principal.revalidar();
+
             }
         });
 
@@ -499,7 +502,7 @@ public class Juego {
                 super.mouseClicked(mouseEvent);
                 frame.dispose();
                 JFrame frame = new JFrame("Mastermindo");
-                frame.setContentPane(new Juego(dificultad, codeMaker, false, frame, oldFrame).getPanel());
+                frame.setContentPane(new Juego(dificultad, codeMaker, false, frame, oldFrame,principal).getPanel());
                 frame.setPreferredSize(new Dimension(850, 900));
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();

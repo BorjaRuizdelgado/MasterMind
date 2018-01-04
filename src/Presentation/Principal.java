@@ -320,7 +320,7 @@ public class Principal {
         });
 
     }
-    
+
 
     /**
      * Muestra las partidas del usuario gruardadas en disco, dentro de la lista deja escoger una para cargar realizando
@@ -374,7 +374,7 @@ public class Principal {
     private void cargarPartida(String partidaACargar) {
         Tuple2<Boolean,String> info = ctrl.cargarPartidaUsuario(partidaACargar);
         JFrame frame = new JFrame("Mastermindo");
-        Juego j = new Juego(info.getSecond(),info.getFirst(), true, frame,this.frame);
+        Juego j = new Juego(info.getSecond(),info.getFirst(), true, frame,this.frame, Principal.this);
         frame.setContentPane(j.getPanel());
         frame.setPreferredSize(new Dimension(850, 900));
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -458,7 +458,7 @@ public class Principal {
 
     private void crearJuego(String dificultad, boolean isCodeMaker) {
         JFrame frame = new JFrame("Mastermindo");
-        frame.setContentPane(new Juego(dificultad, isCodeMaker,false, frame, this.frame).getPanel());
+        frame.setContentPane(new Juego(dificultad, isCodeMaker,false, frame, this.frame, Principal.this).getPanel());
         frame.setPreferredSize(new Dimension(850, 900));
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
@@ -473,5 +473,9 @@ public class Principal {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
+    }
+
+    public void revalidar() {
+        displayListaPartidas();
     }
 }
