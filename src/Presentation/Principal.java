@@ -268,7 +268,6 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                entraTuNombreDeTextField.setText(null);
                 //CardLayout cardLayout = (CardLayout) main.getLayout();
                 //cardLayout.show(main, "contenidoPrincipal");
                volverIncio();
@@ -291,7 +290,6 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                entraTuNombreDeTextField.setText(null);
                 ctrl.quitarUsuarioCargado();
                 //CardLayout cardLayout = (CardLayout) main.getLayout();
                 //cardLayout.show(main, "contenidoPrincipal");
@@ -483,6 +481,7 @@ public class Principal {
     }
 
     public void volverIncio(){
+        entraTuNombreDeTextField.setText("");
         main.removeAll();
         main.add(contenidoPrincipal);
         main.revalidate();
