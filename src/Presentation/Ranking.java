@@ -6,6 +6,7 @@ import Domain.SistemaRanking;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
@@ -115,12 +116,18 @@ public class Ranking {
         mostrarSoloMisPartidasCheckBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
+
                 if(e.getStateChange() == ItemEvent.SELECTED) {
-                    filtrar(true);
+                    if(!ctrl.isUsuarioCargado()){
+                        JOptionPane.showMessageDialog(new Frame(), "Carga o crea un usuario para ver su perfil.");
+                    }
+                    else {
+                        filtrar(true);
+                    }
                 } else {
                     filtrar(false);
 
-                };
+                }
             }
         });
 

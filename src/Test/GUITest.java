@@ -21,7 +21,7 @@ public class GUITest {
                 frame.setContentPane(new Principal(frame).getPanel());
                 break;
             case "Juego":
-                frame.setContentPane(new Juego("Facil", true, false,null,null).getPanel());
+                frame.setContentPane(new Juego("Facil", true, false,null,null,null).getPanel());
                 break;
         }
 

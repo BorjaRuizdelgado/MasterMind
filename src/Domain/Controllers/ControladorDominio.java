@@ -67,6 +67,11 @@ public class ControladorDominio {
         return usuarioCargado != null;
     }
 
+    public void quitarUsuarioCargado() {
+        persistencia.guardar(usuarioCargado);
+        usuarioCargado = null;
+    }
+
     /**
      * Crea una partida de tipo usuario CodeMaker con una dificultad determinada y un codigo secreto.
      * @param dificultad Determina el grado de dificultad de la partidad.
@@ -163,7 +168,6 @@ public class ControladorDominio {
      * Actualiza el ranking según la partida actual.
      */
     public void actualizaRanking(){
-        int puntuacion = partidaActual.generaPuntuacion();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDate localDate = LocalDate.now();
         String fecha = dtf.format(localDate);
