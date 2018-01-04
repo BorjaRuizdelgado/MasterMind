@@ -41,10 +41,13 @@ public class Juego {
     private JButton button8;
     private JButton ACEPTARButton;
     private JPanel coloresPanel;
-    private JPanel narvioPanel;
+    private JPanel naranjaVioletPanel;
+    private JPanel blancoNegroPanel;
+    private JPanel rojoVerdePanel;
+    private JPanel azulAmariPanel;
 
-    private Frame frame;
-    private Frame oldFrame;
+    private JFrame frame;
+    private JFrame oldFrame;
     private ArrayList<JButton> solutionButtons;
     private ArrayList<ArrayList<JButton>> tableButtons;
     private ArrayList<ArrayList<JButton>> answerButtons;
@@ -343,6 +346,9 @@ public class Juego {
 
                             fillRow(controller.jugarCodeMaker(), tableButtons.get(actualRow));
                             setButtonsDisabled(solutionButtons);
+
+                            eliminarColores();
+                            blancoNegroPanel.setVisible(true);
                         } else {
                             showMessage("Error", "¡No puede existir un hueco vacío en tu solución!");
                         }
@@ -366,8 +372,9 @@ public class Juego {
                         if (getEmptyButtonsSize(tableButtons.get(actualRow)) == 0) {
                             // Time is calculated
                             endTime = System.currentTimeMillis();
-
-                            List<Integer> response = controller.juegaCodeBreaker(fromJButtonListToIntList(tableButtons.get(actualRow)), (endTime - startTime)/1000);
+                            long tiempoTotal = (endTime - startTime)/1000;
+                            startTime = System.currentTimeMillis();
+                            List<Integer> response = controller.juegaCodeBreaker(fromJButtonListToIntList(tableButtons.get(actualRow)), tiempoTotal);
                             fillRow(response, answerButtons.get(actualRow));
                             actualRow++;
                             if (!controller.isPartidaGanada() && actualRow < 12)
@@ -418,34 +425,7 @@ public class Juego {
         this.principal.revalidar();
     }
 
-    public Juego(String dificultad, boolean isCodeMaker, boolean cargarTablero, JFrame frame, JFrame oldFrame, Principal principal) {
-        this.principal = principal;
-        frame.setUndecorated(true);
-        this.frame = frame;
-        this.oldFrame = oldFrame;
-
-        this.codeMaker = isCodeMaker;
-        this.dificultad = dificultad;
-        if (dificultad.equals("Facil")) {
-            numColumns = 4;
-            numColors = 4;
-
-            coloresPanel.remove(narvioPanel);
-        } else if (dificultad.equals("Medio")) {
-            numColumns = 4;
-            numColors = 6;
-        } else {
-            numColumns = 6;
-            numColors = 6;
-        }
-
-        initMap();
-        makeTables();
-        applyButtonsEffects();
-        if (!cargarTablero) initGame();
-        else cargarTablero();
-        setAcceptButtonFunction();
-
+    private void setLateralButtonsFunctions(){
         abandonarPartidaButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -479,13 +459,13 @@ public class Juego {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                    JFrame frame = new JFrame("Si tienes problemas con las correcciones vigila que tus correcciones sean las correctas.");
-                    frame.setContentPane(new Ayuda().getPanel());
-                    frame.setPreferredSize(new Dimension(550, 600));
-                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    frame.pack();
-                    frame.setLocationRelativeTo(null);
-                    frame.setVisible(true);
+                JFrame frame = new JFrame("Si tienes problemas con las correcciones vigila que tus correcciones sean las correctas.");
+                frame.setContentPane(new Ayuda().getPanel());
+                frame.setPreferredSize(new Dimension(550, 600));
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
 
             }
         });
@@ -519,7 +499,56 @@ public class Juego {
                 frame.setVisible(true);
             }
         });
-        if (!codeMaker) startTime = System.currentTimeMillis();
+    }
+
+    private void eliminarColores(){
+        coloresPanel.remove(rojoVerdePanel);
+        coloresPanel.remove(azulAmariPanel);
+        if (dificultad.equals("Dificil")){
+            coloresPanel.remove(naranjaVioletPanel);
+        }
+    }
+
+    public Juego(String dificultad, boolean isCodeMaker, boolean cargarTablero, JFrame frame, JFrame oldFrame, Principal principal) {
+        this.principal = principal;
+        frame.setUndecorated(true);
+        this.frame = frame;
+        this.oldFrame = oldFrame;
+        this.codeMaker = isCodeMaker;
+        this.dificultad = dificultad;
+        if (dificultad.equals("Facil")) {
+            numColumns = 4;
+            numColors = 4;
+
+            coloresPanel.remove(naranjaVioletPanel);
+        } else if (dificultad.equals("Medio")) {
+            numColumns = 4;
+            numColors = 6;
+        } else {
+            numColumns = 6;
+            numColors = 6;
+        }
+
+        initMap();
+        makeTables();
+        applyButtonsEffects();
+        if (!cargarTablero) initGame();
+        else cargarTablero();
+        setAcceptButtonFunction();
+        setLateralButtonsFunctions();
+
+        if (!codeMaker) {
+            startTime = System.currentTimeMillis();
+            blancoNegroPanel.setVisible(false);
+        }
+        else{
+            if (!firstAttempt){
+                eliminarColores();
+            }
+            else{
+                blancoNegroPanel.setVisible(false);
+            }
+        }
     }
 
     private void confirmarYPedirPista(JFrame frame) {
