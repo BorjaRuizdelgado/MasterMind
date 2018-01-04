@@ -58,12 +58,14 @@ public class AjustesUsuario{
                 if (contenido.equals("")) {
                     JOptionPane.showMessageDialog(new Frame(), "Primero rellena el campo de texto.");
                 }
-                try {
-                    ctrl.cambiarNombreUsr(contenido);
-                    JOptionPane.showMessageDialog(new Frame(), "Nombre de usuario cambiado por: " + contenido);
-                    frame.dispose();
-                } catch (ExcepcionNombreEscogido excepcionNombreEscogido) {
-                    JOptionPane.showMessageDialog(new Frame(), "Nombre de usuario ya escogido, por favor, escoge otro.");
+                else {
+                    try {
+                        ctrl.cambiarNombreUsr(contenido);
+                        JOptionPane.showMessageDialog(new Frame(), "Nombre de usuario cambiado por: " + contenido);
+                        frame.dispose();
+                    } catch (ExcepcionNombreEscogido excepcionNombreEscogido) {
+                        JOptionPane.showMessageDialog(new Frame(), "Nombre de usuario ya escogido, por favor, escoge otro.");
+                    }
                 }
             }
         });
