@@ -287,11 +287,11 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-
+                entraTuNombreDeTextField.setText(null);
                 //CardLayout cardLayout = (CardLayout) main.getLayout();
                 //cardLayout.show(main, "contenidoPrincipal");
                 main.removeAll();
-                main.add(contenidoUsuario);
+                main.add(contenidoPrincipal);
                 main.revalidate();
             }
         });
@@ -320,8 +320,7 @@ public class Principal {
         });
 
     }
-
-
+    
 
     /**
      * Muestra las partidas del usuario gruardadas en disco, dentro de la lista deja escoger una para cargar realizando
