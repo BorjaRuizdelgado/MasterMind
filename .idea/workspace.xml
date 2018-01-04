@@ -23,9 +23,8 @@
       <file leaf-file-name="Principal.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Presentation/Principal.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="-500">
-              <caret line="273" column="29" lean-forward="true" selection-start-line="273" selection-start-column="29" selection-end-line="273" selection-end-column="29" />
+            <state relative-caret-position="2142">
+              <caret line="130" column="47" lean-forward="false" selection-start-line="127" selection-start-column="11" selection-end-line="130" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -34,17 +33,19 @@
       <file leaf-file-name="AjustesUsuario.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Presentation/AjustesUsuario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="57" column="29" lean-forward="false" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="29" />
+            <state relative-caret-position="864">
+              <caret line="57" column="37" lean-forward="false" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-=======
-            <state relative-caret-position="18">
-              <caret line="130" column="47" lean-forward="false" selection-start-line="127" selection-start-column="11" selection-end-line="130" selection-end-column="47" />
-              <folding />
->>>>>>> e0fa7bb2f39941be7808fad07f6c784745d8a931
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AjustesUsuario.form" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Presentation/AjustesUsuario.form">
+          <provider selected="true" editor-type-id="ui-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -52,10 +53,8 @@
         <entry file="file://$PROJECT_DIR$/src/Test/GUITest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
-              <caret line="23" column="87" lean-forward="false" selection-start-line="23" selection-start-column="87" selection-end-line="23" selection-end-column="87" />
-              <folding>
-                <marker date="1515094259439" expanded="true" signature="1029:1480" ph="{...}" />
-              </folding>
+              <caret line="23" column="82" lean-forward="false" selection-start-line="23" selection-start-column="82" selection-end-line="23" selection-end-column="82" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -67,32 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControladorDominio.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ControladorDominio.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="-521">
-              <caret line="73" column="9" lean-forward="false" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
-              <folding>
-                <element signature="e#13902#13903#0" expanded="true" />
-                <element signature="e#13955#13956#0" expanded="true" />
-                <marker date="1515094652966" expanded="true" signature="6484:6789" ph="{...}" />
-=======
-            <state relative-caret-position="746">
-              <caret line="388" column="4" lean-forward="true" selection-start-line="388" selection-start-column="4" selection-end-line="388" selection-end-column="4" />
-              <folding>
-                <element signature="e#13911#13912#0" expanded="true" />
-                <element signature="e#13964#13965#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ControladorPersistencia.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Data/ControladorPersistencia.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="100" column="35" lean-forward="false" selection-start-line="100" selection-start-column="35" selection-end-line="100" selection-end-column="35" />
+            <state relative-caret-position="1008">
+              <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -101,12 +79,9 @@
       <file leaf-file-name="Juego.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Presentation/Juego.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7542">
-              <caret line="428" column="32" lean-forward="false" selection-start-line="428" selection-start-column="32" selection-end-line="428" selection-end-column="32" />
-              <folding>
-                <marker date="1515094259412" expanded="true" signature="21843:22844" ph="{...}" />
->>>>>>> e0fa7bb2f39941be7808fad07f6c784745d8a931
-              </folding>
+            <state relative-caret-position="7290">
+              <caret line="435" column="32" lean-forward="false" selection-start-line="435" selection-start-column="32" selection-end-line="435" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -122,6 +97,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>int[]</find>
       <find>p</find>
       <find>itr2</find>
       <find>codigo</find>
@@ -148,16 +124,7 @@
       <find>abando</find>
       <find>cargar</find>
       <find>dialo</find>
-      <find>quitarUsuario</find>
       <find>ajustes</find>
-<<<<<<< HEAD
-      <find>contenidoPrincipal</find>
-      <find>contenido</find>
-=======
-      <find>camb</find>
-      <find>reinici</find>
-      <find>reiniciar</find>
->>>>>>> e0fa7bb2f39941be7808fad07f6c784745d8a931
     </findStrings>
     <replaceStrings>
       <replace>List&lt;Integer&gt;</replace>
@@ -214,16 +181,10 @@
         <option value="$PROJECT_DIR$/src/MP3Player/Mp3Player.java" />
         <option value="$PROJECT_DIR$/src/Test/GUITest.java" />
         <option value="$PROJECT_DIR$/src/Presentation/Juego.java" />
-<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java" />
-=======
->>>>>>> e0fa7bb2f39941be7808fad07f6c784745d8a931
+        <option value="$PROJECT_DIR$/src/Presentation/Principal.java" />
         <option value="$PROJECT_DIR$/src/Presentation/AjustesUsuario.java" />
-        <option value="$PROJECT_DIR$/src/Presentation/Principal.java" />
         <option value="$PROJECT_DIR$/src/Presentation/AjustesUsuario.form" />
-        <option value="$PROJECT_DIR$/src/Presentation/Principal.java" />
-        <option value="$PROJECT_DIR$/src/Data/ControladorPersistencia.java" />
-        <option value="$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java" />
       </list>
     </option>
   </component>
@@ -275,13 +236,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-<<<<<<< HEAD
       <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="Scope" />
-=======
->>>>>>> e0fa7bb2f39941be7808fad07f6c784745d8a931
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -329,35 +285,14 @@
               <item name="MasterMindV" type="b2602c69:ProjectViewProjectNode" />
               <item name="MasterMindV" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-<<<<<<< HEAD
-              <item name="Presentation" type="462c0819:PsiDirectoryNode" />
-              <item name="AjustesUsuario" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="MasterMindV" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MasterMindV" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Presentation" type="462c0819:PsiDirectoryNode" />
-              <item name="Principal" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="MasterMindV" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MasterMindV" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-=======
->>>>>>> e0fa7bb2f39941be7808fad07f6c784745d8a931
               <item name="Test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-<<<<<<< HEAD
-=======
-      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="AndroidView" />
->>>>>>> e0fa7bb2f39941be7808fad07f6c784745d8a931
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -633,13 +568,8 @@
       <workItem from="1514975452617" duration="1206000" />
       <workItem from="1515064985924" duration="3876000" />
       <workItem from="1515083190984" duration="1494000" />
-<<<<<<< HEAD
-      <workItem from="1515089638163" duration="2065000" />
-      <workItem from="1515093402792" duration="1605000" />
-=======
       <workItem from="1515089638163" duration="2029000" />
-      <workItem from="1515094293082" duration="516000" />
->>>>>>> e0fa7bb2f39941be7808fad07f6c784745d8a931
+      <workItem from="1515097519406" duration="6000" />
     </task>
     <task id="LOCAL-00001" summary="Asd">
       <created>1509619663343</created>
@@ -890,15 +820,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-<<<<<<< HEAD
-    <option name="totallyTimeSpent" value="142636000" />
-=======
-    <option name="totallyTimeSpent" value="141511000" />
->>>>>>> e0fa7bb2f39941be7808fad07f6c784745d8a931
+    <option name="totallyTimeSpent" value="141001000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -907,19 +832,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.50416666" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23675676" sideWeight="0.49791667" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3256579" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23675676" sideWeight="0.49791667" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19402985" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19402985" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39891893" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -950,7 +875,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23675676" sideWeight="0.49791667" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3256579" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3256579" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1921875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1157,6 +1082,7 @@
     <entry file="file://$PROJECT_DIR$/src/Data/GestionUsuario.java" />
     <entry file="file://$PROJECT_DIR$/src/Domain/Excepciones/ExcepcionUsuarioExiste.java" />
     <entry file="file://$PROJECT_DIR$/src/MP3Player/MP3.java" />
+    <entry file="file://$PROJECT_DIR$/src/Data/ControladorPersistencia.java" />
     <entry file="file://$PROJECT_DIR$/src/Data/GestionPartida.java" />
     <entry file="jar://C:/Program Files/Java/jdk-9/lib/src.zip!/java.desktop/com/sun/media/sound/AbstractLine.java" />
     <entry file="uml://JAVA/Data">
@@ -1260,38 +1186,29 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-=======
     <entry file="file://$PROJECT_DIR$/src/Test/GUITest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="23" column="87" lean-forward="false" selection-start-line="23" selection-start-column="87" selection-end-line="23" selection-end-column="87" />
-          <folding>
-            <marker date="1515094259439" expanded="true" signature="1029:1480" ph="{...}" />
-          </folding>
+          <caret line="23" column="82" lean-forward="false" selection-start-line="23" selection-start-column="82" selection-end-line="23" selection-end-column="82" />
+          <folding />
         </state>
       </provider>
     </entry>
->>>>>>> e0fa7bb2f39941be7808fad07f6c784745d8a931
     <entry file="file://$PROJECT_DIR$/src/Presentation/Ajustes.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presentation/Principal.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Presentation/Juego.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="8862">
+        <state relative-caret-position="7290">
           <caret line="435" column="32" lean-forward="false" selection-start-line="435" selection-start-column="32" selection-end-line="435" selection-end-column="32" />
-          <folding>
-            <marker date="1515090464653" expanded="true" signature="19665:19671" ph="{...}" />
-=======
-        <state relative-caret-position="7542">
-          <caret line="428" column="32" lean-forward="false" selection-start-line="428" selection-start-column="32" selection-end-line="428" selection-end-column="32" />
-          <folding>
-            <marker date="1515094259412" expanded="true" signature="21843:22844" ph="{...}" />
->>>>>>> e0fa7bb2f39941be7808fad07f6c784745d8a931
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1303,70 +1220,35 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/Test/GUITest.java">
+    <entry file="file://$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="23" column="82" lean-forward="false" selection-start-line="23" selection-start-column="82" selection-end-line="23" selection-end-column="82" />
+        <state relative-caret-position="1008">
+          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-521">
-          <caret line="73" column="9" lean-forward="false" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
-          <folding>
-            <element signature="e#13902#13903#0" expanded="true" />
-            <element signature="e#13955#13956#0" expanded="true" />
-            <marker date="1515094652966" expanded="true" signature="6484:6789" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentation/Principal.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Presentation/Principal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-500">
-          <caret line="273" column="29" lean-forward="true" selection-start-line="273" selection-start-column="29" selection-end-line="273" selection-end-column="29" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/Presentation/Principal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
+        <state relative-caret-position="2142">
           <caret line="130" column="47" lean-forward="false" selection-start-line="127" selection-start-column="11" selection-end-line="130" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presentation/AjustesUsuario.java" />
-    <entry file="file://$PROJECT_DIR$/src/Presentation/AjustesUsuario.form" />
-    <entry file="file://$PROJECT_DIR$/src/Data/ControladorPersistencia.java">
+    <entry file="file://$PROJECT_DIR$/src/Presentation/AjustesUsuario.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="100" column="35" lean-forward="false" selection-start-line="100" selection-start-column="35" selection-end-line="100" selection-end-column="35" />
->>>>>>> e0fa7bb2f39941be7808fad07f6c784745d8a931
-          <folding />
+        <state relative-caret-position="864">
+          <caret line="57" column="37" lean-forward="false" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="172">
-          <caret line="57" column="29" lean-forward="false" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="29" />
-=======
-        <state relative-caret-position="746">
-          <caret line="388" column="4" lean-forward="true" selection-start-line="388" selection-start-column="4" selection-end-line="388" selection-end-column="4" />
->>>>>>> e0fa7bb2f39941be7808fad07f6c784745d8a931
-          <folding>
-            <element signature="e#13911#13912#0" expanded="true" />
-            <element signature="e#13964#13965#0" expanded="true" />
-          </folding>
-        </state>
+    <entry file="file://$PROJECT_DIR$/src/Presentation/AjustesUsuario.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
       </provider>
     </entry>
   </component>
