@@ -63,6 +63,7 @@ public class ControladorDominio {
         usuarioCargado = persistencia.cargarUsuario(nombre);
     }
 
+
     public boolean isUsuarioCargado() {
         return usuarioCargado != null;
     }
@@ -324,11 +325,11 @@ public class ControladorDominio {
     }
 
     /**
-     * Crea una punetuación a partir de un usuario, fecha y dificultad
-     * @param usuario
-     * @param puntuacion
-     * @param fecha
-     * @param dificultad
+     * Crea una puntuación a partir de un usuario, fecha y dificultad
+     * @param usuario nombre del usuario
+     * @param puntuacion puntuacion de la partida
+     * @param fecha fecha de la partida
+     * @param dificultad dificultad de la partida
      */
     public void creaPuntuacion(String usuario, int puntuacion, String fecha, String dificultad) {
         ranking.addNewPuntuation(usuario, puntuacion, fecha, dificultad);
@@ -336,7 +337,7 @@ public class ControladorDominio {
 
     /**
      * Determina si existe algún usuario guardado en disco.
-     * @return
+     * @return cierto si existe algun usuario, falso si no.
      */
     public boolean existeAlgunUsuario(){
         return persistencia.existeAlgunUsuario();

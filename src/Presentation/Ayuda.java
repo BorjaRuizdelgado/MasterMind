@@ -6,7 +6,7 @@ public class Ayuda {
 
     private JPanel panel;
     private JPanel panel2;
-    private JTextArea blaBlaBlaTextArea;
+    private JTabbedPane tabbedPane1;
 
     public JPanel getPanel() {
         return panel;
