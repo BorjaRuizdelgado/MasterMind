@@ -366,12 +366,7 @@ public class ControladorDominio {
      * Borra los rankings del usuario cargado.
      */
     public void borrarRankings() {
-        List<Info> rankingFacil = ranking.getRankingFacilInfo(usuarioCargado.getNombre());
-        ranking.eliminaRankingFacil(rankingFacil);
-        List<Info> rankingMedio = ranking.getRankingMedioInfo(usuarioCargado.getNombre());
-        ranking.eliminaRankingMedio(rankingMedio);
-        List<Info> rankingDificil = ranking.getRankingDificilInfo(usuarioCargado.getNombre());
-        ranking.eliminaRankingDificil(rankingDificil);
+        ranking.borrarRankings(usuarioCargado.getNombre());
         persistencia.guardarSistemaRanking();
     }
 
@@ -381,5 +376,13 @@ public class ControladorDominio {
      */
     public boolean isPartidaGanada(){
         return partidaActual.isGanado();
+    }
+
+
+    public void cambiarNombreUsr(String newUsername) throws ExcepcionNombreEscogido {
+        if (persistencia.existeUsuario(newUsername)) throw new ExcepcionNombreEscogido("El nombre ya existe en el sistema");
+        ranking.cambiarNombre(usuarioCargado.getNombre(),newUsername);
+        usuarioCargado.setNombre(newUsername);
+        persistencia.guardar(usuarioCargado);
     }
 }

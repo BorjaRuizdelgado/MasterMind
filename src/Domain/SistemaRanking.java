@@ -233,15 +233,32 @@ public class SistemaRanking implements Serializable{
         return fromInfoListToStringList(rankingDificil);
     }
 
-    public void eliminaRankingFacil(List<Info> rankings) {
-        rankingFacil.removeAll(rankings);
+    public void cambiarNombre(String oldUsername, String newUsername) {
+        List<Info> faciles = getRankingFacilInfo(oldUsername);
+        cambiaNombreList(faciles,newUsername);
+
+        List<Info> medios = getRankingMedioInfo(oldUsername);
+        cambiaNombreList(medios,newUsername);
+
+        List<Info> dificiles = getRankingDificilInfo(oldUsername);
+        cambiaNombreList(dificiles,newUsername);
     }
 
-    public void eliminaRankingMedio(List<Info> rankings) {
-        rankingMedio.removeAll(rankings);
+    private void cambiaNombreList(List<Info> lista, String newUsername) {
+        for (Info info : lista) {
+            info.setUsuario(newUsername);
+        }
     }
 
-    public void eliminaRankingDificil(List<Info> rankings) {
-        rankingDificil.removeAll(rankings);
+    public void borrarRankings(String nombre) {
+        List<Info> faciles = getRankingFacilInfo(nombre);
+        rankingFacil.removeAll(faciles);
+
+        List<Info> medios = getRankingMedioInfo(nombre);
+        rankingMedio.removeAll(medios);
+
+        List<Info> dificiles = getRankingDificilInfo(nombre);
+        rankingDificil.removeAll(dificiles);
     }
+
 }

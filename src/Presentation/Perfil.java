@@ -4,8 +4,8 @@ import javax.swing.*;
 
 public class Perfil {
     private JPanel panel2;
-    private JTextArea blaBlaBluchoTextArea;
     private JPanel panel;
+    private JTextArea textArea1;
 
     public JPanel getPanel() {
         return panel;
