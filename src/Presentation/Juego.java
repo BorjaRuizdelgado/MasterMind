@@ -59,6 +59,9 @@ public class Juego {
     private boolean firstAttempt = true;
     private int actualRow = 0;
     private boolean finished = false;
+    private long startTime;
+    private long endTime;
+    private boolean loadedBoard = false;
 
     private static Color hide = new Color(160, 160, 160);
     private static Color defaultColor = new Color(238, 238, 238);
@@ -310,8 +313,7 @@ public class Juego {
 
     private void initGame() {
         if (!codeMaker) {
-            List<Integer> solCode = controller.crearPartidaUsuarioCargadoRolBreaker(dificultad);
-
+            controller.crearPartidaUsuarioCargadoRolBreaker(dificultad);
             List<Integer> aux = new ArrayList<>();
             for (int i = 0; i < numColumns; i++) {
                 aux.add(-1);
@@ -361,7 +363,10 @@ public class Juego {
                     // CodeBreaker
                     if (!codeMaker) {
                         if (getEmptyButtonsSize(tableButtons.get(actualRow)) == 0) {
-                            List<Integer> response = controller.juegaCodeBreaker(fromJButtonListToIntList(tableButtons.get(actualRow)), 0);
+                            // Time is calculated
+                            endTime = System.currentTimeMillis();
+
+                            List<Integer> response = controller.juegaCodeBreaker(fromJButtonListToIntList(tableButtons.get(actualRow)), (endTime - startTime)/1000);
                             fillRow(response, answerButtons.get(actualRow));
                             actualRow++;
                             if (!controller.isPartidaGanada() && actualRow < 12)
@@ -383,6 +388,7 @@ public class Juego {
 
                         } else {
                             showMessage("Mastermindo", "¡Creo que te he ganado!");
+                            controller.actualizaRanking();
                             controller.terminaPartidaActual(false);
                             close();
                         }
@@ -507,7 +513,7 @@ public class Juego {
                 frame.setVisible(true);
             }
         });
-
+        if (!codeMaker) startTime = System.currentTimeMillis();
     }
 
     private void confirmarYPedirPista(JFrame frame) {
@@ -573,6 +579,7 @@ public class Juego {
 
 
     private void cargarTablero() {
+        loadedBoard = true;
         firstAttempt = false;
         actualRow = controller.getNumeroFilaActual();
         List<List<List<Integer>>> tablero = controller.getTablero();
