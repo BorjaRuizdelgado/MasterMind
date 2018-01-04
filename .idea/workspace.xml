@@ -49,21 +49,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControladorDominio.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ControladorDominio.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2168">
-              <caret line="385" column="46" lean-forward="true" selection-start-line="385" selection-start-column="46" selection-end-line="385" selection-end-column="46" />
-              <folding />
+            <state relative-caret-position="746">
+              <caret line="388" column="4" lean-forward="true" selection-start-line="388" selection-start-column="4" selection-end-line="388" selection-end-column="4" />
+              <folding>
+                <element signature="e#13911#13912#0" expanded="true" />
+                <element signature="e#13964#13965#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControladorPersistencia.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ControladorPersistencia.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Data/ControladorPersistencia.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+            <state relative-caret-position="281">
+              <caret line="100" column="35" lean-forward="false" selection-start-line="100" selection-start-column="35" selection-end-line="100" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -92,7 +95,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>int[]</find>
       <find>p</find>
       <find>itr2</find>
       <find>codigo</find>
@@ -121,6 +123,8 @@
       <find>dialo</find>
       <find>ajustes</find>
       <find>camb</find>
+      <find>reinici</find>
+      <find>reiniciar</find>
     </findStrings>
     <replaceStrings>
       <replace>List&lt;Integer&gt;</replace>
@@ -180,8 +184,8 @@
         <option value="$PROJECT_DIR$/src/Presentation/AjustesUsuario.java" />
         <option value="$PROJECT_DIR$/src/Presentation/AjustesUsuario.form" />
         <option value="$PROJECT_DIR$/src/Presentation/Principal.java" />
-        <option value="$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java" />
         <option value="$PROJECT_DIR$/src/Data/ControladorPersistencia.java" />
+        <option value="$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java" />
       </list>
     </option>
   </component>
@@ -566,7 +570,7 @@
       <workItem from="1515064985924" duration="3876000" />
       <workItem from="1515083190984" duration="1494000" />
       <workItem from="1515089638163" duration="2029000" />
-      <workItem from="1515094293082" duration="368000" />
+      <workItem from="1515094293082" duration="516000" />
     </task>
     <task id="LOCAL-00001" summary="Asd">
       <created>1509619663343</created>
@@ -817,7 +821,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141363000" />
+    <option name="totallyTimeSpent" value="141511000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1231,19 +1235,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Presentation/AjustesUsuario.java" />
     <entry file="file://$PROJECT_DIR$/src/Presentation/AjustesUsuario.form" />
-    <entry file="file://$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java">
+    <entry file="file://$PROJECT_DIR$/src/Data/ControladorPersistencia.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2168">
-          <caret line="385" column="46" lean-forward="true" selection-start-line="385" selection-start-column="46" selection-end-line="385" selection-end-column="46" />
+        <state relative-caret-position="281">
+          <caret line="100" column="35" lean-forward="false" selection-start-line="100" selection-start-column="35" selection-end-line="100" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Data/ControladorPersistencia.java">
+    <entry file="file://$PROJECT_DIR$/src/Domain/Controllers/ControladorDominio.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="746">
+          <caret line="388" column="4" lean-forward="true" selection-start-line="388" selection-start-column="4" selection-end-line="388" selection-end-column="4" />
+          <folding>
+            <element signature="e#13911#13912#0" expanded="true" />
+            <element signature="e#13964#13965#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

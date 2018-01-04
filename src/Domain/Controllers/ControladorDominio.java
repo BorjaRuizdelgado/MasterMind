@@ -386,4 +386,8 @@ public class ControladorDominio {
         usuarioCargado.setNombre(newUsername);
         persistencia.guardar(usuarioCargado);
     }
+    
+    public void reiniciaEstadisticas() {
+        usuarioCargado.reiniciaEstadisticas();
+    }
 }
