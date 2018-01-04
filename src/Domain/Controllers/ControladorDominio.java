@@ -384,11 +384,13 @@ public class ControladorDominio {
     public void cambiarNombreUsr(String newUsername) throws ExcepcionNombreEscogido {
         if (persistencia.existeUsuario(newUsername)) throw new ExcepcionNombreEscogido("El nombre ya existe en el sistema");
         ranking.cambiarNombre(usuarioCargado.getNombre(),newUsername);
+        persistencia.eliminarUsuario(usuarioCargado.getNombre());
         usuarioCargado.setNombre(newUsername);
         persistencia.guardar(usuarioCargado);
     }
 
-    public void reinicioStatsUsuarioCargado(){
+    
+    public void reiniciaEstadisticas() {
         usuarioCargado.reiniciaEstadisticas();
     }
 }
