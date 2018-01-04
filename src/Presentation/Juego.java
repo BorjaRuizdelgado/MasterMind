@@ -507,6 +507,8 @@ public class Juego {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
+
+                controller.abandonaPartidaAcutal();
                 frame.dispose();
                 JFrame frame = new JFrame("Mastermindo");
                 frame.setContentPane(new Juego(dificultad, codeMaker, false, frame, oldFrame,principal).getPanel());
