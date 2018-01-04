@@ -68,8 +68,10 @@ public class ControladorDominio {
     }
 
     public void quitarUsuarioCargado() {
-        persistencia.guardar(usuarioCargado);
-        usuarioCargado = null;
+        if(usuarioCargado != null) {
+            persistencia.guardar(usuarioCargado);
+            usuarioCargado = null;
+        }
     }
 
     /**
@@ -384,5 +386,9 @@ public class ControladorDominio {
         ranking.cambiarNombre(usuarioCargado.getNombre(),newUsername);
         usuarioCargado.setNombre(newUsername);
         persistencia.guardar(usuarioCargado);
+    }
+
+    public void reinicioStatsUsuarioCargado(){
+        usuarioCargado.reiniciaEstadisticas();
     }
 }

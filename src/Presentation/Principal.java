@@ -132,7 +132,7 @@ public class Principal {
                 JFrame frame;
                 if(ctrl.isUsuarioCargado()){
                     frame = new JFrame("AjustesUsuario");
-                    frame.setContentPane(new AjustesUsuario().getPanel());
+                    frame.setContentPane(new AjustesUsuario(frame, Principal.this).getPanel());
                 }
                 else {
                     frame = new JFrame("Ajustes");
@@ -271,9 +271,7 @@ public class Principal {
                 entraTuNombreDeTextField.setText(null);
                 //CardLayout cardLayout = (CardLayout) main.getLayout();
                 //cardLayout.show(main, "contenidoPrincipal");
-                main.removeAll();
-                main.add(contenidoPrincipal);
-                main.revalidate();
+               volverIncio();
             }
         });
 
@@ -297,9 +295,7 @@ public class Principal {
                 ctrl.quitarUsuarioCargado();
                 //CardLayout cardLayout = (CardLayout) main.getLayout();
                 //cardLayout.show(main, "contenidoPrincipal");
-                main.removeAll();
-                main.add(contenidoPrincipal);
-                main.revalidate();
+                volverIncio();
             }
         });
         r4.addMouseListener(new MouseAdapter() {
@@ -484,5 +480,12 @@ public class Principal {
 
     public void revalidar() {
         displayListaPartidas();
+    }
+
+    public void volverIncio(){
+        main.removeAll();
+        main.add(contenidoPrincipal);
+        main.revalidate();
+
     }
 }
