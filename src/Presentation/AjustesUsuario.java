@@ -82,7 +82,7 @@ public class AjustesUsuario{
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                ctrl.reinicioStatsUsuarioCargado();
+                ctrl.reiniciaEstadisticas();
                 JOptionPane.showMessageDialog(new Frame(), "Estadisiticas reiniciadas.");
                 frame.dispose();
 
