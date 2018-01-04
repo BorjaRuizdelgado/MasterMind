@@ -288,6 +288,7 @@ public class Principal {
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
                 entraTuNombreDeTextField.setText(null);
+                ctrl.quitarUsuarioCargado();
                 //CardLayout cardLayout = (CardLayout) main.getLayout();
                 //cardLayout.show(main, "contenidoPrincipal");
                 main.removeAll();
