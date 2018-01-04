@@ -68,6 +68,7 @@ public class Principal {
             @Override
             public void windowClosing(WindowEvent windowEvent) {
                 super.windowClosing(windowEvent);
+                mp3Player.close();
                 ctrl.onClose();
             }
         });
