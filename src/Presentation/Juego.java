@@ -7,9 +7,7 @@ import Domain.Excepciones.ExcepcionRespuestaIncorrecta;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 
@@ -45,7 +43,8 @@ public class Juego {
     private JPanel coloresPanel;
     private JPanel narvioPanel;
 
-
+    private Frame frame;
+    private Frame oldFrame;
     private ArrayList<JButton> solutionButtons;
     private ArrayList<ArrayList<JButton>> tableButtons;
     private ArrayList<ArrayList<JButton>> answerButtons;
@@ -380,9 +379,12 @@ public class Juego {
                             showMessage("Mastermindo", "¡Enhorabuena! Has descubierto el código secreto!");
                             controller.actualizaRanking();
                             controller.terminaPartidaActual(true);
+                            close();
+
                         } else {
                             showMessage("Mastermindo", "¡Creo que te he ganado!");
                             controller.terminaPartidaActual(false);
+                            close();
                         }
                     }
 
@@ -391,9 +393,11 @@ public class Juego {
                         if (codeMaker) {
                             showMessage("Mastermindo", "¡Has ganado a Mastermindo!");
                             controller.terminaPartidaActual(true);
+                            close();
                         } else if (!codeMaker) {
                             showMessage("Mastermindo", "¡Has perdido!, no tienes más intentos");
                             controller.terminaPartidaActual(false);
+                            close();
                         }
                     }
                 }
@@ -401,7 +405,16 @@ public class Juego {
         });
     }
 
+    private void close(){
+        frame.dispose();
+        oldFrame.setVisible(true);
+    }
+
     public Juego(String dificultad, boolean isCodeMaker, boolean cargarTablero, JFrame frame, JFrame oldFrame) {
+        frame.setUndecorated(true);
+        this.frame = frame;
+        this.oldFrame = oldFrame;
+
         this.codeMaker = isCodeMaker;
         this.dificultad = dificultad;
         if (dificultad.equals("Facil")) {
@@ -429,7 +442,7 @@ public class Juego {
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
 
-                //1controller.abandonaPartidaAcutal();
+                controller.abandonaPartidaAcutal();
                 frame.dispose();
                 oldFrame.setVisible(true);
             }
