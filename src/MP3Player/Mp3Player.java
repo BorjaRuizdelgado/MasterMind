@@ -42,9 +42,10 @@ public class Mp3Player {
 
 
     public void close(){
-
-        audioClip.close();
-        isPlaying = false;
+        if(isPlaying()) {
+            audioClip.close();
+            isPlaying = false;
+        }
     }
 
     public void changeVolume(float gain){
