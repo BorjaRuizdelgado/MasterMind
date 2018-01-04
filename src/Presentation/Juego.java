@@ -415,6 +415,7 @@ public class Juego {
     private void close(){
         frame.dispose();
         oldFrame.setVisible(true);
+        this.principal.revalidar();
     }
 
     public Juego(String dificultad, boolean isCodeMaker, boolean cargarTablero, JFrame frame, JFrame oldFrame, Principal principal) {
