@@ -645,7 +645,7 @@
                   </grid>
                 </children>
               </grid>
-              <grid id="e31de" binding="footer" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="e31de" binding="footer" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="20" left="0" bottom="20" right="0"/>
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -694,6 +694,19 @@
                       <icon value="imgs/settings-red.png"/>
                       <text value=""/>
                       <toolTipText value="Ajustes"/>
+                    </properties>
+                  </component>
+                  <component id="3e93" class="javax.swing.JButton" binding="b4">
+                    <constraints>
+                      <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-1"/>
+                      <borderPainted value="false"/>
+                      <focusPainted value="false"/>
+                      <icon value="imgs/icons8-user-64.png"/>
+                      <text value=""/>
+                      <toolTipText value="Perfil"/>
                     </properties>
                   </component>
                 </children>

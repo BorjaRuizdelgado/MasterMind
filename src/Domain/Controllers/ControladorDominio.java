@@ -63,6 +63,10 @@ public class ControladorDominio {
         usuarioCargado = persistencia.cargarUsuario(nombre);
     }
 
+    public boolean isUsuarioCargado() {
+        return usuarioCargado != null;
+    }
+
     /**
      * Crea una partida de tipo usuario CodeMaker con una dificultad determinada y un codigo secreto.
      * @param dificultad Determina el grado de dificultad de la partidad.

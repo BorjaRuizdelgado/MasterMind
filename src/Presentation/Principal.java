@@ -11,8 +11,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Principal {
@@ -51,6 +49,7 @@ public class Principal {
     private JButton r5;
     private JTable table1;
     private JScrollPane scrollpanel;
+    private JButton b4;
     private Mp3Player mp3Player;
 
     private ControladorDominio ctrl;
@@ -74,16 +73,26 @@ public class Principal {
         });
 
         /* Efectos */
-        addMouseEfect(CREARUSUARIOButton);
-        addMouseEfect(CARGARUSUARIOButton);
-        addMouseEfect(ACEPTARButton);
-        addMouseEfect(CREARPARTIDAButton);
-        addMouseEfect(CARGARPARTIDAButton);
-        addMouseEfect(CODEMAKERButton);
-        addMouseEfect(CODEBREAKERButton);
-        addMouseEfect(facil);
-        addMouseEfect(medio);
-        addMouseEfect(dificil);
+        addMouseEnterExitColorEffect(CREARUSUARIOButton);
+        addMouseEnterExitColorEffect(CARGARUSUARIOButton);
+        addMouseEnterExitColorEffect(ACEPTARButton);
+        addMouseEnterExitColorEffect(CREARPARTIDAButton);
+        addMouseEnterExitColorEffect(CARGARPARTIDAButton);
+        addMouseEnterExitColorEffect(CODEMAKERButton);
+        addMouseEnterExitColorEffect(CODEBREAKERButton);
+        addMouseEnterExitColorEffect(facil);
+        addMouseEnterExitColorEffect(medio);
+        addMouseEnterExitColorEffect(dificil);
+
+        addMouseEnterExitBorderEffect(b1);
+        addMouseEnterExitBorderEffect(b2);
+        addMouseEnterExitBorderEffect(b3);
+        addMouseEnterExitBorderEffect(b4);
+        addMouseEnterExitBorderEffect(r1);
+        addMouseEnterExitBorderEffect(r2);
+        addMouseEnterExitBorderEffect(r3);
+        addMouseEnterExitBorderEffect(r4);
+        addMouseEnterExitBorderEffect(r5);
 
 
         /* ************************* */
@@ -130,118 +139,29 @@ public class Principal {
                 frame.setVisible(true);
             }
         });
-        b1.addMouseListener(new MouseAdapter() {
+
+        b4.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                b1.setBorderPainted(true);
+            public void mouseClicked(MouseEvent mouseEvent) {
+                if(!ctrl.isUsuarioCargado()){
+                    JOptionPane.showMessageDialog(new Frame(), "Carga o crea un usuario para ver su perfil.");
+                }
+                else {
+                    super.mouseClicked(mouseEvent);
+
+                    JFrame frame = new JFrame("Perfil");
+                    frame.setContentPane(new Perfil().getPanel());
+                    frame.setPreferredSize(new Dimension(550, 600));
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.pack();
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
+                }
             }
         });
-        b1.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                b1.setBorderPainted(false);
-            }
-        });
-        b2.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                b2.setBorderPainted(true);
-            }
-        });
-        b2.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                b2.setBorderPainted(false);
-            }
-        });
-        b3.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                b3.setBorderPainted(true);
-            }
-        });
-        b3.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                b3.setBorderPainted(false);
-            }
-        });
-        r1.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                r1.setBorderPainted(true);
-            }
-        });
-        r1.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                r1.setBorderPainted(false);
-            }
-        });
-        r2.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                r2.setBorderPainted(true);
-            }
-        });
-        r2.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                r2.setBorderPainted(false);
-            }
-        });
-        r3.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                r3.setBorderPainted(true);
-            }
-        });
-        r3.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                r3.setBorderPainted(false);
-            }
-        });
-        r4.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                r4.setBorderPainted(true);
-            }
-        });
-        r4.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                r4.setBorderPainted(false);
-            }
-        });
-        r5.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent mouseEvent) {
-                super.mouseEntered(mouseEvent);
-                r5.setBorderPainted(true);
-            }
-        });
-        r5.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent mouseEvent) {
-                super.mouseExited(mouseEvent);
-                r5.setBorderPainted(false);
-            }
-        });
+
+
+
         CREARUSUARIOButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -401,6 +321,8 @@ public class Principal {
 
     }
 
+
+
     /**
      * Muestra las partidas del usuario gruardadas en disco, dentro de la lista deja escoger una para cargar realizando
      * un doble click.
@@ -463,7 +385,7 @@ public class Principal {
         this.frame.setVisible(false);
     }
 
-    private void addMouseEfect(JButton button) {
+    private void addMouseEnterExitColorEffect(JButton button) {
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent mouseEvent) {
@@ -476,6 +398,23 @@ public class Principal {
             public void mouseExited(MouseEvent mouseEvent) {
                 super.mouseExited(mouseEvent);
                 button.setBackground(new Color(192, 55, 55));
+            }
+        });
+    }
+
+    private void addMouseEnterExitBorderEffect(JButton button) {
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                super.mouseEntered(mouseEvent);
+                button.setBorderPainted(true);
+            }
+        });
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                super.mouseExited(mouseEvent);
+                button.setBorderPainted(false);
             }
         });
     }
