@@ -129,9 +129,15 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-
-                JFrame frame = new JFrame("Ajustes");
-                frame.setContentPane(new Ajustes().getPanel());
+                JFrame frame;
+                if(ctrl.isUsuarioCargado()){
+                    frame = new JFrame("AjustesUsuario");
+                    frame.setContentPane(new AjustesUsuario().getPanel());
+                }
+                else {
+                    frame = new JFrame("Ajustes");
+                    frame.setContentPane(new Ajustes().getPanel());
+                }
                 frame.setPreferredSize(new Dimension(550, 600));
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
