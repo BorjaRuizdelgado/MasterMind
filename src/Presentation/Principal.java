@@ -416,6 +416,10 @@ public class Principal {
         table1.setModel(partidas);
         setCellRenderer();
         table1.setCellSelectionEnabled(false);
+
+        if (table1.getMouseListeners().length > 1){
+            table1.removeMouseListener(table1.getMouseListeners()[1]);
+        }
         table1.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent mouseEvent) {
                 JTable table =(JTable) mouseEvent.getSource();
