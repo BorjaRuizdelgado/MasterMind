@@ -442,7 +442,7 @@ public class Juego {
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
 
-                controller.abandonaPartidaAcutal();
+                if (!firstAttempt) controller.abandonaPartidaAcutal();
                 frame.dispose();
                 oldFrame.setVisible(true);
             }
