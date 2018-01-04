@@ -453,9 +453,14 @@ public class Juego {
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
 
-                controller.guardaPartidaActual();
-                frame.dispose();
-                oldFrame.setVisible(true);
+                if (codeMaker && firstAttempt && getEmptyButtonsSize(solutionButtons) != 0){
+                    showMessage("Error", "Antes de guardar la partida tiene que rellenar el código secreto y darle a Aceptar.");
+                }
+                else {
+                    controller.guardaPartidaActual();
+                    frame.dispose();
+                    oldFrame.setVisible(true);
+                }
 
             }
         });
