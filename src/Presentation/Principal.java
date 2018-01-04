@@ -10,9 +10,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +64,13 @@ public class Principal {
         mp3Player.changeVolume(-25);
 
         ctrl = ControladorDominio.getInstance();
-
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent windowEvent) {
+                super.windowClosing(windowEvent);
+                ctrl.onClose();
+            }
+        });
 
         /* Efectos */
         addMouseEfect(CREARUSUARIOButton);
@@ -475,6 +479,12 @@ public class Principal {
         main.removeAll();
         main.add(nivelDificultad);
         main.revalidate();
+
+        if (facil.getMouseListeners().length > 4){
+            facil.removeMouseListener(facil.getMouseListeners()[4]);
+            medio.removeMouseListener(medio.getMouseListeners()[4]);
+            dificil.removeMouseListener(dificil.getMouseListeners()[4]);
+        }
 
         facil.addMouseListener(new MouseAdapter() {
             @Override
