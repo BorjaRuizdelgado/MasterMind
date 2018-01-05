@@ -393,6 +393,7 @@ public class ControladorDominio {
     
     public void reiniciaEstadisticas() {
         usuarioCargado.reiniciaEstadisticas();
+        borrarRankings();
     }
 
     public List<Integer> getEstadiscasUsuario(){

@@ -25,6 +25,8 @@ public class Ranking {
     private ControladorDominio ctrl;
     private DefaultTableModel tableModel;
 
+    private String noUserIcon;
+
 
     Ranking() {
        onCreate();
@@ -135,7 +137,8 @@ public class Ranking {
 
                 if(e.getStateChange() == ItemEvent.SELECTED) {
                     if(!ctrl.isUsuarioCargado()){
-                        JOptionPane.showMessageDialog(null, "Carga o crea un usuario para ver sus ránkings.", "No hay usuario", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null,
+                                "Carga o crea un usuario para ver sus ránkings.", "No hay usuario", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(noUserIcon));
                     }
                     else {
                         filtrar(true);
@@ -153,6 +156,7 @@ public class Ranking {
      * Acciones por defecto al crear la vista del ranking.
      */
     private void onCreate() {
+        noUserIcon = System.getProperty("user.dir") + "/src/imgs/addUser.png";
         ctrl = ControladorDominio.getInstance();
         tableModel = new DefaultTableModel(0, 3);
         setSelectorListener();

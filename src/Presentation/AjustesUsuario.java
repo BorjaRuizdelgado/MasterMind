@@ -4,11 +4,9 @@ import Domain.Controllers.ControladorDominio;
 import Domain.Excepciones.ExcepcionNombreEscogido;
 import MP3Player.Mp3Player;
 
-import javax.naming.ldap.Control;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.awt.*;
 import java.awt.event.*;
 
 public class AjustesUsuario{
@@ -23,10 +21,14 @@ public class AjustesUsuario{
     private Mp3Player mp3Player;
     private ControladorDominio ctrl;
 
-    private String userdeleted;
+    private String userdeletedIcon;
+    private String questionIcon;
+    private String estadisticasIcon;
 
     public AjustesUsuario(JFrame frame, Principal principal) {
-        userdeleted = System.getProperty("user.dir") + "/src/imgs/delete-user.png";
+        userdeletedIcon = System.getProperty("user.dir") + "/src/imgs/delete-user.png";
+        questionIcon = System.getProperty("user.dir") + "/src/imgs/ayuda.png";
+        estadisticasIcon = System.getProperty("user.dir") + "/src/imgs/estadisticas.png";
         mp3Player = Mp3Player.getInstance();
         ctrl = ControladorDominio.getInstance();
 
@@ -76,10 +78,15 @@ public class AjustesUsuario{
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                ctrl.borrarUsuario();
-                JOptionPane.showMessageDialog(null, "Tu usuario se ha eliminado con éxito", "Usuario eliminado", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(userdeleted));
-                frame.dispose();
-                principal.volverIncio();
+
+                int dialogResult = JOptionPane.showConfirmDialog(null,
+                        "Tu usuario y datos se eliminarán, ¿estás seguro?", "Atención", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new ImageIcon(questionIcon));
+                if (dialogResult == JOptionPane.YES_OPTION) {
+                    ctrl.borrarUsuario();
+                    JOptionPane.showMessageDialog(null, "Tu usuario se ha eliminado con éxito", "Usuario eliminado", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(userdeletedIcon));
+                    frame.dispose();
+                    principal.volverIncio();
+                }
             }
         });
 
@@ -87,9 +94,12 @@ public class AjustesUsuario{
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                ctrl.reiniciaEstadisticas();
-                JOptionPane.showMessageDialog(null, "Estadísticas reiniciadas correctamente.", "Estadísticas reiniciadas", JOptionPane.INFORMATION_MESSAGE);
-                frame.dispose();
+                int dialogResult = JOptionPane.showConfirmDialog(null,
+                        "Tus estadísticas y ránkings se eliminarán, ¿estás seguro?", "Atención", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new ImageIcon(questionIcon));
+                if (dialogResult == JOptionPane.YES_OPTION) {
+                    ctrl.reiniciaEstadisticas();
+                    JOptionPane.showMessageDialog(null, "Estadísticas reiniciadas correctamente.", "Estadísticas reiniciadas", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(estadisticasIcon));
+                }
 
             }
         });

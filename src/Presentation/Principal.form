@@ -678,7 +678,7 @@
                       <focusPainted value="false"/>
                       <foreground color="-4473925"/>
                       <hideActionText value="false"/>
-                      <icon value="imgs/ayuda.png"/>
+                      <icon value="imgs/help-red.png"/>
                       <text value=""/>
                       <toolTipText value="Ayuda"/>
                     </properties>

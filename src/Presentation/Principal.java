@@ -14,6 +14,7 @@ import java.awt.event.*;
 import java.util.List;
 
 public class Principal {
+    private final String noUserIcon;
     private JPanel panel;
     private JButton CARGARPARTIDAButton;
     private JButton CREARPARTIDAButton;
@@ -55,8 +56,16 @@ public class Principal {
     private ControladorDominio ctrl;
     private Boolean crearUsuario;
     private JFrame frame;
+    private String addTextIcon;
+    private String addNewUserIcon;
+    private String userIcon;
 
     public Principal(JFrame jframe) {
+        noUserIcon = System.getProperty("user.dir") + "/src/imgs/addUser.png";
+        addTextIcon = System.getProperty("user.dir") + "/src/imgs/editText.png";
+        addNewUserIcon = System.getProperty("user.dir") + "/src/imgs/addNewUser.png";
+        userIcon = System.getProperty("user.dir") + "/src/imgs/user.png";
+
         frame = jframe;
         // Evitamos que se configure el frame.
         frame.setResizable(false);
@@ -153,7 +162,8 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 if(!ctrl.isUsuarioCargado()){
-                    JOptionPane.showMessageDialog(null, "Carga o crea un usuario para ver su perfil.", "No hay usuario", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null,
+                            "Carga o crea un usuario para ver su perfil.", "No hay usuario", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(noUserIcon));
                 }
                 else {
                     super.mouseClicked(mouseEvent);
@@ -185,7 +195,8 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 if(!ctrl.existeAlgunUsuario()){
-                    JOptionPane.showMessageDialog(null, "No existen usuarios, primero crea uno.", "No hay usuario", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null,
+                            "No existen usuarios, primero crea uno.", "No hay usuario", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(addNewUserIcon));
                 }
                 else{
                     super.mouseClicked(mouseEvent);
@@ -202,7 +213,8 @@ public class Principal {
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
                 if(entraTuNombreDeTextField.getText().equals("")){
-                    JOptionPane.showMessageDialog(null, "¡Entra tu usuario primero!", "No hay usuario", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null,
+                            "¡Entra tu usuario primero!", "No hay usuario", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(addTextIcon));
                 }
                 else {
                     Boolean exception = false;
@@ -211,7 +223,8 @@ public class Principal {
                             ctrl.crearUsuario(entraTuNombreDeTextField.getText());
                         } catch (ExcepcionUsuarioExiste e) {
                             exception = true;
-                            JOptionPane.showMessageDialog(null, "¡El usuario ya existe!", "Usuario ya existente", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null,
+                                    "¡El usuario ya existe!", "Usuario ya existente", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(userIcon));
                         }
                     }
                     else if(!crearUsuario){
@@ -220,7 +233,8 @@ public class Principal {
                         }
                         catch (ExcepcionUsuarioInexistente e){
                             exception = true;
-                            JOptionPane.showMessageDialog(null, "¡El usuario no existe!", "Usuario inexistente", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null,
+                                    "¡El usuario no existe!", "Usuario inexistente", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(userIcon));
                         }
                     }
                     if (!exception) {
