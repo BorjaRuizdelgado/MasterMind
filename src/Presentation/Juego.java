@@ -645,6 +645,8 @@ public class Juego {
     public Juego(String dificultad, boolean isCodeMaker, boolean cargarTablero, JFrame frame, JFrame oldFrame, Principal principal) {
         this.principal = principal;
         frame.setUndecorated(true);
+        frame.setMaximumSize(new Dimension(850, 900));
+        frame.setResizable(false);
         this.frame = frame;
         this.oldFrame = oldFrame;
         this.codeMaker = isCodeMaker;
