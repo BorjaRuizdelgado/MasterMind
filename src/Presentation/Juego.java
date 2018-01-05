@@ -533,10 +533,13 @@ public class Juego {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                if (!firstAttempt) controller.abandonaPartidaAcutal();
-                frame.dispose();
-                oldFrame.setVisible(true);
-                Juego.this.principal.revalidar();
+                int n = JOptionPane.showConfirmDialog(
+                        null, "Si aceptas no habrá vuelta atrás.",
+                        "ABANDONAR PARTIDA",
+                        JOptionPane.YES_NO_OPTION);
+                if (n == JOptionPane.YES_OPTION) {
+                    abandonarPartida();
+                }
 
             }
         });
@@ -604,18 +607,35 @@ public class Juego {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
+                int n = JOptionPane.showConfirmDialog(
+                        null, "Se borrará todo tu progreso.",
+                        "REINICIAR PARTIDA",
+                        JOptionPane.YES_NO_OPTION);
+                if (n == JOptionPane.YES_OPTION) {
+                    reiniciarPartida();
+                }
 
-                if (!codeMaker || (codeMaker && !firstAttempt)) controller.abandonaPartidaAcutal();
-                frame.dispose();
-                JFrame frame = new JFrame("Mastermindo");
-                frame.setContentPane(new Juego(dificultad, codeMaker, false, frame, oldFrame,principal).getPanel());
-                frame.setPreferredSize(new Dimension(850, 900));
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
             }
         });
+    }
+
+    private void abandonarPartida() {
+        if (!firstAttempt) controller.abandonaPartidaAcutal();
+        frame.dispose();
+        oldFrame.setVisible(true);
+        Juego.this.principal.revalidar();
+    }
+
+    private void reiniciarPartida() {
+        if (!codeMaker || (codeMaker && !firstAttempt)) controller.abandonaPartidaAcutal();
+        frame.dispose();
+        JFrame frame = new JFrame("Mastermindo");
+        frame.setContentPane(new Juego(dificultad, codeMaker, false, frame, oldFrame,principal).getPanel());
+        frame.setPreferredSize(new Dimension(850, 900));
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 
     /**
@@ -692,7 +712,7 @@ public class Juego {
      */
     private void confirmarYPedirPista() {
         int n = JOptionPane.showConfirmDialog(
-                new Frame(), "¡Esto podría perjudicar tu puntuación!",
+               null, "¡Esto podría perjudicar tu puntuación!",
                 "¿Necesitas una pista?",
                 JOptionPane.YES_NO_OPTION);
         if (n == JOptionPane.YES_OPTION) {
