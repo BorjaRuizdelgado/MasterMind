@@ -37,15 +37,15 @@ public class Perfil {
         DefaultTableModel stats = new DefaultTableModel(0,2);
 
 
-        String[] fila ={"PARTIDAS TOTALES", String.valueOf(partidasFinalizadasCB+partidasFinalizadasCM)};
+        String[] fila ={"Partidas totales", String.valueOf(partidasFinalizadasCB+partidasFinalizadasCM)};
         stats.addRow(fila);
-        fila = new String[]{"PARTIDAS CODE BREAKER", String.valueOf(partidasFinalizadasCB)};
+        fila = new String[]{"Partidas finalizadas CodeBreaker", String.valueOf(partidasFinalizadasCB)};
         stats.addRow(fila);
-        fila = new String[]{"PARTIDAS GANADAS CODE BREAKER", String.valueOf(partidasGanadasCB)};
+        fila = new String[]{"Partidas ganadas CodeBreaker", String.valueOf(partidasGanadasCB)};
         stats.addRow(fila);
-        fila = new String[]{"G/P RATIO EN CODE BREAKER", String.valueOf(porcentajeGanadasCB)};
+        fila = new String[]{"Porcentaje ganadas CodeBreaker", String.valueOf(porcentajeGanadasCB)+"%"};
         stats.addRow(fila);
-        fila = new String[]{"PARTIDAS CODE MAKER", String.valueOf(partidasFinalizadasCM)};
+        fila = new String[]{"Partidas finalizadas CodeMaker", String.valueOf(partidasFinalizadasCM)};
         stats.addRow(fila);
         table1.setModel(stats);
         setCellRenderer();
@@ -58,11 +58,11 @@ public class Perfil {
         DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
         cellRenderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
         cellRenderer.setVerticalAlignment(DefaultTableCellRenderer.CENTER);
-        for (int columnIndex = 1; columnIndex < table1.getColumnCount(); columnIndex++)
-        {
+        for (int columnIndex = 1; columnIndex < table1.getColumnCount(); columnIndex++) {
             table1.getColumnModel().getColumn(columnIndex).setCellRenderer(cellRenderer);
         }
         table1.getColumnModel().getColumn(0).setPreferredWidth(400);
         table1.getColumnModel().getColumn(1).setPreferredWidth(30);
+
     }
 }

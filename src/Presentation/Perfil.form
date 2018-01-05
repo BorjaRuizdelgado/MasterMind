@@ -63,7 +63,7 @@
                 </constraints>
                 <properties>
                   <font name="Arial" size="18" style="1"/>
-                  <text value="Nombre:"/>
+                  <text value="Nombre de usuario:"/>
                 </properties>
               </component>
               <component id="19037" class="javax.swing.JTextArea" binding="insert_here_usernameTextArea" default-binding="true">
@@ -124,7 +124,7 @@
                       <columnSelectionAllowed value="false"/>
                       <enabled value="false"/>
                       <focusable value="false"/>
-                      <font name="Ubuntu Light" size="20"/>
+                      <font size="14"/>
                       <gridColor color="-4473925"/>
                       <opaque value="false"/>
                       <rowHeight value="30"/>
