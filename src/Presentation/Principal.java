@@ -71,7 +71,7 @@ public class Principal {
         frame.setResizable(false);
 
         mp3Player = Mp3Player.getInstance();
-        mp3Player.play(System.getProperty("user.dir") + "/src/MP3Player/Skyrim.wav");
+        mp3Player.play(System.getProperty("user.dir") + "/src/MP3Player/Arcade.wav");
         mp3Player.changeVolume(-25);
 
         ctrl = ControladorDominio.getInstance();
