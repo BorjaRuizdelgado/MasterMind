@@ -396,7 +396,6 @@ public class Juego {
 
                         } else {
                             showMessage("Mastermindo", "¡Creo que te he ganado!");
-                            controller.actualizaRanking();
                             controller.terminaPartidaActual(false);
                             close();
                         }
@@ -410,6 +409,7 @@ public class Juego {
                             close();
                         } else if (!codeMaker) {
                             showMessage("Mastermindo", "¡Has perdido!, no tienes más intentos");
+                            controller.actualizaRanking();
                             controller.terminaPartidaActual(false);
                             close();
                         }
