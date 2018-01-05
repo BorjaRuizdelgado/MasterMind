@@ -135,7 +135,7 @@ public class Ranking {
 
                 if(e.getStateChange() == ItemEvent.SELECTED) {
                     if(!ctrl.isUsuarioCargado()){
-                        JOptionPane.showMessageDialog(new Frame(), "Carga o crea un usuario para ver su perfil.");
+                        JOptionPane.showMessageDialog(null, "Carga o crea un usuario para ver sus ránkings.", "No hay usuario", JOptionPane.INFORMATION_MESSAGE);
                     }
                     else {
                         filtrar(true);

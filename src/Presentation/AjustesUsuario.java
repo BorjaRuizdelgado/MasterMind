@@ -56,15 +56,15 @@ public class AjustesUsuario{
                 super.mouseClicked(mouseEvent);
                 String contenido = textField1.getText();
                 if (contenido.equals("")) {
-                    JOptionPane.showMessageDialog(new Frame(), "Primero rellena el campo de texto.");
+                    JOptionPane.showMessageDialog(null, "Primero rellena el campo de texto.", "Campo vacío", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else {
                     try {
                         ctrl.cambiarNombreUsr(contenido);
-                        JOptionPane.showMessageDialog(new Frame(), "Nombre de usuario cambiado por: " + contenido);
+                        JOptionPane.showMessageDialog(null, "Nombre de usuario cambiado por: "+contenido, "Nombre cambiado", JOptionPane.INFORMATION_MESSAGE);
                         frame.dispose();
                     } catch (ExcepcionNombreEscogido excepcionNombreEscogido) {
-                        JOptionPane.showMessageDialog(new Frame(), "Nombre de usuario ya escogido, por favor, escoge otro.");
+                        JOptionPane.showMessageDialog(null, "Nombre de usuario ya escogido, por favor escribe otro.",  "Nombre repetido", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
             }
@@ -74,7 +74,7 @@ public class AjustesUsuario{
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
                 ctrl.borrarUsuario();
-                JOptionPane.showMessageDialog(new Frame(), "Tu usuario se ha eliminado con éxito.");
+                JOptionPane.showMessageDialog(null, "Tu usuario se ha eliminado con éxito", "Usuario eliminado", JOptionPane.INFORMATION_MESSAGE);
                 frame.dispose();
                 principal.volverIncio();
             }
@@ -85,7 +85,7 @@ public class AjustesUsuario{
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
                 ctrl.reiniciaEstadisticas();
-                JOptionPane.showMessageDialog(new Frame(), "Estadisiticas reiniciadas.");
+                JOptionPane.showMessageDialog(null, "Estadísticas reiniciadas correctamente.", "Estadísticas reiniciadas", JOptionPane.INFORMATION_MESSAGE);
                 frame.dispose();
 
             }

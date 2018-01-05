@@ -150,7 +150,7 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 if(!ctrl.isUsuarioCargado()){
-                    JOptionPane.showMessageDialog(new Frame(), "Carga o crea un usuario para ver su perfil.");
+                    JOptionPane.showMessageDialog(null, "Carga o crea un usuario para ver su perfil.", "No hay usuario", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else {
                     super.mouseClicked(mouseEvent);
@@ -182,7 +182,7 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 if(!ctrl.existeAlgunUsuario()){
-                    JOptionPane.showMessageDialog(new Frame(), "No existen usuarios, primero crea uno.");
+                    JOptionPane.showMessageDialog(null, "No existen usuarios, primero crea uno.", "No hay usuario", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else{
                     super.mouseClicked(mouseEvent);
@@ -199,7 +199,7 @@ public class Principal {
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
                 if(entraTuNombreDeTextField.getText().equals("")){
-                    JOptionPane.showMessageDialog(new Frame(), "¡Entra tu usuario primero!");
+                    JOptionPane.showMessageDialog(null, "¡Entra tu usuario primero!", "No hay usuario", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else {
                     Boolean exception = false;
@@ -208,7 +208,7 @@ public class Principal {
                             ctrl.crearUsuario(entraTuNombreDeTextField.getText());
                         } catch (ExcepcionUsuarioExiste e) {
                             exception = true;
-                            JOptionPane.showMessageDialog(new Frame(), "¡El usuario ya existe!");
+                            JOptionPane.showMessageDialog(null, "¡El usuario ya existe!", "Usuario ya existente", JOptionPane.INFORMATION_MESSAGE);
                         }
                     }
                     else if(!crearUsuario){
@@ -217,7 +217,7 @@ public class Principal {
                         }
                         catch (ExcepcionUsuarioInexistente e){
                             exception = true;
-                            JOptionPane.showMessageDialog(new Frame(), "¡El usuario no existe!");
+                            JOptionPane.showMessageDialog(null, "¡El usuario no existe!", "Usuario inexistente", JOptionPane.INFORMATION_MESSAGE);
                         }
                     }
                     if (!exception) {

@@ -563,7 +563,7 @@ public class Juego {
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
                 if(codeMaker) {
-                    showMessage("Probablemente no estes haciendo una corrección correcta, prueba de nuevo");
+                    showMessage("Probablemente no estes haciendo una corrección correcta, prueba de nuevo.");
                 }
                 else{
                     confirmarYPedirPista(frame);
