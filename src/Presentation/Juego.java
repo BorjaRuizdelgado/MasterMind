@@ -449,6 +449,7 @@ public class Juego {
                             setButtonsDisabled(solutionButtons);
 
                             eliminarColores();
+                            color = 8;
                             blancoNegroPanel.setVisible(true);
                         } else {
                             showMessage("Error", "¡No puede existir un hueco vacío en tu solución!", alertIcon);
