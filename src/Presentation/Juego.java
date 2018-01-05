@@ -81,19 +81,35 @@ public class Juego {
 
     private Map<Integer, Color> colorMap;
 
+    /**
+     * Devuelve el panel principal.
+     * @return El panel de la clase.
+     */
     public JPanel getPanel() {
         return panel2;
     }
 
+    /**
+     * Pone el diseño por defecto elegido al botón que está pasado por parámetro.
+     * @param jButton El botón que va a cambiar.
+     */
     private void setDesign(JButton jButton) {
         jButton.setBackground(defaultColor);
         jButton.setFocusPainted(false);
     }
 
+    /**
+     * Cambia el fondo del botón al que indica el segundo parámetro.
+     * @param button El botó que va a cambiar.
+     * @param color El color al que se cambiará.
+     */
     private void setColor(JButton button, int color) {
         button.setBackground(colorMap.get(color));
     }
 
+    /**
+     * Crea la tabla principal según el número de columnas establecido en la clase.
+     */
     private void createMainTable() {
         int row = 0;
         tableButtons.add(new ArrayList<>());
@@ -116,6 +132,9 @@ public class Juego {
         }
     }
 
+    /**
+     * Crea la fila donde se introduce el código del juego.
+     */
     private void createSolutionRow() {
         solution.setLayout(new GridLayout(1, numColumns));
         for (int i = 0; i < numColumns; i++) {
@@ -127,6 +146,10 @@ public class Juego {
         }
     }
 
+    /**
+     * Crea los cuadrados que contienen cuatro espacios para poner la corrección del código introducido por el
+     * codeBreaker y los añade a su espacio correspondiente.
+     */
     private void createAnswersSquare() {
         responses.setLayout(new GridLayout(12, 1));
         for (int i = 0; i < 12; i++) {
@@ -160,6 +183,10 @@ public class Juego {
         }
     }
 
+    /**
+     * Método que ejecuta las creaciones de las tablas e inicializa unas listas que contendrán todos los botones para
+     * mayor control sobre ellos.
+     */
     private void makeTables() {
         solutionButtons = new ArrayList<>();
         tableButtons = new ArrayList<>();
@@ -172,6 +199,11 @@ public class Juego {
         setFunctionColors();
     }
 
+    /**
+     * Añade el listener al botón pasado por parámetro. El listener indica que si haces click al botón, se ponga el
+     * fondo igual al atributo 'color' de la clase. En caso de click derecho, se cambia al color por defecto.
+     * @param buttons
+     */
     private void setButtonsEnabled(ArrayList<JButton> buttons) {
         for (JButton button : buttons) {
             button.addMouseListener(new MouseAdapter() {
@@ -188,6 +220,10 @@ public class Juego {
         }
     }
 
+    /**
+     * Añade los listeners a los botones de colores. Cuando se haga click sobre ellos, se pondrá el atributo 'color' a
+     * su color correspondiente.
+     */
     private void setFunctionColors() {
         ArrayList<JButton> colorsButtons = new ArrayList<>();
         colorsButtons.add(button1);
@@ -211,6 +247,10 @@ public class Juego {
         }
     }
 
+    /**
+     * Aplica un pequeño efecto a los botones de la ventana. Cuando el mouse está por encima, se cambia el fondo a color
+     * negro, mientras que si el mouse no está por encima, se cambia el fondo a color rojo.
+     */
     private void applyButtonsEffects() {
         ArrayList<JButton> aux = new ArrayList<>();
         aux.add(pistaButton);
@@ -239,6 +279,12 @@ public class Juego {
         }
     }
 
+    /**
+     * Devuelve la la cantidad de botones que tienen el fondo como el color por defecto, es decir, en los que están
+     * simbólicamente interpretados como vacíos.
+     * @param buttons Lista de botones sobre el que se aplicará la operación.
+     * @return El número de botones vacíos.
+     */
     private int getEmptyButtonsSize(ArrayList<JButton> buttons) {
         int count = 0;
         for (JButton button : buttons) {
@@ -248,6 +294,11 @@ public class Juego {
         return count;
     }
 
+    /**
+     * Pasa de un color a su código establecido en int.
+     * @param color El color a pasar.
+     * @return Pasa un int que equivale al color (establecida por el proyecto).
+     */
     private int fromColorToInt(Color color) {
         if (color.equals(rojo))
             return 1;
@@ -268,6 +319,12 @@ public class Juego {
         else return 0;
     }
 
+    /**
+     * Crea una lista de ints que equivale a la lista de los colores de fondo de los botones.
+     * @param Buttons Lista de botones a partir de la que se crearán la lista de int.
+     * @return Devuelve una lista de tamaño igual al de los botones y en el mismo orden con cada uno de sus colores de
+     * fondo con la definición establecida por el proyecto.
+     */
     private ArrayList<Integer> fromJButtonListToIntList(ArrayList<JButton> Buttons) {
         ArrayList<Integer> Return = new ArrayList<>();
         for (JButton button : Buttons) {
@@ -276,6 +333,12 @@ public class Juego {
         return Return;
     }
 
+    /**
+     * Cambia el fondo de los botones buttons por el del color en int pasado por primer parámetro (se respeta el orden
+     * de la posición además de asimilar que són del mismo tamaño).
+     * @param list Lista que contiene los colores en int que tendrán que tener los botones.
+     * @param buttons Los botones que van a cambiar el fondo.
+     */
     private void fillRow(List<Integer> list, ArrayList<JButton> buttons) {
         int j = 0;
         for (JButton button : buttons) {
@@ -285,6 +348,10 @@ public class Juego {
         }
     }
 
+    /**
+     * Inicializa el Map que contiene los colores. La llave es el número (color en int), mientras que el valor es el
+     * color de la clase Color.
+     */
     private void initMap() {
         colorMap = new HashMap<>();
         colorMap.put(-1, hide);
@@ -299,6 +366,10 @@ public class Juego {
         colorMap.put(8, negro);
     }
 
+    /**
+     * Quita los listeners de los botones pasados por parámetro.
+     * @param buttons Botones a los que se quitarán todos los listeners.
+     */
     private void setButtonsDisabled(ArrayList<JButton> buttons) {
         for (JButton button : buttons) {
             for (MouseListener listener : button.getMouseListeners()) {
@@ -307,10 +378,20 @@ public class Juego {
         }
     }
 
+    /**
+     * Método que acorta la llamada a JOptionPane.showMessageDialog(..) que crea un mensaje en pantalla.
+     * @param title Título que contendrá la ventana creada.
+     * @param message Mensaje que contendrá la ventana creada.
+     */
     private void showMessage(String title, String message) {
         JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
     }
 
+    /**
+     * Método que acorta la llamada a JOptionPane.showMessageDialog(..) que crea un mensaje en pantalla con el título
+     * 'Mastermindo'.
+     * @param message Mensaje que contendrá la ventana creada.
+     */
     private void showMessage(String message){
         JOptionPane.showMessageDialog(null, message, "Mastermindo", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -419,12 +500,19 @@ public class Juego {
         });
     }
 
+    /**
+     * Cierra la ventana Juego y restaura la principal.
+     */
     private void close(){
         frame.dispose();
         oldFrame.setVisible(true);
         this.principal.revalidar();
     }
 
+    /**
+     * Método invocado que crea los listeners que tienen las funcionalidades de los botones laterales excepto en el
+     * botón 'Aceptar'.
+     */
     private void setLateralButtonsFunctions(){
         abandonarPartidaButton.addMouseListener(new MouseAdapter() {
             @Override
