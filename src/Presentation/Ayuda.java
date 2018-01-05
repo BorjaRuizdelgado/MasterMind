@@ -122,8 +122,8 @@ public class Ayuda {
 
     private String[] getTextCM() {
         return new String[]{
-                "Cómo jugar a CodeMaker" + nl,                 //bold
-                "primerito texto."      //italic
+                "Cómo jugar a CodeMaker" + nl,
+                "primerito texto."
         };
     }
 
@@ -139,8 +139,8 @@ public class Ayuda {
 
     private String[] getTextAjustes() {
         return new String[]{
-                "Modificar ajustes" + nl,                 //bold
-                "primerito texto."      //italic
+                "Modificar ajustes" + nl,
+                "primerito texto."
         };
     }
 
@@ -157,10 +157,13 @@ public class Ayuda {
     private String[] getTextAbout() {
         return new String[]{
                 "Sobre Nosotros" + nl,
-                "isa" + nl,
-                "omar" + nl,
-                "borja" + nl,
-                nl
+                "Mastermindo es un juego interactivo " +
+                        "creado por tres estudiantes de PROP de la FIB " +
+                        "con el fin de sacar un excelente en la asignatura." + nl + nl,
+                "Equipo:" + nl,
+                "· Isabel Codina García" + nl,
+                "· Borja Fernández Ruizdelgado" + nl,
+                "· Omar Aníbal García Ríos"
         };
     }
 
@@ -168,9 +171,10 @@ public class Ayuda {
         return new String[]{
                 "title",
                 "regular",
+                "bold",
                 "regular",
                 "regular",
-                "pic"
+                "regular"
         };
     }
 
