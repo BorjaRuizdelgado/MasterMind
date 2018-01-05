@@ -80,6 +80,12 @@ public class Juego {
 
 
     private Map<Integer, Color> colorMap;
+    private String alertIcon;
+    private String happyIcon;
+    private String weirdIcon;
+    private String sadIcon;
+    private String questionIcon;
+    private String infoIcon;
 
     /**
      * Devuelve el panel principal.
@@ -382,18 +388,21 @@ public class Juego {
      * Método que acorta la llamada a JOptionPane.showMessageDialog(..) que crea un mensaje en pantalla.
      * @param title Título que contendrá la ventana creada.
      * @param message Mensaje que contendrá la ventana creada.
+     * @param icon Icono que contendrá la ventana creada.
      */
-    private void showMessage(String title, String message) {
-        JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
+    private void showMessage(String title, String message, String icon) {
+        JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(icon));
     }
 
     /**
-     * Método que acorta la llamada a JOptionPane.showMessageDialog(..) que crea un mensaje en pantalla con el título
-     * 'Mastermindo'.
+     * Método que acorta la llamada a JOptionPane.showMessageDialog(..) que crea un mensaje en pantalla con las opciones Yes y No
+     * @param title Título que contendrá la ventana creada.
      * @param message Mensaje que contendrá la ventana creada.
+     * @param icon Icono que contendrá la ventana creada.
+     * @return Selección escogida
      */
-    private void showMessage(String message){
-        JOptionPane.showMessageDialog(null, message, "Mastermindo", JOptionPane.INFORMATION_MESSAGE);
+    private int showYesNoMessage(String title, String message, String icon) {
+        return JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new ImageIcon(icon));
     }
 
     /**
@@ -442,7 +451,7 @@ public class Juego {
                             eliminarColores();
                             blancoNegroPanel.setVisible(true);
                         } else {
-                            showMessage("Error", "¡No puede existir un hueco vacío en tu solución!");
+                            showMessage("Error", "¡No puede existir un hueco vacío en tu solución!", alertIcon);
                         }
                     } else if (codeMaker && !firstAttempt) {
                         try {
@@ -451,7 +460,7 @@ public class Juego {
                             if (!controller.isPartidaGanada()) fillRow(aux, tableButtons.get(actualRow));
                         } catch (ExcepcionRespuestaIncorrecta excepcionRespuestaIncorrecta) {
                             actualRow--;
-                            showMessage("Error", "Corrección incorrecta!");
+                            showMessage("Error", "Corrección incorrecta!", alertIcon);
                         }
                     }
                     if (codeMaker) {
@@ -473,7 +482,7 @@ public class Juego {
                                 setButtonsEnabled(tableButtons.get(actualRow));
                             if (actualRow != 0) setButtonsDisabled(tableButtons.get(actualRow - 1));
                         } else {
-                            showMessage("Error", "Tienes que rellenar todos los huecos de la fila " + String.valueOf(actualRow + 1));
+                            showMessage("Error", "Tienes que rellenar todos los huecos de la fila " + String.valueOf(actualRow + 1), alertIcon);
                         }
                     }
 
@@ -481,13 +490,13 @@ public class Juego {
                         finished = true;
                         if (!codeMaker) {
                             fillRow(controller.getCodigoSecreto(), solutionButtons);
-                            showMessage("Mastermindo", "¡Enhorabuena! Has descubierto el código secreto!");
+                            showMessage("Mastermindo", "¡Enhorabuena! ¡Has descubierto el código secreto!", happyIcon);
                             controller.actualizaRanking();
                             controller.terminaPartidaActual(true);
                             close();
 
                         } else {
-                            showMessage("Mastermindo", "¡Creo que te he ganado!");
+                            showMessage("Mastermindo", "¡Ha descubierto tu código!", weirdIcon);
                             controller.terminaPartidaActual(false);
                             close();
                         }
@@ -496,11 +505,11 @@ public class Juego {
                     if (!finished && !controller.isPartidaGanada() && actualRow == 12) {
                         finished = true;
                         if (codeMaker) {
-                            showMessage("Mastermindo", "¡Has ganado a Mastermindo!");
+                            showMessage("Mastermindo", "¡No ha descubierto tu código!", happyIcon);
                             controller.terminaPartidaActual(true);
                             close();
                         } else if (!codeMaker) {
-                            showMessage("Mastermindo", "¡Has perdido!, no tienes más intentos");
+                            showMessage("Mastermindo", "¡Has perdido!, no tienes más intentos,", sadIcon);
                             controller.actualizaRanking();
                             controller.terminaPartidaActual(false);
                             close();
@@ -533,10 +542,7 @@ public class Juego {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                int n = JOptionPane.showConfirmDialog(
-                        null, "Si aceptas no habrá vuelta atrás.",
-                        "ABANDONAR PARTIDA",
-                        JOptionPane.YES_NO_OPTION);
+                int n = showYesNoMessage("Abandonar partida","La partida se eliminará y no podrás recuperarla. ¿Estás seguro?", questionIcon);
                 if (n == JOptionPane.YES_OPTION) {
                     abandonarPartida();
                 }
@@ -554,7 +560,7 @@ public class Juego {
                 super.mouseClicked(mouseEvent);
 
                 if (codeMaker && firstAttempt && getEmptyButtonsSize(solutionButtons) != 0){
-                    showMessage("Error", "Antes de guardar la partida tiene que rellenar el código secreto y darle a Aceptar.");
+                    showMessage("Error", "Antes de guardar la partida tiene que rellenar el código secreto y darle a Aceptar.", alertIcon);
                 }
                 else {
                     controller.guardaPartidaActual();
@@ -591,7 +597,7 @@ public class Juego {
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
                 if(codeMaker) {
-                    showMessage("Probablemente no estes haciendo una corrección correcta, prueba de nuevo.");
+                    showMessage("Info","Probablemente no estes haciendo una corrección correcta, prueba de nuevo.",infoIcon);
                 }
                 else{
                     confirmarYPedirPista();
@@ -607,10 +613,7 @@ public class Juego {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                int n = JOptionPane.showConfirmDialog(
-                        null, "Se borrará todo tu progreso.",
-                        "REINICIAR PARTIDA",
-                        JOptionPane.YES_NO_OPTION);
+                int n = showYesNoMessage("Reiniciar partida", "Se borrará todo tu progreso, ¿estás seguro?", questionIcon);
                 if (n == JOptionPane.YES_OPTION) {
                     reiniciarPartida();
                 }
@@ -663,6 +666,12 @@ public class Juego {
      * @param principal Instáncia de la clase principal.
      */
     public Juego(String dificultad, boolean isCodeMaker, boolean cargarTablero, JFrame frame, JFrame oldFrame, Principal principal) {
+        alertIcon = System.getProperty("user.dir") + "/src/imgs/alerta.png";
+        happyIcon = System.getProperty("user.dir") + "/src/imgs/happy.png";
+        weirdIcon = System.getProperty("user.dir") + "/src/imgs/weird.png";
+        sadIcon = System.getProperty("user.dir") + "/src/imgs/sad.png";
+        questionIcon = System.getProperty("user.dir") + "/src/imgs/help-red.png";
+        infoIcon = System.getProperty("user.dir") + "/src/imgs/info.png";
         this.principal = principal;
         frame.setUndecorated(true);
         frame.setMaximumSize(new Dimension(850, 900));
@@ -711,10 +720,7 @@ public class Juego {
      * el caso de que no, se cierra el diálogo.
      */
     private void confirmarYPedirPista() {
-        int n = JOptionPane.showConfirmDialog(
-               null, "¡Esto podría perjudicar tu puntuación!",
-                "¿Necesitas una pista?",
-                JOptionPane.YES_NO_OPTION);
+        int n = showYesNoMessage("Pista", "Las pistas anularán tu puntuación, ¿estás seguro?", questionIcon);
         if (n == JOptionPane.YES_OPTION) {
             pistas();
         }
@@ -735,7 +741,7 @@ public class Juego {
                 try {
                     getPista3();
                 } catch (ExcepcionPistaUsada excepcionPistaUsada) {
-                    showMessage("No quedan pistas por utilizar...");
+                    showMessage("Info", "No quedan pistas por utilizar...", infoIcon);
                 }
             }
         }
@@ -748,7 +754,7 @@ public class Juego {
      */
     private void getPista1() throws ExcepcionPistaUsada, ExcepcionNoHayColoresSinUsar {
         int i = controller.getPista1();
-        showMessage("Uno de los colores que no se encuentran en el codigo secreto es: " + numberToColorString(i));
+        showMessage("Pista 1", "Uno de los colores que no se encuentran en el codigo secreto es: " + numberToColorString(i), infoIcon);
     }
 
     /**
@@ -762,7 +768,7 @@ public class Juego {
         for (Integer aPista2 : pista2) {
             colores += numberToColorString(aPista2) + " ";
         }
-        showMessage("Los colores que no están en el codigo secreto són:" + colores);
+        showMessage("Pista 2", "Los colores que no están en el codigo secreto són:" + colores, infoIcon);
     }
 
     /**
@@ -773,8 +779,8 @@ public class Juego {
         List<Integer> pista3 = controller.getPista3();
         for(int i = 0; i < pista3.size(); ++i){
             if(pista3.get(i) != 0){
-                showMessage("El color del codigo secreto: "
-                        + numberToColorString(pista3.get(i))+ " y se encuentra en la posición: " + (i+1));
+                showMessage("Pista 3",
+                        "El color " + numberToColorString(pista3.get(i))+ " se encuentra en la posición: " + (i+1) + " del código secreto.", infoIcon);
             }
         }
     }
