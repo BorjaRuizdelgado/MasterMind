@@ -23,7 +23,10 @@ public class AjustesUsuario{
     private Mp3Player mp3Player;
     private ControladorDominio ctrl;
 
+    private String userdeleted;
+
     public AjustesUsuario(JFrame frame, Principal principal) {
+        userdeleted = System.getProperty("user.dir") + "/src/imgs/delete-user.png";
         mp3Player = Mp3Player.getInstance();
         ctrl = ControladorDominio.getInstance();
 
@@ -74,7 +77,7 @@ public class AjustesUsuario{
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
                 ctrl.borrarUsuario();
-                JOptionPane.showMessageDialog(null, "Tu usuario se ha eliminado con éxito", "Usuario eliminado", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Tu usuario se ha eliminado con éxito", "Usuario eliminado", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(userdeleted));
                 frame.dispose();
                 principal.volverIncio();
             }
