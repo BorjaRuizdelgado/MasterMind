@@ -396,6 +396,12 @@ public class Juego {
         JOptionPane.showMessageDialog(null, message, "Mastermindo", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    /**
+     * Método que prepara el terreno en caso de que se inicie el juego y no se cargue partida.
+     * En caso de que sea codeMaker pide el código para que la IA lo resuelva.
+     * En cambio, en el caso de ser CodeBreaker, se oculta el código secreto con un color gris para mostrarlo si se gana
+     * el juego.
+     */
     private void initGame() {
         if (!codeMaker) {
             controller.crearPartidaUsuarioCargadoRolBreaker(dificultad);
@@ -413,6 +419,11 @@ public class Juego {
         }
     }
 
+    /**
+     * Se le añade al botón aceptar la funcion que varía según sea codeMaker o codeBreaker. Cada vez que se le da a
+     * aceptar, mira si el código está puesto o si la fila inserta en codeBreaker está llena, además de varias
+     * condiciones que establecen la lógica del juego.
+     */
     private void setAcceptButtonFunction() {
         ACEPTARButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -514,6 +525,10 @@ public class Juego {
      * botón 'Aceptar'.
      */
     private void setLateralButtonsFunctions(){
+        /*
+           Añade el listener que hace que cuando se le de click, abandone la partida si no ha tenido el primer intento.
+           Ya que si no tiene el código secreto, la partida no existe y saltaría una excepción.
+         */
         abandonarPartidaButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -526,6 +541,10 @@ public class Juego {
             }
         });
 
+        /*
+          Añade el listener que hace que cuando se le de click, guarde la partida si no ha tenido el primer intento.
+           Ya que no se puede guardar una partida sin código secreto.
+         */
         guardarYSalirButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -543,11 +562,14 @@ public class Juego {
             }
         });
 
+        /*
+            Cuándo se le dé click al botón de ayuda, saltará la ventana de ayuda de la aplicación.
+         */
         ayudaButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                JFrame frame = new JFrame("Si tienes problemas con las correcciones vigila que tus correcciones sean las correctas.");
+                JFrame frame = new JFrame("Ayuda");
                 frame.setContentPane(new Ayuda().getPanel());
                 frame.setPreferredSize(new Dimension(550, 600));
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -558,6 +580,9 @@ public class Juego {
             }
         });
 
+        /*
+            Se pedirán las pistas en caso de que sea codeBreaker. Si no saltará un mensaje por defecto.
+         */
         pistaButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -566,17 +591,21 @@ public class Juego {
                     showMessage("Probablemente no estes haciendo una corrección correcta, prueba de nuevo.");
                 }
                 else{
-                    confirmarYPedirPista(frame);
+                    confirmarYPedirPista();
                 }
             }
         });
 
+        /*
+            Al darle click al botón de reiniciar, se abandonará la partida si no es codeMaker o codeMaker que haya
+            puesto el código secreto. Después se creará una ventana nueva del juego.
+         */
         reiniciarPartidaButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
 
-                controller.abandonaPartidaAcutal();
+                if (!codeMaker || (codeMaker && !firstAttempt)) controller.abandonaPartidaAcutal();
                 frame.dispose();
                 JFrame frame = new JFrame("Mastermindo");
                 frame.setContentPane(new Juego(dificultad, codeMaker, false, frame, oldFrame,principal).getPanel());
@@ -589,6 +618,10 @@ public class Juego {
         });
     }
 
+    /**
+     * Elimina los rolores Rojo, verde, azul, amarillo (y naranja/violeta si es modo difícil) del panel vertical que
+     * contiene los colores.
+     */
     private void eliminarColores(){
         coloresPanel.remove(rojoVerdePanel);
         coloresPanel.remove(azulAmariPanel);
@@ -597,6 +630,18 @@ public class Juego {
         }
     }
 
+    /**
+     * Creadora de la clase que inicializa las variables de la instáncia, además de colocar el juego correctamente si
+     * el controlador tiene una partida guardada.
+     * Depende si el usuario es codeMaker o codeBreaker coloca/habilita/deshabilita/oculta/muestra tablas y filas de
+     * botones.
+     * @param dificultad Indica la dificultad del juego.
+     * @param isCodeMaker Indica si el jugador de codeMaker o codeBreaker.
+     * @param cargarTablero Indica si se ha de cargar el tablero, es decir, continuar partida o empezar de nuevo.
+     * @param frame Frame actual de la ventana donde se muestra el juego.
+     * @param oldFrame Frame de la clase Principal.
+     * @param principal Instáncia de la clase principal.
+     */
     public Juego(String dificultad, boolean isCodeMaker, boolean cargarTablero, JFrame frame, JFrame oldFrame, Principal principal) {
         this.principal = principal;
         frame.setUndecorated(true);
@@ -639,9 +684,13 @@ public class Juego {
         }
     }
 
-    private void confirmarYPedirPista(JFrame frame) {
+    /**
+     * Enseña un diálogo donde advierte sobre el uso de las pistas. En el caso de que se acepte, se pide la pista. En
+     * el caso de que no, se cierra el diálogo.
+     */
+    private void confirmarYPedirPista() {
         int n = JOptionPane.showConfirmDialog(
-                frame, "¡Esto podría perjudicar tu puntuación!",
+                new Frame(), "¡Esto podría perjudicar tu puntuación!",
                 "¿Necesitas una pista?",
                 JOptionPane.YES_NO_OPTION);
         if (n == JOptionPane.YES_OPTION) {
@@ -649,6 +698,10 @@ public class Juego {
         }
     }
 
+    /**
+     * Intenta pedir pistas de manera incremental. Si no se puede la pista 1, intentanto con la 2 y así hasta la tres.
+     * Finalmente si no se puede pedir ninguna , muestra un mensaje donde indica que no quedan.
+     */
     private void pistas() {
         try {
             getPista1();
@@ -666,11 +719,34 @@ public class Juego {
         }
     }
 
+    /**
+     * Enseña por una nueva ventana la pista 1.
+     * @throws ExcepcionPistaUsada En caso de que se vuelva a pedir la pista 1.
+     * @throws ExcepcionNoHayColoresSinUsar Cuándo no hay colores que no se usen.
+     */
     private void getPista1() throws ExcepcionPistaUsada, ExcepcionNoHayColoresSinUsar {
         int i = controller.getPista1();
         showMessage("Uno de los colores que no se encuentran en el codigo secreto es: " + numberToColorString(i));
     }
 
+    /**
+     * Enseña por una nueva ventana la pista 2.
+     * @throws ExcepcionPistaUsada En caso de que se vuelva a pedir la pista 2.
+     * @throws ExcepcionNoHayColoresSinUsar Cuándo no hay colores que no se usen.
+     */
+    private void getPista2() throws ExcepcionPistaUsada, ExcepcionNoHayColoresSinUsar {
+        ArrayList<Integer> pista2 = controller.getPista2();
+        String colores = "";
+        for (Integer aPista2 : pista2) {
+            colores += numberToColorString(aPista2) + " ";
+        }
+        showMessage("Los colores que no están en el codigo secreto són:" + colores);
+    }
+
+    /**
+     * Enseña por una nueva ventana la pista 3.
+     * @throws ExcepcionPistaUsada En caso de que se vuelva a pedir la pista 3.
+     */
     private void getPista3() throws ExcepcionPistaUsada {
         List<Integer> pista3 = controller.getPista3();
         for(int i = 0; i < pista3.size(); ++i){
@@ -681,15 +757,11 @@ public class Juego {
         }
     }
 
-    private void getPista2() throws ExcepcionPistaUsada, ExcepcionNoHayColoresSinUsar {
-        ArrayList<Integer> pista2 = controller.getPista2();
-        String colores = "";
-        for (Integer aPista2 : pista2) {
-            colores += numberToColorString(aPista2) + " ";
-        }
-        showMessage("Los colores que no están en el codigo secreto són:" + colores);
-    }
-
+    /**
+     * Dado un color en int, te devuelve el nombre del color en String.
+     * @param i es el código del color en int.
+     * @return Devuelve el respectivo nombre en String.
+     */
     private String numberToColorString(int i) {
         if(i == 1) return "Rojo";
         else if(i == 2) return "Verde";
@@ -700,7 +772,10 @@ public class Juego {
         else return null;
     }
 
-
+    /**
+     * Prepara el tablero y el juego. Actualiza la lógica de la clase para que se pueda continuar jugando a partir del
+     * punto donde se sitúe. Lo hace tanto para codeMaker como para codeBreaker.
+     */
     private void cargarTablero() {
         loadedBoard = true;
         firstAttempt = false;
