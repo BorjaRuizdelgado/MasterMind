@@ -3,7 +3,10 @@ package Presentation;
 import Domain.Controllers.ControladorDominio;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import java.awt.*;
 import java.util.List;
 
 public class Perfil {
@@ -11,6 +14,7 @@ public class Perfil {
     private JPanel panel;
     private JTextArea insert_here_usernameTextArea;
     private JTable table1;
+    private JPanel panelTabla;
     private ControladorDominio ctrl;
 
     public JPanel getPanel() {
@@ -32,6 +36,7 @@ public class Perfil {
         if(partidasFinalizadasCB != 0) porcentajeGanadasCB = (partidasGanadasCB/partidasFinalizadasCB)*100;
         DefaultTableModel stats = new DefaultTableModel(0,2);
 
+
         String[] fila ={"PARTIDAS TOTALES", String.valueOf(partidasFinalizadasCB+partidasFinalizadasCM)};
         stats.addRow(fila);
         fila = new String[]{"PARTIDAS CODE BREAKER", String.valueOf(partidasFinalizadasCB)};
@@ -42,11 +47,22 @@ public class Perfil {
         stats.addRow(fila);
         fila = new String[]{"PARTIDAS CODE MAKER", String.valueOf(partidasFinalizadasCM)};
         stats.addRow(fila);
-
         table1.setModel(stats);
+        setCellRenderer();
         table1.setCellSelectionEnabled(false);
         table1.setVisible(true);
 
 
+    }
+    private void setCellRenderer(){
+        DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+        cellRenderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+        cellRenderer.setVerticalAlignment(DefaultTableCellRenderer.CENTER);
+        for (int columnIndex = 1; columnIndex < table1.getColumnCount(); columnIndex++)
+        {
+            table1.getColumnModel().getColumn(columnIndex).setCellRenderer(cellRenderer);
+        }
+        table1.getColumnModel().getColumn(0).setPreferredWidth(400);
+        table1.getColumnModel().getColumn(1).setPreferredWidth(30);
     }
 }
