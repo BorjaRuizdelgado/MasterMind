@@ -260,10 +260,14 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                main.removeAll();
-                main.add(contenidoCargarPart);
-                main.revalidate();
-                displayListaPartidas();
+                if(ctrl.getPartidasGuardadasUsr().size() == 0){
+                    JOptionPane.showMessageDialog(null,
+                            "No hay partidas guardadas.", "USUARIO NO TIENE PARTIDAS GUARDADAS",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+                else {
+                    displayPartidas();
+                }
             }
         });
         CODEMAKERButton.addMouseListener(new MouseAdapter() {
@@ -337,6 +341,16 @@ public class Principal {
             }
         });
 
+    }
+
+    /**
+     * Carga la vista con las partidas del usuario cargado.
+     */
+    private void displayPartidas() {
+        main.removeAll();
+        main.add(contenidoCargarPart);
+        main.revalidate();
+        displayListaPartidas();
     }
 
 
