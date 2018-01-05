@@ -178,5 +178,11 @@ public class Usuario implements Serializable {
     }
 
 
-
+    public List<Integer> getEstadisticas() {
+        List<Integer> estadisticas = new ArrayList<>();
+        estadisticas.add(numPartidasFinalizadasCB);
+        estadisticas.add(numPartidasFinalizadasCM);
+        estadisticas.add(numPartidasGanadasCB);
+        return estadisticas;
+    }
 }

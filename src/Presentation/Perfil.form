@@ -97,7 +97,7 @@
             <children>
               <component id="b22e9" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <enabled value="true"/>
@@ -115,15 +115,20 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="ebe0d" class="javax.swing.JLabel">
+                  <component id="182f3" class="javax.swing.JTable" binding="table1" default-binding="true">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="50" height="25"/>
-                      </grid>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <font name="Arial" size="18" style="1"/>
-                      <text value="aaa:"/>
+                      <enabled value="false"/>
+                      <focusable value="false"/>
+                      <font name="Ubuntu Light" size="20"/>
+                      <gridColor color="-4473925"/>
+                      <opaque value="false"/>
+                      <rowHeight value="30"/>
+                      <rowMargin value="1"/>
+                      <rowSelectionAllowed value="false"/>
+                      <showVerticalLines value="false"/>
                     </properties>
                   </component>
                 </children>

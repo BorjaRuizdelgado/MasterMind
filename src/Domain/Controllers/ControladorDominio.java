@@ -394,4 +394,9 @@ public class ControladorDominio {
     public void reiniciaEstadisticas() {
         usuarioCargado.reiniciaEstadisticas();
     }
+
+    public List<Integer> getEstadiscasUsuario(){
+        return usuarioCargado.getEstadisticas();
+
+    }
 }
