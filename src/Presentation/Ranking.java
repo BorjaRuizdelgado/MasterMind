@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -101,9 +102,24 @@ public class Ranking {
      * @param dificultad
      */
     private void insertDataOnTable(List<String> ranking, String dificultad){
+        List<List<String>> orderedList = new ArrayList<>();
+        for (int i = 0; i < ranking.size(); i++) {
+            orderedList.add(new ArrayList<>());
+            orderedList.get(i).add(ranking.get(i).split(" ")[0]);
+            orderedList.get(i).add(dificultad);
+            orderedList.get(i).add(ranking.get(i).split(" ")[2]);
+        }
+        orderedList.sort(new Comparator<List<String>>() {
+            @Override
+            public int compare(List<String> a, List<String> b) {
+                int puntuacionA =Integer.valueOf(a.get(2));
+                int puntuacionB = Integer.valueOf(b.get(2));
+                return puntuacionB - puntuacionA;
+            }
+        });
 
-        for (String aRanking : ranking) {
-            String aux[] = {aRanking.split(" ")[0], dificultad, aRanking.split(" ")[2]};
+        for (List<String> anOrderedList : orderedList) {
+            String aux[] = {anOrderedList.get(0), anOrderedList.get(1), anOrderedList.get(2)};
             tableModel.addRow(aux);
         }
     }
