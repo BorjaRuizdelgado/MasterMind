@@ -89,14 +89,34 @@ public class Ayuda {
     private String[] getTextGeneral() {
         return new String[]{
                 "Información General" + nl,
-                "bla bla blucho"
+                "MasterMindo ",
+                "es un juego de ingenio y reflexión para un jugador en el que se juega contra la máquina para descubrir su ",
+                "código secreto ",
+                "o que ella descubra el tuyo." + nl +
+                        "Se juega en un tablero de 12 filas, partido en dos partes: intentos y soluciones." + nl + "Cada ",
+                "intento ",
+                "es una nueva prueba de adivinar el código secreto que recibe una ",
+                "solución ",
+                "que compara el código secreto con el intento y aporta información sobre si se ha acertado un color en su posición (color negro) o si hay ese color pero no la posición (color negro)."+nl+nl,
+                "Se pueden crear usuarios que se guardarán en el sistema y con los que podrás volver a jugar cada vez que desees."+nl+"Puedes crear y guardar partidas para continuar en otro momento."+nl,
+                "Si ganas partidas te posicionarás en el ránking y podrás visualizarlo cuando quieras, al igual que tus estadísticas en tu perfil. " +
+                        "Cada partida se puede abandonar, reiniciar o guardar. Y si te quedas atascado puedes pedir pistas."
         };
     }
 
     private String[] getStylesGeneral() {
         return new String[]{
                 "title",
-                "italic"
+                "bold",
+                "regular",
+                "italic",
+                "regular",
+                "italic",
+                "regular",
+                "italic",
+                "regular",
+                "regular",
+                "regular"
         };
     }
 

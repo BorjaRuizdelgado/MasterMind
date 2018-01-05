@@ -59,12 +59,14 @@ public class Principal {
     private String addTextIcon;
     private String addNewUserIcon;
     private String userIcon;
+    private String alertIcon;
 
     public Principal(JFrame jframe) {
         noUserIcon = System.getProperty("user.dir") + "/src/imgs/addUser.png";
         addTextIcon = System.getProperty("user.dir") + "/src/imgs/editText.png";
         addNewUserIcon = System.getProperty("user.dir") + "/src/imgs/addNewUser.png";
         userIcon = System.getProperty("user.dir") + "/src/imgs/user.png";
+        alertIcon = System.getProperty("user.dir") + "/src/imgs/alerta.png";
 
         frame = jframe;
         // Evitamos que se configure el frame.
@@ -162,8 +164,7 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 if(!ctrl.isUsuarioCargado()){
-                    JOptionPane.showMessageDialog(null,
-                            "Carga o crea un usuario para ver su perfil.", "No hay usuario", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(noUserIcon));
+                    showMessage("No hay usuario", "Carga o crea un usuario para ver su perfil", noUserIcon);
                 }
                 else {
                     super.mouseClicked(mouseEvent);
@@ -195,8 +196,7 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 if(!ctrl.existeAlgunUsuario()){
-                    JOptionPane.showMessageDialog(null,
-                            "No existen usuarios, primero crea uno.", "No hay usuario", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(addNewUserIcon));
+                    showMessage("No hay usuario","No existen usuarios, primero crea uno.",addNewUserIcon);
                 }
                 else{
                     super.mouseClicked(mouseEvent);
@@ -212,9 +212,8 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                if(entraTuNombreDeTextField.getText().equals("")){
-                    JOptionPane.showMessageDialog(null,
-                            "¡Entra tu usuario primero!", "No hay usuario", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(addTextIcon));
+                if(entraTuNombreDeTextField.getText().equals("")) {
+                    showMessage("No hay usuario","¡Entra tu usuario primero!", addTextIcon);
                 }
                 else {
                     Boolean exception = false;
@@ -223,24 +222,21 @@ public class Principal {
                             ctrl.crearUsuario(entraTuNombreDeTextField.getText());
                         } catch (ExcepcionUsuarioExiste e) {
                             exception = true;
-                            JOptionPane.showMessageDialog(null,
-                                    "¡El usuario ya existe!", "Usuario ya existente", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(userIcon));
+                            showMessage("Usuario ya existente", "¡El usuario ya existe!", userIcon);
                         }
                     }
-                    else if(!crearUsuario){
+                    else {
                         try{
                             ctrl.cargarUsuario(entraTuNombreDeTextField.getText());
                         }
                         catch (ExcepcionUsuarioInexistente e){
                             exception = true;
-                            JOptionPane.showMessageDialog(null,
-                                    "¡El usuario no existe!", "Usuario inexistente", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(userIcon));
+                            showMessage("Usuario inexistente", "¡El usuario no existe!", userIcon);
                         }
                     }
                     if (!exception) {
                         main.removeAll();
                         main.add(contenidoInicio);
-
                     }
                 }
                 main.revalidate();
@@ -261,9 +257,7 @@ public class Principal {
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
                 if(ctrl.getPartidasGuardadasUsr().size() == 0){
-                    JOptionPane.showMessageDialog(null,
-                            "No hay partidas guardadas.", "USUARIO NO TIENE PARTIDAS GUARDADAS",
-                            JOptionPane.INFORMATION_MESSAGE);
+                    showMessage("No hay partidas guardadas", "No hay partidas guardadas.", alertIcon);
                 }
                 else {
                     displayPartidas();
@@ -503,9 +497,6 @@ public class Principal {
         return panel;
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
 
     public void revalidar() {
         displayListaPartidas();
@@ -518,4 +509,15 @@ public class Principal {
         main.revalidate();
 
     }
+
+    /**
+     * Método que acorta la llamada a JOptionPane.showMessageDialog(..) que crea un mensaje en pantalla.
+     * @param title Título que contendrá la ventana creada.
+     * @param message Mensaje que contendrá la ventana creada.
+     * @param icon Icono que contendrá la ventana creada.
+     */
+    private void showMessage(String title, String message, String icon) {
+        JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(icon));
+    }
+
 }
