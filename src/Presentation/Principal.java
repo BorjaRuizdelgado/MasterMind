@@ -14,7 +14,7 @@ import java.awt.event.*;
 import java.util.List;
 
 public class Principal {
-    private final String noUserIcon;
+
     private JPanel panel;
     private JButton CARGARPARTIDAButton;
     private JButton CREARPARTIDAButton;
@@ -56,10 +56,13 @@ public class Principal {
     private ControladorDominio ctrl;
     private Boolean crearUsuario;
     private JFrame frame;
+
     private String addTextIcon;
     private String addNewUserIcon;
     private String userIcon;
     private String alertIcon;
+    private final String noUserIcon;
+    private final String gameIcon;
 
     public Principal(JFrame jframe) {
         noUserIcon = System.getProperty("user.dir") + "/src/imgs/cargaOrCrea.png";
@@ -67,8 +70,13 @@ public class Principal {
         addNewUserIcon = System.getProperty("user.dir") + "/src/imgs/addNewUser.png";
         userIcon = System.getProperty("user.dir") + "/src/imgs/user.png";
         alertIcon = System.getProperty("user.dir") + "/src/imgs/alerta.png";
-
+        gameIcon = System.getProperty("user.dir") + "/src/imgs/GAME_ICON.png";
         frame = jframe;
+        frame.setIconImage(new ImageIcon(gameIcon).getImage());
+
+
+
+
         // Evitamos que se configure el frame.
         frame.setResizable(false);
 
