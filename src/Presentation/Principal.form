@@ -482,6 +482,7 @@
                                       <opaque value="false"/>
                                       <rowHeight value="30"/>
                                       <showVerticalLines value="false"/>
+                                      <toolTipText value="Haz doble-clic para cargar"/>
                                     </properties>
                                     <clientProperties>
                                       <JTable.autoStartsEdit class="java.lang.Boolean" value="false"/>
