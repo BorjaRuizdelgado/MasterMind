@@ -13,6 +13,8 @@ public class Ajustes {
     private JPanel panel2;
     private JSlider slider1;
     private JCheckBox silenciarMusicaCheckBox;
+    private JButton button1;
+    private JButton button2;
 
     private Mp3Player mp3Player;
     public Ajustes(){

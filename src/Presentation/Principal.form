@@ -214,7 +214,7 @@
                       </vspacer>
                     </children>
                   </grid>
-                  <grid id="13f44" binding="contenidoNuevaPart" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="13f44" binding="contenidoNuevaPart" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <card name="Card7"/>
@@ -224,30 +224,10 @@
                     </properties>
                     <border type="none"/>
                     <children>
-                      <grid id="77672" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <opaque value="false"/>
-                        </properties>
-                        <border type="none"/>
-                        <children>
-                          <component id="30c56" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <text value="Message"/>
-                            </properties>
-                          </component>
-                        </children>
-                      </grid>
                       <grid id="976a3" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                         <margin top="0" left="0" bottom="0" right="0"/>
                         <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <opaque value="false"/>
@@ -266,7 +246,7 @@
                               <foreground color="-1"/>
                               <margin top="10" left="14" bottom="10" right="14"/>
                               <text value="CODEBREAKER"/>
-                              <toolTipText value="La máquina creará un código secreto que tendrás que adivinar en menos de 15 intentos. "/>
+                              <toolTipText value="La máquina creará un código secreto que tendrás que adivinar en menos de 12 intentos. "/>
                             </properties>
                           </component>
                           <component id="5be7c" class="javax.swing.JButton" binding="CODEMAKERButton" default-binding="true">
@@ -281,7 +261,7 @@
                               <foreground color="-1"/>
                               <margin top="10" left="14" bottom="10" right="14"/>
                               <text value="CODEMAKER"/>
-                              <toolTipText value="Crea un código secreto que la máquina tendrá que resolver en menos de 15 intentos."/>
+                              <toolTipText value="Crea un código secreto que la máquina tendrá que resolver en menos de 12 intentos."/>
                             </properties>
                           </component>
                         </children>
@@ -289,7 +269,7 @@
                       <grid id="155e2" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                         <margin top="0" left="0" bottom="0" right="0"/>
                         <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <opaque value="false"/>
@@ -576,7 +556,7 @@
                               <foreground color="-1"/>
                               <margin top="10" left="14" bottom="10" right="14"/>
                               <text value="DIFÍCIL"/>
-                              <toolTipText value=""/>
+                              <toolTipText value="6 posiciones y 6 colores"/>
                             </properties>
                           </component>
                           <component id="e30bd" class="javax.swing.JButton" binding="medio">
@@ -591,7 +571,7 @@
                               <foreground color="-1"/>
                               <margin top="10" left="14" bottom="10" right="14"/>
                               <text value="MEDIO"/>
-                              <toolTipText value=""/>
+                              <toolTipText value="4 posiciones y 6 colores"/>
                             </properties>
                           </component>
                           <component id="c6d2e" class="javax.swing.JButton" binding="facil">
@@ -606,7 +586,7 @@
                               <foreground color="-1"/>
                               <margin top="10" left="14" bottom="10" right="14"/>
                               <text value="FÁCIL"/>
-                              <toolTipText value=""/>
+                              <toolTipText value="4 posiciones y 4 colores"/>
                             </properties>
                           </component>
                         </children>
