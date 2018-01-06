@@ -7,6 +7,7 @@ import MP3Player.Mp3Player;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.*;
 import java.awt.event.*;
 
 public class AjustesUsuario{
@@ -16,11 +17,13 @@ public class AjustesUsuario{
     private JSlider slider1;
     private JCheckBox silenciarMusicaCheckBox;
     private JTextField textField1;
-    private JButton aceptar;
-    private JButton eliminarUsr;
-    private JButton reiniciarStats;
+    private JButton confirmarButton;
+    private JButton eliminarUserButton;
+    private JButton reiniciarStatsButton;
     private Mp3Player mp3Player;
     private ControladorDominio ctrl;
+    private JButton button1;
+    private JButton button2;
 
     private String userdeletedIcon;
     private String questionIcon;
@@ -38,6 +41,10 @@ public class AjustesUsuario{
 
         mp3Player = Mp3Player.getInstance();
         ctrl = ControladorDominio.getInstance();
+
+        addMouseEnterExitColorEffect(confirmarButton);
+        addMouseEnterExitColorEffect(eliminarUserButton);
+        addMouseEnterExitColorEffect(reiniciarStatsButton);
 
         if (!mp3Player.isPlaying()) silenciarMusicaCheckBox.setSelected(true);
 
@@ -62,7 +69,7 @@ public class AjustesUsuario{
             }
         });
 
-        aceptar.addMouseListener(new MouseAdapter() {
+        confirmarButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
@@ -81,7 +88,7 @@ public class AjustesUsuario{
                 }
             }
         });
-        eliminarUsr.addMouseListener(new MouseAdapter() {
+        eliminarUserButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
@@ -97,7 +104,7 @@ public class AjustesUsuario{
             }
         });
 
-        reiniciarStats.addMouseListener(new MouseAdapter() {
+        reiniciarStatsButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
@@ -112,7 +119,25 @@ public class AjustesUsuario{
         });
     }
 
-            public JPanel getPanel() {
+    private void addMouseEnterExitColorEffect(JButton button) {
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                super.mouseEntered(mouseEvent);
+                button.setBackground(Color.BLACK);
+            }
+        });
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                super.mouseExited(mouseEvent);
+                button.setBackground(new Color(192, 55, 55));
+            }
+        });
+
+    }
+
+    public JPanel getPanel() {
                 return panel;
             }
 }
