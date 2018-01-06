@@ -623,6 +623,9 @@ public class Juego {
         });
     }
 
+    /**
+     * Método que permite al abandonar una partida existente, borrandola de disco.
+     */
     private void abandonarPartida() {
         if (!firstAttempt) controller.abandonaPartidaAcutal();
         frame.dispose();
@@ -630,6 +633,9 @@ public class Juego {
         Juego.this.principal.revalidar();
     }
 
+    /**
+     * Método para reiniciar una partida.
+     */
     private void reiniciarPartida() {
         if (!codeMaker || (codeMaker && !firstAttempt)) controller.abandonaPartidaAcutal();
         frame.dispose();

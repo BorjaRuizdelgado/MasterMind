@@ -64,6 +64,11 @@ public class Principal {
     private final String noUserIcon;
     private final String gameIcon;
 
+    /**
+     * Creadora de la clase donde se le pasa el Jframe que va a controlar.
+     * En ella se aplican todos los listeners necesarios.
+     * @param jframe Frame que controla la clase.
+     */
     public Principal(JFrame jframe) {
         noUserIcon = System.getProperty("user.dir") + "/src/imgs/cargaOrCrea.png";
         addTextIcon = System.getProperty("user.dir") + "/src/imgs/editText.png";
@@ -73,9 +78,6 @@ public class Principal {
         gameIcon = System.getProperty("user.dir") + "/src/imgs/GAME_ICON.png";
         frame = jframe;
         frame.setIconImage(new ImageIcon(gameIcon).getImage());
-
-
-
 
         // Evitamos que se configure el frame.
         frame.setResizable(false);
@@ -462,6 +464,10 @@ public class Principal {
         });
     }
 
+    /**
+     * Listeners para escoger dificultad.
+     * @param maker parámetro necesario para acabar de crear el tablero proviniente del contenido de escoger modo de juego.
+     */
     private void escogerDificultad(boolean maker) {
         main.removeAll();
         main.add(nivelDificultad);
@@ -500,6 +506,11 @@ public class Principal {
 
     }
 
+    /**
+     * Método que permite que la UI enseñe un tablero.
+     * @param dificultad Dificultad de la partida.
+     * @param isCodeMaker Modo de juego.
+     */
     private void crearJuego(String dificultad, boolean isCodeMaker) {
         JFrame frame = new JFrame("Mastermindo");
         frame.setContentPane(new Juego(dificultad, isCodeMaker,false, frame, this.frame, Principal.this).getPanel());
@@ -511,15 +522,24 @@ public class Principal {
         this.frame.setVisible(false);
     }
 
+    /**
+     * Metodo que devuelve el panel del frame principal.
+     * @return Panel principal del frame
+     */
     public JPanel getPanel() {
         return panel;
     }
 
-
+    /**
+     * Metodo que hace posible recargar las partidas que tiene el usuario guardadas.
+     */
     public void revalidar() {
         displayListaPartidas();
     }
 
+    /**
+     * Metodo que retorna el frame Principal al contenido principal.
+     */
     public void volverIncio(){
         entraTuNombreDeTextField.setText("");
         main.removeAll();

@@ -11,11 +11,20 @@ public class Mp3Player {
     private static Mp3Player uniqueInstance;
     private static String pathAnterior;
     private static Boolean isPlaying;
+
+    /**
+     * @return Instancia de Mp3Player.
+     */
     public static Mp3Player getInstance() {
         if(uniqueInstance == null)
             uniqueInstance = new Mp3Player();
         return uniqueInstance;
     }
+
+    /**
+     * Reproduce una canción a partir de un path del sistema de archivos del usuario.
+     * @param path path de la canción
+     */
     public void play(String path) {
         try {
             pathAnterior = path;
@@ -40,7 +49,9 @@ public class Mp3Player {
         }
     }
 
-
+    /**
+     * Parar la reproducción de la canción que se estaba reproduciendo.
+     */
     public void close(){
         if(isPlaying()) {
             audioClip.close();
@@ -48,6 +59,11 @@ public class Mp3Player {
         }
     }
 
+    /**
+     * Varia el volumen de la canción a partir del masterGain. En algunas distros de linux Java no deja.
+     * Como no podemos utilizar librerias externas, esta es la única solución factible.
+     * @param gain cambio que se desea en el volumen de la música.
+     */
     public void changeVolume(float gain){
         if(audioClip.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
             FloatControl gainControl =
@@ -56,6 +72,9 @@ public class Mp3Player {
         }
     }
 
+    /**
+     * Reproduce la canción con el path que se habia cargado en primera instáncia.
+     */
     public void playAnterior(){
         if(!pathAnterior.equals(null)){
             play(pathAnterior);

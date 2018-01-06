@@ -31,14 +31,18 @@ public class AjustesUsuario{
     private String textIcon;
     private String userIcon;
 
+    /**
+     * Creadora de Ajustes usuario
+     * @param frame Frame de AjustesUsuario
+     * @param principal clase que nos permitirá volver al inicio una vez borrado el usuario.
+     */
+
     public AjustesUsuario(JFrame frame, Principal principal) {
         userdeletedIcon = System.getProperty("user.dir") + "/src/imgs/userDeleted.png";
         questionIcon = System.getProperty("user.dir") + "/src/imgs/ayuda.png";
         estadisticasIcon = System.getProperty("user.dir") + "/src/imgs/estadisticas.png";
         textIcon = System.getProperty("user.dir") + "/src/imgs/editText.png";
         userIcon = System.getProperty("user.dir") + "/src/imgs/user.png";
-
-
         mp3Player = Mp3Player.getInstance();
         ctrl = ControladorDominio.getInstance();
 
@@ -129,6 +133,10 @@ public class AjustesUsuario{
         });
     }
 
+    /**
+     * Método para añadir los efectos a un botón.
+     * @param button botón al que se le añaden los efectos.
+     */
     private void addMouseEnterExitColorEffect(JButton button) {
         button.addMouseListener(new MouseAdapter() {
             @Override

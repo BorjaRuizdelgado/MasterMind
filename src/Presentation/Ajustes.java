@@ -17,6 +17,10 @@ public class Ajustes {
     private JButton button2;
 
     private Mp3Player mp3Player;
+
+    /**
+     * Creadora de ajustes donde se asignan los listeners a los diversos elementos.
+     */
     public Ajustes(){
         mp3Player = Mp3Player.getInstance();
 
