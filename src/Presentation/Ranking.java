@@ -156,7 +156,7 @@ public class Ranking {
      * Acciones por defecto al crear la vista del ranking.
      */
     private void onCreate() {
-        noUserIcon = System.getProperty("user.dir") + "/src/imgs/addUser.png";
+        noUserIcon = System.getProperty("user.dir") + "/src/imgs/cargaOrCrea.png";
         ctrl = ControladorDominio.getInstance();
         tableModel = new DefaultTableModel(0, 3);
         setSelectorListener();

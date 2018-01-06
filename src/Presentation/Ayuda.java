@@ -92,7 +92,7 @@ public class Ayuda {
                 "MasterMindo ",
                 "es un juego de ingenio y reflexión para un jugador en el que se juega contra la máquina para descubrir su ",
                 "código secreto ",
-                "o que ella descubra el tuyo." + nl +
+                "(CodeBreaker) o que ella descubra el tuyo (CodeMaker)." + nl +
                         "Se juega en un tablero de 12 filas, partido en dos partes: intentos y soluciones." + nl + "Cada ",
                 "intento ",
                 "es una nueva prueba de adivinar el código secreto que recibe una ",

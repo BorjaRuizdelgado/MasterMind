@@ -62,7 +62,7 @@ public class Principal {
     private String alertIcon;
 
     public Principal(JFrame jframe) {
-        noUserIcon = System.getProperty("user.dir") + "/src/imgs/addUser.png";
+        noUserIcon = System.getProperty("user.dir") + "/src/imgs/cargaOrCrea.png";
         addTextIcon = System.getProperty("user.dir") + "/src/imgs/editText.png";
         addNewUserIcon = System.getProperty("user.dir") + "/src/imgs/addNewUser.png";
         userIcon = System.getProperty("user.dir") + "/src/imgs/user.png";

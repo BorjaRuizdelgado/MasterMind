@@ -10,6 +10,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.event.*;
 
 public class AjustesUsuario{
+
     private JPanel panel;
     private JPanel panel2;
     private JSlider slider1;
@@ -24,11 +25,17 @@ public class AjustesUsuario{
     private String userdeletedIcon;
     private String questionIcon;
     private String estadisticasIcon;
+    private String textIcon;
+    private String userIcon;
 
     public AjustesUsuario(JFrame frame, Principal principal) {
-        userdeletedIcon = System.getProperty("user.dir") + "/src/imgs/delete-user.png";
+        userdeletedIcon = System.getProperty("user.dir") + "/src/imgs/userDeleted.png";
         questionIcon = System.getProperty("user.dir") + "/src/imgs/ayuda.png";
         estadisticasIcon = System.getProperty("user.dir") + "/src/imgs/estadisticas.png";
+        textIcon = System.getProperty("user.dir") + "/src/imgs/editText.png";
+        userIcon = System.getProperty("user.dir") + "/src/imgs/user.png";
+
+
         mp3Player = Mp3Player.getInstance();
         ctrl = ControladorDominio.getInstance();
 
@@ -61,15 +68,15 @@ public class AjustesUsuario{
                 super.mouseClicked(mouseEvent);
                 String contenido = textField1.getText();
                 if (contenido.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Primero rellena el campo de texto.", "Campo vacío", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Primero rellena el campo de texto.", "Campo vacío", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(textIcon));
                 }
                 else {
                     try {
                         ctrl.cambiarNombreUsr(contenido);
-                        JOptionPane.showMessageDialog(null, "Nombre de usuario cambiado por: "+contenido, "Nombre cambiado", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Nombre de usuario cambiado por: "+contenido, "Nombre cambiado", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(userIcon));
                         frame.dispose();
                     } catch (ExcepcionNombreEscogido excepcionNombreEscogido) {
-                        JOptionPane.showMessageDialog(null, "Nombre de usuario ya escogido, por favor escribe otro.",  "Nombre repetido", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Nombre de usuario ya escogido, por favor escribe otro.",  "Nombre repetido", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(textIcon));
                     }
                 }
             }

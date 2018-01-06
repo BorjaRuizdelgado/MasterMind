@@ -704,7 +704,7 @@
                       <background color="-1"/>
                       <borderPainted value="false"/>
                       <focusPainted value="false"/>
-                      <icon value="imgs/icons8-user-64.png"/>
+                      <icon value="imgs/profile.png"/>
                       <text value=""/>
                       <toolTipText value="Perfil"/>
                     </properties>

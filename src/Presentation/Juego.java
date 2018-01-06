@@ -510,7 +510,7 @@ public class Juego {
                             controller.terminaPartidaActual(true);
                             close();
                         } else if (!codeMaker) {
-                            showMessage("Mastermindo", "¡Has perdido!, no tienes más intentos,", sadIcon);
+                            showMessage("Mastermindo", "¡Has perdido!, no tienes más intentos.", sadIcon);
                             controller.actualizaRanking();
                             controller.terminaPartidaActual(false);
                             close();
@@ -671,7 +671,7 @@ public class Juego {
         happyIcon = System.getProperty("user.dir") + "/src/imgs/happy.png";
         weirdIcon = System.getProperty("user.dir") + "/src/imgs/weird.png";
         sadIcon = System.getProperty("user.dir") + "/src/imgs/sad.png";
-        questionIcon = System.getProperty("user.dir") + "/src/imgs/help-red.png";
+        questionIcon = System.getProperty("user.dir") + "/src/imgs/ayuda.png";
         infoIcon = System.getProperty("user.dir") + "/src/imgs/info.png";
         this.principal = principal;
         frame.setUndecorated(true);
