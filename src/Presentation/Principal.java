@@ -216,6 +216,16 @@ public class Principal {
 
             }
         });
+
+        entraTuNombreDeTextField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(((c >= '0') && (c <= '9')) || (c >= 'a' && c <= 'z')) && (c != KeyEvent.VK_BACK_SPACE)) {
+                    e.consume();
+                    showMessage("CARACTER INCORRECTO","Por favor introduce caracteres de: a-z y 0-9",null);
+                }
+            }
+        });
         ACEPTARButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {

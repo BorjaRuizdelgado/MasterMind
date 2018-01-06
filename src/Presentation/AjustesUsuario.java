@@ -88,6 +88,16 @@ public class AjustesUsuario{
                 }
             }
         });
+
+        textField1.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(((c >= '0') && (c <= '9')) || (c >= 'a' && c <= 'z')) && (c != KeyEvent.VK_BACK_SPACE)) {
+                    e.consume();
+                    JOptionPane.showMessageDialog(null,"Por favor introduce caracteres de: a-z y 0-9","CARACTER INCORRECTO",JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
         eliminarUserButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
