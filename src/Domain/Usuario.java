@@ -173,11 +173,17 @@ public class Usuario implements Serializable {
         return partidasGuardadas;
     }
 
+    /**
+     * borra las partidas guardadas del usuario.
+     */
     public void borrarPartidasGuardadas() {
         partidasGuardadas = new ArrayList<>();
     }
 
-
+    /**
+     * Devuelve una lista de las estadísticas del usuario.
+     * @return partidas finalizadas como codeMaker y codeBreaker y numero de partidas ganadas como code breaker.
+     */
     public List<Integer> getEstadisticas() {
         List<Integer> estadisticas = new ArrayList<>();
         estadisticas.add(numPartidasFinalizadasCB);

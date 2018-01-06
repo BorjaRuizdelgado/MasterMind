@@ -30,6 +30,7 @@ public class ControladorDominio {
         persistencia.cargarSistemaRanking();
         ranking = SistemaRanking.getInstance();
     }
+
     /** Si la instancia no existe, se inicializa con su método privado
      * @return La única instancia de la clase
      */
@@ -63,11 +64,17 @@ public class ControladorDominio {
         usuarioCargado = persistencia.cargarUsuario(nombre);
     }
 
-
+    /**
+     * Comprueba si un usuario está cargado en memoria.
+     * @return cierto si el usuario está cargado.
+     */
     public boolean isUsuarioCargado() {
         return usuarioCargado != null;
     }
 
+    /**
+     * Saca el usuario cargado actualmente en memoria y lo guarda en disco.
+     */
     public void quitarUsuarioCargado() {
         if(usuarioCargado != null) {
             persistencia.guardar(usuarioCargado);
@@ -124,6 +131,10 @@ public class ControladorDominio {
         return partidaActual.generaSiguienteIntento().codigo;
     }
 
+    /**
+     * Funcion necesaria para el primer guess de code maker, se comporta casi igual que la otra de jugarCodeMaker.
+     * @return retorna el primer guess.
+     */
     public List<Integer> jugarCodeMaker() { // Lo necesito para el primer intento que juego como codeMaker
         return partidaActual.generaSiguienteIntento().codigo;
     }
@@ -163,6 +174,10 @@ public class ControladorDominio {
         partidaActual = null;
     }
 
+    /**
+     * Devuelve el numero de fila en la que está la partida cargada en memória.
+     * @return Numero de fila.
+     */
     public int getNumeroFilaActual() {
         return partidaActual.getNumeroFilaActual();
     }
@@ -381,7 +396,11 @@ public class ControladorDominio {
         return partidaActual.isGanado();
     }
 
-
+    /**
+     * Permite cambiar el nombre del usuario cargado en memória con otro.
+     * @param newUsername nombre del nuevo usuario.
+     * @throws ExcepcionNombreEscogido excepción que marca que el usuario ya está siendo escogido por algún otro jugador.
+     */
     public void cambiarNombreUsr(String newUsername) throws ExcepcionNombreEscogido {
         if (persistencia.existeUsuario(newUsername)) throw new ExcepcionNombreEscogido("El nombre ya existe en el sistema");
         ranking.cambiarNombre(usuarioCargado.getNombre(),newUsername);
@@ -390,12 +409,19 @@ public class ControladorDominio {
         persistencia.guardar(usuarioCargado);
     }
 
-    
+    /**
+     * Reinicia las estadísticas del usuario cargado en memoria.
+     */
     public void reiniciaEstadisticas() {
         usuarioCargado.reiniciaEstadisticas();
         borrarRankings();
     }
 
+    /**
+     * Devuelve las estádísticas del usuario cargado en memoria.
+     * @return devuelve una lista con primero el número de partidas finalizadas como codeBreaker seguido de el número de
+     * partidas finalizadas como codeMaker y finalmente el número de partidas ganadas como codeBreaker.S
+     */
     public List<Integer> getEstadiscasUsuario(){
         return usuarioCargado.getEstadisticas();
 
