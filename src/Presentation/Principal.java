@@ -87,14 +87,7 @@ public class Principal {
         mp3Player.changeVolume(-25);
 
         ctrl = ControladorDominio.getInstance();
-        frame.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent windowEvent) {
-                super.windowClosing(windowEvent);
-                mp3Player.close();
-                ctrl.onClose();
-            }
-        });
+
 
         /* Efectos */
         addMouseEnterExitColorEffect(CREARUSUARIOButton);
@@ -354,7 +347,24 @@ public class Principal {
                 main.revalidate();
             }
         });
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent event) {
+                int n = JOptionPane.showConfirmDialog(null, "¿Seguro que quieres salir?", "SE CERRARÁ EL JUEGO", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                if(n == JOptionPane.YES_OPTION){
+                    cerrarVentana();
+                    frame.dispose();
 
+                }
+            }
+        });
+
+    }
+
+    private void cerrarVentana() {
+        mp3Player.close();
+        ctrl.onClose();
     }
 
     /**
