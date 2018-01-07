@@ -79,15 +79,6 @@ public class Tablero implements Serializable {
         return tablero.get(numeroFilaActual - 1);
     }
 
-    /**
-     * Devuelve el código intento de la fila anterior.
-     * @return Último código del tablero.
-     */
-    public Codigo getUltimoColores(){
-        return getUltimoIntento().getColores();
-    }
-
-
 
     /* MODIFICADORAS */
 

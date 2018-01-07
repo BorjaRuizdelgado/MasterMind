@@ -118,8 +118,7 @@ public class Cerebro implements Inteligencia, Serializable{
                 codigosParaBorrar.add(solucionesPotenciales.get(i));
         }
 
-        for (int i = 0; i < codigosParaBorrar.size(); i++)
-            solucionesPotenciales.remove(codigosParaBorrar.get(i));
+        solucionesPotenciales.removeAll(codigosParaBorrar);
 
     }
 

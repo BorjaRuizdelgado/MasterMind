@@ -61,30 +61,6 @@ public class SistemaRanking implements Serializable{
     }
 
     /**
-     * Devuelve listaRankingFacil
-     * @return rankingFacil
-     */
-    public List<Info> getRankingFacilInfo(){
-        return rankingFacil;
-    }
-
-    /**
-     * Devuelve listaRankingNormal
-     * @return rankingMedio
-     */
-    public List<Info> getRankingMedioInfo(){
-        return rankingMedio;
-    }
-
-    /**
-     * Devuelve listaRankingDificil
-     * @return rankingDificil
-     */
-    public List<Info> getRankingDificilInfo(){
-        return rankingDificil;
-    }
-
-    /**
      * Devuelve una lista con las puntuaciones del nombre pasado por parámetro
      * @param nombre Es el nombre del usuario
      * @return rankingFacil con entradas del usuario.
@@ -111,30 +87,6 @@ public class SistemaRanking implements Serializable{
         return getInterseccionNombre(rankingDificil, nombre);
     }
 
-
-    /**
-     * Actualiza listaRankingFacil
-     * @param ranking Nuevo ranking fácil
-     */
-    public void setRankingFacil(List<Info> ranking){
-        rankingFacil = new ArrayList<>(ranking);
-    }
-
-    /**
-     * Actualiza listaRankingNormal
-     * @param ranking Nuevo ranking normal
-     */
-    public void setRankingMedio(List<Info> ranking){
-        rankingMedio = new ArrayList<>(ranking);
-    }
-
-    /**
-     * Actualiza listaRankingDificil
-     * @param ranking Nuevo ranking díficil
-     */
-    public void setRankingDificil(List<Info> ranking){
-        rankingDificil = new ArrayList<>(ranking);
-    }
 
     /**
      * Añade la información de una nueva partida a una lista en concreto especificada en el parámetro 'dificultad'

@@ -43,9 +43,7 @@ public class ControladorPersistencia {
      * Carga el sistema ranking del fichero guardado.
      */
     public void cargarSistemaRanking() {
-        if (gestorSistRank == null) {
-            gestorSistRank = GestionSistemaRanking.getInstance();
-        }
+        getSistRankInstanceIfNull();
         gestorSistRank.cargar();
     }
 
@@ -53,10 +51,14 @@ public class ControladorPersistencia {
      * Guarda el sistema ranking en el fichero.
      */
     public void guardarSistemaRanking() {
+        getSistRankInstanceIfNull();
+        gestorSistRank.guardar();
+    }
+
+    private void getSistRankInstanceIfNull() {
         if (gestorSistRank == null) {
             gestorSistRank = GestionSistemaRanking.getInstance();
         }
-        gestorSistRank.guardar();
     }
 
     /* PARTIDA */
@@ -67,9 +69,7 @@ public class ControladorPersistencia {
      * @return objeto partida cuyo identificador se ha pasado por parámetro.
      */
     public Partida cargarPartida(String idPartida) {
-        if (gestorPartida == null) {
-            gestorPartida = GestionPartida.getInstance();
-        }
+        getGestionPartidaInstanceIfNull();
         return gestorPartida.cargar(idPartida);
     }
 
@@ -78,9 +78,7 @@ public class ControladorPersistencia {
      * @param partida partida a guardar
      */
     public void guardar(Partida partida) {
-        if (gestorPartida == null) {
-            gestorPartida = GestionPartida.getInstance();
-        }
+        getGestionPartidaInstanceIfNull();
         gestorPartida.guardar(partida);
     }
 
@@ -89,11 +87,16 @@ public class ControladorPersistencia {
      * @param idPartida identificador de la partida a cargar
      */
     public void eliminarPartida(String idPartida) {
+        getGestionPartidaInstanceIfNull();
+        gestorPartida.eliminar(idPartida);
+    }
+
+    private void getGestionPartidaInstanceIfNull() {
         if (gestorPartida == null) {
             gestorPartida = GestionPartida.getInstance();
         }
-        gestorPartida.eliminar(idPartida);
     }
+
 
     /* USUARIO */
 
@@ -104,9 +107,7 @@ public class ControladorPersistencia {
      * @throws ExcepcionUsuarioInexistente el nombre pasado por parámetro no coincide con ningún usuario existente.
      */
     public Usuario cargarUsuario(String username) throws ExcepcionUsuarioInexistente {
-        if (gestorUsuario == null) {
-            gestorUsuario = GestionUsuario.getInstance();
-        }
+        getGestionUsuarioInstanceIfNull();
         return gestorUsuario.cargar(username);
     }
 
@@ -115,9 +116,7 @@ public class ControladorPersistencia {
      * @param user Usuario a guardar
      */
     public void guardar(Usuario user) {
-        if (gestorUsuario == null) {
-            gestorUsuario = GestionUsuario.getInstance();
-        }
+        getGestionUsuarioInstanceIfNull();
         gestorUsuario.guardar(user);
     }
 
@@ -126,9 +125,7 @@ public class ControladorPersistencia {
      * @param username nombre del usuario a eliminar
      */
     public void eliminarUsuario(String username) {
-        if (gestorUsuario == null) {
-            gestorUsuario = GestionUsuario.getInstance();
-        }
+        getGestionUsuarioInstanceIfNull();
         gestorUsuario.eliminar(username);
     }
 
@@ -138,9 +135,7 @@ public class ControladorPersistencia {
      * @return cierto si existe; falso si no existe.
      */
     public boolean existeUsuario(String username) {
-        if (gestorUsuario == null) {
-            gestorUsuario = GestionUsuario.getInstance();
-        }
+        getGestionUsuarioInstanceIfNull();
         return gestorUsuario.existe(username);
     }
 
@@ -149,9 +144,7 @@ public class ControladorPersistencia {
      * @return cierto si existe alguno; falso si no hay ninguno.
      */
     public boolean existeAlgunUsuario() {
-        if (gestorUsuario == null) {
-            gestorUsuario = GestionUsuario.getInstance();
-        }
+        getGestionUsuarioInstanceIfNull();
         return gestorUsuario.existeAlguno();
     }
 
@@ -160,10 +153,14 @@ public class ControladorPersistencia {
      * @return lista de todos los nombres de usuario.
      */
     public List<String> getTodosUsuarios() {
+        getGestionUsuarioInstanceIfNull();
+        return gestorUsuario.getTodos();
+    }
+
+    private void getGestionUsuarioInstanceIfNull() {
         if (gestorUsuario == null) {
             gestorUsuario = GestionUsuario.getInstance();
         }
-        return gestorUsuario.getTodos();
     }
 
 

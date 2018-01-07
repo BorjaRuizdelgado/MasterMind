@@ -10,6 +10,4 @@ public class ExcepcionUsuarioInexistente extends Exception{
     public ExcepcionUsuarioInexistente (String message) {
         super(message);
     }
-
-    public ExcepcionUsuarioInexistente () {}
 }

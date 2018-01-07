@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Estructura de datos para los Rankings
  * @author Omar
  */
-public class Info implements Serializable{
+public class Info implements Serializable {
 
     private String usuario;
     private int puntuacion;

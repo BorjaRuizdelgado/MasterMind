@@ -91,14 +91,6 @@ public class Partida implements Serializable {
     }
 
     /**
-     * Obtenemos el tiempo total
-     * @return tiempo
-     */
-    public float getTiempo() {
-        return tiempo;
-    }
-
-    /**
      * Devuelve si el jugador está jugando como CodeMaker o Breaker
      * @return rolMaker
      */
@@ -112,22 +104,6 @@ public class Partida implements Serializable {
      */
     public String getDificultad() {
         return dificultad;
-    }
-
-    /**
-     * Devuelve el numero de colores
-     * @return numColores
-     */
-    public int getNumColores() {
-        return numColores;
-    }
-
-    /**
-     * Devuelve el numero de columnas
-     * @return numColumnas
-     */
-    public int getNumColumnas() {
-        return numColumnas;
     }
 
     /**
@@ -327,7 +303,8 @@ public class Partida implements Serializable {
      */
     public void setRespuesta(Respuesta respuesta) throws ExcepcionRespuestaIncorrecta {
         tablero.setUltimoRespuestas(respuesta);
-        if(respuesta.esGanadora())ganado = true;
+        if(respuesta.esGanadora())
+            ganado = true;
     }
 
     /**
@@ -340,26 +317,6 @@ public class Partida implements Serializable {
             ganado = true;
     }
 
-    /**
-     * Reinicia la partida. Como si fuera una partida nueva, pero con la misma dificultad y rol.
-     * Se diferencia si es rol CodeMaker o CodeBreaker, ya que el nuevo código secreto deberá ser nuevo.
-     */
-    public void reset(Codigo nuevoCodigoSecretoCM) {
-        if (isRolMaker()) {
-            tablero = new Tablero(numColumnas);
-            tablero.setCodigoSecreto(nuevoCodigoSecretoCM);
-            if (dificultad.equals("Dificil"))
-                ia = new MasterCerebro(numColores, numColumnas);
-            else
-                ia = new Cerebro(numColores, numColumnas);
-        }
-        else {
-            tablero = new Tablero(numColumnas);
-            generaCodigoSecretoAleatorio();
-            tiempo = 0;
-            pista1 = pista2 = pista3 = false;
-        }
-    }
 
     /* ESCRITURAS */
 
@@ -372,27 +329,6 @@ public class Partida implements Serializable {
         if (rolMaker) rol = "CodeMaker";
         else rol = "CodeBreaker";
         return rol;
-    }
-
-    /**
-     * Función de impresión sencilla. Imprime el ID, la dificultad y el Rol.
-     */
-    public void imprimeInfo() {
-        System.out.println("ID: "+id+". Dificultad: "+dificultad+
-                ". Rol: "+rolToString()+".");
-    }
-
-    /**
-     * Función de impresión completa. Imprime ID, dificultad, Rol, número de colores y número de columnas.
-     */
-    public void imprimeAllInfo() {
-        System.out.println("- ID: "+id+"\n" +
-                "- Tiempo: " +tiempo+"\n" +
-                "- Dificultad: " +dificultad+"\n" +
-                "- Rol: " +rolToString()+"\n" +
-                "- Numero Colores: " +numColores+"\n" +
-                "- Numero Columnas: "+ numColumnas);
-
     }
 
     public List<List<List<Integer>>> getTablero(){

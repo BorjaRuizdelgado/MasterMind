@@ -82,8 +82,7 @@ public class MasterCerebro implements Inteligencia, Serializable {
         intentos.add(ultimoIntento);
 
         List<Codigo> posiblesCandidatos = evolucion();
-        Codigo candidato = seleccionaCandidato(posiblesCandidatos);
-        return candidato;
+        return seleccionaCandidato(posiblesCandidatos);
     }
 
     /**

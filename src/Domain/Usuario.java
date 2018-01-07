@@ -44,30 +44,6 @@ public class Usuario implements Serializable {
     }
 
     /**
-     * Devuelve el número de partidas totales finalizadas como CodeBreaker
-     * @return numPartidasFinalizadasCB
-     */
-    public int getNumPartidasFinalizadasCB() {
-        return numPartidasFinalizadasCB;
-    }
-
-    /**
-     * Devuelve el número de partidas ganadas
-     * @return numPartidasGanadasCB
-     */
-    public int getNumPartidasGanadasCB() {
-        return numPartidasGanadasCB;
-    }
-
-    /**
-     * Devuelve el número de partidas finalizadas como CodeMaker
-     * @return numPartidasFinalizadasCM
-     */
-    public int getNumPartidasFinalizadasCM() {
-        return numPartidasFinalizadasCM;
-    }
-
-    /**
      * Devuelve la partida actual del usuario
      * @return partidaActual
      */
