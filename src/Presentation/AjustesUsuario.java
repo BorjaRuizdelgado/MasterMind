@@ -79,15 +79,15 @@ public class AjustesUsuario{
                 super.mouseClicked(mouseEvent);
                 String contenido = textField1.getText();
                 if (contenido.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Primero rellena el campo de texto.", "Campo vacío", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(textIcon));
+                    showMessage("Campo vacío", "Primero rellena el campo de texto.", textIcon);
                 }
                 else {
                     try {
                         ctrl.cambiarNombreUsr(contenido);
-                        JOptionPane.showMessageDialog(null, "Nombre de usuario cambiado por: "+contenido, "Nombre cambiado", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(userIcon));
+                        showMessage("Nombre cambiado", "Nombre de usuario cambiado por: "+contenido, userIcon);
                         frame.dispose();
                     } catch (ExcepcionNombreEscogido excepcionNombreEscogido) {
-                        JOptionPane.showMessageDialog(null, "Nombre de usuario ya escogido, por favor escribe otro.",  "Nombre repetido", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(textIcon));
+                        showMessage("Nombre repetido", "Nombre de usuario ya escogido, por favor escribe otro.",  textIcon);
                     }
                 }
             }
@@ -96,9 +96,9 @@ public class AjustesUsuario{
         textField1.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
-                if (!(((c >= '0') && (c <= '9')) || (c >= 'a' && c <= 'z')) && (c != KeyEvent.VK_BACK_SPACE)) {
+                if (!(((c >= '0') && (c <= '9')) || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) && (c != KeyEvent.VK_BACK_SPACE)) {
                     e.consume();
-                    JOptionPane.showMessageDialog(null,"Por favor introduce caracteres de: a-z y 0-9","CARACTER INCORRECTO",JOptionPane.INFORMATION_MESSAGE);
+                    showMessage("Carácter especial","Por favor, introduce caracteres válidos: a-z, A-Z y 0-9",textIcon);
                 }
             }
         });
@@ -107,13 +107,12 @@ public class AjustesUsuario{
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
 
-                int dialogResult = JOptionPane.showConfirmDialog(null,
-                        "Tu usuario y datos se eliminarán, ¿estás seguro?", "Atención", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new ImageIcon(questionIcon));
+                int dialogResult = showYesNoMessage("Atención", "Tu usuario y datos se eliminarán, ¿estás seguro?", questionIcon);
                 if (dialogResult == JOptionPane.YES_OPTION) {
                     ctrl.borrarUsuario();
                     JOptionPane.showMessageDialog(null, "Tu usuario se ha eliminado con éxito", "Usuario eliminado", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(userdeletedIcon));
                     frame.dispose();
-                    principal.volverIncio();
+                    principal.volverInicio();
                 }
             }
         });
@@ -122,11 +121,10 @@ public class AjustesUsuario{
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                int dialogResult = JOptionPane.showConfirmDialog(null,
-                        "Tus estadísticas y ránkings se eliminarán, ¿estás seguro?", "Atención", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new ImageIcon(questionIcon));
+                int dialogResult = showYesNoMessage("Atención", "Tus estadísticas y ránkings se eliminarán, ¿estás seguro?", questionIcon);
                 if (dialogResult == JOptionPane.YES_OPTION) {
                     ctrl.reiniciaEstadisticas();
-                    JOptionPane.showMessageDialog(null, "Estadísticas reiniciadas correctamente.", "Estadísticas reiniciadas", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(estadisticasIcon));
+                    showMessage("Estadísticas reiniciadas", "Estadísticas reiniciadas correctamente.", estadisticasIcon);
                 }
 
             }
@@ -158,4 +156,25 @@ public class AjustesUsuario{
     public JPanel getPanel() {
                 return panel;
             }
+
+    /**
+     * Método que acorta la llamada a JOptionPane.showMessageDialog(..) que crea un mensaje en pantalla.
+     * @param title Título que contendrá la ventana creada.
+     * @param message Mensaje que contendrá la ventana creada.
+     * @param icon Icono que contendrá la ventana creada.
+     */
+    private void showMessage(String title, String message, String icon) {
+        JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(icon));
+    }
+
+    /**
+     * Método que acorta la llamada a JOptionPane.showMessageDialog(..) que crea un mensaje en pantalla con las opciones Yes y No
+     * @param title Título que contendrá la ventana creada.
+     * @param message Mensaje que contendrá la ventana creada.
+     * @param icon Icono que contendrá la ventana creada.
+     * @return Selección escogida
+     */
+    private int showYesNoMessage(String title, String message, String icon) {
+        return JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new ImageIcon(icon));
+    }
 }

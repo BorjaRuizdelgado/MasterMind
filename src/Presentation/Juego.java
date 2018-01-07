@@ -673,12 +673,7 @@ public class Juego {
      * @param principal Instáncia de la clase principal.
      */
     public Juego(String dificultad, boolean isCodeMaker, boolean cargarTablero, JFrame frame, JFrame oldFrame, Principal principal) {
-        alertIcon = System.getProperty("user.dir") + "/src/imgs/alerta.png";
-        happyIcon = System.getProperty("user.dir") + "/src/imgs/happy.png";
-        weirdIcon = System.getProperty("user.dir") + "/src/imgs/weird.png";
-        sadIcon = System.getProperty("user.dir") + "/src/imgs/sad.png";
-        questionIcon = System.getProperty("user.dir") + "/src/imgs/ayuda.png";
-        infoIcon = System.getProperty("user.dir") + "/src/imgs/info.png";
+        setIconPaths();
         this.principal = principal;
         frame.setUndecorated(true);
         frame.setMaximumSize(new Dimension(850, 900));
@@ -720,6 +715,15 @@ public class Juego {
                 blancoNegroPanel.setVisible(false);
             }
         }
+    }
+
+    private void setIconPaths() {
+        alertIcon = System.getProperty("user.dir") + "/src/imgs/alerta.png";
+        happyIcon = System.getProperty("user.dir") + "/src/imgs/happy.png";
+        weirdIcon = System.getProperty("user.dir") + "/src/imgs/weird.png";
+        sadIcon = System.getProperty("user.dir") + "/src/imgs/sad.png";
+        questionIcon = System.getProperty("user.dir") + "/src/imgs/ayuda.png";
+        infoIcon = System.getProperty("user.dir") + "/src/imgs/info.png";
     }
 
     /**

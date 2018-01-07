@@ -38,7 +38,6 @@ public class Principal {
     private JButton CREARUSUARIOButton;
     private JButton CARGARUSUARIOButton;
     private JPanel contenidoCargarPart;
-    private JList list1;
     private JButton r1;
     private JButton r2;
     private JButton r3;
@@ -61,8 +60,9 @@ public class Principal {
     private String addNewUserIcon;
     private String userIcon;
     private String alertIcon;
-    private final String noUserIcon;
-    private final String gameIcon;
+    private String noUserIcon;
+    private String gameIcon;
+    private String questionIcon;
 
     /**
      * Creadora de la clase donde se le pasa el Jframe que va a controlar.
@@ -70,12 +70,7 @@ public class Principal {
      * @param jframe Frame que controla la clase.
      */
     public Principal(JFrame jframe) {
-        noUserIcon = System.getProperty("user.dir") + "/src/imgs/cargaOrCrea.png";
-        addTextIcon = System.getProperty("user.dir") + "/src/imgs/editText.png";
-        addNewUserIcon = System.getProperty("user.dir") + "/src/imgs/addNewUser.png";
-        userIcon = System.getProperty("user.dir") + "/src/imgs/user.png";
-        alertIcon = System.getProperty("user.dir") + "/src/imgs/alerta.png";
-        gameIcon = System.getProperty("user.dir") + "/src/imgs/GAME_ICON.png";
+        setIconPaths();
         frame = jframe;
         frame.setIconImage(new ImageIcon(gameIcon).getImage());
 
@@ -121,11 +116,7 @@ public class Principal {
 
                 JFrame frame = new JFrame("Ayuda");
                 frame.setContentPane(new Ayuda().getPanel());
-                frame.setPreferredSize(new Dimension(550, 600));
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
+                setFrameFooter(frame);
             }
         });
         b2.addMouseListener(new MouseAdapter() {
@@ -135,11 +126,7 @@ public class Principal {
 
                 JFrame frame = new JFrame("Ranking");
                 frame.setContentPane(new Ranking().getPanel());
-                frame.setPreferredSize(new Dimension(550, 600));
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
+                setFrameFooter(frame);
             }
         });
         b3.addMouseListener(new MouseAdapter() {
@@ -155,11 +142,7 @@ public class Principal {
                     frame = new JFrame("Ajustes");
                     frame.setContentPane(new Ajustes().getPanel());
                 }
-                frame.setPreferredSize(new Dimension(550, 600));
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
+                setFrameFooter(frame);
             }
         });
 
@@ -174,11 +157,7 @@ public class Principal {
 
                     JFrame frame = new JFrame("Perfil");
                     frame.setContentPane(new Perfil().getPanel());
-                    frame.setPreferredSize(new Dimension(550, 600));
-                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    frame.pack();
-                    frame.setLocationRelativeTo(null);
-                    frame.setVisible(true);
+                    setFrameFooter(frame);
                 }
             }
         });
@@ -190,9 +169,7 @@ public class Principal {
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
                 crearUsuario = true;
-                main.removeAll();
-                main.add(contenidoUsuario);
-                main.revalidate();
+                removeAddRevalidate(contenidoUsuario);
             }
         });
         CARGARUSUARIOButton.addMouseListener(new MouseAdapter() {
@@ -204,9 +181,7 @@ public class Principal {
                 else{
                     super.mouseClicked(mouseEvent);
                     crearUsuario = false;
-                    main.removeAll();
-                    main.add(contenidoUsuario);
-                    main.revalidate();
+                    removeAddRevalidate(contenidoUsuario);
                 }
 
             }
@@ -215,9 +190,9 @@ public class Principal {
         entraTuNombreDeTextField.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
-                if (!(((c >= '0') && (c <= '9')) || (c >= 'a' && c <= 'z')) && (c != KeyEvent.VK_BACK_SPACE)) {
+                if (!(((c >= '0') && (c <= '9')) || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) && (c != KeyEvent.VK_BACK_SPACE)) {
                     e.consume();
-                    showMessage("CARACTER INCORRECTO","Por favor introduce caracteres de: a-z y 0-9",null);
+                    showMessage("Carácter especial","Por favor, introduce caracteres válidos: a-z, A-Z y 0-9",addTextIcon);
                 }
             }
         });
@@ -260,9 +235,7 @@ public class Principal {
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
 
-                main.removeAll();
-                main.add(contenidoNuevaPart);
-                main.revalidate();
+                removeAddRevalidate(contenidoNuevaPart);
             }
         });
         CARGARPARTIDAButton.addMouseListener(new MouseAdapter() {
@@ -298,7 +271,7 @@ public class Principal {
                 super.mouseClicked(mouseEvent);
                 //CardLayout cardLayout = (CardLayout) main.getLayout();
                 //cardLayout.show(main, "contenidoPrincipal");
-               volverIncio();
+                volverInicio();
             }
         });
 
@@ -307,11 +280,7 @@ public class Principal {
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
 
-                //CardLayout cardLayout = (CardLayout) main.getLayout();
-                //cardLayout.show(main, "contenidoPrincipal");
-                main.removeAll();
-                main.add(contenidoInicio);
-                main.revalidate();
+                removeAddRevalidate(contenidoInicio);
             }
         });
         r3.addMouseListener(new MouseAdapter() {
@@ -319,20 +288,16 @@ public class Principal {
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
                 ctrl.quitarUsuarioCargado();
-                //CardLayout cardLayout = (CardLayout) main.getLayout();
-                //cardLayout.show(main, "contenidoPrincipal");
-                volverIncio();
+
+                volverInicio();
             }
         });
         r4.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                //CardLayout cardLayout = (CardLayout) main.getLayout();
-                //cardLayout.show(main, "contenidoPrincipal");
-                main.removeAll();
-                main.add(contenidoInicio);
-                main.revalidate();
+
+                removeAddRevalidate(contenidoInicio);
             }
         });
 
@@ -340,26 +305,47 @@ public class Principal {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
                 super.mouseClicked(mouseEvent);
-                //CardLayout cardLayout = (CardLayout) main.getLayout();
-                //cardLayout.show(main, "contenidoPrincipal");
-                main.removeAll();
-                main.add(contenidoNuevaPart);
-                main.revalidate();
+
+                removeAddRevalidate(contenidoNuevaPart);
             }
         });
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent event) {
-                int n = JOptionPane.showConfirmDialog(null, "¿Seguro que quieres salir?", "SE CERRARÁ EL JUEGO", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                int n = showYesNoMessage("Se cerrará el juego", "Todos tus datos se guardarán, ¿estás seguro que quieres salir?",questionIcon);
                 if(n == JOptionPane.YES_OPTION){
                     cerrarVentana();
                     frame.dispose();
-
                 }
             }
         });
 
+    }
+
+    private void removeAddRevalidate(JPanel addPanel) {
+        main.removeAll();
+        main.add(addPanel);
+        main.revalidate();
+        main.repaint();
+    }
+
+    private void setFrameFooter(JFrame frame) {
+        frame.setPreferredSize(new Dimension(550, 600));
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+
+    private void setIconPaths() {
+        noUserIcon = System.getProperty("user.dir") + "/src/imgs/cargaOrCrea.png";
+        addTextIcon = System.getProperty("user.dir") + "/src/imgs/editText.png";
+        addNewUserIcon = System.getProperty("user.dir") + "/src/imgs/addNewUser.png";
+        userIcon = System.getProperty("user.dir") + "/src/imgs/user.png";
+        alertIcon = System.getProperty("user.dir") + "/src/imgs/alerta.png";
+        gameIcon = System.getProperty("user.dir") + "/src/imgs/GAME_ICON.png";
+        questionIcon = System.getProperty("user.dir") + "/src/imgs/ayuda.png";
     }
 
     private void cerrarVentana() {
@@ -371,9 +357,7 @@ public class Principal {
      * Carga la vista con las partidas del usuario cargado.
      */
     private void displayPartidas() {
-        main.removeAll();
-        main.add(contenidoCargarPart);
-        main.revalidate();
+        removeAddRevalidate(contenidoCargarPart);
         displayListaPartidas();
     }
 
@@ -479,9 +463,7 @@ public class Principal {
      * @param maker parámetro necesario para acabar de crear el tablero proviniente del contenido de escoger modo de juego.
      */
     private void escogerDificultad(boolean maker) {
-        main.removeAll();
-        main.add(nivelDificultad);
-        main.revalidate();
+        removeAddRevalidate(nivelDificultad);
 
         if (facil.getMouseListeners().length > 4){
             facil.removeMouseListener(facil.getMouseListeners()[4]);
@@ -550,11 +532,9 @@ public class Principal {
     /**
      * Metodo que retorna el frame Principal al contenido principal.
      */
-    public void volverIncio(){
+    public void volverInicio(){
         entraTuNombreDeTextField.setText("");
-        main.removeAll();
-        main.add(contenidoPrincipal);
-        main.revalidate();
+        removeAddRevalidate(contenidoPrincipal);
 
     }
 
@@ -566,6 +546,17 @@ public class Principal {
      */
     private void showMessage(String title, String message, String icon) {
         JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(icon));
+    }
+
+    /**
+     * Método que acorta la llamada a JOptionPane.showMessageDialog(..) que crea un mensaje en pantalla con las opciones Yes y No
+     * @param title Título que contendrá la ventana creada.
+     * @param message Mensaje que contendrá la ventana creada.
+     * @param icon Icono que contendrá la ventana creada.
+     * @return Selección escogida
+     */
+    private int showYesNoMessage(String title, String message, String icon) {
+        return JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new ImageIcon(icon));
     }
 
 }
