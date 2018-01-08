@@ -177,6 +177,7 @@ public class Principal {
                 removeAddRevalidate(contenidoUsuario);
             }
         });
+
         CARGARUSUARIOButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -201,6 +202,7 @@ public class Principal {
                 }
             }
         });
+
         ACEPTARButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -235,6 +237,7 @@ public class Principal {
                 main.revalidate();
             }
         });
+
         CREARPARTIDAButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -243,6 +246,7 @@ public class Principal {
                 removeAddRevalidate(contenidoNuevaPart);
             }
         });
+
         CARGARPARTIDAButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -255,6 +259,7 @@ public class Principal {
                 }
             }
         });
+
         CODEMAKERButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -262,6 +267,7 @@ public class Principal {
                 escogerDificultad(true);
             }
         });
+
         CODEBREAKERButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -270,6 +276,7 @@ public class Principal {
 
             }
         });
+
         r1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -314,6 +321,7 @@ public class Principal {
                 removeAddRevalidate(contenidoNuevaPart);
             }
         });
+
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter() {
             @Override
@@ -325,9 +333,12 @@ public class Principal {
                 }
             }
         });
-
     }
 
+    /**
+     * Quitar panel anterior y cargar el panel pasado por parámetro
+     * @param addPanel panel a añadir
+     */
     private void removeAddRevalidate(JPanel addPanel) {
         main.removeAll();
         main.add(addPanel);
