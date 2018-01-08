@@ -78,6 +78,7 @@ public class Ranking {
 
         }
 
+        order();
         table1.setModel(tableModel);
         setCellRenderer();
     }
@@ -96,39 +97,21 @@ public class Ranking {
     }
 
     /**
-     * Crea una lista que contiene la lista ranking ordenada además de la dificultad.
-     * @param ranking Lista a partir de la cual cogeremos los datos para ordenar
-     * @param dificultad La difiultad que ha de tener la lista resultante.
-     * @return La lista creada
-     */
-    private List<List<String>> createOrderedList(List<String> ranking, String dificultad){
-        List<List<String>> orderedList = new ArrayList<>();
-        for (int i = 0; i < ranking.size(); i++) {
-            orderedList.add(new ArrayList<>());
-            orderedList.get(i).add(ranking.get(i).split(" ")[0]);
-            orderedList.get(i).add(dificultad);
-            orderedList.get(i).add(ranking.get(i).split(" ")[2]);
-        }
-        orderedList.sort(new Comparator<List<String>>() {
-            @Override
-            public int compare(List<String> a, List<String> b) {
-                int puntuacionA =Integer.valueOf(a.get(2));
-                int puntuacionB = Integer.valueOf(b.get(2));
-                return puntuacionB - puntuacionA;
-            }
-        });
-        return orderedList;
-    }
-
-    /**
      * Añade una lista de strings a la lista que ese hará display.
      * @param ranking
      * @param dificultad
      */
     private void insertDataOnTable(List<String> ranking, String dificultad){
-        List<List<String>> orderedList = createOrderedList(ranking, dificultad);
+        List<List<String>> List = new ArrayList<>();
+        for (int i = 0; i < ranking.size(); i++) {
+            List.add(new ArrayList<>());
+            List.get(i).add(ranking.get(i).split(" ")[0]);
+            List.get(i).add(dificultad);
+            List.get(i).add(ranking.get(i).split(" ")[2]);
+        }
 
-        for (List<String> anOrderedList : orderedList) {
+
+        for (List<String> anOrderedList : List) {
             String aux[] = {anOrderedList.get(0), anOrderedList.get(1), anOrderedList.get(2)};
             tableModel.addRow(aux);
         }
@@ -161,6 +144,37 @@ public class Ranking {
     }
 
     /**
+     * Método que ordena la tabla de ranking
+     */
+    private void order(){
+        List<List<String>> aux = new ArrayList<>();
+        for (int i = 0; i < tableModel.getRowCount(); i++) {
+            aux.add(new ArrayList<>());
+            aux.get(i).add((String) tableModel.getValueAt(i, 0));
+            aux.get(i).add((String) tableModel.getValueAt(i, 1));
+            aux.get(i).add((String) tableModel.getValueAt(i, 2));
+        }
+        for (int i = 0; i < tableModel.getRowCount(); i++) {
+            tableModel.removeRow(i);
+            i--;
+        }
+
+        aux.sort(new Comparator<List<String>>() {
+            @Override
+            public int compare(List<String> a, List<String> b) {
+                int puntuacionA =Integer.valueOf(a.get(2));
+                int puntuacionB = Integer.valueOf(b.get(2));
+                return puntuacionB - puntuacionA;
+            }
+        });
+
+        for (List<String> anOrderedList : aux) {
+            String aux2[] = {anOrderedList.get(0), anOrderedList.get(1), anOrderedList.get(2)};
+            tableModel.addRow(aux2);
+        }
+    }
+
+    /**
      * Acciones por defecto al crear la vista del ranking.
      */
     private void onCreate() {
@@ -174,6 +188,8 @@ public class Ranking {
         insertDataOnTable(new ArrayList<>(ctrl.getRanking("Facil")), "Fácil");
         insertDataOnTable(new ArrayList<>(ctrl.getRanking("Medio")), "Medio");
         insertDataOnTable(new ArrayList<>(ctrl.getRanking("Dificil")), "Difícil");
+
+        order();
 
         table1.setModel(tableModel);
         setCellRenderer();

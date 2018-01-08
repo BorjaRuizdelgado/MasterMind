@@ -323,15 +323,12 @@ public class Principal {
             }
         });
 
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent event) {
-                int n = showYesNoMessage("Se cerrará el juego", "Todos tus datos se guardarán, ¿estás seguro que quieres salir?",questionIcon);
-                if(n == JOptionPane.YES_OPTION){
-                    cerrarVentana();
-                    frame.dispose();
-                }
+                super.windowClosing(event);
+                mp3Player.close();
+                ctrl.onClose();
             }
         });
     }
