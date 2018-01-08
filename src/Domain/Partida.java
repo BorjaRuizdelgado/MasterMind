@@ -331,6 +331,10 @@ public class Partida implements Serializable {
         return rol;
     }
 
+    /**
+     * Devuelve el tablero en forma de listas
+     * @return tablero en forma de listas
+     */
     public List<List<List<Integer>>> getTablero(){
         return tablero.getTablero();
     }

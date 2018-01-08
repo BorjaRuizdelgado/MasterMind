@@ -78,6 +78,10 @@ public class Codigo implements Serializable{
         return codigo.equals(obj.codigo);
     }
 
+    /**
+     * Genera un código random
+     * @param numColores numero de colores máximo
+     */
     public void random(int numColores) {
         Random rn = new Random();
         for(int i = 0; i < size; i++)

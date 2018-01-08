@@ -64,7 +64,10 @@ public class Info implements Serializable {
 
     }
 
-
+    /**
+     * Coloca un nuevo nombre pasado por parámetro
+     * @param nuevoUsuario nombre nuevo a colocar
+     */
     public void setUsuario(String nuevoUsuario) {
         usuario = nuevoUsuario;
     }

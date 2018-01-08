@@ -136,6 +136,11 @@ public class Tablero implements Serializable {
         }
     }
 
+    /**
+     * Devuelve el tablero en forma de Listas
+     * @return tablero en forma de lista
+     */
+
     public List<List<List<Integer>>> getTablero(){
         List<List<List<Integer>>> tableroAPasar = new ArrayList<>();
 
