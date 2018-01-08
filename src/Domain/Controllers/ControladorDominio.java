@@ -102,6 +102,7 @@ public class ControladorDominio {
      */
     public void crearPartidaUsuarioCargadoRolBreaker(String dificultad){
         usuarioCargado.creaPartidaActual(false, dificultad);
+        partidaActual = usuarioCargado.getPartidaActual();
     }
 
     /**
