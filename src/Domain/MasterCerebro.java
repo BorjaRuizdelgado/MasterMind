@@ -169,9 +169,7 @@ public class MasterCerebro implements Inteligencia, Serializable {
      */
     private Codigo generaCodigoRandom(){
         Codigo codigo = new Codigo(numeroColumnas);
-        for (int j = 0; j < numeroColumnas; j++) {
-            codigo.codigo.add(1 + random.nextInt(numeroColores));
-        }
+        codigo.random(numeroColores);
         return codigo;
     }
 

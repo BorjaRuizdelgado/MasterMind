@@ -51,7 +51,6 @@ public class Script {
                 aux.add(new Random().nextInt(numColores) + 1);
             }
             codigoSecreto.codigo = aux;
-            //System.out.println(aux + "--");
 
             boolean first = true;
             Codigo last = null;
@@ -68,7 +67,6 @@ public class Script {
 
                     last = ia.getSiguienteIntento(ultimoIntento);
                 }
-                //System.out.println(last.codigo);
                 first = false;
                 intentosPartida++;
             }

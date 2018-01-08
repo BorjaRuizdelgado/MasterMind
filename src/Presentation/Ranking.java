@@ -1,18 +1,15 @@
 package Presentation;
 
 import Domain.Controllers.ControladorDominio;
-import Domain.SistemaRanking;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 
 public class Ranking {
     private JPanel panel;
@@ -46,8 +43,8 @@ public class Ranking {
     }
 
     /**
-     * Actualiza la vista de los ranking de pendiendo si se quiere por el propio usuario cargado o no.
-     * @param usuario variable booleana que indica si se quiere el filtrado por el usario actual cargado o no.
+     * Actualiza la vista de los ranking dependiendo si se quiere por el propio usuario cargado o no.
+     * @param usuario Booleano que indica si se quiere el filtrado por el usario actual cargado o no.
      */
     private void filtrar(Boolean usuario){
         tableModel = new DefaultTableModel(0, 3);
@@ -86,7 +83,7 @@ public class Ranking {
     }
 
     /**
-     * Hace display del ranking en la matriz.
+     * Hace display del ranking en la tabla.
      */
     private void setCellRenderer(){
         DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
@@ -99,11 +96,12 @@ public class Ranking {
     }
 
     /**
-     * Añade una lista de strings a la lista qu ese hará display.
-     * @param ranking
-     * @param dificultad
+     * Crea una lista que contiene la lista ranking ordenada además de la dificultad.
+     * @param ranking Lista a partir de la cual cogeremos los datos para ordenar
+     * @param dificultad La difiultad que ha de tener la lista resultante.
+     * @return La lista creada
      */
-    private void insertDataOnTable(List<String> ranking, String dificultad){
+    private List<List<String>> createOrderedList(List<String> ranking, String dificultad){
         List<List<String>> orderedList = new ArrayList<>();
         for (int i = 0; i < ranking.size(); i++) {
             orderedList.add(new ArrayList<>());
@@ -119,6 +117,16 @@ public class Ranking {
                 return puntuacionB - puntuacionA;
             }
         });
+        return orderedList;
+    }
+
+    /**
+     * Añade una lista de strings a la lista que ese hará display.
+     * @param ranking
+     * @param dificultad
+     */
+    private void insertDataOnTable(List<String> ranking, String dificultad){
+        List<List<String>> orderedList = createOrderedList(ranking, dificultad);
 
         for (List<String> anOrderedList : orderedList) {
             String aux[] = {anOrderedList.get(0), anOrderedList.get(1), anOrderedList.get(2)};
@@ -127,7 +135,7 @@ public class Ranking {
     }
 
     /**
-     * Mira si el usuario quiere sus propios rankings o no y manda a hacer diplay
+     * Mira si el usuario quiere sus propios rankings o no y manda a hacer display
      */
     private void setCheckboxListener(){
 
