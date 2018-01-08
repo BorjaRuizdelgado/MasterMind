@@ -45,12 +45,21 @@ public class ControladorPersistencia {
         return uniqueInstance;
     }
 
+    /**
+     * Carga el juego de prueba pasado por parámetro
+     * @param juegoPrueba juego de prueba a cargar
+     */
     private static void loadJuegoPrueba(String juegoPrueba) {
         copyDirectory(juegoPrueba, "Games");
         copyDirectory(juegoPrueba, "GSR");
         copyDirectory(juegoPrueba, "Users");
     }
 
+    /**
+     * Crea los paths y copia la carpeta.
+     * @param juegoPrueba juego de prueba a cargar
+     * @param filename nombre del fichero a copiar
+     */
     private static void copyDirectory(String juegoPrueba, String filename) {
         File fileIn = getFileIn(juegoPrueba,filename);
         File fileOut = getFileOut(filename);
@@ -62,6 +71,12 @@ public class ControladorPersistencia {
         }
     }
 
+    /**
+     * Función recursiva de copia de ficheros.
+     * @param fileIn fichero a copiar
+     * @param fileOut fichero donde copiar
+     * @throws IOException excepción si hay algún problema copiando la carpeta
+     */
     private static void copiarCarpeta(File fileIn, File fileOut) throws IOException {
         if (fileIn.isDirectory()) {
             if (!fileOut.exists()) fileOut.mkdir();
@@ -81,10 +96,20 @@ public class ControladorPersistencia {
 
     }
 
+    /**
+     * Crea el fichero de entrada con el nombre que le pases por parámetro
+     * @param nameFile nombre de la carpeta
+     * @return file de la carpeta
+     */
     private static File getFileOut(String nameFile) {
         return new File(System.getProperty("user.dir")+"/Data/"+nameFile);
     }
 
+    /**
+     * Crea el fichero de salida con el nombre que le pases por parámetro
+     * @param nameFile nombre de la carpeta
+     * @return file de la carpeta
+     */
     private static File getFileIn(String nameJuegoPrueba, String nameFile) {
         return new File(System.getProperty("user.dir") + "/JuegosDePrueba/"+nameJuegoPrueba+"/Data/"+nameFile);
     }

@@ -185,6 +185,11 @@ public class SistemaRanking implements Serializable{
         return fromInfoListToStringList(rankingDificil);
     }
 
+    /**
+     * Cambia el nombre de las puntuaciones del oldUsername a newUsername de todos los ránkings
+     * @param oldUsername nombre antiguo
+     * @param newUsername nombre nuevo
+     */
     public void cambiarNombre(String oldUsername, String newUsername) {
         List<Info> faciles = getRankingFacilInfo(oldUsername);
         cambiaNombreList(faciles,newUsername);
@@ -196,12 +201,21 @@ public class SistemaRanking implements Serializable{
         cambiaNombreList(dificiles,newUsername);
     }
 
+    /**
+     * Cambia el nombre de los Infos de la lista por el newUsername
+     * @param lista lista de Infos a la que cambiar el nombre
+     * @param newUsername nombre a cambiar.
+     */
     private void cambiaNombreList(List<Info> lista, String newUsername) {
         for (Info info : lista) {
             info.setUsuario(newUsername);
         }
     }
 
+    /**
+     * Borra todos los ránkings del usuario pasado por parámetro
+     * @param nombre nombre de usuario al que borrar a los ránkings
+     */
     public void borrarRankings(String nombre) {
         List<Info> faciles = getRankingFacilInfo(nombre);
         rankingFacil.removeAll(faciles);

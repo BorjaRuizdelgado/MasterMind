@@ -122,6 +122,7 @@ public class Ayuda {
                         +"Puedes crear y guardar partidas para continuar en otro momento."+nl,                                    //regular
                 "Si ganas partidas te posicionarás en el ránking y podrás visualizarlo cuando quieras, al igual que tus estadísticas en tu perfil. "
                         +"Cada partida se puede abandonar, reiniciar o guardar. Y si te quedas atascado puedes pedir pistas."     //regular
+                +nl+nl+"Si te equivocas colocando un color, pulsa botón derecho para eliminarlo."
         };
     }
 

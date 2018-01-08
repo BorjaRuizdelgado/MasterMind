@@ -116,7 +116,6 @@ public class Usuario implements Serializable {
      */
     public void cargaPartida(Partida partida)  {
         partidaActual = partida;
-        //partidasGuardadas.remove(partida.getId());
     }
 
     /**
@@ -143,14 +142,14 @@ public class Usuario implements Serializable {
 
     /**
      * Devuelve la lista de identificadores de las partidas que tiene guardadas.
-     * @return
+     * @return lista de los identificadores de partidas guardadas
      */
     public List<String> getPartidasGuardadas(){
         return partidasGuardadas;
     }
 
     /**
-     * borra las partidas guardadas del usuario.
+     * Borra las partidas guardadas del usuario.
      */
     public void borrarPartidasGuardadas() {
         partidasGuardadas = new ArrayList<>();
