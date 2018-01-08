@@ -208,7 +208,7 @@ public class Juego {
     /**
      * Añade el listener al botón pasado por parámetro. El listener indica que si haces click al botón, se ponga el
      * fondo igual al atributo 'color' de la clase. En caso de click derecho, se cambia al color por defecto.
-     * @param buttons
+     * @param buttons Lista de botones en los que se aplica el método.
      */
     private void setButtonsEnabled(ArrayList<JButton> buttons) {
         for (JButton button : buttons) {
@@ -672,7 +672,7 @@ public class Juego {
      * @param oldFrame Frame de la clase Principal.
      * @param principal Instáncia de la clase principal.
      */
-    public Juego(String dificultad, boolean isCodeMaker, boolean cargarTablero, JFrame frame, JFrame oldFrame, Principal principal) {
+    Juego(String dificultad, boolean isCodeMaker, boolean cargarTablero, JFrame frame, JFrame oldFrame, Principal principal) {
         setIconPaths();
         this.principal = principal;
         frame.setUndecorated(true);
@@ -682,17 +682,21 @@ public class Juego {
         this.oldFrame = oldFrame;
         this.codeMaker = isCodeMaker;
         this.dificultad = dificultad;
-        if (dificultad.equals("Facil")) {
-            numColumns = 4;
-            numColors = 4;
+        switch (dificultad) {
+            case "Facil":
+                numColumns = 4;
+                numColors = 4;
 
-            coloresPanel.remove(naranjaVioletPanel);
-        } else if (dificultad.equals("Medio")) {
-            numColumns = 4;
-            numColors = 6;
-        } else {
-            numColumns = 6;
-            numColors = 6;
+                coloresPanel.remove(naranjaVioletPanel);
+                break;
+            case "Medio":
+                numColumns = 4;
+                numColors = 6;
+                break;
+            default:
+                numColumns = 6;
+                numColors = 6;
+                break;
         }
 
         initMap();
