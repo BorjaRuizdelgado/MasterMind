@@ -68,6 +68,7 @@ public class Principal {
      * Creadora de la clase donde se le pasa el Jframe que va a controlar.
      * En ella se aplican todos los listeners necesarios.
      * @param jframe Frame que controla la clase.
+     * @param juegoPrueba nombre del juego de prueba a cargar
      */
     public Principal(JFrame jframe, String juegoPrueba) {
         setIconPaths();

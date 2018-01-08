@@ -24,6 +24,7 @@ public class ControladorDominio {
 
     /**
      * Creadora ControladorDominio.
+     * @param juegoPrueba nombre del juego de prueba a cargar
      */
     private ControladorDominio(String juegoPrueba){
         persistencia = ControladorPersistencia.getInstance(juegoPrueba);

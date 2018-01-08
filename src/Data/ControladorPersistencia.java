@@ -108,6 +108,7 @@ public class ControladorPersistencia {
     /**
      * Crea el fichero de salida con el nombre que le pases por parámetro
      * @param nameFile nombre de la carpeta
+     * @param nameJuegoPrueba nombre del juego de prueba del que cargar
      * @return file de la carpeta
      */
     private static File getFileIn(String nameJuegoPrueba, String nameFile) {

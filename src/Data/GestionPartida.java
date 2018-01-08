@@ -109,7 +109,7 @@ public class GestionPartida {
 
     /**
      * Elimina el fichero de la partida cuyo identificador se ha pasado por parámetro.
-     * @param idPartida
+     * @param idPartida identificador de la partida a eliminar
      */
     public void eliminar(String idPartida) {
         File file = new File(getPath(idPartida));
