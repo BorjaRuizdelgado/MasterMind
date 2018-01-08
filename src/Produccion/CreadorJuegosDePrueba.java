@@ -170,7 +170,10 @@ public class CreadorJuegosDePrueba {
             }
             codigoSecreto.random(numColores);
             if(rol == 0) controladorDominio.crearPartidaUsuarioCargadoRolBreaker(dif);
-            else controladorDominio.crearPartidaUsuarioCargadoRolMaker(dif,(ArrayList)codigoSecreto.codigo);
+            else {
+                controladorDominio.crearPartidaUsuarioCargadoRolMaker(dif,(ArrayList)codigoSecreto.codigo);
+                controladorDominio.jugarCodeMaker();
+            }
             println("Partida creada.");
             controladorDominio.guardaPartidaActual();
         }
