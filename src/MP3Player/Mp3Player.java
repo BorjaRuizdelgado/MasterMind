@@ -39,13 +39,13 @@ public class Mp3Player {
 
         } catch (UnsupportedAudioFileException ex) {
             System.out.println("The specified audio file is not supported.");
-            ex.printStackTrace();
+            //ex.printStackTrace();
         } catch (LineUnavailableException ex) {
             System.out.println("Audio line for playing back is unavailable.");
-            ex.printStackTrace();
+            //ex.printStackTrace();
         } catch (IOException ex) {
             System.out.println("Error playing the audio file.");
-            ex.printStackTrace();
+            //ex.printStackTrace();
         }
     }
 

@@ -77,9 +77,14 @@ public class Principal {
         // Evitamos que se configure el frame.
         frame.setResizable(false);
 
-        mp3Player = Mp3Player.getInstance();
-        mp3Player.play(System.getProperty("user.dir") + "/src/MP3Player/Arcade.wav");
-        mp3Player.changeVolume(-25);
+        try {
+            mp3Player = Mp3Player.getInstance();
+            mp3Player.play(System.getProperty("user.dir") + "/src/MP3Player/Arcade.wav");
+            mp3Player.changeVolume(-25);
+        }
+        catch (Exception e){
+            showMessage("Error", "Parece que tu ordenador no puede reproducir la música", alertIcon);
+        }
 
         ctrl = ControladorDominio.getInstance(juegoPrueba);
 
@@ -349,7 +354,12 @@ public class Principal {
     }
 
     private void cerrarVentana() {
-        mp3Player.close();
+        try {
+            mp3Player.close();
+        }
+        catch (Exception e){
+
+        }
         ctrl.onClose();
     }
 

@@ -10,7 +10,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import static Util.Console.*;
 
 /**
  * CREADOR DE JUEGOS DE PRUEBA
@@ -299,6 +298,10 @@ public class CreadorJuegosDePrueba {
             rol = scan.nextInt();
         }
         return rol;
+    }
+
+    private static void println(String string){
+        System.out.println(string);
     }
 
 }
