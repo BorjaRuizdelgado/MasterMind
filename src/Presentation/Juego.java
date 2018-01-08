@@ -655,7 +655,7 @@ public class Juego {
     private void eliminarColores(){
         coloresPanel.remove(rojoVerdePanel);
         coloresPanel.remove(azulAmariPanel);
-        if (dificultad.equals("Dificil")){
+        if (dificultad.equals("Dificil") || dificultad.equals("Medio")){
             coloresPanel.remove(naranjaVioletPanel);
         }
     }
