@@ -238,14 +238,6 @@ public class Partida implements Serializable {
     /* MODIFICADORAS */
 
     /**
-     * Coloca la nueva ID
-     * @param id nuevo id de la partida
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
      * Añade el tiempo de un turno al total
      * @param tiempo es lo que ha tardado en un turno
      */

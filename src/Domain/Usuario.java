@@ -51,6 +51,25 @@ public class Usuario implements Serializable {
         return this.partidaActual;
     }
 
+    /**
+     * Devuelve la lista de identificadores de las partidas que tiene guardadas.
+     * @return lista de los identificadores de partidas guardadas
+     */
+    public List<String> getPartidasGuardadas(){
+        return partidasGuardadas;
+    }
+
+    /**
+     * Devuelve una lista de las estadísticas del usuario.
+     * @return partidas finalizadas como codeMaker y codeBreaker y numero de partidas ganadas como code breaker.
+     */
+    public List<Integer> getEstadisticas() {
+        List<Integer> estadisticas = new ArrayList<>();
+        estadisticas.add(numPartidasFinalizadasCB);
+        estadisticas.add(numPartidasFinalizadasCM);
+        estadisticas.add(numPartidasGanadasCB);
+        return estadisticas;
+    }
 
     /* MODIFICADORAS */
 
@@ -140,30 +159,11 @@ public class Usuario implements Serializable {
         partidaActual = null;
     }
 
-    /**
-     * Devuelve la lista de identificadores de las partidas que tiene guardadas.
-     * @return lista de los identificadores de partidas guardadas
-     */
-    public List<String> getPartidasGuardadas(){
-        return partidasGuardadas;
-    }
 
     /**
      * Borra las partidas guardadas del usuario.
      */
     public void borrarPartidasGuardadas() {
         partidasGuardadas = new ArrayList<>();
-    }
-
-    /**
-     * Devuelve una lista de las estadísticas del usuario.
-     * @return partidas finalizadas como codeMaker y codeBreaker y numero de partidas ganadas como code breaker.
-     */
-    public List<Integer> getEstadisticas() {
-        List<Integer> estadisticas = new ArrayList<>();
-        estadisticas.add(numPartidasFinalizadasCB);
-        estadisticas.add(numPartidasFinalizadasCM);
-        estadisticas.add(numPartidasGanadasCB);
-        return estadisticas;
     }
 }

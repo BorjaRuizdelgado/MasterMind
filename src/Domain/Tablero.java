@@ -12,18 +12,6 @@ import java.util.*;
  */
 public class Tablero implements Serializable {
 
-    /*
-    VACIO = 0;
-    ROJO = 1;
-    VERDE = 2;
-    AZUL = 3;
-    AMARILLO = 4;
-    NARANJA = 5;
-    MORADO = 6;
-    BLANCO = 7;
-    NEGRO = 8;
-    */
-
     private final int numeroColumnas;
     private final int numeroFilas = 12;
     private int numeroFilaActual = 0;
