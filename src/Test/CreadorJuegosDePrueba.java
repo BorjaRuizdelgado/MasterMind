@@ -25,7 +25,7 @@ public class CreadorJuegosDePrueba {
         println("Bienvenid@ al creador de juegos de prueba de MasterMindo.\n" +
                 "Aquí podrás crear y borrar Usuarios, Partidas guardadas y Clasificaciones.\n" +
                 "Para que no haya ningún error, por favor cierre el creador correctamente.\n");
-        controladorDominio = ControladorDominio.getInstance();
+        controladorDominio = ControladorDominio.getInstance("normal");
         menu();
     }
 

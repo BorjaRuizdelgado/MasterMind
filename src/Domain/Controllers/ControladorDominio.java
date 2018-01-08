@@ -25,8 +25,8 @@ public class ControladorDominio {
     /**
      * Creadora ControladorDominio.
      */
-    private ControladorDominio(){
-        persistencia = ControladorPersistencia.getInstance();
+    private ControladorDominio(String juegoPrueba){
+        persistencia = ControladorPersistencia.getInstance(juegoPrueba);
         persistencia.cargarSistemaRanking();
         ranking = SistemaRanking.getInstance();
     }
@@ -34,9 +34,9 @@ public class ControladorDominio {
     /** Si la instancia no existe, se inicializa con su método privado
      * @return La única instancia de la clase
      */
-    public static ControladorDominio getInstance() {
+    public static ControladorDominio getInstance(String juegoPrueba) {
         if(uniqueInstance == null)
-            uniqueInstance = new ControladorDominio();
+            uniqueInstance = new ControladorDominio(juegoPrueba);
         return uniqueInstance;
     }
 

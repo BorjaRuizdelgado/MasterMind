@@ -44,7 +44,7 @@ public class AjustesUsuario{
         textIcon = System.getProperty("user.dir") + "/src/imgs/editText.png";
         userIcon = System.getProperty("user.dir") + "/src/imgs/user.png";
         mp3Player = Mp3Player.getInstance();
-        ctrl = ControladorDominio.getInstance();
+        ctrl = ControladorDominio.getInstance("normal");
 
         addMouseEnterExitColorEffect(confirmarButton);
         addMouseEnterExitColorEffect(eliminarUserButton);

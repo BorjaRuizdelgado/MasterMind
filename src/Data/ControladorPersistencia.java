@@ -4,7 +4,12 @@ import Domain.Excepciones.ExcepcionUsuarioInexistente;
 import Domain.Partida;
 import Domain.Usuario;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
+
+import static java.nio.file.StandardCopyOption.*;
 
 /**
  * Clase Controlador Persistencia.
@@ -34,9 +39,54 @@ public class ControladorPersistencia {
      * Controlador Persistencia es un singleton y por ello se debe acceder mediante getInstance.
      * @return uniqueInstance de ControladorPersistencia
      */
-    public static ControladorPersistencia getInstance() {
+    public static ControladorPersistencia getInstance(String juegoPrueba) {
+        if (!juegoPrueba.equals("normal")) loadJuegoPrueba(juegoPrueba);
         if (uniqueInstance == null) uniqueInstance = new ControladorPersistencia();
         return uniqueInstance;
+    }
+
+    private static void loadJuegoPrueba(String juegoPrueba) {
+        copyDirectory(juegoPrueba, "Games");
+        copyDirectory(juegoPrueba, "GSR");
+        copyDirectory(juegoPrueba, "Users");
+    }
+
+    private static void copyDirectory(String juegoPrueba, String filename) {
+        File fileIn = getFileIn(juegoPrueba,filename);
+        File fileOut = getFileOut(filename);
+        try {
+            copiarCarpeta(fileIn,fileOut);
+        } catch (IOException e) {
+            System.err.println("Problema al cargar el Juego De Prueba.");
+            e.printStackTrace();
+        }
+    }
+
+    private static void copiarCarpeta(File fileIn, File fileOut) throws IOException {
+        if (fileIn.isDirectory()) {
+            if (!fileOut.exists()) fileOut.mkdir();
+
+            String files[] = fileIn.list();
+
+            for (String file : files) {
+                File srcFile = new File(fileIn, file);
+                File destFile = new File(fileOut, file);
+
+                copiarCarpeta(srcFile, destFile);
+            }
+        }
+        else {
+            Files.copy(fileIn.toPath(), fileOut.toPath(), REPLACE_EXISTING, COPY_ATTRIBUTES);
+        }
+
+    }
+
+    private static File getFileOut(String nameFile) {
+        return new File(System.getProperty("user.dir")+"/Data/"+nameFile);
+    }
+
+    private static File getFileIn(String nameJuegoPrueba, String nameFile) {
+        return new File(System.getProperty("user.dir") + "/JuegosDePrueba/"+nameJuegoPrueba+"/Data/"+nameFile);
     }
 
     /**

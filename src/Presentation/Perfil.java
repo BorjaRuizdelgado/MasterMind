@@ -22,7 +22,7 @@ public class Perfil {
     }
 
     public Perfil(){
-        ctrl = ControladorDominio.getInstance();
+        ctrl = ControladorDominio.getInstance("normal");
         insert_here_usernameTextArea.setText(ctrl.getUsuario());
        insertarEstadisticasUsr();
     }

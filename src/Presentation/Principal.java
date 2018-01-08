@@ -69,7 +69,7 @@ public class Principal {
      * En ella se aplican todos los listeners necesarios.
      * @param jframe Frame que controla la clase.
      */
-    public Principal(JFrame jframe) {
+    public Principal(JFrame jframe, String juegoPrueba) {
         setIconPaths();
         frame = jframe;
         frame.setIconImage(new ImageIcon(gameIcon).getImage());
@@ -81,7 +81,7 @@ public class Principal {
         mp3Player.play(System.getProperty("user.dir") + "/src/MP3Player/Arcade.wav");
         mp3Player.changeVolume(-25);
 
-        ctrl = ControladorDominio.getInstance();
+        ctrl = ControladorDominio.getInstance(juegoPrueba);
 
 
         /* Efectos */

@@ -157,7 +157,7 @@ public class Ranking {
      */
     private void onCreate() {
         noUserIcon = System.getProperty("user.dir") + "/src/imgs/cargaOrCrea.png";
-        ctrl = ControladorDominio.getInstance();
+        ctrl = ControladorDominio.getInstance("normal");
         tableModel = new DefaultTableModel(0, 3);
         setSelectorListener();
         setCheckboxListener();

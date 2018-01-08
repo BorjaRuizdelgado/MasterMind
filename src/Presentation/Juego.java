@@ -57,7 +57,7 @@ public class Juego {
     private String dificultad = "Facil";
     private int color;
 
-    private ControladorDominio controller = ControladorDominio.getInstance();
+    private ControladorDominio controller = ControladorDominio.getInstance("normal");
     private boolean codeMaker = false;
     private boolean firstAttempt = true;
     private int actualRow = 0;
