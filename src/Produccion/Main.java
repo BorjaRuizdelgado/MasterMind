@@ -1,4 +1,4 @@
-package Test;
+package Produccion;
 
 
 import Presentation.Principal;
@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class GUITest {
+public class Main {
 
 
     public static void main(String args[]) {
