@@ -103,8 +103,6 @@ public class GestionPartida {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     /**

@@ -284,7 +284,7 @@ public class CreadorJuegosDePrueba {
         String dif = "Dif";
         while (!dif.equals("Facil") && !dif.equals("Medio") && !dif.equals("Dificil")) {
             if (!dif.equals("Dif")) println("Dificultad incorrecta.");
-            println("Escige dificultad: [Facil], [Medio] o [Dificil].");
+            println("Escoge dificultad: [Facil], [Medio] o [Dificil].");
             dif = scan.next();
         }
         return dif;
