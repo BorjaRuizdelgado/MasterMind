@@ -112,7 +112,7 @@ public class Principal {
         addMouseEnterExitBorderEffect(r5);
 
 
-        /* ************************* */
+        /* ********** FOOTER ********** */
 
         b1.addMouseListener(new MouseAdapter() {
             @Override
@@ -150,7 +150,6 @@ public class Principal {
                 setFrameFooter(frame);
             }
         });
-
         b4.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
@@ -168,6 +167,7 @@ public class Principal {
         });
 
 
+        /* ********** MAIN ********** */
 
         CREARUSUARIOButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -335,6 +335,10 @@ public class Principal {
         main.repaint();
     }
 
+    /**
+     * Hace visible el Frame pasado por parámetro
+     * @param frame frame ha visualizar
+     */
     private void setFrameFooter(JFrame frame) {
         frame.setPreferredSize(new Dimension(550, 600));
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -343,6 +347,9 @@ public class Principal {
         frame.setVisible(true);
     }
 
+    /**
+     * Añade los paths de los iconos
+     */
     private void setIconPaths() {
         noUserIcon = System.getProperty("user.dir") + "/src/imgs/cargaOrCrea.png";
         addTextIcon = System.getProperty("user.dir") + "/src/imgs/editText.png";
@@ -353,12 +360,15 @@ public class Principal {
         questionIcon = System.getProperty("user.dir") + "/src/imgs/ayuda.png";
     }
 
+    /**
+     * Cerrar ventana
+     */
     private void cerrarVentana() {
         try {
             mp3Player.close();
         }
         catch (Exception e){
-
+            //ignorar
         }
         ctrl.onClose();
     }
@@ -405,7 +415,7 @@ public class Principal {
     }
 
     /**
-     * Hace display del ranking en la matriz.
+     * Hace display de las partidas en la matriz.
      */
     private void setCellRenderer(){
         DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
@@ -419,7 +429,7 @@ public class Principal {
 
     /**
      * Carga una del usuario cargado en memoria con un id = partidaACargar
-     * @param partidaACargar
+     * @param partidaACargar id de la partida a cargar
      */
     private void cargarPartida(String partidaACargar) {
         Tuple2<Boolean,String> info = ctrl.cargarPartidaUsuario(partidaACargar);
@@ -434,6 +444,10 @@ public class Principal {
         this.frame.setVisible(false);
     }
 
+    /**
+     * Añade efectos de color por entrada y salida del mouse.
+     * @param button boton al que añadir los efectos
+     */
     private void addMouseEnterExitColorEffect(JButton button) {
         button.addMouseListener(new MouseAdapter() {
             @Override
@@ -451,6 +465,10 @@ public class Principal {
         });
     }
 
+    /**
+     * Añade efectos de borde por entrada y salida del mouse
+     * @param button boton al que añadir los efectos
+     */
     private void addMouseEnterExitBorderEffect(JButton button) {
         button.addMouseListener(new MouseAdapter() {
             @Override

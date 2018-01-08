@@ -80,6 +80,11 @@ public class Mp3Player {
             play(pathAnterior);
         }
     }
+
+    /**
+     * Devuelve si está sonando
+     * @return cierto si está sonando, falso si no;
+     */
     public boolean isPlaying(){
         return isPlaying;
     }

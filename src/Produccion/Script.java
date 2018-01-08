@@ -15,16 +15,16 @@ import java.util.Scanner;
 public class Script {
 
     private enum modo{
-        facil, medio, dificil;
+        facil, medio, dificil
     }
 
     private enum tipoInteligencia{
-        cerebro, MasterCerebro;
+        cerebro, MasterCerebro
     }
 
     private static List<Double> calculate(int numeroIntentos, modo modeUsado, tipoInteligencia tipoInteligencia){
         List<Double> Result = new ArrayList<>();
-        Inteligencia ia = null;
+        Inteligencia ia;
         int numColores, numColumnas;
         if (modeUsado == modo.facil) {
             numColores = 4;
