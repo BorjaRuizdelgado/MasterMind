@@ -370,19 +370,6 @@ public class Principal {
     }
 
     /**
-     * Cerrar ventana
-     */
-    private void cerrarVentana() {
-        try {
-            mp3Player.close();
-        }
-        catch (Exception e){
-            //ignorar
-        }
-        ctrl.onClose();
-    }
-
-    /**
      * Carga la vista con las partidas del usuario cargado.
      */
     private void displayPartidas() {
