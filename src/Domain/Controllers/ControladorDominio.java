@@ -99,13 +99,9 @@ public class ControladorDominio {
     /**
      * Crea una partida de tipo usuario CodeBreaker con una dificultad determinada.
      * @param dificultad Determina el grado de dificultad de la partida.
-     * @return Codigo secreto aleatorio generado por la maquina.
      */
-    public List<Integer> crearPartidaUsuarioCargadoRolBreaker(String dificultad){
+    public void crearPartidaUsuarioCargadoRolBreaker(String dificultad){
         usuarioCargado.creaPartidaActual(false, dificultad);
-        partidaActual = usuarioCargado.getPartidaActual();
-        return partidaActual.getCodigoSecreto().codigo;
-
     }
 
     /**
