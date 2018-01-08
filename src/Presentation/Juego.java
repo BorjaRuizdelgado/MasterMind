@@ -567,6 +567,7 @@ public class Juego {
                     controller.guardaPartidaActual();
                     frame.dispose();
                     oldFrame.setVisible(true);
+                    Juego.this.principal.revalidar();
                 }
 
             }
